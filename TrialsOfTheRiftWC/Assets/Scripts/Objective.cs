@@ -16,5 +16,5 @@ public abstract class Objective : MonoBehaviour {
 
 	public abstract void Instantiate();
 	public abstract void Complete();
-    public abstract void ParamReset(float param_in);
+    public abstract void ParamReset(float param_in);        //[Param Fix] - Used for Param Screen. Probably should be removed in release.
 }

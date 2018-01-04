@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHUDController : MonoBehaviour {
 
-    [SerializeField]PlayerController playc_trackedPlayer;
+    [SerializeField] PlayerController playc_trackedPlayer;
     [SerializeField] Image img_healthbar;
     [SerializeField] Image img_windbar;
     [SerializeField] Image img_icebar;

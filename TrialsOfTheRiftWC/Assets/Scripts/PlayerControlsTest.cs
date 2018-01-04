@@ -16,13 +16,51 @@ public class PlayerControlsTest : MonoBehaviour {
         { // PS4 connection message
             InputManager.P1_Map = InputManager.P1_PS4;
             Debug.Log("P1 PS4");
-            t.text = "Press X";
+            //t.text = "Press X";
         }
         else
         {
             InputManager.P1_Map = InputManager.P1_XBOX;
             Debug.Log("P1 XBOX");
-            t.text = "Press A";
+            //t.text = "Press A";
+        }
+        if (Input.GetJoystickNames()[1] == "Wireless Controller")
+        {
+            InputManager.P2_Map = InputManager.P2_PS4;
+            Debug.Log("P2 PS4");
+            //t.text = "Press X";
+        }
+        else
+        {
+            InputManager.P2_Map = InputManager.P2_XBOX;
+            Debug.Log("P2 XBOX");
+            //t.text = "Press A";
+        }
+
+        if (Input.GetJoystickNames()[2] == "Wireless Controller")
+        {
+            InputManager.P3_Map = InputManager.P3_PS4;
+            Debug.Log("P3 PS4");
+            //t.text = "Press X";
+        }
+        else
+        {
+            InputManager.P3_Map = InputManager.P3_XBOX;
+            Debug.Log("P3 XBOX");
+            // t.text = "Press A";
+        }
+
+        if (Input.GetJoystickNames()[3] == "Wireless Controller")
+        {
+            InputManager.P4_Map = InputManager.P4_PS4;
+            Debug.Log("P4 PS4");
+            //t.text = "Press X";
+        }
+        else
+        {
+            InputManager.P4_Map = InputManager.P4_XBOX;
+            Debug.Log("P4 XBOX");
+            //t.text = "Press A";
         }
     }
 
@@ -67,12 +105,22 @@ public class PlayerControlsTest : MonoBehaviour {
             t.text = "P" + playerNum + " mm";
         }
 
-        for (int i = 3; i < 29; i++)
+        if (InputManager.GetAxis(electric, playerNum) != -1)
         {
-            if(Input.GetAxis("Axis" + i) != 0 && Input.GetAxis("Axis" + i) != -1)
-            {
-                Debug.Log("Axis" + i + " - " + Input.GetAxis("Axis" + i));
-            }
+            t.text = "P" + playerNum + " electric";
         }
+        if (InputManager.GetAxis(mm, playerNum) != -1)
+        {
+            t.text = "P" + playerNum + " mm";
+        }
+
+
+        //for (int i = 3; i < 29; i++)
+        //{
+        //    if(Input.GetAxis("Axis" + i) != 0 && Input.GetAxis("Axis" + i) != -1)
+        //    {
+        //        Debug.Log("Axis" + i + " - " + Input.GetAxis("Axis" + i));
+        //    }
+        //}
     }
 }

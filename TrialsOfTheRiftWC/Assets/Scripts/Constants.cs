@@ -48,8 +48,8 @@ public static class Constants {
         public static float C_MMCrystalHealPercent = 0.005f;
     }
        
-    // [Param Fix] - This entire class and its values are parameter fixes.
-    // The values were pulled from the files they came from, so no real worries there.
+    // Non-Player Constants.
+    // Deals with Objectives and Enemies.
     public static class EnviroStats {
         public static float C_EnemySpawnTime = 7.0f;             
         public static float C_EnemySpeed = 3.5f;

@@ -144,8 +144,7 @@ public static class InputManager{
 	};
 
 
-    //public static Dictionary<Axes, string> P1_Map = P1_PS4;		// P1, P2 default to PS4 for easier testing
-    public static Dictionary<Axes, string> P1_Map = P1_XBOX;
+	public static Dictionary<Axes, string> P1_Map = P1_PS4;		// P1, P2 default to PS4 for easier testing
 	public static Dictionary<Axes, string> P2_Map = P2_PS4;
 	public static Dictionary<Axes, string> P3_Map = P3_XBOX;	// P3, P4 default to XBOX to share the keyboard map
 	public static Dictionary<Axes, string> P4_Map = P4_XBOX;

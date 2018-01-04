@@ -8,10 +8,10 @@ public class PortalController : MonoBehaviour {
 	private Constants.Side e_side;
 
 	void Start(){
-		if(transform.position.x < 0){
+		if (transform.position.x < 0) {
 			e_side = Constants.Side.LEFT;
 		}
-		else{
+		else { 
 			e_side = Constants.Side.RIGHT;
 		}
 	}

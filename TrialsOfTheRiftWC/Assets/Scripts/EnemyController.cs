@@ -8,12 +8,9 @@ using System.Collections;
 public abstract class EnemyController : MonoBehaviour {
 
     protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE};
-	[SerializeField]
-	public Constants.Side e_Side;
-	[SerializeField]
-	protected int i_health;
-	[SerializeField]
-	protected float f_damage;
+	[SerializeField] public Constants.Side e_Side;
+	[SerializeField] protected int i_health;
+	[SerializeField] protected float f_damage;
 	protected State e_State;
 	protected State e_previousState; //Used for returning to the state previous to entering the AttackState.
 	protected State[] e_statusPriorityList = new State[] {State.FROZEN,State.SLOWED};
@@ -38,10 +35,6 @@ public abstract class EnemyController : MonoBehaviour {
 			EnterStateDie();
 		}
 		
-		// if (nma_agent.speed != Constants.EnviroStats.C_EnemySpeed) {
-			// nma_agent.speed = Constants.EnviroStats.C_EnemySpeed;
-			// nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f);
-		// }
 		switch (e_State) {
 		case State.CHASE:
 			UpdateChase ();
