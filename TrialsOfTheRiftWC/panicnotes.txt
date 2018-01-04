@@ -1,0 +1,12 @@
+Some Changes:
+	> Wind spell reads force from Constants file now.
+	> Added C_WindForce to Constants.cs.
+	> Added C_IceFreezeTime to Constants.cs.
+	> Added f_iceFreeze to PlayerController.cs.
+	> Added void SetCurrentHealth() to PlayerController.cs.
+	> Added void ResetEnemySpawnRate() to DarkMagician.cs.
+	> Edited SpawnEnemies() in DarkMagician.cs.
+	> Added class EnviroStats to Constants.cs.
+		> Added C_EnemySpawnTime to Constants.cs.
+	> Added void ParamReset(float param_in) to Objective.cs.
+		> Pulled back on this because Objectives don't work the way I believed they did.
