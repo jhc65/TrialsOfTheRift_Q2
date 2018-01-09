@@ -30,7 +30,7 @@ public class CrystalDestructionObjective : Objective {
         }
 	}
 
-    // [Param Fix]
+    // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
     public override void ParamReset(float param_in) {
         go_activeCrystal.GetComponent<CrystalController>().i_health = (int)param_in;
         GameController.GetInstance().CrystalHealth(go_activeCrystal.GetComponent<CrystalController>().e_color, (int)param_in);

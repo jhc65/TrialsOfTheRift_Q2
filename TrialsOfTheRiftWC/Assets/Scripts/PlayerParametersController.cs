@@ -65,54 +65,39 @@ public class PlayerParametersController : MonoBehaviour {
 
     // Public Helper Methods
     // currently unused - GC set in inspector
-    public void SetGameController(GameController GC_controllerIn) {
-        GC = GC_controllerIn;
+    public void SetGameController(GameController game_controllerIn) {
+        GC = game_controllerIn;
     }
 
 	// currently unused - players set in inspector
-    public void AddPlayerController(PlayerController PC_controllerIn) {
-        l_playerControllers.Add(PC_controllerIn);
+    public void AddPlayerController(PlayerController play_controllerIn) {
+        l_playerControllers.Add(play_controllerIn);
     }
 
     // Private Helper Methods
     public void ChangePlayerSpeed(float f_playerSpeedIn) {
 		txt_playerMoveSpeed.text = slider_playerMoveSpeed.value.ToString();
 		Constants.PlayerStats.C_MovementSpeed = f_playerSpeedIn;
-		//foreach (PlayerController playerController in l_playerControllers){
-		//	playerController.i_moveSpeed = f_playerSpeedIn;
-		//}
 	}
 
 	public void ChangePlayerWispSpeed(float f_playerWispSpeedIn){
 		txt_wispMoveSpeed.text = slider_wispMoveSpeed.value.ToString();
 		Constants.PlayerStats.C_WispMovementSpeed = f_playerWispSpeedIn;
-		//foreach (PlayerController playerController in l_playerControllers){
-		//	playerController.i_wispSpeed = (int)i_playerWispSpeedIn;
-		//}
 	}
 
 	public void ChangeMagicMissileSpeed(float f_magicMissileSpeedIn) {
         txt_magicMissileSpeed.text = slider_magicMissileSpeed.value.ToString();
 		Constants.SpellStats.C_MagicMissileSpeed = f_magicMissileSpeedIn;
-		//foreach (PlayerController playerController in l_playerControllers) {
-        //    playerController.f_magicMissileSpeed = f_projSpeedIn;
-        //}
     }
 
 	public void ChangeWindSpeed(float f_windSpeedIn) {
         txt_windSpeed.text = slider_windSpeed.value.ToString();
 		Constants.SpellStats.C_WindSpeed = f_windSpeedIn;
-		//foreach (PlayerController playerController in l_playerControllers) {
-        //    playerController.f_windSpeed = f_windSpeedIn;
-        //}
     }
 
     public void ChangeIceSpeed(float f_iceSpeedIn) {
         txt_iceSpeed.text = slider_iceSpeed.value.ToString();
 		Constants.SpellStats.C_IceSpeed = f_iceSpeedIn;
-		//foreach (PlayerController playerController in l_playerControllers) {
-        //    playerController.f_iceSpeed = f_iceSpeedIn;
-        //}
     }
 
 	public void ChangeElectricSpeed(float f_electricSpeedIn) {
@@ -123,17 +108,11 @@ public class PlayerParametersController : MonoBehaviour {
     public void ChangeWindCooldown(float f_windCooldownIn) {
         txt_windCooldown.text = slider_windCooldown.value.ToString();
 		Constants.SpellStats.C_WindCooldown = f_windCooldownIn;
-		//foreach (PlayerController playerController in l_playerControllers) {
-		//    playerController.f_windRecharge = f_windCooldownIn;
-		//}
 	}
 
     public void ChangeIceCooldown(float f_iceCooldownIn) {
         txt_iceCooldown.text = slider_iceCooldown.value.ToString();
 		Constants.SpellStats.C_IceCooldown = f_iceCooldownIn;
-		//foreach (PlayerController playerController in l_playerControllers) {
-		//    playerController.f_iceRecharge = f_iceCooldownIn;
-		//}
 	}
 
 	public void ChangeElectricCooldown(float f_electricCooldownIn){
@@ -145,9 +124,6 @@ public class PlayerParametersController : MonoBehaviour {
         float roundedVal = Mathf.Round(slider_projSize.value * 100f) / 100f;
         txt_projSize.text = roundedVal.ToString();
         Constants.SpellStats.C_PlayerProjectileSize = roundedVal;
-    //    foreach (PlayerController playerController in l_playerControllers) {
-    //        playerController.f_magicMissileSpeed = f_projSizeIn;
-    //    }
     }
 
     public void ChangeSpellLifetime(float f_projLifeIn) {
@@ -163,9 +139,6 @@ public class PlayerParametersController : MonoBehaviour {
     public void ChangeFreezeDuration(float f_iceFreezeIn) {
         txt_iceFreeze.text = slider_iceFreeze.value.ToString();
 		Constants.SpellStats.C_IceFreezeTime = f_iceFreezeIn;
-		//foreach (PlayerController playerController in l_playerControllers) {
-		//    playerController.f_iceFreeze = f_iceFreezeIn;
-		//}
 	}
 
 	public void ChangeElectricLiveTime(float f_electricLiveTimeIn) {
@@ -197,9 +170,6 @@ public class PlayerParametersController : MonoBehaviour {
     public void ChangePlayerHealth(float f_playerHealthIn) {
         txt_playerHealth.text = slider_playerHealth.value.ToString();
         Constants.PlayerStats.C_MaxHealth = (int)f_playerHealthIn;
-        //foreach (PlayerController playerController in l_playerControllers) {
-        //    playerController.SetCurrentHealth(f_playerHealthIn);
-        //}
     }
 
     public void ChangeRespawnTime(float f_respawnTimeIn) {

@@ -380,8 +380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45402daf115c384f855e549d9169242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  c_playerCapsule: {fileID: 1982873420145316}
-  c_playerWisp: {fileID: 1702370904833082}
+  go_playerCapsule: {fileID: 1982873420145316}
+  go_playerWisp: {fileID: 1702370904833082}
   i_playerNumber: 2
   e_Color: 0
   e_Side: 0
@@ -389,12 +389,14 @@ MonoBehaviour:
   go_flagObj: {fileID: 0}
   go_interactCollider: {fileID: 1671308952292254}
   t_spellSpawn: {fileID: 4904047914499588}
-  i_canMove: 0
+  f_canMove: 0
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
     type: 2}
   go_windShot: {fileID: 1884951099791360, guid: e14bef9b01064274f8f8dea8bca54e4c,
     type: 2}
   go_iceShot: {fileID: 1901559696048798, guid: d7e231fe8aac3af4abfee256f79b3e11, type: 2}
+  go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
+    type: 2}
   isWisp: 0
   f_projectileSize: 0
 --- !u!135 &135845374708682688

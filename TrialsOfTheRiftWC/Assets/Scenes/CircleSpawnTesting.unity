@@ -3807,7 +3807,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 658498691}
-        m_MethodName: ChangeEnemyDamage
+        m_MethodName: ChangeEnemyHealth
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6770,7 +6770,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeCompletionTimer
         m_Mode: 0
         m_Arguments:
@@ -7157,8 +7157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   go_objectivesList:
-  - {fileID: 1452077301921158, guid: b049ff75103b5e04eabc3053628da878, type: 2}
-  - {fileID: 1105177977694010, guid: 2638f8d7de90284469b59ca93aee9969, type: 2}
+  - {fileID: 1105177977694010, guid: e6b52a52547eec945b6da79c9fc4cb7b, type: 2}
+  - {fileID: 1105177977694010, guid: e6b52a52547eec945b6da79c9fc4cb7b, type: 2}
   - {fileID: 1105177977694010, guid: e6b52a52547eec945b6da79c9fc4cb7b, type: 2}
   go_enemy: {fileID: 1361453887809848, guid: dcf428e369c5eca45aca3fd48073e9db, type: 2}
   f_enemySpawnTime: 10
@@ -8709,6 +8709,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114940325633865376, guid: 90e8ad0eb698c4544becbcc568222a15,
+        type: 2}
+      propertyPath: go_electricShot
+      value: 
+      objectReference: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
+        type: 2}
+    - target: {fileID: 114940325633865376, guid: 90e8ad0eb698c4544becbcc568222a15,
+        type: 2}
+      propertyPath: RC
+      value: 
+      objectReference: {fileID: 21829175}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90e8ad0eb698c4544becbcc568222a15, type: 2}
   m_IsPrefabParent: 0
@@ -10098,7 +10109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1078327021
 GameObject:
@@ -10663,7 +10674,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4002249072419856, guid: 3d4c3d15d6a5aa64c96748a3ee5aa957, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114154274433564406, guid: 3d4c3d15d6a5aa64c96748a3ee5aa957,
         type: 2}
@@ -16091,6 +16102,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114467604127061754, guid: 9eba1a2d8d8bf794ba2c56098f25687c,
+        type: 2}
+      propertyPath: go_electricShot
+      value: 
+      objectReference: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
+        type: 2}
+    - target: {fileID: 114467604127061754, guid: 9eba1a2d8d8bf794ba2c56098f25687c,
+        type: 2}
+      propertyPath: RC
+      value: 
+      objectReference: {fileID: 21829175}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9eba1a2d8d8bf794ba2c56098f25687c, type: 2}
   m_IsPrefabParent: 0
@@ -16391,7 +16413,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4364957478546106, guid: 03e7df331de21154ea1e017d383b93ae, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1276725529591026, guid: 03e7df331de21154ea1e017d383b93ae, type: 2}
       propertyPath: m_IsActive
@@ -16937,6 +16959,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114402147449209724, guid: ce28f14c4d7ac0144880eded20f3d8e4,
+        type: 2}
+      propertyPath: go_electricShot
+      value: 
+      objectReference: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
+        type: 2}
+    - target: {fileID: 114402147449209724, guid: ce28f14c4d7ac0144880eded20f3d8e4,
+        type: 2}
+      propertyPath: RC
+      value: 
+      objectReference: {fileID: 21829175}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce28f14c4d7ac0144880eded20f3d8e4, type: 2}
   m_IsPrefabParent: 0
@@ -18419,7 +18452,7 @@ Transform:
   - {fileID: 417960100}
   - {fileID: 1373953341}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902879031
 GameObject:
@@ -19044,7 +19077,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeSelfDestructTimer
         m_Mode: 0
         m_Arguments:
@@ -20137,6 +20170,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114425632406730226, guid: 98767151e13fd074882b689c3a25f075,
+        type: 2}
+      propertyPath: go_electricShot
+      value: 
+      objectReference: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
+        type: 2}
+    - target: {fileID: 114425632406730226, guid: 98767151e13fd074882b689c3a25f075,
+        type: 2}
+      propertyPath: RC
+      value: 
+      objectReference: {fileID: 21829175}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98767151e13fd074882b689c3a25f075, type: 2}
   m_IsPrefabParent: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RiftController : MonoBehaviour {
-    private static RiftController instance;
+    private static RiftController rc_instance;
     private float f_volatility;
     private float f_volatilityMultiplier;
     private Constants.RiftStats.Volatility V_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
@@ -17,26 +17,26 @@ public class RiftController : MonoBehaviour {
 
     public static RiftController GetInstance()
     {
-        return instance;
+        return rc_instance;
     }
 
     void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (rc_instance == null) {
+            rc_instance = this;
         }
 
-        if (instance != null && instance != this) {
+        if (rc_instance != null && rc_instance != this) {
             Debug.Log("Destroying RC");
             Destroy(this);
         }
     }
 
     void Start() {
-        if (instance == null) {
-            instance = this;
+        if (rc_instance == null) {
+            rc_instance = this;
         }
 
-        if (instance != null && instance != this) {
+        if (rc_instance != null && rc_instance != this) {
             Debug.Log("Destroying RC");
             Destroy(this);
         }
@@ -81,7 +81,6 @@ public class RiftController : MonoBehaviour {
         }
         else if (f_volatility >= 25.0f && V_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             // Change Rift material to L2
-            ResetEnemies();
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
             f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L2;
             //FireSpells();
@@ -94,6 +93,7 @@ public class RiftController : MonoBehaviour {
         }
         else if (f_volatility < 5.0f) {
             CancelInvoke("SpawnEnemies");
+            ResetEnemies();
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
         }
     }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CaptureTheFlagObjective : Objective
 {
-
-	//public int i_maxScore = Constants.EnviroStats.C_CTFMaxScore;					// score needed to complete objective [Param Fix]
 	public GameObject go_redFlag, go_blueFlag;	// referenced flag objects
 	public GameObject go_redGoal, go_blueGoal;	// referenced goal objects
 
@@ -43,9 +41,8 @@ public class CaptureTheFlagObjective : Objective
 		}
 	}
 
-    // [Param Fix]
+    // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
     public override void ParamReset(float param_in) {
-        Debug.Log("Yes, hello.");
         i_score = 0;
         GameController.GetInstance().Score(e_color, i_score);
         go_currentFlag.GetComponent<FlagController>().ResetHome();

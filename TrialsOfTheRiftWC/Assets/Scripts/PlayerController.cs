@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour{
 
-    public GameObject c_playerCapsule;      // player main body
-	public GameObject c_playerWisp;         // player wisp body
+    public GameObject go_playerCapsule;      // player main body
+	public GameObject go_playerWisp;         // player wisp body
 	public int i_playerNumber;				// designates player's number for controller mappings
 	public Constants.Color e_Color;			// identifies player's team
 	public Constants.Side e_Side;			// identifies which side of the rift player is on
@@ -87,8 +87,8 @@ public class PlayerController : MonoBehaviour{
         Debug.Log("Increase Volatility by 2.5%");
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncraese_PlayerDeath);
 		isWisp = true;
-		c_playerCapsule.SetActive(false);
-		c_playerWisp.SetActive(true);
+		go_playerCapsule.SetActive(false);
+		go_playerWisp.SetActive(true);
 		Drop();
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
         f_nextIce = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
@@ -97,8 +97,8 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayerRespawn() {
 		isWisp = false;
-        c_playerCapsule.SetActive(true);
-        c_playerWisp.SetActive(false);
+        go_playerCapsule.SetActive(true);
+        go_playerWisp.SetActive(false);
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
         f_nextWind = Time.time;
         f_nextIce = Time.time;

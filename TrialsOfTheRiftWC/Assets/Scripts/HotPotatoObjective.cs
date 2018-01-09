@@ -50,11 +50,69 @@ public class HotPotatoObjective : Objective
 
             //spawns 3 enemies
             for (int i = 0; i < 3; i++) {
-                DarkMagician.GetInstance().SpawnEnemies(e_Side, position);
+                CircularSpawn(position);
             }
 
             Instantiate();
         }
+    }
+
+    //instantiates an enemy when a valid position is selected
+    private void CircularSpawn(Vector3 center) {
+        Vector3 pos = RandomCircle(center, 3.0f);
+        //Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
+
+        //checks to see if the position is occupied by anything with a collider
+        //if there is, then find a new position for the enemy
+        var hitColliders = Physics.OverlapSphere(pos, 0.005f);
+        if (hitColliders.Length > 0)
+        {
+            Debug.Log("Papa Bless");
+            CircularSpawn(center);
+        }
+        else
+        {
+            DarkMagician.GetInstance().SpawnEnemies(e_Side, pos);
+        }
+    }
+
+    //gets a random Vector3 position within the certain radius from the potato
+    private Vector3 RandomCircle(Vector3 center, float radius)
+    {
+        float ang = Random.value * 360;
+        Vector3 pos;
+
+        //by absolute valueing the x position, we can tell the enemy which side it should of the map it should be on
+        int side = (int)e_Side;
+        pos.x = side * Mathf.Abs(center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad));
+        pos.y = center.y;
+        pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
+
+        //reposition the enemies if they spawn outside of the map
+        if (pos.z >= 22) {
+            float diff = pos.z - 22;
+            pos.z = pos.z - diff - 1;
+        }
+        else if (pos.z <= -22)
+        {
+            Debug.Log(pos.z);
+            float diff = pos.z + 22;
+            pos.z = pos.z - diff + 1;
+            Debug.Log(pos.z);
+        }
+
+        if (pos.x >= 40)
+        {
+            float diff = pos.x - 40;
+            pos.x = pos.x - diff - 1;
+        }
+        else if (pos.x <= -40)
+        {
+            float diff = pos.x + 40;
+            pos.x = pos.x - diff + 1;
+        }
+
+        return pos;
     }
 
     // [Param Fix]
