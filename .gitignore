@@ -32,5 +32,31 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# FIXED IGNORE LIST
 .vs
-/TrialsOfTheRiftWC/Library
+Library
+Temp
+Obj
+obj
+Build
+build
+Builds
+build
+/TrialsOfTheRiftWC/Assets/AssetStoreTools
+ExportedObj
+.consulo
+.csproj
+.unityproj
+.sln
+.suo
+.tmp
+.user
+.userprefs
+.pidb
+.booproj
+.svd
+.pdb
+.pidb.meta
+.apk
+.unitypackage
