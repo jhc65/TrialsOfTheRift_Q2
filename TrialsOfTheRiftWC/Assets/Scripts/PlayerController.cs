@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class PlayerController : MonoBehaviour{
 
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour{
 
 	public bool isWisp = false;
 
+    private Player p_player;                // rewired player for input control
     private float f_nextWind;				// time next wind spell can be cast
 	private float f_nextIce;                // time next ice spell can be cast
 	private float f_nextElectric;           // time next ice spell can be cast
@@ -31,12 +33,12 @@ public class PlayerController : MonoBehaviour{
 
 
 	private void Move() {
-		float f_inputX = InputManager.GetAxis(InputManager.Axes.HORIZONTAL, i_playerNumber);
-		float f_inputZ = InputManager.GetAxis(InputManager.Axes.VERTICAL, i_playerNumber);
-		float f_aimInputX = InputManager.GetAxis(InputManager.Axes.AIMHORIZONTAL, i_playerNumber);
-		float f_aimInputZ = InputManager.GetAxis(InputManager.Axes.AIMVERTICAL, i_playerNumber);
+        float f_inputX = p_player.GetAxis("MoveHorizontal");
+        float f_inputZ = p_player.GetAxis("MoveVertical");
+        float f_aimInputX = p_player.GetAxis("AimHorizontal");
+        float f_aimInputZ = p_player.GetAxis("AimVertical");
 
-		Vector3 v3_moveDir = new Vector3(f_inputX, 0, f_inputZ).normalized;
+        Vector3 v3_moveDir = new Vector3(f_inputX, 0, f_inputZ).normalized;
 		Vector3 v3_aimDir = new Vector3(f_aimInputX, 0, f_aimInputZ).normalized;
 
 		if (v3_aimDir.magnitude > 0) {
@@ -135,7 +137,11 @@ public class PlayerController : MonoBehaviour{
     //    f_playerHealth = f_healthIn;
     //}
 
-	void Start() {
+    void Awake() {
+        p_player = ReInput.players.GetPlayer(i_playerNumber);
+    }
+
+    void Start() {
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
 		f_canMove = 1;
 
@@ -162,17 +168,17 @@ public class PlayerController : MonoBehaviour{
 
 		// spells
 		if (!go_flagObj && !isWisp) {
-			// Magic Missile
-			if (InputManager.GetAxis(InputManager.Axes.MAGICMISSILE, i_playerNumber) > 0 && f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
-				f_nextMagicMissile = 0;
+            // Magic Missile
+            if (p_player.GetButtonDown("MagicMissile") && f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
+                f_nextMagicMissile = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				go_spell.GetComponent<SpellController>().e_color = e_Color;
 				go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
 				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
 			}
-			// Wind Spell
-			if (InputManager.GetButton(InputManager.Axes.WINDSPELL, i_playerNumber) && f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
-				f_nextWind = 0;
+            // Wind Spell
+            if (p_player.GetButtonDown("WindSpell") && f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+                f_nextWind = 0;
 				f_nextCast = 0;
 				GameObject go_spell = Instantiate(go_windShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				go_spell.GetComponent<SpellController>().e_color = e_Color;
@@ -180,8 +186,8 @@ public class PlayerController : MonoBehaviour{
 				Debug.Log(transform.forward.normalized);
 				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_WindSpeed;
 			}
-			// Ice Spell
-			if (InputManager.GetButton(InputManager.Axes.ICESPELL, i_playerNumber) && f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+            // Ice Spell
+            if (p_player.GetButtonDown("IceSpell") && f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
 				f_nextIce = 0;
 				f_nextCast = 0;
 				GameObject go_spell = Instantiate(go_iceShot, t_spellSpawn.position, t_spellSpawn.rotation);
@@ -189,8 +195,8 @@ public class PlayerController : MonoBehaviour{
 				go_spell.GetComponent<SpellController>().e_color = e_Color;
 				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
 			}
-			// Electric Spell
-			if (InputManager.GetAxis(InputManager.Axes.ELECTRICSPELL, i_playerNumber) > 0 && f_nextElectric > Constants.SpellStats.C_ElectricCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+            // Electric Spell
+            if (p_player.GetButtonDown("ElectricitySpell") && f_nextElectric > Constants.SpellStats.C_ElectricCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
 				f_nextElectric = 0;
 				f_nextCast = 0;
 				GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
@@ -202,8 +208,8 @@ public class PlayerController : MonoBehaviour{
 	}
 
 	void Update() {
-		if (InputManager.GetButtonDown(InputManager.Axes.INTERACT, i_playerNumber) && !isWisp) {
-			if (go_flagObj) {
+        if (p_player.GetButtonDown("Interact") && !isWisp){
+            if (go_flagObj) {
 				Drop();
 			}
 			else {
@@ -211,12 +217,11 @@ public class PlayerController : MonoBehaviour{
             }
 		}
 
-        if (InputManager.GetButtonUp(InputManager.Axes.INTERACT, i_playerNumber) && !isWisp)
-        {
+        if (p_player.GetButtonUp("Interact") && !isWisp){
             TurnOff();
         }
 
-       if (transform.position.x > 0)
+        if (transform.position.x > 0)
 			e_Side = Constants.Side.RIGHT;
 		else
 			e_Side = Constants.Side.LEFT;
