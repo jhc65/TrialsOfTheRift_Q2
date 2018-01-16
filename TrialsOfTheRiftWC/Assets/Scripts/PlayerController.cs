@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour{
     public void HealDamage(float heal) {
         if (!isWisp)
         {
-            print("heal");
+            print("heal" + heal);
             f_playerHealth += heal;
             if (f_playerHealth >= Constants.PlayerStats.C_MaxHealth)
             {
