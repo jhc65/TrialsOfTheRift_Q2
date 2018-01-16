@@ -116,6 +116,18 @@ public class PlayerController : MonoBehaviour{
 		}
 	}
 
+    public void HealDamage(float heal) {
+        if (!isWisp)
+        {
+            print("heal");
+            f_playerHealth += heal;
+            if (f_playerHealth >= Constants.PlayerStats.C_MaxHealth)
+            {
+                f_playerHealth = Constants.PlayerStats.C_MaxHealth;
+            }
+        }
+    }
+
 	// used by UI
     public float GetNextWind() {
         return f_nextWind;

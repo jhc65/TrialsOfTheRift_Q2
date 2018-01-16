@@ -111,10 +111,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 0
   f_damage: 0
-  f_liveTime: 0
   s_spellTargetTags:
   - Enemy
   - Crystal
+  - Player
 --- !u!135 &135787873027402648
 SphereCollider:
   m_ObjectHideFlags: 1

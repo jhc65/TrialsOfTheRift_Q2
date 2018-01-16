@@ -10,9 +10,16 @@ public class WindController : SpellController {
     protected override void ApplyEffect(GameObject go_target) {
         if (go_target.tag == "Player")
         {
-            Vector3 v3_direction = transform.forward.normalized;
-            go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce);
-            go_target.GetComponent<PlayerController>().Drop();
+            if (go_target.GetComponent<PlayerController>().GetColor() != this.e_color)
+            {
+                Vector3 v3_direction = transform.forward.normalized;
+                go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce);
+                go_target.GetComponent<PlayerController>().Drop();
+            }
+            else
+            {
+                //give ally speed boost as listed in GDD
+            }
         }
         else if (go_target.tag == "Enemy")
         {

@@ -19,6 +19,7 @@ public static class Constants {
         public static float C_WindSpeed = 25.0f;
 		public static float C_ElectricSpeed = 25.0f;
 		public static int C_MagicMissileDamage = 50;       // Currently want all spells, including MM, to kill enemies in 2 hits
+        public static int C_MagicMissileHeal = 25;
         public static int C_IceDamage = 50;
         public static int C_WindDamage = 50;
 		public static int C_ElectricDamage = 10;		// less because this value is repeatedly applied while enemies are in the AOE
