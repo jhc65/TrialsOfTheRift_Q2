@@ -13,6 +13,7 @@ public class WindController : SpellController {
             Vector3 v3_direction = transform.forward.normalized;
             go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce);
             go_target.GetComponent<PlayerController>().Drop();
+            go_target.GetComponent<PlayerController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
         }
         else if (go_target.tag == "Enemy")
         {

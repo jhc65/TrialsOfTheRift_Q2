@@ -7,6 +7,8 @@ public class DarkMagician : MonoBehaviour {
 
     public GameObject[] go_objectivesList;
 	public GameObject go_enemy;
+    public int leftEnemies = 0;
+    public int rightEnemies = 0;
 	public float f_enemySpawnTime = Constants.EnviroStats.C_EnemySpawnTime;             // [Param Fix]
 
     //Singleton
@@ -67,22 +69,39 @@ public class DarkMagician : MonoBehaviour {
 	public void SpawnEnemies() {
 		int randLeft = Random.Range(0, v3_leftEnemySpawnPositions.Length);
 		int randRight = Random.Range(0, v3_rightEnemySpawnPositions.Length);
-		GameObject g1 = Instantiate(go_enemy, v3_leftEnemySpawnPositions[randLeft], new Quaternion(0, 0, 0, 0));
-		g1.GetComponent<EnemyController>().e_Side = Constants.Side.LEFT;
-        g1.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
-        g1.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
-		GameObject g2 = Instantiate(go_enemy, v3_rightEnemySpawnPositions[randRight], new Quaternion(0, 0, 0, 0));
-		g2.GetComponent<EnemyController>().e_Side = Constants.Side.RIGHT;
-        g2.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
-        g2.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+
+        if (leftEnemies < Constants.EnviroStats.C_EnemySpawnCap) {
+            GameObject g1 = Instantiate(go_enemy, v3_leftEnemySpawnPositions[randLeft], new Quaternion(0, 0, 0, 0));
+            g1.GetComponent<EnemyController>().e_Side = Constants.Side.LEFT;
+            g1.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
+            g1.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+            leftEnemies++;
+        } else {
+            Debug.Log("Left Side MAX.");
+        }
+
+        if (rightEnemies < Constants.EnviroStats.C_EnemySpawnCap) {
+            GameObject g2 = Instantiate(go_enemy, v3_rightEnemySpawnPositions[randRight], new Quaternion(0, 0, 0, 0));
+            g2.GetComponent<EnemyController>().e_Side = Constants.Side.RIGHT;
+            g2.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
+            g2.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+            rightEnemies++;
+        } else {
+            Debug.Log("Right Side MAX.");
+        }
 	}
 
     //instanties an enemy at a location on a particular side
     public void SpawnEnemies(Constants.Side side, Vector3 position) {
-        GameObject g1 = Instantiate(go_enemy, position, new Quaternion(0, 0, 0, 0));
-        g1.GetComponent<EnemyController>().e_Side = side;
-        g1.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
-        g1.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+        if (side == Constants.Side.LEFT && leftEnemies < Constants.EnviroStats.C_EnemySpawnCap ||
+            side == Constants.Side.RIGHT && rightEnemies < Constants.EnviroStats.C_EnemySpawnCap) {  //I'm aware of how ugly this looks, but it works.
+
+            GameObject g1 = Instantiate(go_enemy, position, new Quaternion(0, 0, 0, 0));
+            g1.GetComponent<EnemyController>().e_Side = side;
+            g1.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
+            g1.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+        }
+        
     }
 
 	void Awake() {  // parameter screen dictates that we do this before its Start() is called
