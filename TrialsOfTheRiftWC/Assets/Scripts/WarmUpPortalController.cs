@@ -9,6 +9,7 @@ public class WarmUpPortalController : MonoBehaviour {
 	
 	void Start(){
 		i_remainingPlayers = i_players;
+        Time.timeScale = 1;
 	}
 
 	void OnTriggerEnter(Collider other) {

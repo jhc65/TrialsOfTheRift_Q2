@@ -267,7 +267,7 @@ public class PlayerParametersController : MonoBehaviour {
     public void GameReset() {
         //Loads the first scene... which should be the first scene in the build.
         //Will reload the same scene otherwise.
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("WarmUp");
     }
 
     //Light buttons up as their selected.

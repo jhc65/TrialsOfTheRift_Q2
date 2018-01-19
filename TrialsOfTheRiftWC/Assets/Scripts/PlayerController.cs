@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour{
         if (!isWisp)
         {
             print("heal" + heal);
-            int tempHp = f_playerHealth + heal;
+            int tempHp = (int)(f_playerHealth + heal);
             if (tempHp >= Constants.PlayerStats.C_MaxHealth)
             {
                 f_playerHealth = Constants.PlayerStats.C_MaxHealth;
