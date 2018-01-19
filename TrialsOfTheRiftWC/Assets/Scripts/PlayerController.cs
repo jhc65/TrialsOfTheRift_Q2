@@ -85,13 +85,15 @@ public class PlayerController : MonoBehaviour{
 		return e_Color;
 	}
 
-    private void PlayerDeath() {
+    private void PlayerDeath()
+    {
+        Drop();
+        TurnOff();
+        isWisp = true;
         Debug.Log("Increase Volatility by 2.5%");
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncraese_PlayerDeath);
-		isWisp = true;
-		go_playerCapsule.SetActive(false);
+        go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
-		Drop();
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
         f_nextIce = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
@@ -108,10 +110,9 @@ public class PlayerController : MonoBehaviour{
 
 	public void TakeDamage(float damage) {
 		if (!isWisp) {
-			print("ow");
 			f_playerHealth -= damage;
 			if (f_playerHealth <= 0.0f) {
-				PlayerDeath();
+                PlayerDeath();
 			}
 		}
 	}
@@ -233,7 +234,7 @@ public class PlayerController : MonoBehaviour{
             }
 		}
 
-        if (p_player.GetButtonUp("Interact") && !isWisp){
+        if (p_player.GetButtonUp("Interact")){
             TurnOff();
         }
 
@@ -258,6 +259,9 @@ public class PlayerController : MonoBehaviour{
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Rift") {
 			TakeDamage(f_playerHealth);
+            while (!isWisp) {
+                Debug.Log("I'm waiting for the player to be a wisp, because then they will have dropped the flag and I can move them across the rift.");
+            }
 			transform.position = transform.position + (int)e_Side * new Vector3(-2, 0, 0);
 		}
 	}

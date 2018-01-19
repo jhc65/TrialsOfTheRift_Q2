@@ -20,14 +20,8 @@ public class IceController : SpellController {
 	protected override void ApplyEffect(GameObject go_target) {
         if (go_target.tag == "Player")
         {
-            if (go_target.GetComponent<PlayerController>().GetColor() != this.e_color)
-            {
-                go_target.GetComponent<PlayerController>().Freeze();
-            }
-            else
-            {
-                //Add spell shield to player in GDD
-            }
+            go_target.GetComponent<PlayerController>().Freeze();
+            go_target.GetComponent<PlayerController>().TakeDamage(f_iceDamage * Constants.SpellStats.C_IcePlayerDamageMultiplier);
         }
         else if (go_target.tag == "Enemy")
         {
