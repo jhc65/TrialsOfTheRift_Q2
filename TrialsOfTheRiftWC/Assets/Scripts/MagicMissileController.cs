@@ -12,7 +12,7 @@ public class MagicMissileController : SpellController {
                 go_target.GetComponent<PlayerController>().Drop();
             }
             else {
-                go_target.GetComponent<PlayerController>().HealDamage(Constants.SpellStats.C_MagicMissileHeal);
+                go_target.GetComponent<PlayerController>().Heal(Constants.SpellStats.C_MagicMissileHeal);
             }
         }
 		else if (go_target.tag == "Enemy") {
