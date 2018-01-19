@@ -32,6 +32,10 @@ public static class Constants {
         public static float C_NextSpellDelay = 0.5f;			// this is separate from any of the other cooldowns
         public static float C_PlayerProjectileSize = 0.75f;
 
+        public static float C_IcePlayerDamageMultiplier = 0.5f;
+        public static float C_WindPlayerDamageMultiplier = 0.5f;
+		public static float C_ElectricPlayerDamageMultiplier = 0.5f;
+
 		// Spell Buffs when crossing Rift
 		//public static float C_IceSpeedMultiplier = 1.5f;
         //public static float C_WindSpeedMultiplier = 1.5f;
@@ -40,6 +44,8 @@ public static class Constants {
         public static int C_WindDamageMultiplier = 2;
 		public static int C_ElectricDamageMultiplier = 2;
 		public static float C_SpellScaleMultiplier = 1.15f;
+
+
 
         //Crystal based percentages
         public static float C_SpellCrystalDamagePercent = -0.1f;
@@ -51,7 +57,8 @@ public static class Constants {
     // Non-Player Constants.
     // Deals with Objectives and Enemies.
     public static class EnviroStats {
-        public static float C_EnemySpawnTime = 7.0f;             
+        public static float C_EnemySpawnTime = 7.0f;
+        public static float C_EnemySpawnCap = 30;
         public static float C_EnemySpeed = 3.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static int C_EnemyHealth = 100;

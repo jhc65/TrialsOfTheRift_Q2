@@ -110,7 +110,6 @@ public class PlayerController : MonoBehaviour{
 
 	public void TakeDamage(float damage) {
 		if (!isWisp) {
-			print("ow");
 			f_playerHealth -= damage;
 			if (f_playerHealth <= 0.0f) {
                 PlayerDeath();
