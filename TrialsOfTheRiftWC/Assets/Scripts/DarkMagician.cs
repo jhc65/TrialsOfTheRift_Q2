@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class DarkMagician : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class DarkMagician : MonoBehaviour {
     public int leftEnemies = 0;
     public int rightEnemies = 0;
 	public float f_enemySpawnTime = Constants.EnviroStats.C_EnemySpawnTime;             // [Param Fix]
+	public Text txt_winMsg;
+	private bool b_gameOver;
 
     //Singleton
     static DarkMagician instance;
@@ -49,21 +52,22 @@ public class DarkMagician : MonoBehaviour {
         Debug.Log("Volatility Increase by 5%");
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_RoomAdvance);
 		int newObjectiveNumber = o.i_numberInList;
-		//if(newObjectiveNumber == 5)
-		//{ game over}
-
-		// temporary, alternates between two objectives indefinitely instead of counting up to 5 and ending
-		if (newObjectiveNumber == 2) {
-			newObjectiveNumber = 1;
+		if(newObjectiveNumber == go_objectivesList.Length) {
+			//	game over
+			b_gameOver = true;
+			txt_winMsg.text = o.e_color + " team won!";
+			Destroy(o.gameObject);
+			return null;
 		}
 		else {
+			// temporary, alternates between two objectives indefinitely instead of counting up to 5 and ending
 			newObjectiveNumber += 1;
-		}
 
-		GameObject go_newObjective = Instantiate(go_objectivesList[newObjectiveNumber - 1]);	// objectiveNumber starts with 1 but array is 0-based
-		go_newObjective.GetComponent<Objective>().Set(o.e_color, newObjectiveNumber);
-		Destroy(o.gameObject);
-		return go_newObjective.GetComponent<Objective>();
+			GameObject go_newObjective = Instantiate(go_objectivesList[newObjectiveNumber - 1]);	// objectiveNumber starts with 1 but array is 0-based
+			go_newObjective.GetComponent<Objective>().Set(o.e_color, newObjectiveNumber);
+			Destroy(o.gameObject);
+			return go_newObjective.GetComponent<Objective>();
+		}
 	}
 
 	public void SpawnEnemies() {
@@ -176,6 +180,9 @@ public class DarkMagician : MonoBehaviour {
             Destroy(this);
         }
 
+		txt_winMsg.enabled = false;
+		b_gameOver = false;
+		ObjectiveShuffle();
         Time.timeScale = 0;
 
         objv_redObjective = Instantiate(go_objectivesList[0]).GetComponent<Objective>();
@@ -194,13 +201,30 @@ public class DarkMagician : MonoBehaviour {
 		//InvokeRepeating("SpawnEnemies", 7.0f, f_enemySpawnTime);
 	}
 
+	void ObjectiveShuffle() {
+        for (int i = 0; i < go_objectivesList.Length-1; i++ )
+        {
+            GameObject tmp = go_objectivesList[i];
+            int j = Random.Range(i, go_objectivesList.Length-1);
+            go_objectivesList[i] = go_objectivesList[j];
+            go_objectivesList[j] = tmp;
+        }
+	}
+
 	void Update() {
+
 		// check for completion of objectives
-		if (objv_redObjective.b_complete) {
-			objv_redObjective = GetNextObjective(objv_redObjective);
+		if (b_gameOver) {
+			txt_winMsg.enabled = true;
+			Time.timeScale = 0;
 		}
-		if(objv_blueObjective.b_complete) {
-			objv_blueObjective = GetNextObjective(objv_blueObjective);
+		else {
+			if (objv_redObjective.b_complete) {
+				objv_redObjective = GetNextObjective(objv_redObjective);
+			}
+			if(objv_blueObjective.b_complete) {
+				objv_blueObjective = GetNextObjective(objv_blueObjective);
+			}
 		}
 	}
 
