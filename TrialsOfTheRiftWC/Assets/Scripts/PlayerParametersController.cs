@@ -34,6 +34,7 @@ public class PlayerParametersController : MonoBehaviour {
     public Slider slider_iceCooldown;
 	public Slider slider_electricCooldown;
 	public Slider slider_magicMissileSpeed;
+    public Slider slider_magicMissileHeal;
     public Slider slider_projSize;
     public Slider slider_projLife;
     public Slider slider_windForce;
@@ -64,6 +65,7 @@ public class PlayerParametersController : MonoBehaviour {
     public Text txt_iceCooldown;
 	public Text txt_electricCooldown;
 	public Text txt_magicMissileSpeed;
+    public Text txt_magicMissileHeal;
     public Text txt_projSize;
     public Text txt_projLife;
     public Text txt_windForce;
@@ -113,7 +115,13 @@ public class PlayerParametersController : MonoBehaviour {
 		Constants.SpellStats.C_MagicMissileSpeed = f_magicMissileSpeedIn;
     }
 
-	public void ChangeWindSpeed(float f_windSpeedIn) {
+    public void ChangeMagicMissileHeal(float f__magicMissileHealIn)
+    {
+        txt_magicMissileHeal.text = slider_magicMissileHeal.value.ToString();
+        Constants.SpellStats.C_MagicMissileHeal = (int)f__magicMissileHealIn;
+    }
+
+    public void ChangeWindSpeed(float f_windSpeedIn) {
         txt_windSpeed.text = slider_windSpeed.value.ToString();
 		Constants.SpellStats.C_WindSpeed = f_windSpeedIn;
     }
@@ -327,7 +335,11 @@ public class PlayerParametersController : MonoBehaviour {
 		txt_magicMissileSpeed.text = Constants.SpellStats.C_MagicMissileSpeed.ToString();
 		slider_magicMissileSpeed.value = Constants.SpellStats.C_MagicMissileSpeed;
 
-		// Projectile Size 
+        // Magic Missile Heal
+        txt_magicMissileHeal.text = Constants.SpellStats.C_MagicMissileHeal.ToString();
+        slider_magicMissileHeal.value = Constants.SpellStats.C_MagicMissileHeal;
+
+        // Projectile Size 
         txt_projSize.text = Constants.SpellStats.C_PlayerProjectileSize.ToString();
 		slider_projSize.value = Constants.SpellStats.C_PlayerProjectileSize;
 
