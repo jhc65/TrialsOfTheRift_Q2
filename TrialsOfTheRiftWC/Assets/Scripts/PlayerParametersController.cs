@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerParametersController : MonoBehaviour {
     // Public Vars
@@ -9,6 +10,20 @@ public class PlayerParametersController : MonoBehaviour {
     public GameController GC;
     public DarkMagician DM;
     public List<PlayerController> l_playerControllers = new List<PlayerController>();
+    
+    //Menu Buttons
+    public Button butt_playerSelect;
+    public Button butt_spellSelect;
+    public Button butt_enemySelect;
+    public Button butt_objectiveSelect;
+    private Button[] butt_buttonArray = new Button[4];
+
+    //Menu Organization
+    public GameObject go_playerMenu;
+    public GameObject go_spellMenu;
+    public GameObject go_enemyMenu;
+    public GameObject go_objectiveMenu;
+    private GameObject[] go_menuArray = new GameObject[4];
     
     // UI Sliders (Set in editor)
     public Slider slider_playerMoveSpeed;
@@ -19,6 +34,7 @@ public class PlayerParametersController : MonoBehaviour {
     public Slider slider_iceCooldown;
 	public Slider slider_electricCooldown;
 	public Slider slider_magicMissileSpeed;
+    public Slider slider_magicMissileHeal;
     public Slider slider_projSize;
     public Slider slider_projLife;
     public Slider slider_windForce;
@@ -35,6 +51,10 @@ public class PlayerParametersController : MonoBehaviour {
     public Slider slider_CTFScore;
     public Slider slider_completionTimer;
     public Slider slider_selfDestructTimer;
+    public Slider slider_enemySpawnCap;
+    public Slider slider_icePlayerDamage;
+    public Slider slider_windPlayerDamage;
+    public Slider slider_electricPlayerDamage;
 
     // UI txt (Set in editor)
     public Text txt_playerMoveSpeed;
@@ -45,6 +65,7 @@ public class PlayerParametersController : MonoBehaviour {
     public Text txt_iceCooldown;
 	public Text txt_electricCooldown;
 	public Text txt_magicMissileSpeed;
+    public Text txt_magicMissileHeal;
     public Text txt_projSize;
     public Text txt_projLife;
     public Text txt_windForce;
@@ -61,6 +82,10 @@ public class PlayerParametersController : MonoBehaviour {
     public Text txt_CTFScore;
     public Text txt_completionTimer;
     public Text txt_selfDestructTimer;
+    public Text txt_enemySpawnCap;
+    public Text txt_icePlayerDamage;
+    public Text txt_windPlayerDamage;
+    public Text txt_electricPlayerDamage;
 
 
     // Public Helper Methods
@@ -90,7 +115,13 @@ public class PlayerParametersController : MonoBehaviour {
 		Constants.SpellStats.C_MagicMissileSpeed = f_magicMissileSpeedIn;
     }
 
-	public void ChangeWindSpeed(float f_windSpeedIn) {
+    public void ChangeMagicMissileHeal(float f__magicMissileHealIn)
+    {
+        txt_magicMissileHeal.text = slider_magicMissileHeal.value.ToString();
+        Constants.SpellStats.C_MagicMissileHeal = (int)f__magicMissileHealIn;
+    }
+
+    public void ChangeWindSpeed(float f_windSpeedIn) {
         txt_windSpeed.text = slider_windSpeed.value.ToString();
 		Constants.SpellStats.C_WindSpeed = f_windSpeedIn;
     }
@@ -193,16 +224,34 @@ public class PlayerParametersController : MonoBehaviour {
 		Constants.EnviroStats.C_CTFMaxScore = (int)f_CTFScoreIn;
 	}
 
-    public void ChangeCompletionTimer(float timer)
-    {
+    public void ChangeCompletionTimer(float f_timerIn) {
         txt_completionTimer.text = slider_completionTimer.value.ToString();
-        Constants.EnviroStats.C_CompletionTimer = (int)timer;
+        Constants.EnviroStats.C_CompletionTimer = (int)f_timerIn;
     }
 
-    public void ChangeSelfDestructTimer(float timer)
-    {
+    public void ChangeSelfDestructTimer(float f_timerIn) {
         txt_selfDestructTimer.text = slider_selfDestructTimer.value.ToString();
-        Constants.EnviroStats.C_SelfDestructThreshold = (int)timer;
+        Constants.EnviroStats.C_SelfDestructThreshold = (int)f_timerIn;
+    }
+
+    public void ChangeEnemySpawnCap(float f_capIn) {
+        txt_enemySpawnCap.text = slider_enemySpawnCap.value.ToString();
+        Constants.EnviroStats.C_EnemySpawnCap = (int)f_capIn;
+    }
+
+    public void ChangeIcePlayerDamage(float f_damageIn) {
+        txt_icePlayerDamage.text = slider_icePlayerDamage.value.ToString();
+        Constants.SpellStats.C_IcePlayerDamageMultiplier = f_damageIn;
+    }
+
+    public void ChangeWindPlayerDamage(float f_damageIn) {
+        txt_windPlayerDamage.text = slider_windPlayerDamage.value.ToString();
+        Constants.SpellStats.C_WindPlayerDamageMultiplier = f_damageIn;
+    }
+
+    public void ChangeElectricPlayerDamage(float f_damageIn) {
+        txt_electricPlayerDamage.text = slider_electricPlayerDamage.value.ToString();
+        Constants.SpellStats.C_ElectricPlayerDamageMultiplier = f_damageIn;
     }
 
     public void ObjectiveReset() {
@@ -210,9 +259,41 @@ public class PlayerParametersController : MonoBehaviour {
         foreach (PlayerController playerController in l_playerControllers) {
 		    playerController.Drop();
 		}
-        //Then reset.
+        //Then reset. 
 		DM.objv_redObjective.ParamReset(Constants.EnviroStats.C_CrystalMaxHealth);
         DM.objv_blueObjective.ParamReset(Constants.EnviroStats.C_CrystalMaxHealth);
+    }
+
+    public void GameReset() {
+        //Loads the first scene... which should be the first scene in the build.
+        //Will reload the same scene otherwise.
+        SceneManager.LoadScene("WarmUp");
+    }
+
+    //Light buttons up as their selected.
+    public void LightUp(int which) {
+        for(int i = 0; i < 4; i++) {
+            ColorBlock cb = butt_buttonArray[i].colors;
+            if (i == which) {
+                cb.normalColor = Color.cyan;
+                cb.highlightedColor = Color.cyan;
+            } else {
+                cb.normalColor = Color.white;
+                cb.highlightedColor = Color.white;
+            }
+            butt_buttonArray[i].colors = cb;
+        }
+    }
+
+    //Show the proper menu on click.
+    public void MenuSwitch(int which) {
+        for(int i = 0; i < 4; i++) {
+            if (i == which) {
+                go_menuArray[i].SetActive(true);
+            } else {
+                go_menuArray[i].SetActive(false);
+            }
+        }
     }
 
 	// Get initial values from Constants, or from editor if they're not in Constants.
@@ -254,7 +335,11 @@ public class PlayerParametersController : MonoBehaviour {
 		txt_magicMissileSpeed.text = Constants.SpellStats.C_MagicMissileSpeed.ToString();
 		slider_magicMissileSpeed.value = Constants.SpellStats.C_MagicMissileSpeed;
 
-		// Projectile Size 
+        // Magic Missile Heal
+        txt_magicMissileHeal.text = Constants.SpellStats.C_MagicMissileHeal.ToString();
+        slider_magicMissileHeal.value = Constants.SpellStats.C_MagicMissileHeal;
+
+        // Projectile Size 
         txt_projSize.text = Constants.SpellStats.C_PlayerProjectileSize.ToString();
 		slider_projSize.value = Constants.SpellStats.C_PlayerProjectileSize;
 
@@ -316,5 +401,36 @@ public class PlayerParametersController : MonoBehaviour {
         //Self Destruct Timer for Hot Potato
         txt_selfDestructTimer.text = Constants.EnviroStats.C_SelfDestructThreshold.ToString();
         slider_selfDestructTimer.value = Constants.EnviroStats.C_SelfDestructThreshold;
+
+        //---------------------------
+        //Ice Player Damage Multiplier
+        txt_icePlayerDamage.text = Constants.SpellStats.C_IcePlayerDamageMultiplier.ToString();
+        slider_icePlayerDamage.value = Constants.SpellStats.C_IcePlayerDamageMultiplier;
+
+        //wind Player Damage Multiplier
+        txt_windPlayerDamage.text = Constants.SpellStats.C_WindPlayerDamageMultiplier.ToString();
+        slider_windPlayerDamage.value = Constants.SpellStats.C_WindPlayerDamageMultiplier;
+
+        //electric Player Damage Multiplier
+        txt_electricPlayerDamage.text = Constants.SpellStats.C_ElectricPlayerDamageMultiplier.ToString();
+        slider_electricPlayerDamage.value = Constants.SpellStats.C_ElectricPlayerDamageMultiplier;
+
+
+        //---------------------------
+        //Get buttons to put into an array.
+        butt_buttonArray[0] = butt_playerSelect;
+        butt_buttonArray[1] = butt_spellSelect;
+        butt_buttonArray[2] = butt_enemySelect;
+        butt_buttonArray[3] = butt_objectiveSelect;
+
+        LightUp(0);
+
+        //Get menus to put into an array.
+        go_menuArray[0] = go_playerMenu;
+        go_menuArray[1] = go_spellMenu;
+        go_menuArray[2] = go_enemyMenu;
+        go_menuArray[3] = go_objectiveMenu;
+
+        MenuSwitch(0);
     }
 }
