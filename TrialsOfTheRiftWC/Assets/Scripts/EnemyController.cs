@@ -102,6 +102,12 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected void UpdateDie() {
 		ChildUpdateDie();
+        if (e_Side == Constants.Side.LEFT) {
+            DarkMagician.GetInstance().leftEnemies--;
+        } else {
+            DarkMagician.GetInstance().rightEnemies--;
+        }
+        
 		Destroy(gameObject);
     }
 	protected abstract void ChildUpdateDie();
