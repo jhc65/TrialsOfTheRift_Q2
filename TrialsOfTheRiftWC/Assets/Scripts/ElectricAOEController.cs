@@ -40,6 +40,7 @@ public class ElectricAOEController : MonoBehaviour {
 		if (go_target.tag == "Player") {
 			go_target.GetComponent<PlayerController>().Drop();
 			go_target.GetComponent<PlayerController>().f_canMove = .5f;
+            go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
 		}
 		else if (go_target.tag == "Enemy") {
 			StartCoroutine("ApplyEnemyDamage", go_target);

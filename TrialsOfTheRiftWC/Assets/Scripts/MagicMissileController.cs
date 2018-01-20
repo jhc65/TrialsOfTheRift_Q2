@@ -6,7 +6,14 @@ public class MagicMissileController : SpellController {
 
     protected override void ApplyEffect(GameObject go_target) {
         if (go_target.tag == "Player") {
-            go_target.GetComponent<PlayerController>().Drop();
+            if (go_target.GetComponent<PlayerController>().GetColor() != this.e_color)
+            {
+                go_target.GetComponent<PlayerController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage);
+                go_target.GetComponent<PlayerController>().Drop();
+            }
+            else {
+                go_target.GetComponent<PlayerController>().Heal(Constants.SpellStats.C_MagicMissileHeal);
+            }
         }
 		else if (go_target.tag == "Enemy") {
             go_target.GetComponent<EnemyController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage);
