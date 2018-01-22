@@ -11,6 +11,46 @@ public class HotPotatoObjective : Objective
 
     override public void Instantiate()
     {
+        int timer = Constants.EnviroStats.C_CompletionTimer;
+        CreateReverseFlagObject(timer);
+    }
+
+    override public void Complete()
+    {
+        // destroy prefab
+        //adjust UI Elements
+        b_complete = true;
+        GameController.GetInstance().SelfDestructProgress(e_color, Constants.EnviroStats.C_SelfDestructThreshold);
+        GameController.GetInstance().CompletionProgress(e_color, Constants.EnviroStats.C_CompletionTimer);
+        Destroy(go_activePotato);
+    }
+
+    //if the completionTimer hits 30 seconds, complete the objective
+    //if selfDestruct timer reaches 0, then spawn enemies and recreate the objective
+    void Update()
+    {
+        if (go_activePotato.GetComponent<PotatoController>().getCompletionTimer() < 0)
+        {
+            Complete();
+        }
+        else if (go_activePotato.GetComponent<PotatoController>().getSelfDestructTimer() < 0)
+        {
+            Vector3 position = go_activePotato.transform.position;
+            int timer = go_activePotato.GetComponent<PotatoController>().getCompletionTimer();
+
+            Destroy(go_activePotato);
+            GameController.GetInstance().SelfDestructProgress(e_color, Constants.EnviroStats.C_SelfDestructThreshold);
+
+            //spawns 3 enemies
+            for (int i = 0; i < 3; i++) {
+                DarkMagician.GetInstance().CircularSpawn(position, e_Side);
+            }
+
+            CreateReverseFlagObject(timer);
+        }
+    }
+
+    private void CreateReverseFlagObject(int timer) {
         // instantiate prefab based on color
         if (e_color == Constants.Color.RED)
         {
@@ -22,43 +62,12 @@ public class HotPotatoObjective : Objective
             go_activePotato = Instantiate(go_bluePotato, Constants.C_BlueHotCrystalSpawn, new Quaternion(0, 0, 0, 0));
             e_Side = Constants.Side.RIGHT;
         }
+
+        go_activePotato.GetComponent<PotatoController>().setCompletionTimer(timer);
     }
 
-    override public void Complete()
-    {
-        // destroy prefab
-        //adjust UI Elements
-        b_complete = true;
-        GameController.GetInstance().SelfDestructProgress(e_color, Constants.EnviroStats.C_SelfDestructThreshold);
-        GameController.GetInstance().CompletionProgress(e_color, 0);
-        Destroy(go_activePotato);
-    }
-
-    //if the completionTimer hits 30 seconds, complete the objective
-    //if selfDestruct timer reaches 0, then spawn enemies and recreate the objective
-    void Update()
-    {
-        if (go_activePotato.GetComponent<PotatoController>().getCompletionTimer() >= Constants.EnviroStats.C_CompletionTimer)
-        {
-            Complete();
-        }
-        else if (go_activePotato.GetComponent<PotatoController>().getSelfDestructTimer() < 0)
-        {
-            Vector3 position = go_activePotato.transform.position;
-            Destroy(go_activePotato);
-            GameController.GetInstance().SelfDestructProgress(e_color, Constants.EnviroStats.C_SelfDestructThreshold);
-
-            //spawns 3 enemies
-            for (int i = 0; i < 3; i++) {
-                DarkMagician.GetInstance().CircularSpawn(position, e_Side);
-            }
-
-            Instantiate();
-        }
-    }
-
-    // [Param Fix]
-    public override void ParamReset(float param_in)
+    // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
+    public override void ParamReset(float param)
     {
     }
 }
