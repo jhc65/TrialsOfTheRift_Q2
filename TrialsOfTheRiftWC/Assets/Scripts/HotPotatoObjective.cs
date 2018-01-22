@@ -37,6 +37,7 @@ public class HotPotatoObjective : Objective
         {
             Vector3 position = go_activePotato.transform.position;
             int timer = go_activePotato.GetComponent<PotatoController>().getCompletionTimer();
+            Debug.Log(timer);
 
             Destroy(go_activePotato);
             GameController.GetInstance().SelfDestructProgress(e_color, Constants.EnviroStats.C_SelfDestructThreshold);

@@ -7,15 +7,13 @@ public class PotatoController : MonoBehaviour {
     public Constants.Color e_color;     // identifies owning team
     public Constants.Side e_currentSide;
     public Constants.Color e_currentColor;  //the side the crystal is currently in
-    private int i_completionTimer;      //tracks progress of objective being in enemy territory
-    private int i_selfDestructTimer;    //threshold for objective to disappear and spawn enemies
+    private int i_completionTimer = Constants.EnviroStats.C_CompletionTimer;      //tracks progress of objective being in enemy territory
+    private int i_selfDestructTimer = Constants.EnviroStats.C_SelfDestructThreshold;    //threshold for objective to disappear and spawn enemies
 
     private Rigidbody rb;
 
     // Use this for initialization
     void Start () {
-        i_selfDestructTimer = Constants.EnviroStats.C_SelfDestructThreshold;
-        i_completionTimer = Constants.EnviroStats.C_CompletionTimer;
         Invoke("DestructionTime", 1);
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -54,17 +52,15 @@ public class PotatoController : MonoBehaviour {
     //moves to DestructionTime if in own room
     //resets the value of selfDestructTimer when objective crosses to enemy territory
     private void CompletionTime() {
-        i_selfDestructTimer = Constants.EnviroStats.C_SelfDestructThreshold;
-        i_completionTimer--;
-        GameController.GetInstance().SelfDestructProgress(e_color, i_selfDestructTimer);
-        GameController.GetInstance().CompletionProgress(e_color, i_completionTimer);
-
         if (e_currentColor == e_color)
         {
+            CancelInvoke();
             Invoke("DestructionTime", 1);
         }
         else
         {
+            i_completionTimer--;
+            GameController.GetInstance().CompletionProgress(e_color, i_completionTimer);
             Invoke("CompletionTime", 1);
         }
     }
@@ -72,15 +68,17 @@ public class PotatoController : MonoBehaviour {
     //makes the selfDestructTimer count down until
     //this value is reset if it starts to tick back up again
     private void DestructionTime() {
-        i_selfDestructTimer--;
-        GameController.GetInstance().SelfDestructProgress(e_color, i_selfDestructTimer);
-
         if (e_currentColor == e_color)
         {
+            i_selfDestructTimer--;
+            GameController.GetInstance().SelfDestructProgress(e_color, i_selfDestructTimer);
             Invoke("DestructionTime", 1);
         }
         else
         {
+            CancelInvoke();
+            i_selfDestructTimer = Constants.EnviroStats.C_SelfDestructThreshold;
+            GameController.GetInstance().SelfDestructProgress(e_color, i_selfDestructTimer);
             Invoke("CompletionTime", 1);
         }
     }
@@ -100,6 +98,11 @@ public class PotatoController : MonoBehaviour {
         if (other.tag == "InteractCollider")
         {
             rb.isKinematic = false;
+        }
+
+        if (other.tag == "Rift")
+        {
+            transform.position = transform.position + (int)e_currentSide * new Vector3(-3, 0, 0);
         }
     }
 
