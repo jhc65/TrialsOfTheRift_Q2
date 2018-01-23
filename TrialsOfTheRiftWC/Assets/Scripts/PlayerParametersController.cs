@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class PlayerParametersController : MonoBehaviour {
     // Public Vars
@@ -186,6 +187,7 @@ public class PlayerParametersController : MonoBehaviour {
     public void ChangeEnemySpeed(float f_enemySpeedIn) {
         txt_enemySpeed.text = slider_enemySpeed.value.ToString();
         Constants.EnviroStats.C_EnemySpeed = f_enemySpeedIn;
+        RiftController.GetInstance().setEnemyStartingSpeed();
     }
 
     public void ChangeEnemyHealth(float f_enemyHealthIn) {

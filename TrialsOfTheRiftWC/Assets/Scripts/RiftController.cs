@@ -192,6 +192,12 @@ public class RiftController : MonoBehaviour {
         V_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
     }
 
+    public void setEnemyStartingSpeed() {
+        if (f_volatility <= 0) {
+            f_enemyStartingSpeed = Constants.EnviroStats.C_EnemySpeed;
+        }
+    }
+
     void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player") {
 			other.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth);
