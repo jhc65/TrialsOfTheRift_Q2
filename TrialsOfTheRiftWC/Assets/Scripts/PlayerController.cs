@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour{
 		if (!isWisp) {
 			f_playerHealth -= damage;
             //Damage flicker goes here.
-            DamageFlickOn();
+            DamageVisualOn();
             phc_hud.ShakeUI();
 			if (f_playerHealth <= 0.0f) {
                 PlayerDeath();
@@ -123,29 +123,36 @@ public class PlayerController : MonoBehaviour{
 		}
 	}
 
-    public void DamageFlickOn() {
+    public void DamageVisualOn() {
         go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
         //Call screenshake here.
-        Invoke("DamageFlickOff", 0.1666f * 2);
+        Invoke("DamageVisualOff", 0.1666f * 2);
     }
 
-    public void DamageFlickOff() {
+    public void DamageVisualOff() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+    }
+
+    public void HealVisualOn() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
+        //Call screenshake here.
+        Invoke("HealVisualOff", 0.1666f * 2);
+    }
+
+    public void HealVisualOff() {
         go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     }
 
     public void Heal(float heal) {
-        if (!isWisp)
-        {
+        if (!isWisp) {
             print("heal" + heal);
             int tempHp = (int)(f_playerHealth + heal);
-            if (tempHp >= Constants.PlayerStats.C_MaxHealth)
-            {
+            if (tempHp >= Constants.PlayerStats.C_MaxHealth) {
                 f_playerHealth = Constants.PlayerStats.C_MaxHealth;
-            }
-            else
-            {
+            } else {
                 f_playerHealth = tempHp;
             }
+            HealVisualOn();
         }
     }
 
