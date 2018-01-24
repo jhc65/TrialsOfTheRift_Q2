@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour{
 	public GameObject go_windShot;			// wind spell object
 	public GameObject go_iceShot;           // ice spell object
 	public GameObject go_electricShot;      // ice spell object
+    [SerializeField]private PlayerHUDController phc_hud;  //HUD object  
 
 	public bool isWisp = false;
 
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour{
     private float f_nextCast;               // time next spell in general can be cast. (not including MagicMissile)
 	private float f_playerHealth;           // player's current health value
     public float f_projectileSize;          // size of player projectiles.
+    private Color col_originalColor;        // Color of capsule.
 
 
 	private void Move() {
@@ -96,6 +98,7 @@ public class PlayerController : MonoBehaviour{
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
         f_nextIce = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
     }
 
@@ -111,11 +114,24 @@ public class PlayerController : MonoBehaviour{
 	public void TakeDamage(float damage) {
 		if (!isWisp) {
 			f_playerHealth -= damage;
+            //Damage flicker goes here.
+            DamageFlickOn();
+            phc_hud.ShakeUI();
 			if (f_playerHealth <= 0.0f) {
                 PlayerDeath();
 			}
 		}
 	}
+
+    public void DamageFlickOn() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
+        //Call screenshake here.
+        Invoke("DamageFlickOff", 0.1666f * 2);
+    }
+
+    public void DamageFlickOff() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+    }
 
     public void Heal(float heal) {
         if (!isWisp)
@@ -160,6 +176,7 @@ public class PlayerController : MonoBehaviour{
 
     void Start() {
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
+        col_originalColor = go_playerCapsule.GetComponent<MeshRenderer>().material.color;
 		f_canMove = 1;
 
 		f_nextMagicMissile = 0;
