@@ -18,7 +18,8 @@ public class PlayerHUDController : MonoBehaviour {
     private Vector2 v2_origIceSize;
     private Vector2 v2_origWindSize;
     private Vector2 v2_origElecSize;
-    private Color col_UIBacking;
+    private Image img_UIBacking;
+    private Color col_origUIColor;
 
     private void Start() {
         col_origElecColor = img_electricbar.color;
@@ -27,7 +28,8 @@ public class PlayerHUDController : MonoBehaviour {
         v2_origIceSize = img_icebar.rectTransform.sizeDelta;
         v2_origElecSize = img_electricbar.rectTransform.sizeDelta;
         v2_origWindSize = img_windbar.rectTransform.sizeDelta;
-        col_UIBacking = GetComponent<Image>().color;
+        img_UIBacking = GetComponent<Image>();
+        col_origUIColor = img_UIBacking.color;
     }
 
     void Update () {
@@ -64,9 +66,9 @@ public class PlayerHUDController : MonoBehaviour {
 
         //Statements for doing visual things to the UI itself.
         if (img_healthbar.fillAmount <= 0) {
-            GetComponent<Image>().color = Color.gray;
+            img_UIBacking.color = Color.gray;
         } else {
-            GetComponent<Image>().color = col_UIBacking;
+            img_UIBacking.color = col_origUIColor;
         }
 	}
 
