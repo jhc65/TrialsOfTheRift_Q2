@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go_playerCapsule: {fileID: 1914335639544730}
   go_playerWisp: {fileID: 1768616998897374}
-  i_playerNumber: 3
+  i_playerNumber: 2
   e_Color: 1
   e_Side: 0
   t_flagPos: {fileID: 4220289862906574}
@@ -397,6 +397,7 @@ MonoBehaviour:
   go_iceShot: {fileID: 1901559696048798, guid: d7e231fe8aac3af4abfee256f79b3e11, type: 2}
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
+  phc_hud: {fileID: 0}
   isWisp: 0
   f_projectileSize: 0
 --- !u!135 &135437775325331908
