@@ -7,7 +7,7 @@ public class WindController : SpellController {
 
     private float f_windDamage = Constants.SpellStats.C_WindDamage;
 
-    protected override void ApplyEffect(GameObject go_target) {
+    protected override void ApplyEffect(GameObject go_target, Collision collision) {
         if (go_target.tag == "Player")
         {
             Vector3 v3_direction = transform.forward.normalized;
@@ -45,5 +45,9 @@ public class WindController : SpellController {
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
         f_windDamage = f_windDamage * Constants.SpellStats.C_WindDamageMultiplier;
         transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+    }
+
+    public override void Charge(float f_chargeTime) {
+        throw new NotImplementedException();
     }
 }

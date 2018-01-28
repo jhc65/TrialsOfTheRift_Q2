@@ -28,6 +28,14 @@ public class PlayerController : MonoBehaviour{
 	private float f_nextIce;                // time next ice spell can be cast
 	private float f_nextElectric;           // time next ice spell can be cast
 	private float f_nextMagicMissile;       // time next basic attack can be cast
+
+    private float f_mmCharge;               // current charge of magic missile.
+    private float f_nextMmCharge;           // time till next charge shot can be fired.
+    private float f_iceCharge;              // current charge of ice spell.
+    private float f_windCharge;             // current charge of wind spell.
+    private float f_electricCharge;         // current charge of electric charge.
+
+
     private float f_nextCast;               // time next spell in general can be cast. (not including MagicMissile)
 	private float f_playerHealth;           // player's current health value
     public float f_projectileSize;          // size of player projectiles.
@@ -205,18 +213,38 @@ public class PlayerController : MonoBehaviour{
         f_nextIce += Time.deltaTime;
 		f_nextElectric += Time.deltaTime;
 		f_nextCast += Time.deltaTime;
+        f_nextMmCharge += Time.deltaTime;
         f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
 
 		// spells
 		if (!go_flagObj && !isWisp) {
             // Magic Missile
-            if (p_player.GetButtonDown("MagicMissile") && f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
-                f_nextMagicMissile = 0;
+            if (f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
+                if (p_player.GetButtonTimePressed("MagicMissile") != 0) {
+                    f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
+                }
+                if (p_player.GetButton("MagicMissile")) {
+                    f_nextMagicMissile = 0;
+				    GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
+				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
+                    sc_firing.e_color = e_Color;
+				    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+				    go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
+                    sc_firing.Charge(0);
+
+                }                
+			}
+            // Charge Magic Missile
+             if (p_player.GetButtonUp("MagicMissile") && f_nextMmCharge > Constants.SpellStats.C_MagicMissileChargeCooldown) {
+                f_nextMmCharge = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
-				go_spell.GetComponent<SpellController>().e_color = e_Color;
+				SpellController sc_firing = go_spell.GetComponent<SpellController>();
+                sc_firing.e_color = e_Color;
 				go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
 				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
-			}
+                sc_firing.Charge(f_mmCharge);
+                f_mmCharge = 0;
+             }
             // Wind Spell
             if (p_player.GetButtonDown("WindSpell") && f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 f_nextWind = 0;

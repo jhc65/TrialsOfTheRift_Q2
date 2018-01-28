@@ -24,6 +24,7 @@ public static class Constants {
         public static int C_WindDamage = 50;
 		public static int C_ElectricDamage = 10;		// less because this value is repeatedly applied while enemies are in the AOE
 		public static float C_MagicMissileCooldown = 0.25f;
+        public static float C_MagicMissileChargeCooldown = 0.25f;
 		public static float C_IceCooldown = 5.0f;
 		public static float C_WindCooldown = 2.0f;
 		public static float C_ElectricCooldown = 8.0f;

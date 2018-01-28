@@ -204,4 +204,6 @@ public class RiftController : MonoBehaviour {
 			other.transform.position = other.transform.position + (int)other.GetComponent<PlayerController>().e_Side * new Vector3(-4, 0, 0);
 		}
 	}
+
+    //This is text.
 }

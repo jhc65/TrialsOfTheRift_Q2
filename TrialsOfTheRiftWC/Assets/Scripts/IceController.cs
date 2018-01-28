@@ -17,7 +17,7 @@ public class IceController : SpellController {
 	}
 	*/
 
-	protected override void ApplyEffect(GameObject go_target) {
+	protected override void ApplyEffect(GameObject go_target, Collision collision) {
         if (go_target.tag == "Player")
         {
             go_target.GetComponent<PlayerController>().Freeze();
@@ -45,6 +45,10 @@ public class IceController : SpellController {
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
         f_iceDamage = f_iceDamage * Constants.SpellStats.C_IceDamageMultiplier;
         transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+    }
+
+    public override void Charge(float f_chargeTime) {
+        throw new System.NotImplementedException();
     }
 }
 
