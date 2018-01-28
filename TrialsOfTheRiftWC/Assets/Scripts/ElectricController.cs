@@ -42,6 +42,15 @@ public class ElectricController : SpellController {
 	}
 
     public override void Charge(float f_chargeTime) {
-        throw new System.NotImplementedException();
+        CancelInvoke();
+        f_charged = ((1f/12f) * f_chargeTime) + 0.05f;
+        if (f_charged > 1f) {
+            f_charged = 1f;
+        }
+        Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime * f_charged);
+    }
+
+    void InvokeDestroy() {
+        ApplyEffect(new GameObject("null"), new Collision());
     }
 }

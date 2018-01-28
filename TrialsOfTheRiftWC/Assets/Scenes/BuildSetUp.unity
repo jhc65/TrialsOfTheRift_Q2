@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 92386827}
   - component: {fileID: 92386826}
   - component: {fileID: 92386825}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (7)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1646,7 +1646,7 @@ GameObject:
   - component: {fileID: 148334020}
   - component: {fileID: 148334019}
   - component: {fileID: 148334018}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Top Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1801,7 +1801,7 @@ GameObject:
   - component: {fileID: 165314888}
   - component: {fileID: 165314887}
   - component: {fileID: 165314886}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bottom Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -3351,6 +3351,10 @@ Prefab:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
@@ -3707,6 +3711,10 @@ Prefab:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
@@ -3923,7 +3931,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 417117531}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Outer Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3955,7 +3963,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 417960100}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Obstacles
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -4703,7 +4711,7 @@ GameObject:
   - component: {fileID: 455996705}
   - component: {fileID: 455996704}
   - component: {fileID: 455996703}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -4933,7 +4941,7 @@ GameObject:
   - component: {fileID: 471023716}
   - component: {fileID: 471023715}
   - component: {fileID: 471023714}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -5862,6 +5870,10 @@ Prefab:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
@@ -6733,7 +6745,7 @@ GameObject:
   - component: {fileID: 584794427}
   - component: {fileID: 584794426}
   - component: {fileID: 584794425}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (6)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -7664,7 +7676,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 639605545}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trapezoid (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -7756,6 +7768,10 @@ Prefab:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
@@ -7830,6 +7846,10 @@ Prefab:
     - target: {fileID: 100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
@@ -8285,7 +8305,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 669200601}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trapezoid (4)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -8385,7 +8405,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 678992604}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trapezoid (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -10400,6 +10420,10 @@ Prefab:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
@@ -10959,7 +10983,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 986580311}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trapezoid
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -11391,7 +11415,7 @@ GameObject:
   - component: {fileID: 1043568456}
   - component: {fileID: 1043568455}
   - component: {fileID: 1043568454}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Left Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -13224,7 +13248,7 @@ GameObject:
   - component: {fileID: 1202858525}
   - component: {fileID: 1202858524}
   - component: {fileID: 1202858523}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Right Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -13824,7 +13848,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1287998501}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trapezoid (5)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -15880,7 +15904,7 @@ GameObject:
   - component: {fileID: 1475828963}
   - component: {fileID: 1475828962}
   - component: {fileID: 1475828961}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (5)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -16027,7 +16051,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1481152406}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trapezoid (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -18332,7 +18356,7 @@ GameObject:
   - component: {fileID: 1681461090}
   - component: {fileID: 1681461089}
   - component: {fileID: 1681461088}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -20361,7 +20385,7 @@ GameObject:
   - component: {fileID: 1820378420}
   - component: {fileID: 1820378419}
   - component: {fileID: 1820378418}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (4)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -21427,7 +21451,7 @@ GameObject:
   - component: {fileID: 1894750903}
   - component: {fileID: 1894750902}
   - component: {fileID: 1894750901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21865,7 +21889,7 @@ GameObject:
   - component: {fileID: 1911426914}
   - component: {fileID: 1911426913}
   - component: {fileID: 1911426912}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -23354,10 +23378,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1538585235}
   m_HandleRect: {fileID: 254102678}
   m_Direction: 0
-  m_MinValue: 15
+  m_MinValue: 1
   m_MaxValue: 35
   m_WholeNumbers: 1
-  m_Value: 25
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

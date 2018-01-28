@@ -6,9 +6,10 @@ using UnityEngine;
 public abstract class SpellController : MonoBehaviour {
 
     public Constants.Color e_color;
-	public float f_damage;			// currently unused, as each individual spell reads its damage value from Constants.cs in Start()
+	public float f_damage;			    // currently unused, as each individual spell reads its damage value from Constants.cs in Start()
     public float f_charged = 1;         // Charging multiplier.
-	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
+    public PlayerController owner;      // Owner of the spell.
+	public string[] s_spellTargetTags;  // these are the tags of the objects spells should do damage/effect against
 
 
     public abstract void Charge(float f_chargeTime);
@@ -26,7 +27,7 @@ public abstract class SpellController : MonoBehaviour {
 	protected virtual void OnCollisionEnter(Collision collision) {
 		//Debug.Log("Impact:" + coll.gameObject.tag);
 		foreach (string tag in s_spellTargetTags) {
-			if (collision.gameObject.tag == tag) {
+			if (collision.gameObject.tag == tag && collision.gameObject != owner.gameObject) {
 				ApplyEffect(collision.gameObject, collision);
                 
                 //makes the potato stop moving after the spell has applied its affect

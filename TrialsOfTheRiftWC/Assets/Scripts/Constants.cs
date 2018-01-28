@@ -14,8 +14,9 @@ public static class Constants {
     // Spell Constants
     public static class SpellStats {
 		public static float C_SpellLiveTime = 2.0f;
+        public static float C_IceLiveTime = 3.0f;
 		public static float C_MagicMissileSpeed = 20.0f;
-        public static float C_IceSpeed = 25.0f;
+        public static float C_IceSpeed = 10.0f;
         public static float C_WindSpeed = 25.0f;
 		public static float C_ElectricSpeed = 25.0f;
 		public static int C_MagicMissileDamage = 50;       // Currently want all spells, including MM, to kill enemies in 2 hits
