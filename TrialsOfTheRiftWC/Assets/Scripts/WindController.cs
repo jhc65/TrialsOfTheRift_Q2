@@ -11,14 +11,14 @@ public class WindController : SpellController {
         if (go_target.tag == "Player")
         {
             Vector3 v3_direction = transform.forward.normalized;
-            go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce);
+            go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
             go_target.GetComponent<PlayerController>().Drop();
             go_target.GetComponent<PlayerController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
         }
         else if (go_target.tag == "Enemy")
         {
             Vector3 v3_direction = transform.forward.normalized;
-            go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce);
+            go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
             go_target.GetComponent<EnemyController>().TakeDamage(f_windDamage);
         }
         else if (go_target.tag == "Crystal")
@@ -36,7 +36,7 @@ public class WindController : SpellController {
         else if (go_target.tag == "Potato") {
             go_target.GetComponent<Rigidbody>().isKinematic = false;
             Vector3 v3_direction = transform.forward.normalized;
-            go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce);
+            go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
         }
     }
 
@@ -48,6 +48,11 @@ public class WindController : SpellController {
     }
 
     public override void Charge(float f_chargeTime) {
-        throw new NotImplementedException();
+        f_charged = (f_chargeTime * 1/3) + 1;
+        if (f_charged > 2f) {
+            f_charged = 2f;
+        }
+        f_windDamage *= ((f_windDamage*1/12) + 1);
+        transform.localScale *= f_charged;
     }
 }
