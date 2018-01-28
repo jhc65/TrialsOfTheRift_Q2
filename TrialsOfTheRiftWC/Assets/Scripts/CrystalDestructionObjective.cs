@@ -9,18 +9,18 @@ public class CrystalDestructionObjective : Objective {
 
 	override public void Instantiate() {
 		// instantiate prefab based on color
-		if (e_color == Constants.Color.RED) {
-			go_activeCrystal = Instantiate(go_blueCrystal, Constants.C_RedObjectiveSpawn, new Quaternion(0, 0, 0, 0));
+		if (e_color == Constants.Global.Color.RED) {
+			go_activeCrystal = Instantiate(go_blueCrystal, Constants.ObjectiveStats.C_BlueCrystalSpawn, new Quaternion(0, 0, 0, 0));
 		}
 		else{
-			go_activeCrystal = Instantiate(go_redCrystal, Constants.C_BlueObjectiveSpawn, new Quaternion(0, 0, 0, 0));
+			go_activeCrystal = Instantiate(go_redCrystal, Constants.ObjectiveStats.C_RedCrystalSpawn, new Quaternion(0, 0, 0, 0));
 		}
 	}
 
 	override public void Complete() {
 		// destroy prefab
 		b_complete = true;
-		GameController.GetInstance().CrystalHealth(go_activeCrystal.GetComponent<CrystalController>().e_color, Constants.EnviroStats.C_CrystalMaxHealth);
+		GameController.GetInstance().CrystalHealth(go_activeCrystal.GetComponent<CrystalController>().e_color, Constants.ObjectiveStats.C_CrystalMaxHealth);
 		Destroy(go_activeCrystal);
 	}
 

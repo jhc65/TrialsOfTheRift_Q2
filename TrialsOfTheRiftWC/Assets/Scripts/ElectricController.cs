@@ -10,7 +10,7 @@ public class ElectricController : SpellController {
 	protected override void BuffSpell() {
         // Increase Volatility by 0.5%
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
-		f_electricDamage = f_electricDamage * Constants.SpellStats.C_ElectricDamageMultiplier;
+		f_electricDamage = f_electricDamage * Constants.SpellStats.C_ElectricRiftDamageMultiplier;
 		transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
 	}
 
@@ -27,7 +27,7 @@ public class ElectricController : SpellController {
 
 	protected override void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Spell") {
-			Constants.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
+			Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
 			if (spellColor != e_color) {
 				Destroy(gameObject);
 			}

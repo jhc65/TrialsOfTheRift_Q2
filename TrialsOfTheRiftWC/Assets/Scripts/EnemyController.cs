@@ -8,8 +8,8 @@ using System.Collections;
 public abstract class EnemyController : MonoBehaviour {
 
     protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE};
-	[SerializeField] public Constants.Side e_Side;
-	[SerializeField] protected int i_health;
+	[SerializeField] public Constants.Global.Side e_Side;
+	[SerializeField] protected float f_health;
 	[SerializeField] protected float f_damage;
 	protected State e_State;
 	protected State e_previousState; //Used for returning to the state previous to entering the AttackState.
@@ -21,16 +21,16 @@ public abstract class EnemyController : MonoBehaviour {
 	protected void Start() {
 		r_rigidbody = GetComponent<Rigidbody>();
 		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-		i_health = Constants.EnviroStats.C_EnemyHealth;
-		f_damage = Constants.EnviroStats.C_EnemyDamage;
-		nma_agent.speed = Constants.EnviroStats.C_EnemySpeed;
-		nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f);
+		f_health = Constants.EnemyStats.C_EnemyHealth;
+		f_damage = Constants.EnemyStats.C_EnemyDamage;
+		nma_agent.speed = Constants.EnemyStats.C_EnemySpeed;
+		nma_agent.acceleration = nma_agent.acceleration* (Constants.EnemyStats.C_EnemySpeed / 3.5f);
 		EnterStateChase ();
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
-		if(i_health <= 0f){
+		if(f_health <= 0f){
 			Debug.Log("death");
 			EnterStateDie();
 		}
@@ -102,7 +102,7 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected void UpdateDie() {
 		ChildUpdateDie();
-        if (e_Side == Constants.Side.LEFT) {
+        if (e_Side == Constants.Global.Side.LEFT) {
             DarkMagician.GetInstance().leftEnemies--;
         } else {
             DarkMagician.GetInstance().rightEnemies--;
@@ -113,7 +113,7 @@ public abstract class EnemyController : MonoBehaviour {
 	protected abstract void ChildUpdateDie();
 	
 	public void TakeDamage(float damage){
-		i_health -= (int)damage;
+		f_health -= (int)damage;
 		//Debug.Log(i_health);
 		//if(i_health <= 0f){
 		//	Debug.Log("death");
@@ -171,16 +171,16 @@ public abstract class EnemyController : MonoBehaviour {
 		EnterStateChase();
 	}
 
-    public int GetHealth() {
-        return i_health;
+    public float GetHealth() {
+        return f_health;
     }
 
-    public void SetHealth(int healthIn) {
-        i_health = healthIn;
+    public void SetHealth(float healthIn) {
+        f_health = healthIn;
     }
 	
 	private void UpdateSpeed(){
-		nma_agent.speed = Constants.EnviroStats.C_EnemySpeed * f_canMove;
+		nma_agent.speed = Constants.EnemyStats.C_EnemySpeed * f_canMove;
 		//nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f) * f_canMove;
 	}
 }

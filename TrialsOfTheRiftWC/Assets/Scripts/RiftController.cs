@@ -41,7 +41,7 @@ public class RiftController : MonoBehaviour {
             Destroy(this);
         }
 
-        f_enemyStartingSpeed = Constants.EnviroStats.C_EnemySpeed;
+        f_enemyStartingSpeed = Constants.EnemyStats.C_EnemySpeed;
     }
 
     public void IncreaseVolatility(float volatilityUp) {
@@ -52,7 +52,7 @@ public class RiftController : MonoBehaviour {
 
         if (f_volatility >= 100.0f && V_currentVolatilityLevel != Constants.RiftStats.Volatility.ONEHUNDRED) {
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.ONEHUNDRED;
-            Invoke("Restart", Constants.RiftStats.C_Volatility_ResetTime);
+            Invoke("Restart", Constants.RiftStats.C_VolatilityResetTime);
             //InvertScreen();
             HighDamageAttack();
         }
@@ -89,7 +89,7 @@ public class RiftController : MonoBehaviour {
             // Change Rift material to L1
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
             f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L1;
-            InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_Volatility_EnemySpawnTimer);
+            InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
         else if (f_volatility < 5.0f) {
             CancelInvoke("SpawnEnemies");
@@ -125,12 +125,12 @@ public class RiftController : MonoBehaviour {
     }
 
     public void EnhanceEnemies() {
-        Constants.EnviroStats.C_EnemySpeed += 1.0f;
+        Constants.EnemyStats.C_EnemySpeed += 1.0f;
         Debug.Log("Rift Boosted Enemies!");
     }
 
     public void ResetEnemies() {
-        Constants.EnviroStats.C_EnemySpeed = f_enemyStartingSpeed;
+        Constants.EnemyStats.C_EnemySpeed = f_enemyStartingSpeed;
     }
 
     public void SpawnNecromancers() {
@@ -154,14 +154,14 @@ public class RiftController : MonoBehaviour {
 
         if (colorToAttack == 0) {
             foreach (GameObject player in go_PlayerReferences) {
-                if (player.GetComponent<PlayerController>().GetColor() == Constants.Color.RED) {
+                if (player.GetComponent<PlayerController>().GetColor() == Constants.Global.Color.RED) {
                     player.GetComponent<PlayerController>().TakeDamage((Constants.PlayerStats.C_MaxHealth * 0.25f));
                 }
             }
         }
         else if (colorToAttack == 1) {
             foreach (GameObject player in go_PlayerReferences) {
-                if (player.GetComponent<PlayerController>().GetColor() == Constants.Color.BLUE) {
+                if (player.GetComponent<PlayerController>().GetColor() == Constants.Global.Color.BLUE) {
                     player.GetComponent<PlayerController>().TakeDamage((Constants.PlayerStats.C_MaxHealth * 0.25f));
                 }
             }
@@ -178,14 +178,14 @@ public class RiftController : MonoBehaviour {
 
     }
 
-    public void InvertScreen() {
+    /*public void InvertScreen() {
         mainCamera.transform.Rotate(0.0f, 0.0f, 180.0f);
         Invoke("ReverseInvertScreen", Constants.RiftStats.C_Volatility_CameraFlipTime);
     }
 
     void ReverseInvertScreen() {
         mainCamera.transform.Rotate(0.0f, 0.0f, 180.0f);
-    }
+    }*/
 
     void Restart() {
         f_volatility = 0.0f;
@@ -194,7 +194,7 @@ public class RiftController : MonoBehaviour {
 
     public void setEnemyStartingSpeed() {
         if (f_volatility <= 0) {
-            f_enemyStartingSpeed = Constants.EnviroStats.C_EnemySpeed;
+            f_enemyStartingSpeed = Constants.EnemyStats.C_EnemySpeed;
         }
     }
 

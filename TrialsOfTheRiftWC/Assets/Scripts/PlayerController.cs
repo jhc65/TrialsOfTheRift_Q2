@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour{
     public GameObject go_playerCapsule;      // player main body
 	public GameObject go_playerWisp;         // player wisp body
 	public int i_playerNumber;				// designates player's number for controller mappings
-	public Constants.Color e_Color;			// identifies player's team
-	public Constants.Side e_Side;			// identifies which side of the rift player is on
+	public Constants.Global.Color e_Color;			// identifies player's team
+	public Constants.Global.Side e_Side;			// identifies which side of the rift player is on
 	public Transform t_flagPos;				// location on character model of flag
 	public GameObject go_flagObj;			// flag game object; if not null, player is carrying flag
 	public GameObject go_interactCollider;  // activated with button-press to pickup flag
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour{
 		}
 	}
 
-	public Constants.Color GetColor() {
+	public Constants.Global.Color GetColor() {
 		return e_Color;
 	}
 
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour{
         TurnOff();
         isWisp = true;
         Debug.Log("Increase Volatility by 2.5%");
-        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncraese_PlayerDeath);
+        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
@@ -193,9 +193,9 @@ public class PlayerController : MonoBehaviour{
 		f_nextCast = 0;
 
 		if (transform.position.x > 0)
-			e_Side = Constants.Side.RIGHT;
+			e_Side = Constants.Global.Side.RIGHT;
 		else
-			e_Side = Constants.Side.LEFT;
+			e_Side = Constants.Global.Side.LEFT;
 	}
 
 	void FixedUpdate() {
@@ -263,9 +263,9 @@ public class PlayerController : MonoBehaviour{
         }
 
         if (transform.position.x > 0)
-			e_Side = Constants.Side.RIGHT;
+			e_Side = Constants.Global.Side.RIGHT;
 		else
-			e_Side = Constants.Side.LEFT;
+			e_Side = Constants.Global.Side.LEFT;
 	}
 
     private void TurnOff()
