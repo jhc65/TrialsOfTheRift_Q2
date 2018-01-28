@@ -39,7 +39,7 @@ public class ElectricAOEController : MonoBehaviour {
 	private void ApplyEffect(GameObject go_target) {
 		if (go_target.tag == "Player") {
 			go_target.GetComponent<PlayerController>().Drop();
-			go_target.GetComponent<PlayerController>().f_canMove = .5f;
+			go_target.GetComponent<PlayerController>().f_canMove = .5f; //TODO: Constants
             go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
 		}
 		else if (go_target.tag == "Enemy") {
