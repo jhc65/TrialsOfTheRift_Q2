@@ -26,6 +26,20 @@ public class FlagController : MonoBehaviour {
 		}
 	}
 
+    //if the flag happens to drop in the zone but not capture as part of a bug
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Goal")
+        {   // player scoring with flag
+            if (other.GetComponent<GoalController>().GetColor() != e_color)
+            {
+                b_scored = true;
+                transform.root.GetComponent<PlayerController>().Drop();
+                transform.position = v3_home;
+            }
+        }
+    }
+
     public void ResetHome() {
         transform.position = v3_home;
     }
