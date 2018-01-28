@@ -5,14 +5,14 @@ using UnityEngine;
 public class PortalController : MonoBehaviour {
 	public float f_portalOffset = 1.5f;
     private float f_timeIn = 0;
-	private Constants.Side e_side;
+	private Constants.Global.Side e_side;
 
 	void Start(){
 		if (transform.position.x < 0) {
-			e_side = Constants.Side.LEFT;
+			e_side = Constants.Global.Side.LEFT;
 		}
 		else { 
-			e_side = Constants.Side.RIGHT;
+			e_side = Constants.Global.Side.RIGHT;
 		}
 	}
 

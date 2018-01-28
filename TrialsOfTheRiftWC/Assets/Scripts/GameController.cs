@@ -20,42 +20,43 @@ public class GameController : MonoBehaviour {
     }
 
     // update the score
-    public void Score(Constants.Color colorIn, int score) {
-        if (colorIn == Constants.Color.RED) {
-            txt_redScoreText.text = score.ToString();
+    public void Score(Constants.Global.Color colorIn, int score) {
+        if (colorIn == Constants.Global.Color.RED) {
+            txt_redScoreText.text = Mathf.CeilToInt(score).ToString();
+
         }
-        else if (colorIn == Constants.Color.BLUE) {
-            txt_blueScoreText.text = score.ToString();
+        else if (colorIn == Constants.Global.Color.BLUE) {
+            txt_blueScoreText.text = Mathf.CeilToInt(score).ToString();
         }
     }
 
-	public void CrystalHealth(Constants.Color colorIn, int health) {
-        if (colorIn == Constants.Color.RED) {
+	public void CrystalHealth(Constants.Global.Color colorIn, float health) {
+        if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText2.text = health.ToString();
         }
-        else if (colorIn == Constants.Color.BLUE) {
+        else if (colorIn == Constants.Global.Color.BLUE) {
             txt_blueScoreText2.text = health.ToString();
         }
     }
 
-    public void CompletionProgress(Constants.Color colorIn, int time) {
-        if (colorIn == Constants.Color.RED)
+    public void CompletionProgress(Constants.Global.Color colorIn, int time) {
+        if (colorIn == Constants.Global.Color.RED)
         {
             txt_redCompletionTimer.text = time.ToString();
         }
-        else if (colorIn == Constants.Color.BLUE)
+        else if (colorIn == Constants.Global.Color.BLUE)
         {
             txt_blueCompletionTimer.text = time.ToString();
         }
     }
 
-    public void SelfDestructProgress(Constants.Color colorIn, int time)
+    public void SelfDestructProgress(Constants.Global.Color colorIn, int time)
     {
-        if (colorIn == Constants.Color.RED)
+        if (colorIn == Constants.Global.Color.RED)
         {
             txt_redSelfDestructTimer.text = time.ToString();
         }
-        else if (colorIn == Constants.Color.BLUE)
+        else if (colorIn == Constants.Global.Color.BLUE)
         {
             txt_blueSelfDestructTimer.text = time.ToString();
         }

@@ -7,11 +7,11 @@ public class HotPotatoObjective : Objective
 
     public GameObject go_redPotato, go_bluePotato;    // referenced potato objects
     private GameObject go_activePotato;    // active object specific to this objective instance
-    private Constants.Side e_Side;
+    private Constants.Global.Side e_Side;
 
     override public void Instantiate()
     {
-        int timer = Constants.EnviroStats.C_CompletionTimer;
+        int timer = Constants.ObjectiveStats.C_PotatoCompletionTimer;
         CreateReverseFlagObject(timer);
     }
 
@@ -20,8 +20,8 @@ public class HotPotatoObjective : Objective
         // destroy prefab
         //adjust UI Elements
         b_complete = true;
-        GameController.GetInstance().SelfDestructProgress(e_color, Constants.EnviroStats.C_SelfDestructThreshold);
-        GameController.GetInstance().CompletionProgress(e_color, Constants.EnviroStats.C_CompletionTimer);
+        GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        GameController.GetInstance().CompletionProgress(e_color, Constants.ObjectiveStats.C_PotatoCompletionTimer);
         Destroy(go_activePotato);
     }
 
@@ -40,7 +40,7 @@ public class HotPotatoObjective : Objective
             Debug.Log(timer);
 
             Destroy(go_activePotato);
-            GameController.GetInstance().SelfDestructProgress(e_color, Constants.EnviroStats.C_SelfDestructThreshold);
+            GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
 
             //spawns 3 enemies
             for (int i = 0; i < 3; i++) {
@@ -53,15 +53,15 @@ public class HotPotatoObjective : Objective
 
     private void CreateReverseFlagObject(int timer) {
         // instantiate prefab based on color
-        if (e_color == Constants.Color.RED)
+        if (e_color == Constants.Global.Color.RED)
         {
-            go_activePotato = Instantiate(go_redPotato, Constants.C_RedHotCrystalSpawn, new Quaternion(0, 0, 0, 0));
-            e_Side = Constants.Side.LEFT;
+            go_activePotato = Instantiate(go_redPotato, Constants.ObjectiveStats.C_RedCrystalSpawn, new Quaternion(0, 0, 0, 0));
+            e_Side = Constants.Global.Side.LEFT;
         }
         else
         {
-            go_activePotato = Instantiate(go_bluePotato, Constants.C_BlueHotCrystalSpawn, new Quaternion(0, 0, 0, 0));
-            e_Side = Constants.Side.RIGHT;
+            go_activePotato = Instantiate(go_bluePotato, Constants.ObjectiveStats.C_BlueCrystalSpawn, new Quaternion(0, 0, 0, 0));
+            e_Side = Constants.Global.Side.RIGHT;
         }
 
         go_activePotato.GetComponent<PotatoController>().setCompletionTimer(timer);

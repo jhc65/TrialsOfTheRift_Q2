@@ -24,7 +24,7 @@ public class RiftMagicMissileController : SpellController
     protected override void ApplyEffect(GameObject go_target)
     {
         go_target.GetComponent<PlayerController>().Drop();
-        go_target.GetComponent<PlayerController>().TakeDamage(Constants.RiftStats.C_Volatility_SpellDamage);
+        go_target.GetComponent<PlayerController>().TakeDamage(Constants.RiftStats.C_VolatilityMeteorDamage);
     }
 
     protected override void BuffSpell()

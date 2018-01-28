@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class Objective : MonoBehaviour {
 
-	public Constants.Color e_color;		// identifies owning team
+	public Constants.Global.Color e_color;		// identifies owning team
 	public int i_numberInList;			// this is the i'th objective faced by this team (1-based)
-	public bool b_complete;				// set when criteria to beat the objective is met
+	public bool b_complete;             // set when criteria to beat the objective is met
 
-	public void Set(Constants.Color c, int n) {
+    public void Set(Constants.Global.Color c, int n) {
 		e_color = c;
 		i_numberInList = n;
 		Instantiate();

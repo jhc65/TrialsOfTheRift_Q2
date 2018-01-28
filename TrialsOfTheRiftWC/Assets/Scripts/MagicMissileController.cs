@@ -19,12 +19,12 @@ public class MagicMissileController : SpellController {
             go_target.GetComponent<EnemyController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage);
         }
 		else if (go_target.tag == "Crystal"){
-			Constants.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
+			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
 			if (crystalColor != e_color){
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MMCrystalDamagePercent);
+				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MagicMissileCrystalDamagePercent);
 			}
 			else if (crystalColor == e_color) {
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MMCrystalHealPercent);
+				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MagicMissileCrystalHealPercent);
 			}
 		}
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public abstract class SpellController : MonoBehaviour {
 
-    public Constants.Color e_color;
+    public Constants.Global.Color e_color;
 	public float f_damage;			// currently unused, as each individual spell reads its damage value from Constants.cs in Start()
 	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
 
@@ -44,7 +44,7 @@ public abstract class SpellController : MonoBehaviour {
 		}
 
         if (collision.gameObject.tag == "Spell") {
-            Constants.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
+            Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
             if (spellColor != e_color)
             {
                 Destroy(gameObject);

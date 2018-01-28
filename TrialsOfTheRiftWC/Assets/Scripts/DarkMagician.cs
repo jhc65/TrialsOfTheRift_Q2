@@ -10,7 +10,6 @@ public class DarkMagician : MonoBehaviour {
 	public GameObject go_enemy;
     public int leftEnemies = 0;
     public int rightEnemies = 0;
-	public float f_enemySpawnTime = Constants.EnviroStats.C_EnemySpawnTime;             // [Param Fix]
 	public Text txt_winMsg;
 	private bool b_gameOver;
 
@@ -74,21 +73,21 @@ public class DarkMagician : MonoBehaviour {
 		int randLeft = Random.Range(0, v3_leftEnemySpawnPositions.Length);
 		int randRight = Random.Range(0, v3_rightEnemySpawnPositions.Length);
 
-        if (leftEnemies < Constants.EnviroStats.C_EnemySpawnCap) {
+        if (leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
             GameObject g1 = Instantiate(go_enemy, v3_leftEnemySpawnPositions[randLeft], new Quaternion(0, 0, 0, 0));
-            g1.GetComponent<EnemyController>().e_Side = Constants.Side.LEFT;
-            g1.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
-            g1.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+            g1.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;
+            g1.GetComponent<NavMeshAgent>().speed = Constants.EnemyStats.C_EnemySpeed;             // [Param Fix]
+            g1.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);      // [Param Fix]
             leftEnemies++;
         } else {
             Debug.Log("Left Side MAX.");
         }
 
-        if (rightEnemies < Constants.EnviroStats.C_EnemySpawnCap) {
+        if (rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
             GameObject g2 = Instantiate(go_enemy, v3_rightEnemySpawnPositions[randRight], new Quaternion(0, 0, 0, 0));
-            g2.GetComponent<EnemyController>().e_Side = Constants.Side.RIGHT;
-            g2.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
-            g2.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+            g2.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
+            g2.GetComponent<NavMeshAgent>().speed = Constants.EnemyStats.C_EnemySpeed;             // [Param Fix]
+            g2.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);      // [Param Fix]
             rightEnemies++;
         } else {
             Debug.Log("Right Side MAX.");
@@ -96,20 +95,20 @@ public class DarkMagician : MonoBehaviour {
 	}
 
     //instanties an enemy at a location on a particular side
-    public void SpawnEnemies(Constants.Side side, Vector3 position) {
-        if (side == Constants.Side.LEFT && leftEnemies < Constants.EnviroStats.C_EnemySpawnCap ||
-            side == Constants.Side.RIGHT && rightEnemies < Constants.EnviroStats.C_EnemySpawnCap) {  //I'm aware of how ugly this looks, but it works.
+    public void SpawnEnemies(Constants.Global.Side side, Vector3 position) {
+        if (side == Constants.Global.Side.LEFT && leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide ||
+            side == Constants.Global.Side.RIGHT && rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {  //I'm aware of how ugly this looks, but it works.
 
             GameObject g1 = Instantiate(go_enemy, position, new Quaternion(0, 0, 0, 0));
             g1.GetComponent<EnemyController>().e_Side = side;
-            g1.GetComponent<NavMeshAgent>().speed = Constants.EnviroStats.C_EnemySpeed;             // [Param Fix]
-            g1.GetComponent<MeleeController>().SetHealth(Constants.EnviroStats.C_EnemyHealth);      // [Param Fix]
+            g1.GetComponent<NavMeshAgent>().speed = Constants.EnemyStats.C_EnemySpeed;             // [Param Fix]
+            g1.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);      // [Param Fix]
         }
         
     }
 
     //instantiates an enemy within a radius when a valid position is selected
-    public void CircularSpawn(Vector3 center, Constants.Side side)
+    public void CircularSpawn(Vector3 center, Constants.Global.Side side)
     {
         Vector3 pos = RandomCircle(center, side, 3.0f);
 
@@ -128,7 +127,7 @@ public class DarkMagician : MonoBehaviour {
     }
 
     //gets a random Vector3 position within the certain radius from the potato
-    private Vector3 RandomCircle(Vector3 center, Constants.Side side, float radius)
+    private Vector3 RandomCircle(Vector3 center, Constants.Global.Side side, float radius)
     {
         float ang = Random.value * 360;
         Vector3 pos;
@@ -187,15 +186,15 @@ public class DarkMagician : MonoBehaviour {
 
         objv_redObjective = Instantiate(go_objectivesList[0]).GetComponent<Objective>();
 		objv_blueObjective = Instantiate(go_objectivesList[0]).GetComponent<Objective>();
-		objv_redObjective.Set(Constants.Color.RED, 1);
-		objv_blueObjective.Set(Constants.Color.BLUE, 1);
+		objv_redObjective.Set(Constants.Global.Color.RED, 1);
+		objv_blueObjective.Set(Constants.Global.Color.BLUE, 1);
 
 		// enemies, TODO: this not here
 		//for(int i=0; i< v3_leftEnemySpawnPositions.Length; i++) {
 		//	GameObject g1 = Instantiate(go_enemy, v3_leftEnemySpawnPositions[i], new Quaternion(0, 0, 0, 0));
-		//	g1.GetComponent<EnemyController>().e_Side = Constants.Side.LEFT;
+		//	g1.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;
 		//	GameObject g2 = Instantiate(go_enemy, v3_rightEnemySpawnPositions[i], new Quaternion(0, 0, 0, 0));
-		//	g2.GetComponent<EnemyController>().e_Side = Constants.Side.RIGHT;
+		//	g2.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
 		//}
 
 		//InvokeRepeating("SpawnEnemies", 7.0f, f_enemySpawnTime);
@@ -227,10 +226,4 @@ public class DarkMagician : MonoBehaviour {
 			}
 		}
 	}
-
-    // [Param Fix]
-    public void ResetEnemySpawnRate() {
-        //CancelInvoke();
-        //InvokeRepeating("SpawnEnemies", 7.0f, f_enemySpawnTime);
-    }
 }

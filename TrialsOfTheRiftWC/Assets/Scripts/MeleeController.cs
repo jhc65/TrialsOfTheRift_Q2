@@ -25,7 +25,7 @@ public class MeleeController : EnemyController {
 		if(go_closestTarget){
 			nma_agent.isStopped = false;
 			nma_agent.SetDestination(go_closestTarget.transform.position);
-			if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnviroStats.C_EnemyAttackRange)
+			if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnemyStats.C_EnemyAttackRange)
 				EnterStateAttack();
 		}
 		else{
@@ -43,7 +43,7 @@ public class MeleeController : EnemyController {
     }
 
     protected override void ChildDoAttack() {
-		go_closestTarget.GetComponent<PlayerController>().TakeDamage(Constants.EnviroStats.C_EnemyDamage);
+		go_closestTarget.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_EnemyDamage);
     }
 
     protected override void ChildEnterStateDie() {
@@ -62,7 +62,7 @@ public class MeleeController : EnemyController {
 	}
 	
 	protected override void ChildUpdateSlowed(){
-		if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnviroStats.C_EnemyAttackRange)
+		if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnemyStats.C_EnemyAttackRange)
 				EnterStateAttack();
 	}
 }

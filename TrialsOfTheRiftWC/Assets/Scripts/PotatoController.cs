@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PotatoController : MonoBehaviour {
 
-    public Constants.Color e_color;     // identifies owning team
-    public Constants.Side e_currentSide;
-    public Constants.Color e_currentColor;  //the side the crystal is currently in
-    private int i_completionTimer = Constants.EnviroStats.C_CompletionTimer;      //tracks progress of objective being in enemy territory
-    private int i_selfDestructTimer = Constants.EnviroStats.C_SelfDestructThreshold;    //threshold for objective to disappear and spawn enemies
+    public Constants.Global.Color e_color;     // identifies owning team
+    public Constants.Global.Side e_currentSide;
+    public Constants.Global.Color e_currentColor;  //the side the crystal is currently in
+    private int i_completionTimer = Constants.ObjectiveStats.C_PotatoCompletionTimer;      //tracks progress of objective being in enemy territory
+    private int i_selfDestructTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;    //threshold for objective to disappear and spawn enemies
 
     private Rigidbody rb;
 
@@ -26,13 +26,13 @@ public class PotatoController : MonoBehaviour {
 
         if (position < 0)
         {
-            e_currentSide = Constants.Side.LEFT;
-            e_currentColor = Constants.Color.RED;
+            e_currentSide = Constants.Global.Side.LEFT;
+            e_currentColor = Constants.Global.Color.RED;
         }
         else
         {
-            e_currentSide = Constants.Side.RIGHT;
-            e_currentColor = Constants.Color.BLUE;
+            e_currentSide = Constants.Global.Side.RIGHT;
+            e_currentColor = Constants.Global.Color.BLUE;
         }
     }
 
@@ -77,7 +77,7 @@ public class PotatoController : MonoBehaviour {
         else
         {
             CancelInvoke();
-            i_selfDestructTimer = Constants.EnviroStats.C_SelfDestructThreshold;
+            i_selfDestructTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
             GameController.GetInstance().SelfDestructProgress(e_color, i_selfDestructTimer);
             Invoke("CompletionTime", 1);
         }

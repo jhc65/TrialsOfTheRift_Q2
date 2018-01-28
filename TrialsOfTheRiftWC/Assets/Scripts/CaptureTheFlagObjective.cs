@@ -12,13 +12,13 @@ public class CaptureTheFlagObjective : Objective
 
 	override public void Instantiate() {
 		// instantiate prefabs based on color
-		if(e_color == Constants.Color.RED) {
-			go_currentFlag = Instantiate(go_blueFlag, Constants.C_RedObjectiveSpawn, new Quaternion(0,0,0,0));
-			go_currentGoal = Instantiate(go_redGoal, Constants.C_RedObjectiveGoal, new Quaternion(0, 0, 0, 0));
+		if(e_color == Constants.Global.Color.RED) {
+			go_currentFlag = Instantiate(go_blueFlag, Constants.ObjectiveStats.C_BlueFlagSpawn, new Quaternion(0,0,0,0));
+			go_currentGoal = Instantiate(go_redGoal, Constants.ObjectiveStats.C_RedCTFGoalSpawn, new Quaternion(0, 0, 0, 0));
 		}
 		else {
-			go_currentFlag = Instantiate(go_redFlag, Constants.C_BlueObjectiveSpawn, new Quaternion(0, 0, 0, 0));
-			go_currentGoal = Instantiate(go_blueGoal, Constants.C_BlueObjectiveGoal, new Quaternion(0, 0, 0, 0));
+			go_currentFlag = Instantiate(go_redFlag, Constants.ObjectiveStats.C_RedFlagSpawn, new Quaternion(0, 0, 0, 0));
+			go_currentGoal = Instantiate(go_blueGoal, Constants.ObjectiveStats.C_BlueCTFGoalSpawn, new Quaternion(0, 0, 0, 0));
 		}
 	}
 
@@ -36,7 +36,7 @@ public class CaptureTheFlagObjective : Objective
 			i_score += 1;
 			GameController.GetInstance().Score(e_color, i_score);
 		}
-		if(i_score >= Constants.EnviroStats.C_CTFMaxScore) {
+		if(i_score >= Constants.ObjectiveStats.C_CTFMaxScore) {
 			Complete();
 		}
 	}
