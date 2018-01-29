@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33586457805596476}
   - component: {fileID: 65569248559079876}
   - component: {fileID: 23760600964925568}
-  - component: {fileID: 114819297477915948}
+  - component: {fileID: 114965045644967500}
   m_Layer: 0
   m_Name: IceWall
   m_TagString: Wall
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c37a08b87e737cc44a9dbfd545e87239, type: 2}
+  - {fileID: 2100000, guid: fd33c182183666f428b792f112f411d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114819297477915948
+--- !u!114 &114965045644967500
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,6 +102,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1869867071989792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a172a271db9204a8985b65cee28d6a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fa2f10085614f045991644750119d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
