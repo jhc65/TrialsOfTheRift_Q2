@@ -42,6 +42,7 @@ public static class Constants {
         public static float C_MagicMissileDamage = 25.0f;
         public static float C_MagicMissileCooldown = 0.34f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
+        public static float C_MagicMissileChargeCooldown = 0.50f;
         public static float C_MagicMissileHeal = 10.0f;
 
         // Wind Stats

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicMissileController : SpellController {
 
-    int i_reflects = 2;
+    bool i_reflect = false;
 
     protected override void ApplyEffect(GameObject go_target, Collision collision) {
         if (go_target.tag == "Player") {
@@ -23,15 +23,13 @@ public class MagicMissileController : SpellController {
 		else if (go_target.tag == "Crystal"){
 			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
 			if (crystalColor != e_color){
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MMCrystalDamagePercent * f_charged);
+				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MagicMissileCrystalDamagePercent * f_charged);
 			}
 			else if (crystalColor == e_color) {
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MMCrystalHealPercent * f_charged);
+				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MagicMissileCrystalHealPercent * f_charged);
 			}
 		} else if (go_target.tag == "Wall") {
-            Debug.Log(i_reflects);
-            if (i_reflects > 0) {
-                i_reflects -= 1;
+            if (i_reflect) {
                 Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
                 float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
                 transform.eulerAngles = new Vector3(0,rot,0);
@@ -53,5 +51,9 @@ public class MagicMissileController : SpellController {
             f_charged = 2f;
         }
         transform.localScale *= f_charged;
+        if (f_chargeTime > 0) {
+            i_reflect = true;
+        }
+        
     }
 }
