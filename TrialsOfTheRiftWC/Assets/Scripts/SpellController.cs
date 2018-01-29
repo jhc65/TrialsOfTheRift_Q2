@@ -54,8 +54,10 @@ public abstract class SpellController : MonoBehaviour {
                 Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
             }
         }
-		else if (collision.gameObject.tag != "Portal") { // If we hit something not a player, rift, or portal (walls), just destroy the shot without an effect.
-			Destroy(gameObject);
+
+        else if (collision.gameObject.tag != "Portal")
+        { // If we hit something not a player, rift, or portal (walls), just destroy the shot without an effect.
+            Destroy(gameObject);
         }
 	}
 
@@ -71,7 +73,17 @@ public abstract class SpellController : MonoBehaviour {
 			BuffSpell();
 			Invoke("InvokeDestroy", 1.07f); //Call another invoke but with enough time to travel 2/3's of the other side, (1.07 is a derived time)
 		}
-	}
+
+        if (other.tag == "ParryShield")
+        {
+            CancelInvoke();
+            Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
+
+            //we need to get the direction the player is facing, so that's why v3_direction is verbose
+            Vector3 v3_direction = other.gameObject.transform.parent.gameObject.transform.forward.normalized;
+            gameObject.GetComponent<Rigidbody>().velocity = v3_direction * gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+        }
+    }
 
 	void InvokeDestroy() {
 		Destroy(gameObject);

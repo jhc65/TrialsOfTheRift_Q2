@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour{
 	public Transform t_flagPos;				// location on character model of flag
 	public GameObject go_flagObj;			// flag game object; if not null, player is carrying flag
 	public GameObject go_interactCollider;  // activated with button-press to pickup flag
+    public GameObject go_parryShield;       // activated with right stick button press
 	public Transform t_spellSpawn;			// location spells are instantiated
 	public float f_canMove;					// identifies if the player is frozen
 	public GameObject go_magicMissileShot;  // wind spell object
@@ -245,8 +246,17 @@ public class PlayerController : MonoBehaviour{
 				go_spell.GetComponent<SpellController>().e_color = e_Color;
 				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
 			}
+            //Parry
+            if (p_player.GetButtonDown("Parry")) {
+                go_parryShield.SetActive(true);
+                Invoke("TurnOffParryShield", 0.25f);
+            }
 		}
 	}
+
+    private void TurnOffParryShield() {
+        go_parryShield.SetActive(false);
+    }
 
 	void Update() {
         if (p_player.GetButtonDown("Interact") && !isWisp){
@@ -288,7 +298,10 @@ public class PlayerController : MonoBehaviour{
             }
 			transform.position = transform.position + (int)e_Side * new Vector3(-2, 0, 0);
 		}
-	}
+
+        if (other.tag == "ParryShield")
+            Physics.IgnoreCollision(GetComponent<Collider>(), other.gameObject.GetComponent<Collider>());
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
