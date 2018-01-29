@@ -11,6 +11,7 @@ public class PlayerHUDController : MonoBehaviour {
     [SerializeField] Image img_windbar;
     [SerializeField] Image img_icebar;
 	[SerializeField] Image img_electricbar;
+    [SerializeField] Image img_UIBacking;
 
     private Color col_origIceColor;
     private Color col_origWindColor;
@@ -18,7 +19,6 @@ public class PlayerHUDController : MonoBehaviour {
     private Vector2 v2_origIceSize;
     private Vector2 v2_origWindSize;
     private Vector2 v2_origElecSize;
-    private Image img_UIBacking;
     private Color col_origUIColor;
 
     private void Start() {
@@ -28,7 +28,6 @@ public class PlayerHUDController : MonoBehaviour {
         v2_origIceSize = img_icebar.rectTransform.sizeDelta;
         v2_origElecSize = img_electricbar.rectTransform.sizeDelta;
         v2_origWindSize = img_windbar.rectTransform.sizeDelta;
-        img_UIBacking = GetComponent<Image>();
         col_origUIColor = img_UIBacking.color;
     }
 

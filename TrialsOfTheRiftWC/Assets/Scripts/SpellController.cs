@@ -7,10 +7,15 @@ public abstract class SpellController : MonoBehaviour {
 
     public Constants.Global.Color e_color;
 	public float f_damage;			// currently unused, as each individual spell reads its damage value from Constants.cs in Start()
+    public float f_charged = 1;         // Charging multiplier.
+    public PlayerController owner;      // Owner of the spell.
 	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
 
+
+    public abstract void Charge(float f_chargeTime);
 	protected abstract void BuffSpell();
-	protected abstract void ApplyEffect(GameObject go_target);
+	protected abstract void ApplyEffect(GameObject go_target, Collision collision);
+
 
     private Collision coll;  //used to turn the potato objective kinematic back on
 
@@ -22,9 +27,9 @@ public abstract class SpellController : MonoBehaviour {
 	protected virtual void OnCollisionEnter(Collision collision) {
 		//Debug.Log("Impact:" + coll.gameObject.tag);
 		foreach (string tag in s_spellTargetTags) {
-			if (collision.gameObject.tag == tag) {
-				ApplyEffect(collision.gameObject);
-
+			if (collision.gameObject.tag == tag && collision.gameObject != owner.gameObject) {
+				ApplyEffect(collision.gameObject, collision);
+                
                 //makes the potato stop moving after the spell has applied its affect
                 //it moves the spell like this to hide it from view so it doesn't affect anyone on the field
                 //I really hate this, but its the only good way for now
@@ -34,7 +39,7 @@ public abstract class SpellController : MonoBehaviour {
                     this.transform.localPosition = new Vector3(this.transform.localPosition.x, -1000.0f, this.transform.localPosition.z);
                     Invoke("TurnKinematicOn", 0.05f);
                 }
-                else
+                else if (collision.gameObject.tag != "Wall")
                 {
                     Destroy(gameObject);
                 }
