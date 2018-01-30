@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour{
 	public Transform t_flagPos;				// location on character model of flag
 	public GameObject go_flagObj;			// flag game object; if not null, player is carrying flag
 	public GameObject go_interactCollider;  // activated with button-press to pickup flag
-	public Transform t_spellSpawn;			// location spells are instantiated
+    public GameObject go_parryShield;       // activated with right stick button press
+    public Transform t_spellSpawn;			// location spells are instantiated
 	public float f_canMove;					// identifies if the player is frozen
 	public GameObject go_magicMissileShot;  // wind spell object
 	public GameObject go_windShot;			// wind spell object
@@ -317,10 +318,21 @@ public class PlayerController : MonoBehaviour{
                 }
                 
 			}
-		}
+            //Parry
+            if (p_player.GetButtonDown("Parry"))
+            {
+                go_parryShield.SetActive(true);
+                Invoke("TurnOffParryShield", 0.25f);
+            }
+        }
 	}
 
-	void Update() {
+    private void TurnOffParryShield()
+    {
+        go_parryShield.SetActive(false);
+    }
+
+    void Update() {
         if (p_player.GetButtonDown("Interact") && !isWisp){
             if (go_flagObj) {
 				Drop();
