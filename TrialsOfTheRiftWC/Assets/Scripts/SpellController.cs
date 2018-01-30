@@ -8,7 +8,7 @@ public abstract class SpellController : MonoBehaviour {
     public Constants.Global.Color e_color;
 	public float f_damage;			// currently unused, as each individual spell reads its damage value from Constants.cs in Start()
     public float f_charged = 1;         // Charging multiplier.
-    public PlayerController owner;      // Owner of the spell.
+    public PlayerController pc_owner;      // Owner of the spell.
 	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
 
 
@@ -17,7 +17,7 @@ public abstract class SpellController : MonoBehaviour {
 	protected abstract void ApplyEffect(GameObject go_target, Collision collision);
 
 
-    private Collision coll;  //used to turn the potato objective kinematic back on
+    protected Collision coll;  //used to turn the potato objective kinematic back on
 
 	protected virtual void Start() {
 		//Destroy(gameObject, Constants.SpellStats.C_SpellLiveTime);
@@ -27,7 +27,7 @@ public abstract class SpellController : MonoBehaviour {
 	protected virtual void OnCollisionEnter(Collision collision) {
 		//Debug.Log("Impact:" + coll.gameObject.tag);
 		foreach (string tag in s_spellTargetTags) {
-			if (collision.gameObject.tag == tag && collision.gameObject != owner.gameObject) {
+			if (collision.gameObject.tag == tag && collision.gameObject != pc_owner.gameObject) {
 				ApplyEffect(collision.gameObject, collision);
                 
                 //makes the potato stop moving after the spell has applied its affect
