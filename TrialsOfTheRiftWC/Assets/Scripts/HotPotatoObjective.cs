@@ -55,12 +55,12 @@ public class HotPotatoObjective : Objective
         // instantiate prefab based on color
         if (e_color == Constants.Global.Color.RED)
         {
-            go_activePotato = Instantiate(go_redPotato, Constants.ObjectiveStats.C_RedCrystalSpawn, new Quaternion(0, 0, 0, 0));
+            go_activePotato = Instantiate(go_redPotato, Constants.ObjectiveStats.C_RedPotatoSpawn, new Quaternion(0, 0, 0, 0));
             e_Side = Constants.Global.Side.LEFT;
         }
         else
         {
-            go_activePotato = Instantiate(go_bluePotato, Constants.ObjectiveStats.C_BlueCrystalSpawn, new Quaternion(0, 0, 0, 0));
+            go_activePotato = Instantiate(go_bluePotato, Constants.ObjectiveStats.C_BluePotatoSpawn, new Quaternion(0, 0, 0, 0));
             e_Side = Constants.Global.Side.RIGHT;
         }
 
