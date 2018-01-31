@@ -313,13 +313,13 @@ public class DebugParametersController : MonoBehaviour
     public void SetSpeedDecayRate(float f_decay)
     {
         txt_speedDecayRate.text = slider_speedDecayRate.value.ToString();
-        Constants.ObjectiveStats.C_SpeedDecayRate = (int)f_decay;
+        Constants.ObjectiveStats.C_PuckSpeedDecayRate = (int)f_decay;
     }
 
     public void SetSpeedDecreaseRate(float f_decrease)
     {
         txt_speedDecreaseRate.text = slider_speedDecreaseRate.value.ToString();
-        Constants.ObjectiveStats.C_SpeedDecreaseRate = (int)f_decrease;
+        Constants.ObjectiveStats.C_PuckSpeedDecreaseRate = (int)f_decrease;
     }
 
     public void SetPuckBaseSpeed(float f_speed)
@@ -331,7 +331,7 @@ public class DebugParametersController : MonoBehaviour
     public void SetHitIncreaseSpeed(float f_hit)
     {
         txt_hitIncreaseSpeed.text = slider_hitIncreaseSpeed.value.ToString();
-        Constants.ObjectiveStats.C_HitIncreaseSpeed = (int)f_hit;
+        Constants.ObjectiveStats.C_PuckHitIncreaseSpeed = (int)f_hit;
     }
 
     public void ObjectiveReset()
@@ -511,20 +511,20 @@ public class DebugParametersController : MonoBehaviour
         slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HockeyMaxScore;
 
         //Hockey Puck Speed Decay Rate
-        txt_speedDecayRate.text = Constants.ObjectiveStats.C_SpeedDecayRate.ToString();
-        slider_speedDecayRate.value = Constants.ObjectiveStats.C_SpeedDecayRate;
+        txt_speedDecayRate.text = Constants.ObjectiveStats.C_PuckSpeedDecayRate.ToString();
+        slider_speedDecayRate.value = Constants.ObjectiveStats.C_PuckSpeedDecayRate;
 
         //Hockey Puck Decreasse Rate
-        txt_speedDecreaseRate.text = Constants.ObjectiveStats.C_SpeedDecreaseRate.ToString();
-        slider_speedDecreaseRate.value = Constants.ObjectiveStats.C_SpeedDecreaseRate;
+        txt_speedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate.ToString();
+        slider_speedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate;
 
         //Hockey Puck Base Speed
         txt_puckBaseSpeed.text = Constants.ObjectiveStats.C_PuckBaseSpeed.ToString();
         slider_puckBaseSpeed.value = Constants.ObjectiveStats.C_PuckBaseSpeed;
 
         //Hockey Puck Hit Increase Speed
-        txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_HitIncreaseSpeed.ToString();
-        slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HitIncreaseSpeed;
+        txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_PuckHitIncreaseSpeed.ToString();
+        slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_PuckHitIncreaseSpeed;
 
 
         //---------------------------

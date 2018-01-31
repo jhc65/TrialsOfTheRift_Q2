@@ -50,7 +50,7 @@ public abstract class SpellController : MonoBehaviour {
 
         if (collision.gameObject.tag == "Puck")
         {
-            collision.gameObject.GetComponent<HockeyPuckController>().f_speed += Constants.ObjectiveStats.C_HitIncreaseSpeed;
+            collision.gameObject.GetComponent<HockeyPuckController>().f_speed += Constants.ObjectiveStats.C_PuckHitIncreaseSpeed;
 
             //we need to get the direction the player is facing, so that's why v3_direction is verbose
             Vector3 v3_direction = transform.forward.normalized;

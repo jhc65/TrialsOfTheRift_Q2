@@ -11,7 +11,6 @@ public class HockeyPuckController : MonoBehaviour {
     public bool b_scored = false;   // identifies when the puck has been used to score
     private Vector3 v3_home;        // location of flag in players' base
     private Rigidbody rb;
-    private bool isDecreaseInvoked = false;
     private bool isPuckStuck = false;
 
     void Start()
@@ -43,14 +42,7 @@ public class HockeyPuckController : MonoBehaviour {
         if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed)
         {
             CancelInvoke("DecreaseSpeed");
-            isDecreaseInvoked = false;
             f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
-        }
-        //used to make sure only 1 invoke of this function is made, and not every frame
-        else if (!isDecreaseInvoked){
-            //if the Puck hasn't been hit by a spell or parry, start the speed cooldown
-            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_SpeedDecayDelay, Constants.ObjectiveStats.C_SpeedDecayRate);
-            isDecreaseInvoked = true;
         }
 
         Vector3 v3_dir = rb.velocity.normalized;
@@ -77,17 +69,14 @@ public class HockeyPuckController : MonoBehaviour {
             }
         }
 
-        if (other.tag == "Rift") {
-            //ignores any collision detection between the Rift and puck
-            Physics.IgnoreCollision(GetComponent<Collider>(), other);
-        }
-
         if (other.tag == "ParryShield")
         {
-            //we need to get the direction the player is facing, so that's why v3_direction is verbose
+            //if the Puck hasn't been hit by a spell or parry, start the speed cooldown
             CancelInvoke();
-            isDecreaseInvoked = false;
-            f_speed += Constants.ObjectiveStats.C_HitIncreaseSpeed;
+            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
+
+            //we need to get the direction the player is facing, so that's why v3_direction is verbose
+            f_speed += Constants.ObjectiveStats.C_PuckHitIncreaseSpeed;
             Vector3 v3_direction = other.gameObject.transform.parent.gameObject.transform.forward.normalized;
             transform.rotation = Quaternion.LookRotation(other.gameObject.transform.parent.gameObject.transform.forward);
             gameObject.GetComponent<Rigidbody>().velocity = v3_direction * f_speed;
@@ -103,8 +92,9 @@ public class HockeyPuckController : MonoBehaviour {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage);
         }
         if (collision.gameObject.tag == "Spell") {
-            CancelInvoke("DecreaseSpeed");
-            isDecreaseInvoked = false;
+            //if the Puck hasn't been hit by a spell or parry, start the speed cooldown
+            CancelInvoke();
+            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
         }
         if (collision.gameObject.tag == "Floor")
         {
@@ -143,7 +133,7 @@ public class HockeyPuckController : MonoBehaviour {
 
     //used to decrement the speed every second after 3 seconds
     private void DecreaseSpeed() {
-        f_speed -= Constants.ObjectiveStats.C_SpeedDecreaseRate;
+        f_speed -= Constants.ObjectiveStats.C_PuckSpeedDecreaseRate;
     }
 
     //if the puck gets stuck in the portal, move it over from it and reset its speed
