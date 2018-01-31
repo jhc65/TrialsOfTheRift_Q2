@@ -57,6 +57,12 @@ public class DebugParametersController : MonoBehaviour
     public Slider slider_icePlayerDamage;
     public Slider slider_windPlayerDamage;
     public Slider slider_electricPlayerDamage;
+    public Slider slider_hockeyMaxScore;
+    public Slider slider_puckDamage;
+    public Slider slider_speedDecayRate;
+    public Slider slider_speedDecreaseRate;
+    public Slider slider_puckBaseSpeed;
+    public Slider slider_hitIncreaseSpeed;
 
     // UI txt (Set in editor)
     public Text txt_playerMoveSpeed;
@@ -88,7 +94,12 @@ public class DebugParametersController : MonoBehaviour
     public Text txt_icePlayerDamage;
     public Text txt_windPlayerDamage;
     public Text txt_electricPlayerDamage;
-
+    public Text txt_hockeyMaxScore;
+    public Text txt_puckDamage;
+    public Text txt_speedDecayRate;
+    public Text txt_speedDecreaseRate;
+    public Text txt_puckBaseSpeed;
+    public Text txt_hitIncreaseSpeed;
 
     // Public Helper Methods
     // currently unused - GC set in inspector
@@ -287,6 +298,42 @@ public class DebugParametersController : MonoBehaviour
         Constants.SpellStats.C_ElectricPlayerDamageMultiplier = f_damageIn;
     }
 
+    public void SetHockeyMaxScore(float f_score)
+    {
+        txt_hockeyMaxScore.text = slider_hockeyMaxScore.value.ToString();
+        Constants.ObjectiveStats.C_HockeyMaxScore = (int)f_score;
+    }
+
+    public void SetPuckDamage(float f_damage)
+    {
+        txt_puckDamage.text = slider_puckDamage.value.ToString();
+        Constants.ObjectiveStats.C_PuckDamage = (int)f_damage;
+    }
+
+    public void SetSpeedDecayRate(float f_decay)
+    {
+        txt_speedDecayRate.text = slider_speedDecayRate.value.ToString();
+        Constants.ObjectiveStats.C_SpeedDecayRate = (int)f_decay;
+    }
+
+    public void SetSpeedDecreaseRate(float f_decrease)
+    {
+        txt_speedDecreaseRate.text = slider_speedDecreaseRate.value.ToString();
+        Constants.ObjectiveStats.C_SpeedDecreaseRate = (int)f_decrease;
+    }
+
+    public void SetPuckBaseSpeed(float f_speed)
+    {
+        txt_puckBaseSpeed.text = slider_puckBaseSpeed.value.ToString();
+        Constants.ObjectiveStats.C_PuckBaseSpeed = (int)f_speed;
+    }
+
+    public void SetHitIncreaseSpeed(float f_hit)
+    {
+        txt_hitIncreaseSpeed.text = slider_hitIncreaseSpeed.value.ToString();
+        Constants.ObjectiveStats.C_HitIncreaseSpeed = (int)f_hit;
+    }
+
     public void ObjectiveReset()
     {
         //Drop the flag before resetting (for CTF)
@@ -454,6 +501,30 @@ public class DebugParametersController : MonoBehaviour
         //electric Player Damage Multiplier
         txt_electricPlayerDamage.text = Constants.SpellStats.C_ElectricPlayerDamageMultiplier.ToString();
         slider_electricPlayerDamage.value = Constants.SpellStats.C_ElectricPlayerDamageMultiplier;
+
+        //Hockey Puck damage
+        txt_puckDamage.text = Constants.ObjectiveStats.C_PuckDamage.ToString();
+        slider_puckDamage.value = Constants.ObjectiveStats.C_PuckDamage;
+
+        //Hockey Max Score
+        txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_HockeyMaxScore.ToString();
+        slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HockeyMaxScore;
+
+        //Hockey Puck Speed Decay Rate
+        txt_speedDecayRate.text = Constants.ObjectiveStats.C_SpeedDecayRate.ToString();
+        slider_speedDecayRate.value = Constants.ObjectiveStats.C_SpeedDecayRate;
+
+        //Hockey Puck Decreasse Rate
+        txt_speedDecreaseRate.text = Constants.ObjectiveStats.C_SpeedDecreaseRate.ToString();
+        slider_speedDecreaseRate.value = Constants.ObjectiveStats.C_SpeedDecreaseRate;
+
+        //Hockey Puck Base Speed
+        txt_puckBaseSpeed.text = Constants.ObjectiveStats.C_PuckBaseSpeed.ToString();
+        slider_puckBaseSpeed.value = Constants.ObjectiveStats.C_PuckBaseSpeed;
+
+        //Hockey Puck Hit Increase Speed
+        txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_HitIncreaseSpeed.ToString();
+        slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HitIncreaseSpeed;
 
 
         //---------------------------

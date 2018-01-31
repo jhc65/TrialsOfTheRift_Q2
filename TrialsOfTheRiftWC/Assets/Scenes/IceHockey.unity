@@ -8938,6 +8938,12 @@ MonoBehaviour:
   slider_icePlayerDamage: {fileID: 1912705872}
   slider_windPlayerDamage: {fileID: 691908511}
   slider_electricPlayerDamage: {fileID: 1049069552}
+  slider_hockeyMaxScore: {fileID: 810811693}
+  slider_puckDamage: {fileID: 2080683482}
+  slider_speedDecayRate: {fileID: 1165275721}
+  slider_speedDecreaseRate: {fileID: 799270686}
+  slider_puckBaseSpeed: {fileID: 659782609}
+  slider_hitIncreaseSpeed: {fileID: 2017638435}
   txt_playerMoveSpeed: {fileID: 1896081438}
   txt_windSpeed: {fileID: 6911925}
   txt_iceSpeed: {fileID: 1280094396}
@@ -8967,6 +8973,12 @@ MonoBehaviour:
   txt_icePlayerDamage: {fileID: 99035121}
   txt_windPlayerDamage: {fileID: 462029541}
   txt_electricPlayerDamage: {fileID: 1013631916}
+  txt_hockeyMaxScore: {fileID: 40864418}
+  txt_puckDamage: {fileID: 1073179722}
+  txt_speedDecayRate: {fileID: 1030489826}
+  txt_speedDecreaseRate: {fileID: 2067578599}
+  txt_puckBaseSpeed: {fileID: 731231597}
+  txt_hitIncreaseSpeed: {fileID: 413769741}
 --- !u!114 &658498692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9070,7 +9082,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 658498691}
-        m_MethodName: ChangeSelfDestructTimer
+        m_MethodName: SetPuckBaseSpeed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10798,7 +10810,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 658498691}
-        m_MethodName: ChangeSelfDestructTimer
+        m_MethodName: SetSpeedDecreaseRate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11077,7 +11089,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 658498691}
-        m_MethodName: ChangeSelfDestructTimer
+        m_MethodName: SetHockeyMaxScore
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15146,7 +15158,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 658498691}
-        m_MethodName: ChangeSelfDestructTimer
+        m_MethodName: SetSpeedDecayRate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26264,7 +26276,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 658498691}
-        m_MethodName: ChangeSelfDestructTimer
+        m_MethodName: SetHitIncreaseSpeed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27129,7 +27141,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 658498691}
-        m_MethodName: ChangeSelfDestructTimer
+        m_MethodName: SetPuckDamage
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
