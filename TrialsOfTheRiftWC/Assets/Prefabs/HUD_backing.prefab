@@ -203,6 +203,7 @@ MonoBehaviour:
   img_windbar: {fileID: 114604900646578072}
   img_icebar: {fileID: 114979598428504446}
   img_electricbar: {fileID: 114126394020649464}
+  img_UIBacking: {fileID: 114248141009208486}
 --- !u!114 &114208201880487624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,10 +326,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1778593857043360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da4c3949337e0849bd2ee9d55cbf05a, type: 3}
+  m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeAmt: 1
+  shakeAmt: 0
 --- !u!114 &114979598428504446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,9 +418,9 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -140, y: 50}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -140, y: -50}
   m_SizeDelta: {x: 150, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224292734389579492

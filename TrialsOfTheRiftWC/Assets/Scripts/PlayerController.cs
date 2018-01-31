@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour{
 
@@ -104,8 +105,10 @@ public class PlayerController : MonoBehaviour{
         Drop();
         TurnOff();
         isWisp = true;
-        Debug.Log("Increase Volatility by 2.5%");
-        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
+        if(SceneManager.GetActiveScene().name != "WarmUp") {
+            Debug.Log("Increase Volatility by 2.5%");
+            RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
+        } 
         go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);

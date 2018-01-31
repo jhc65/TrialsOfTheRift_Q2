@@ -532,7 +532,9 @@ MonoBehaviour:
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
   phc_hud: {fileID: 0}
+  pauc_pause: {fileID: 0}
   isWisp: 0
+  b_iceboltMode: 0
   f_projectileSize: 0
 --- !u!135 &135437775325331908
 SphereCollider:

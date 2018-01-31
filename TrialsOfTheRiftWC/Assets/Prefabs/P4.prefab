@@ -83,8 +83,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4636058159455576}
   - component: {fileID: 54299474198074530}
-  - component: {fileID: 136518781723936392}
   - component: {fileID: 114653368810392768}
+  - component: {fileID: 136746164928844662}
   m_Layer: 0
   m_Name: P4
   m_TagString: Player
@@ -532,7 +532,9 @@ MonoBehaviour:
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
   phc_hud: {fileID: 0}
+  pauc_pause: {fileID: 0}
   isWisp: 0
+  b_iceboltMode: 0
   f_projectileSize: 0
 --- !u!135 &135455912115352014
 SphereCollider:
@@ -572,7 +574,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136518781723936392
+--- !u!136 &136746164928844662
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
