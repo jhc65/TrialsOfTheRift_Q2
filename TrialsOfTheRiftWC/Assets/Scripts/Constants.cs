@@ -113,7 +113,7 @@ public static class Constants {
         public static float C_CrystalMaxHealth = 500.0f;
 
         //Ice Hockey Stats
-        public static Vector3 C_RedPuckSpawn = new Vector3(20.0f, 0.5f, 0f);
+        public static Vector3 C_RedPuckSpawn = new Vector3(-5.0f, 0.5f, 0f);
         public static Vector3 C_BluePuckSpawn = new Vector3(5.0f, 0.5f, 0f);
         public static Vector3 C_RedHockeyGoalSpawn = new Vector3(-20.0f, 0.01f, 0.0f);
         public static Vector3 C_BlueHockeyGoalSpawn = new Vector3(20.0f, 0.01f, 0.0f);
