@@ -74,7 +74,7 @@ public static class Constants {
 		public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
         public static float C_ElectricRiftDamageMultiplier = C_RiftDamageMultiplier;
-        public static float C_ElectricAOESlowMultiplier = 0.5f;
+        public static float C_ElectricAOESlowDownMultiplier = 0.5f;
         public static float C_ElectricAOELiveTime = 5.0f;
         public static float C_ElectricPlayerDamageMultiplier = 0.5f;
 

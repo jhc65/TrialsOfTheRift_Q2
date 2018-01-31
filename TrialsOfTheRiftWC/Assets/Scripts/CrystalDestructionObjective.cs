@@ -22,7 +22,8 @@ public class CrystalDestructionObjective : Objective {
 		b_complete = true;
 		GameController.GetInstance().CrystalHealth(go_activeCrystal.GetComponent<CrystalController>().e_color, Constants.ObjectiveStats.C_CrystalMaxHealth);
 		Destroy(go_activeCrystal);
-	}
+        Destroy(go_activeRoom);
+    }
 
 	void Update() {
         if (go_activeCrystal.GetComponent<CrystalController>().i_health <= 0) {
