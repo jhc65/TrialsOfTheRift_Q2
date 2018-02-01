@@ -277,7 +277,7 @@ public class DebugParametersController : MonoBehaviour
     public void ChangeEnemySpawnCap(float f_capIn)
     {
         txt_enemySpawnCap.text = slider_enemySpawnCap.value.ToString();
-        Constants.EnemyStats.C_EnemySpawnCapPerSide = (int)f_capIn;
+        Constants.EnemyStats.C_EnemySpawnCapPerSide = (int)(f_capIn - 1);
     }
 
     public void ChangeIcePlayerDamage(float f_damageIn)
