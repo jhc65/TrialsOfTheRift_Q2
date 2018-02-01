@@ -3659,6 +3659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_portalOffset: 1.5
+  go_otherPortal: {fileID: 864327890}
 --- !u!23 &339413901
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10619,6 +10620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_portalOffset: 1.5
+  go_otherPortal: {fileID: 339413898}
 --- !u!23 &864327893
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10961,7 +10963,17 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 136517396}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 90e8ad0eb698c4544becbcc568222a15, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &891921655
@@ -18076,6 +18088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_portalOffset: 1.5
+  go_otherPortal: {fileID: 0}
 --- !u!23 &1542133989
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20325,7 +20338,17 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 136517396}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 9eba1a2d8d8bf794ba2c56098f25687c, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1763601064 stripped
@@ -21374,6 +21397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_portalOffset: 1.5
+  go_otherPortal: {fileID: 0}
 --- !u!23 &1813564952
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22847,7 +22871,21 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 136517396}
-    m_RemovedComponents: []
+    - target: {fileID: 1232212126664142, guid: ce28f14c4d7ac0144880eded20f3d8e4, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: ce28f14c4d7ac0144880eded20f3d8e4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1902647794
@@ -25036,7 +25074,17 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 136517396}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 98767151e13fd074882b689c3a25f075, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &2118622282 stripped

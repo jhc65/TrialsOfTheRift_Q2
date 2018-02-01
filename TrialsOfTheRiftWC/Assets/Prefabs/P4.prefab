@@ -135,7 +135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4472095012747710}
   - component: {fileID: 33104840884278962}
-  - component: {fileID: 136241911854977698}
   - component: {fileID: 23040641398007978}
   m_Layer: 0
   m_Name: Capsule
@@ -153,7 +152,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4918753763931980}
   - component: {fileID: 33198471218940724}
-  - component: {fileID: 135455912115352014}
   - component: {fileID: 23813760279737576}
   m_Layer: 0
   m_Name: Wisp
@@ -532,33 +530,10 @@ MonoBehaviour:
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
   phc_hud: {fileID: 0}
+  pauc_pause: {fileID: 0}
   isWisp: 0
+  b_iceboltMode: 0
   f_projectileSize: 0
---- !u!135 &135455912115352014
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1978706038306024}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136241911854977698
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1762814341675882}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136328320928259464
 CapsuleCollider:
   m_ObjectHideFlags: 1
