@@ -187,7 +187,7 @@ public class RiftController : MonoBehaviour {
         mainCamera.transform.Rotate(0.0f, 0.0f, 180.0f);
     }*/
 
-    void Restart() {
+    public void Restart() {
         f_volatility = 0.0f;
         V_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
     }
