@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1612383838674570}
+  m_IsPrefabParent: 1
+--- !u!1 &1612383838674570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4726515340611854}
+  - component: {fileID: 114619098945623242}
+  m_Layer: 0
+  m_Name: IceHockeyObjective
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4726515340611854
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612383838674570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114619098945623242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612383838674570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560c84fb56c148342a3fc1881701d2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  e_color: 0
+  i_numberInList: 0
+  b_complete: 0
+  go_redRoom: {fileID: 1728485901231888, guid: 4441871c769c10049b8eb68921ccd5e2, type: 2}
+  go_blueRoom: {fileID: 1613668851645750, guid: a59da6afcaefe674a9339e8fd370dfb8,
+    type: 2}
+  go_redPuck: {fileID: 1535718023999898, guid: b8fbf3a24fe86ba4a8e14f16ee755458, type: 2}
+  go_bluePuck: {fileID: 1915380954121790, guid: a2b7db1512862924ab967639252e1191,
+    type: 2}
+  go_redHockeyGoal: {fileID: 1409762389713824, guid: c1626702ab3186843a623ee39f28fc83,
+    type: 2}
+  go_blueHockeyGoal: {fileID: 1105157633611760, guid: c6fe83e187f5cac4fb161dd08f275c16,
+    type: 2}

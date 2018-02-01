@@ -46,7 +46,17 @@ public abstract class SpellController : MonoBehaviour {
 
 				return;
 			}
-		}
+        }
+
+        if (collision.gameObject.tag == "Puck")
+        {
+            collision.gameObject.GetComponent<HockeyPuckController>().f_speed += Constants.ObjectiveStats.C_PuckHitIncreaseSpeed;
+
+            //we need to get the direction the player is facing, so that's why v3_direction is verbose
+            Vector3 v3_direction = transform.forward.normalized;
+            transform.rotation = Quaternion.LookRotation(transform.forward);
+            collision.gameObject.GetComponent<Rigidbody>().velocity = v3_direction * collision.gameObject.GetComponent<HockeyPuckController>().f_speed;
+        }
 
         if (collision.gameObject.tag == "Spell") {
             Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
