@@ -59,10 +59,10 @@ public class DebugParametersController : MonoBehaviour
     public Slider slider_electricPlayerDamage;
     public Slider slider_hockeyMaxScore;
     public Slider slider_puckDamage;
-    public Slider slider_speedDecayRate;
-    public Slider slider_speedDecreaseRate;
+    public Slider slider_puckSpeedDecayRate;
+    public Slider slider_puckSpeedDecreaseRate;
     public Slider slider_puckBaseSpeed;
-    public Slider slider_hitIncreaseSpeed;
+    public Slider slider_puckHitIncreaseSpeed;
 
     // UI txt (Set in editor)
     public Text txt_playerMoveSpeed;
@@ -96,10 +96,10 @@ public class DebugParametersController : MonoBehaviour
     public Text txt_electricPlayerDamage;
     public Text txt_hockeyMaxScore;
     public Text txt_puckDamage;
-    public Text txt_speedDecayRate;
-    public Text txt_speedDecreaseRate;
+    public Text txt_puckSpeedDecayRate;
+    public Text txt_puckSpeedDecreaseRate;
     public Text txt_puckBaseSpeed;
-    public Text txt_hitIncreaseSpeed;
+    public Text txt_puckHitIncreaseSpeed;
 
     // Public Helper Methods
     // currently unused - GC set in inspector
@@ -298,39 +298,39 @@ public class DebugParametersController : MonoBehaviour
         Constants.SpellStats.C_ElectricPlayerDamageMultiplier = f_damageIn;
     }
 
-    public void SetHockeyMaxScore(float f_score)
+    public void ChangeHockeyMaxScore(float f_score)
     {
         txt_hockeyMaxScore.text = slider_hockeyMaxScore.value.ToString();
         Constants.ObjectiveStats.C_HockeyMaxScore = (int)f_score;
     }
 
-    public void SetPuckDamage(float f_damage)
+    public void ChangePuckDamage(float f_damage)
     {
         txt_puckDamage.text = slider_puckDamage.value.ToString();
         Constants.ObjectiveStats.C_PuckDamage = (int)f_damage;
     }
 
-    public void SetSpeedDecayRate(float f_decay)
+    public void ChangePuckSpeedDecayRate(float f_decay)
     {
-        txt_speedDecayRate.text = slider_speedDecayRate.value.ToString();
+        txt_puckSpeedDecayRate.text = slider_puckSpeedDecayRate.value.ToString();
         Constants.ObjectiveStats.C_PuckSpeedDecayRate = (int)f_decay;
     }
 
-    public void SetSpeedDecreaseRate(float f_decrease)
+    public void ChangePuckSpeedDecreaseRate(float f_decrease)
     {
-        txt_speedDecreaseRate.text = slider_speedDecreaseRate.value.ToString();
+        txt_puckSpeedDecreaseRate.text = slider_puckSpeedDecreaseRate.value.ToString();
         Constants.ObjectiveStats.C_PuckSpeedDecreaseRate = (int)f_decrease;
     }
 
-    public void SetPuckBaseSpeed(float f_speed)
+    public void ChangePuckBaseSpeed(float f_speed)
     {
         txt_puckBaseSpeed.text = slider_puckBaseSpeed.value.ToString();
         Constants.ObjectiveStats.C_PuckBaseSpeed = (int)f_speed;
     }
 
-    public void SetHitIncreaseSpeed(float f_hit)
+    public void ChangePuckHitIncreaseSpeed(float f_hit)
     {
-        txt_hitIncreaseSpeed.text = slider_hitIncreaseSpeed.value.ToString();
+        txt_puckHitIncreaseSpeed.text = slider_puckHitIncreaseSpeed.value.ToString();
         Constants.ObjectiveStats.C_PuckHitIncreaseSpeed = (int)f_hit;
     }
 
@@ -512,12 +512,12 @@ public class DebugParametersController : MonoBehaviour
         slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_HockeyMaxScore;
 
         //Hockey Puck Speed Decay Rate
-        txt_speedDecayRate.text = Constants.ObjectiveStats.C_PuckSpeedDecayRate.ToString();
-        slider_speedDecayRate.value = Constants.ObjectiveStats.C_PuckSpeedDecayRate;
+        txt_puckSpeedDecayRate.text = Constants.ObjectiveStats.C_PuckSpeedDecayRate.ToString();
+        slider_puckSpeedDecayRate.value = Constants.ObjectiveStats.C_PuckSpeedDecayRate;
 
         //Hockey Puck Decreasse Rate
-        txt_speedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate.ToString();
-        slider_speedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate;
+        txt_puckSpeedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate.ToString();
+        slider_puckSpeedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate;
 
         //Hockey Puck Base Speed
         txt_puckBaseSpeed.text = Constants.ObjectiveStats.C_PuckBaseSpeed.ToString();

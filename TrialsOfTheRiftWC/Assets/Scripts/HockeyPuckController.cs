@@ -69,6 +69,11 @@ public class HockeyPuckController : MonoBehaviour {
             }
         }
 
+        if (other.tag == "Rift") {
+            //ignores any collision detection between the two spells
+            Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponent<Collider>());
+        }
+
         if (other.tag == "ParryShield")
         {
             //if the Puck hasn't been hit by a spell or parry, start the speed cooldown
@@ -85,6 +90,7 @@ public class HockeyPuckController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Enemy") {
             collision.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth);
         }
