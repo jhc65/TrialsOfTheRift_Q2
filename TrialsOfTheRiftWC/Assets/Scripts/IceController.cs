@@ -22,6 +22,49 @@ public class IceController : SpellController {
 	}
 	*/
 
+    protected override void OnCollisionEnter(Collision collision) {
+		//Debug.Log("Impact:" + coll.gameObject.tag);
+		foreach (string tag in s_spellTargetTags) {
+			if (collision.gameObject.tag == tag && collision.gameObject != pc_owner.gameObject) {
+				ApplyEffect(collision.gameObject, collision);
+                
+                //makes the potato stop moving after the spell has applied its affect
+                //it moves the spell like this to hide it from view so it doesn't affect anyone on the field
+                //I really hate this, but its the only good way for now
+                if (collision.gameObject.tag == "Potato")
+                {
+                    coll = collision;
+                    this.transform.localPosition = new Vector3(this.transform.localPosition.x, -1000.0f, this.transform.localPosition.z);
+                    Invoke("TurnKinematicOn", 0.05f);
+                }
+                else if (collision.gameObject.tag != "Wall")
+                {
+                    pc_owner.b_iceboltMode = false;
+                    Destroy(gameObject);
+                }
+
+				return;
+			}
+		}
+
+        if (collision.gameObject.tag == "Spell") {
+            Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
+            if (spellColor != e_color)
+            {
+                pc_owner.b_iceboltMode = false;
+                Destroy(gameObject);
+            }
+            else {
+                //ignores any collision detection between the two spells
+                Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+            }
+        }
+		else if (collision.gameObject.tag != "Portal") { // If we hit something not a player, rift, or portal (walls), just destroy the shot without an effect.
+            pc_owner.b_iceboltMode = false;
+			Destroy(gameObject);
+        }
+	}
+
     protected override void Start() {
         rb_body = GetComponent<Rigidbody>();
         Invoke("InvokeDestroy", Constants.SpellStats.C_IceLiveTime);
@@ -59,8 +102,10 @@ public class IceController : SpellController {
         float f_inputX = p_player.GetAxis("AimHorizontal");
         float f_inputZ = p_player.GetAxis("AimVertical");
         Vector3 v3_dir = new Vector3(f_inputX, 0, f_inputZ).normalized;
-        rb_body.velocity = v3_dir * Constants.SpellStats.C_IceSpeed;
-
+        if (!(v3_dir.Equals(Vector3.zero))) {
+            transform.rotation = Quaternion.LookRotation(v3_dir);
+        }
+        rb_body.velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
     }
 
     protected override void BuffSpell() {

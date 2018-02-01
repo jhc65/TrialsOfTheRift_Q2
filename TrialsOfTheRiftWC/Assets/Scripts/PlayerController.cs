@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour{
 
@@ -20,7 +21,8 @@ public class PlayerController : MonoBehaviour{
 	public GameObject go_windShot;			// wind spell object
 	public GameObject go_iceShot;           // ice spell object
 	public GameObject go_electricShot;      // ice spell object
-    [SerializeField]private PlayerHUDController phc_hud;  //HUD object  
+    [SerializeField]private PlayerHUDController phc_hud;    //HUD object  
+    [SerializeField]private PauseController pauc_pause;     //For Pausing.
 
 	public bool isWisp = false;
 
@@ -30,7 +32,7 @@ public class PlayerController : MonoBehaviour{
 	private float f_nextElectric;           // time next ice spell can be cast
 	private float f_nextMagicMissile;       // time next basic attack can be cast
 
-    private bool b_iceboltMode = false;     // player is controlling an icebolt.
+    public bool b_iceboltMode = false;     // player is controlling an icebolt.
     private GameObject go_icebolt;          // The icebolt the player is controlling.
 
     private float f_mmCharge;               // current charge of magic missile.
@@ -103,8 +105,10 @@ public class PlayerController : MonoBehaviour{
         Drop();
         TurnOff();
         isWisp = true;
-        Debug.Log("Increase Volatility by 2.5%");
-        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
+        if(SceneManager.GetActiveScene().name != "WarmUp") {
+            Debug.Log("Increase Volatility by 2.5%");
+            RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
+        } 
         go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
@@ -224,11 +228,17 @@ public class PlayerController : MonoBehaviour{
         f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
 
 
+        // pause
+        if (p_player.GetButtonDown("Menu") && Time.timeScale == 1) {
+            pauc_pause.Pause(this);
+        }
+
+        // spells
         if (p_player.GetButtonUp("IceSpell")) {
             b_iceboltMode = false;
             Destroy(go_icebolt);
         }
-		// spells
+		
 		if (!go_flagObj && !isWisp) {
             // Magic Missile (Auto-fire)
             if (f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
@@ -243,7 +253,7 @@ public class PlayerController : MonoBehaviour{
 				    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
 				    go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
                     sc_firing.Charge(0);
-                    sc_firing.owner = this;
+                    sc_firing.pc_owner = this;
 
                 }                
 			}
@@ -256,7 +266,7 @@ public class PlayerController : MonoBehaviour{
 				go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
 				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
                 sc_firing.Charge(f_mmCharge);
-                sc_firing.owner = this;
+                sc_firing.pc_owner = this;
                 f_mmCharge = 0;
             }
             // Wind Spell
@@ -276,7 +286,7 @@ public class PlayerController : MonoBehaviour{
                         go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                         go_spell.GetComponent<Rigidbody>().velocity = go_spell.transform.forward * Constants.SpellStats.C_WindSpeed;
                         sc_firing.Charge(f_windCharge);
-                        sc_firing.owner = this;
+                        sc_firing.pc_owner = this;
                     }
                     f_windCharge = 0;
                 } 
@@ -292,7 +302,7 @@ public class PlayerController : MonoBehaviour{
                     go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                     IceController sc_firing = go_spell.GetComponent<IceController>();
                     sc_firing.SetPlayer(this);
-                    sc_firing.owner = this;
+                    sc_firing.pc_owner = this;
                     sc_firing.e_color = e_Color;
                     go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
                     go_icebolt = go_spell;
@@ -314,7 +324,7 @@ public class PlayerController : MonoBehaviour{
 				    go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
                     sc_firing.Charge(f_electricCharge);
                     f_electricCharge = 0;
-                    sc_firing.owner = this;
+                    sc_firing.pc_owner = this;
                 }
                 
 			}

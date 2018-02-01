@@ -349,6 +349,7 @@ public class DebugParametersController : MonoBehaviour
     {
         //Loads the first scene... which should be the first scene in the build.
         //Will reload the same scene otherwise.
+        RiftController.GetInstance().Restart();
         SceneManager.LoadScene("WarmUp");
     }
 

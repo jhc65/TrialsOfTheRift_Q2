@@ -23,6 +23,7 @@ public class HotPotatoObjective : Objective
         GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
         GameController.GetInstance().CompletionProgress(e_color, Constants.ObjectiveStats.C_PotatoCompletionTimer);
         Destroy(go_activePotato);
+        Destroy(go_activeRoom);
     }
 
     //if the completionTimer hits 30 seconds, complete the objective

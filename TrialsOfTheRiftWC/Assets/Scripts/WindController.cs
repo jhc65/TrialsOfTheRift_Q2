@@ -52,7 +52,7 @@ public class WindController : SpellController {
         if (f_charged > 2f) {
             f_charged = 2f;
         }
-        f_windDamage *= ((f_windDamage*1/12) + 1);
+        f_windDamage *= ((f_charged*1/12) + 1);
         transform.localScale *= f_charged;
     }
 }
