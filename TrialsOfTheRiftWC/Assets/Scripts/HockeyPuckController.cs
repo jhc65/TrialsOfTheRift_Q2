@@ -23,7 +23,7 @@ public class HockeyPuckController : MonoBehaviour {
 
     private void Update()
     {
-
+        //Incase the portal glitch pops up again, keep until portal is known issue
         //Vector3 v3_rightPortal = new Vector3(37.25f, 0.5f, -15.25f);
         //Vector3 v3_leftPortal = new Vector3(-37.25f, 0.5f, 15.25f);
 
@@ -70,11 +70,6 @@ public class HockeyPuckController : MonoBehaviour {
             }
         }
 
-        //if (other.tag == "Rift") {
-        //    //ignores any collision detection between the two spells
-        //    Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponent<Collider>());
-        //}
-
         if (other.tag == "ParryShield")
         {
             //if the Puck hasn't been hit by a spell or parry, start the speed cooldown
@@ -108,7 +103,7 @@ public class HockeyPuckController : MonoBehaviour {
         //    //ignores any collision detection between the floor and puck
         //    Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
         //}
-        else if (collision.gameObject.tag != "Portal" || collision.gameObject.tag != "Rift"){// || collision.gameObject.tag != "Spell") {
+        else if (collision.gameObject.tag != "Portal" || collision.gameObject.tag != "Rift"){
             Debug.Log(GetComponent<Rigidbody>().velocity);
             Debug.Log("I am here");
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
