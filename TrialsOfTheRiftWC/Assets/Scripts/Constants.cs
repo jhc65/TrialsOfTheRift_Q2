@@ -42,6 +42,7 @@ public static class Constants {
         public static float C_MagicMissileDamage = 25.0f;
         public static float C_MagicMissileCooldown = 0.34f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
+        public static float C_MagicMissileChargeCooldown = 0.50f;
         public static float C_MagicMissileHeal = 10.0f;
 
         // Wind Stats
@@ -73,7 +74,7 @@ public static class Constants {
 		public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
         public static float C_ElectricRiftDamageMultiplier = C_RiftDamageMultiplier;
-        public static float C_ElectricAOESlowMultiplier = 0.5f;
+        public static float C_ElectricAOESlowDownMultiplier = 0.5f;
         public static float C_ElectricAOELiveTime = 5.0f;
         public static float C_ElectricPlayerDamageMultiplier = 0.5f;
 
@@ -110,6 +111,19 @@ public static class Constants {
         public static Vector3 C_RedCrystalSpawn = C_GenericBlueObjectiveTargetSpawn;
         public static Vector3 C_BlueCrystalSpawn = C_GenericRedObjectiveTargetSpawn;
         public static float C_CrystalMaxHealth = 500.0f;
+
+        //Ice Hockey Stats
+        public static Vector3 C_RedPuckSpawn = new Vector3(-5.0f, 0.5f, 0f);
+        public static Vector3 C_BluePuckSpawn = new Vector3(5.0f, 0.5f, 0f);
+        public static Vector3 C_RedHockeyGoalSpawn = new Vector3(-20.0f, 0.01f, 0.0f);
+        public static Vector3 C_BlueHockeyGoalSpawn = new Vector3(20.0f, 0.01f, 0.0f);
+        public static int C_HockeyMaxScore = 3;
+        public static int C_PuckDamage = 240;
+        public static float C_PuckSpeedDecayDelay = 3.0f;
+        public static float C_PuckSpeedDecayRate = 1.0f;
+        public static float C_PuckSpeedDecreaseRate = 2.0f;
+        public static float C_PuckBaseSpeed = 10.0f;
+        public static float C_PuckHitIncreaseSpeed = 5.0f;
     }
        
     // Enemy Stats

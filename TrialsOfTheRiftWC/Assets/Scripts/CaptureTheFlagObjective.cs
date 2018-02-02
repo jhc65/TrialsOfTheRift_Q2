@@ -28,6 +28,7 @@ public class CaptureTheFlagObjective : Objective
 		GameController.GetInstance().Score(e_color, 0);
 		Destroy(go_currentFlag);
 		Destroy(go_currentGoal);
+        Destroy(go_activeRoom);
 	}
 
 	void Update() {

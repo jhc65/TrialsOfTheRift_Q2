@@ -187,7 +187,7 @@ public class RiftController : MonoBehaviour {
         mainCamera.transform.Rotate(0.0f, 0.0f, 180.0f);
     }*/
 
-    void Restart() {
+    public void Restart() {
         f_volatility = 0.0f;
         V_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
     }
@@ -203,5 +203,12 @@ public class RiftController : MonoBehaviour {
 			other.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth);
 			other.transform.position = other.transform.position + (int)other.GetComponent<PlayerController>().e_Side * new Vector3(-4, 0, 0);
 		}
+
+        if(other.tag == "Puck")
+        {
+            Debug.Log("ouch");
+        }
 	}
+
+    //This is text.
 }
