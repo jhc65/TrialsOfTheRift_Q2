@@ -1,0 +1,683 @@
+fileFormatVersion: 2
+guid: 265c154841d0f3545ad3cb05f91a6239
+timeCreated: 1517333676
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Arm1
+    100002: Arm2
+    100004: Base
+    100006: Base 1
+    100008: Chest_jB
+    100010: //RootNode
+    100012: Finger1
+    100014: Finger1 1
+    100016: Finger2
+    100018: Finger2 1
+    100020: Finger3
+    100022: Finger3 1
+    100024: Finger4
+    100026: Finger4 1
+    100028: Hand1
+    100030: Hand2
+    100032: Head
+    100034: Head_jB
+    100036: Head_jB 1
+    100038: HeadTop_j
+    100040: HeadTop_j 1
+    100042: Index1_jB
+    100044: Index1_jB 1
+    100046: Index2_jB
+    100048: Index2_jB 1
+    100050: Index3_jB
+    100052: Index3_jB 1
+    100054: Index4_j
+    100056: Index4_j 1
+    100058: Jaw
+    100060: L_Ankle_jB
+    100062: L_Ankle_jB 1
+    100064: L_Arm_jB
+    100066: L_Arm_jB 1
+    100068: L_Foot
+    100070: L_Foot_j
+    100072: L_Foot_jB
+    100074: L_Foot_jB 1
+    100076: L_Forearm_jB
+    100078: L_Forearm_jB 1
+    100080: L_Index1_jB
+    100082: L_Index2_jB
+    100084: L_Index3_jB
+    100086: L_Index4_j
+    100088: L_Leg_jB
+    100090: L_Leg_jB 1
+    100092: L_Middle1_jB
+    100094: L_Middle2_jB
+    100096: L_Middle3_jB
+    100098: L_Middle4_j
+    100100: L_Pinky1_jB
+    100102: L_Pinky2_jB
+    100104: L_Pinky3_jB
+    100106: L_Pinky4_j
+    100108: L_Ring1_jB
+    100110: L_Ring2_jB
+    100112: L_Ring3_jB
+    100114: L_Ring4_j
+    100116: L_Shoulder_jB
+    100118: L_Shoulder_jB 1
+    100120: L_Thigh_jB
+    100122: L_Thigh_jB 1
+    100124: L_Thumb1_jB
+    100126: L_Thumb2_jB
+    100128: L_Thumb3_jB
+    100130: L_Thumb4_j
+    100132: L_Toe_j
+    100134: L_Wrist_jB
+    100136: L_Wrist_jB 1
+    100138: Leg1
+    100140: Leg2
+    100142: Middle1_jB
+    100144: Middle1_jB 1
+    100146: Middle2_jB
+    100148: Middle2_jB 1
+    100150: Middle3_jB
+    100152: Middle3_jB 1
+    100154: Middle4_j
+    100156: Middle4_j 1
+    100158: Neck_jB
+    100160: Neck_jB 1
+    100162: pCube1
+    100164: pCube1 1
+    100166: pCube1 2
+    100168: pCube1 3
+    100170: pCube10
+    100172: pCube10 1
+    100174: pCube10 2
+    100176: pCube10 3
+    100178: pCube10 4
+    100180: pCube10 5
+    100182: pCube10 6
+    100184: pCube10 7
+    100186: pCube11
+    100188: pCube11 1
+    100190: pCube11 2
+    100192: pCube11 3
+    100194: pCube11 4
+    100196: pCube11 5
+    100198: pCube11 6
+    100200: pCube11 7
+    100202: pCube12
+    100204: pCube12 1
+    100206: pCube12 2
+    100208: pCube12 3
+    100210: pCube12 4
+    100212: pCube12 5
+    100214: pCube12 6
+    100216: pCube12 7
+    100218: pCube2
+    100220: pCube2 1
+    100222: pCube2 2
+    100224: pCube2 3
+    100226: pCube3
+    100228: pCube3 1
+    100230: pCube3 2
+    100232: pCube3 3
+    100234: pCube7
+    100236: pCube7 1
+    100238: pCube8
+    100240: pCube8 1
+    100242: pCube9
+    100244: pCube9 1
+    100246: Pelvis
+    100248: Pelvis1
+    100250: Pelvis2
+    100252: Pinky1_jB
+    100254: Pinky1_jB 1
+    100256: Pinky2_jB
+    100258: Pinky2_jB 1
+    100260: Pinky3_jB
+    100262: Pinky3_jB 1
+    100264: Pinky4_j
+    100266: Pinky4_j 1
+    100268: R_Ankle_jB
+    100270: R_Ankle_jB 1
+    100272: R_Arm_jB
+    100274: R_Arm_jB 1
+    100276: R_Foot
+    100278: R_Foot_j
+    100280: R_Foot_jB
+    100282: R_Foot_jB 1
+    100284: R_Forearm_jB
+    100286: R_Forearm_jB 1
+    100288: R_Index1_jB
+    100290: R_Index2_jB
+    100292: R_Index3_jB
+    100294: R_Index4_j
+    100296: R_Leg_jB
+    100298: R_Leg_jB 1
+    100300: R_Middle1_jB
+    100302: R_Middle2_jB
+    100304: R_Middle3_jB
+    100306: R_Middle4_j
+    100308: R_Pinky1_jB
+    100310: R_Pinky2_jB
+    100312: R_Pinky3_jB
+    100314: R_Pinky4_j
+    100316: R_Ring1_jB
+    100318: R_Ring2_jB
+    100320: R_Ring3_jB
+    100322: R_Ring4_j
+    100324: R_Shoulder_jB
+    100326: R_Shoulder_jB 1
+    100328: R_Thigh_jB
+    100330: R_Thigh_jB 1
+    100332: R_Thumb1_jB
+    100334: R_Thumb2_jB
+    100336: R_Thumb3_jB
+    100338: R_Thumb4_j
+    100340: R_Toe_j
+    100342: R_Wrist_jB
+    100344: R_Wrist_jB 1
+    100346: RibCage
+    100348: Ring1_jB
+    100350: Ring1_jB 1
+    100352: Ring2_jB
+    100354: Ring2_jB 1
+    100356: Ring3_jB
+    100358: Ring3_jB 1
+    100360: Ring4_j
+    100362: Ring4_j 1
+    100364: Root_jB
+    100366: Root_jB 1
+    100368: Shoulder1
+    100370: Shoulder2
+    100372: Skeleton
+    100374: Skeleton 1
+    100376: Skull
+    100378: Spine
+    100380: Spine1
+    100382: Spine10
+    100384: Spine11
+    100386: Spine12
+    100388: Spine13
+    100390: Spine14
+    100392: Spine15
+    100394: Spine16
+    100396: Spine17
+    100398: Spine18
+    100400: Spine19
+    100402: Spine1_jB
+    100404: Spine2
+    100406: Spine2 1
+    100408: Spine20
+    100410: Spine21
+    100412: Spine2_jB
+    100414: Spine3
+    100416: Spine3_jB
+    100418: Spine4
+    100420: Spine5
+    100422: Spine6
+    100424: Spine7
+    100426: Spine8
+    100428: Spine9
+    100430: Spine_1
+    100432: Thumb
+    100434: Thumb 1
+    100436: Thumb1_jB
+    100438: Thumb1_jB 1
+    100440: Thumb2_jB
+    100442: Thumb2_jB 1
+    100444: Thumb3_jB
+    100446: Thumb3_jB 1
+    100448: Thumb4_j
+    100450: Thumb4_j 1
+    400000: Arm1
+    400002: Arm2
+    400004: Base
+    400006: Base 1
+    400008: Chest_jB
+    400010: //RootNode
+    400012: Finger1
+    400014: Finger1 1
+    400016: Finger2
+    400018: Finger2 1
+    400020: Finger3
+    400022: Finger3 1
+    400024: Finger4
+    400026: Finger4 1
+    400028: Hand1
+    400030: Hand2
+    400032: Head
+    400034: Head_jB
+    400036: Head_jB 1
+    400038: HeadTop_j
+    400040: HeadTop_j 1
+    400042: Index1_jB
+    400044: Index1_jB 1
+    400046: Index2_jB
+    400048: Index2_jB 1
+    400050: Index3_jB
+    400052: Index3_jB 1
+    400054: Index4_j
+    400056: Index4_j 1
+    400058: Jaw
+    400060: L_Ankle_jB
+    400062: L_Ankle_jB 1
+    400064: L_Arm_jB
+    400066: L_Arm_jB 1
+    400068: L_Foot
+    400070: L_Foot_j
+    400072: L_Foot_jB
+    400074: L_Foot_jB 1
+    400076: L_Forearm_jB
+    400078: L_Forearm_jB 1
+    400080: L_Index1_jB
+    400082: L_Index2_jB
+    400084: L_Index3_jB
+    400086: L_Index4_j
+    400088: L_Leg_jB
+    400090: L_Leg_jB 1
+    400092: L_Middle1_jB
+    400094: L_Middle2_jB
+    400096: L_Middle3_jB
+    400098: L_Middle4_j
+    400100: L_Pinky1_jB
+    400102: L_Pinky2_jB
+    400104: L_Pinky3_jB
+    400106: L_Pinky4_j
+    400108: L_Ring1_jB
+    400110: L_Ring2_jB
+    400112: L_Ring3_jB
+    400114: L_Ring4_j
+    400116: L_Shoulder_jB
+    400118: L_Shoulder_jB 1
+    400120: L_Thigh_jB
+    400122: L_Thigh_jB 1
+    400124: L_Thumb1_jB
+    400126: L_Thumb2_jB
+    400128: L_Thumb3_jB
+    400130: L_Thumb4_j
+    400132: L_Toe_j
+    400134: L_Wrist_jB
+    400136: L_Wrist_jB 1
+    400138: Leg1
+    400140: Leg2
+    400142: Middle1_jB
+    400144: Middle1_jB 1
+    400146: Middle2_jB
+    400148: Middle2_jB 1
+    400150: Middle3_jB
+    400152: Middle3_jB 1
+    400154: Middle4_j
+    400156: Middle4_j 1
+    400158: Neck_jB
+    400160: Neck_jB 1
+    400162: pCube1
+    400164: pCube1 1
+    400166: pCube1 2
+    400168: pCube1 3
+    400170: pCube10
+    400172: pCube10 1
+    400174: pCube10 2
+    400176: pCube10 3
+    400178: pCube10 4
+    400180: pCube10 5
+    400182: pCube10 6
+    400184: pCube10 7
+    400186: pCube11
+    400188: pCube11 1
+    400190: pCube11 2
+    400192: pCube11 3
+    400194: pCube11 4
+    400196: pCube11 5
+    400198: pCube11 6
+    400200: pCube11 7
+    400202: pCube12
+    400204: pCube12 1
+    400206: pCube12 2
+    400208: pCube12 3
+    400210: pCube12 4
+    400212: pCube12 5
+    400214: pCube12 6
+    400216: pCube12 7
+    400218: pCube2
+    400220: pCube2 1
+    400222: pCube2 2
+    400224: pCube2 3
+    400226: pCube3
+    400228: pCube3 1
+    400230: pCube3 2
+    400232: pCube3 3
+    400234: pCube7
+    400236: pCube7 1
+    400238: pCube8
+    400240: pCube8 1
+    400242: pCube9
+    400244: pCube9 1
+    400246: Pelvis
+    400248: Pelvis1
+    400250: Pelvis2
+    400252: Pinky1_jB
+    400254: Pinky1_jB 1
+    400256: Pinky2_jB
+    400258: Pinky2_jB 1
+    400260: Pinky3_jB
+    400262: Pinky3_jB 1
+    400264: Pinky4_j
+    400266: Pinky4_j 1
+    400268: R_Ankle_jB
+    400270: R_Ankle_jB 1
+    400272: R_Arm_jB
+    400274: R_Arm_jB 1
+    400276: R_Foot
+    400278: R_Foot_j
+    400280: R_Foot_jB
+    400282: R_Foot_jB 1
+    400284: R_Forearm_jB
+    400286: R_Forearm_jB 1
+    400288: R_Index1_jB
+    400290: R_Index2_jB
+    400292: R_Index3_jB
+    400294: R_Index4_j
+    400296: R_Leg_jB
+    400298: R_Leg_jB 1
+    400300: R_Middle1_jB
+    400302: R_Middle2_jB
+    400304: R_Middle3_jB
+    400306: R_Middle4_j
+    400308: R_Pinky1_jB
+    400310: R_Pinky2_jB
+    400312: R_Pinky3_jB
+    400314: R_Pinky4_j
+    400316: R_Ring1_jB
+    400318: R_Ring2_jB
+    400320: R_Ring3_jB
+    400322: R_Ring4_j
+    400324: R_Shoulder_jB
+    400326: R_Shoulder_jB 1
+    400328: R_Thigh_jB
+    400330: R_Thigh_jB 1
+    400332: R_Thumb1_jB
+    400334: R_Thumb2_jB
+    400336: R_Thumb3_jB
+    400338: R_Thumb4_j
+    400340: R_Toe_j
+    400342: R_Wrist_jB
+    400344: R_Wrist_jB 1
+    400346: RibCage
+    400348: Ring1_jB
+    400350: Ring1_jB 1
+    400352: Ring2_jB
+    400354: Ring2_jB 1
+    400356: Ring3_jB
+    400358: Ring3_jB 1
+    400360: Ring4_j
+    400362: Ring4_j 1
+    400364: Root_jB
+    400366: Root_jB 1
+    400368: Shoulder1
+    400370: Shoulder2
+    400372: Skeleton
+    400374: Skeleton 1
+    400376: Skull
+    400378: Spine
+    400380: Spine1
+    400382: Spine10
+    400384: Spine11
+    400386: Spine12
+    400388: Spine13
+    400390: Spine14
+    400392: Spine15
+    400394: Spine16
+    400396: Spine17
+    400398: Spine18
+    400400: Spine19
+    400402: Spine1_jB
+    400404: Spine2
+    400406: Spine2 1
+    400408: Spine20
+    400410: Spine21
+    400412: Spine2_jB
+    400414: Spine3
+    400416: Spine3_jB
+    400418: Spine4
+    400420: Spine5
+    400422: Spine6
+    400424: Spine7
+    400426: Spine8
+    400428: Spine9
+    400430: Spine_1
+    400432: Thumb
+    400434: Thumb 1
+    400436: Thumb1_jB
+    400438: Thumb1_jB 1
+    400440: Thumb2_jB
+    400442: Thumb2_jB 1
+    400444: Thumb3_jB
+    400446: Thumb3_jB 1
+    400448: Thumb4_j
+    400450: Thumb4_j 1
+    4300000: Spine1
+    4300002: Spine2
+    4300004: Spine3
+    4300006: Spine4
+    4300008: Spine5
+    4300010: Spine6
+    4300012: Spine7
+    4300014: Spine8
+    4300016: Spine9
+    4300018: Spine10
+    4300020: Spine11
+    4300022: Spine12
+    4300024: Spine13
+    4300026: Spine14
+    4300028: Spine15
+    4300030: Spine16
+    4300032: Spine17
+    4300034: Spine18
+    4300036: Spine19
+    4300038: Spine20
+    4300040: Spine21
+    4300042: Jaw
+    4300044: Skull
+    4300046: RibCage
+    4300048: Shoulder1
+    4300050: Shoulder2
+    4300052: pCube1
+    4300054: pCube2
+    4300056: pCube3
+    4300058: pCube1
+    4300060: pCube2
+    4300062: pCube3
+    4300064: pCube1
+    4300066: pCube2
+    4300068: pCube3
+    4300070: pCube1
+    4300072: pCube2
+    4300074: pCube3
+    4300076: L_Foot
+    4300078: R_Foot
+    4300080: Base
+    4300082: pCube10
+    4300084: pCube11
+    4300086: pCube12
+    4300088: pCube9
+    4300090: pCube8
+    4300092: pCube7
+    4300094: pCube10
+    4300096: pCube11
+    4300098: pCube12
+    4300100: pCube10
+    4300102: pCube11
+    4300104: pCube12
+    4300106: pCube10
+    4300108: pCube11
+    4300110: pCube12
+    4300112: Base
+    4300114: pCube10
+    4300116: pCube11
+    4300118: pCube12
+    4300120: pCube9
+    4300122: pCube8
+    4300124: pCube7
+    4300126: pCube10
+    4300128: pCube11
+    4300130: pCube12
+    4300132: pCube10
+    4300134: pCube11
+    4300136: pCube12
+    4300138: pCube10
+    4300140: pCube11
+    4300142: pCube12
+    4300144: Pelvis1
+    4300146: Pelvis2
+    9500000: //RootNode
+    13700000: Base
+    13700002: Base 1
+    13700004: Jaw
+    13700006: L_Foot
+    13700008: pCube1
+    13700010: pCube1 1
+    13700012: pCube1 2
+    13700014: pCube1 3
+    13700016: pCube10
+    13700018: pCube10 1
+    13700020: pCube10 2
+    13700022: pCube10 3
+    13700024: pCube10 4
+    13700026: pCube10 5
+    13700028: pCube10 6
+    13700030: pCube10 7
+    13700032: pCube11
+    13700034: pCube11 1
+    13700036: pCube11 2
+    13700038: pCube11 3
+    13700040: pCube11 4
+    13700042: pCube11 5
+    13700044: pCube11 6
+    13700046: pCube11 7
+    13700048: pCube12
+    13700050: pCube12 1
+    13700052: pCube12 2
+    13700054: pCube12 3
+    13700056: pCube12 4
+    13700058: pCube12 5
+    13700060: pCube12 6
+    13700062: pCube12 7
+    13700064: pCube2
+    13700066: pCube2 1
+    13700068: pCube2 2
+    13700070: pCube2 3
+    13700072: pCube3
+    13700074: pCube3 1
+    13700076: pCube3 2
+    13700078: pCube3 3
+    13700080: pCube7
+    13700082: pCube7 1
+    13700084: pCube8
+    13700086: pCube8 1
+    13700088: pCube9
+    13700090: pCube9 1
+    13700092: Pelvis1
+    13700094: Pelvis2
+    13700096: R_Foot
+    13700098: RibCage
+    13700100: Shoulder1
+    13700102: Shoulder2
+    13700104: Skull
+    13700106: Spine1
+    13700108: Spine10
+    13700110: Spine11
+    13700112: Spine12
+    13700114: Spine13
+    13700116: Spine14
+    13700118: Spine15
+    13700120: Spine16
+    13700122: Spine17
+    13700124: Spine18
+    13700126: Spine19
+    13700128: Spine2 1
+    13700130: Spine20
+    13700132: Spine21
+    13700134: Spine3
+    13700136: Spine4
+    13700138: Spine5
+    13700140: Spine6
+    13700142: Spine7
+    13700144: Spine8
+    13700146: Spine9
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

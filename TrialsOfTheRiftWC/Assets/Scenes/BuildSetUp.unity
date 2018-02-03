@@ -5698,7 +5698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &433792273
 Transform:
   m_ObjectHideFlags: 0
@@ -15784,6 +15784,48 @@ CanvasRenderer:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 90df020001225e04ea9104a9f083ab01, type: 3}
   m_PrefabInternal: {fileID: 532013508}
+--- !u!1001 &1159323480
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913087165992628, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cea37561eb620cc45bbcf0e7bb9da95c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1171055054
 GameObject:
   m_ObjectHideFlags: 0
@@ -21509,8 +21551,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.7295091, g: 0.9632353, b: 0.95356387, a: 1}
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -22005,7 +22047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1671416885
 MeshRenderer:
   m_ObjectHideFlags: 0
