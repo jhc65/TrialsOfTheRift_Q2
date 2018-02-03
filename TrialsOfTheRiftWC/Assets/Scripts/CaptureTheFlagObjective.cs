@@ -10,17 +10,17 @@ using UnityEngine;
 
 public class CaptureTheFlagObjective : Objective {
 
-    public FlagController fc_activeFlag; // TODO: remove?
+    public FlagController fc_activeFlag; // TODO: see note on ParamReset
 	private int i_score = 0;     // current progress towards i_maxScore
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    override public void SetUI() {
+    override protected void SetUI() {
         // @Sam - Turn on CTF UI
         GameController.GetInstance().Score(e_color, 0);
     }
 
-    override public void ResetUI() {
+    override protected void ResetUI() {
         // @Sam - Turn on CTF UI
     }
 

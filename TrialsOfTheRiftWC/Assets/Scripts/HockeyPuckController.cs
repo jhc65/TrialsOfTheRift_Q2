@@ -11,8 +11,10 @@ using UnityEngine;
 public class HockeyPuckController : MonoBehaviour {
 
     public IceHockeyObjective iho_owner;    // identifies objective puck is a part of
-    public Constants.Global.Color e_color;  // identifies owning team
-    public Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
+    [SerializeField]
+    private Constants.Global.Color e_color;  // identifies owning team
+    [SerializeField]
+    private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
     private float f_speed;
     private Rigidbody rb;
 
@@ -72,8 +74,7 @@ public class HockeyPuckController : MonoBehaviour {
         //}
 
         // Set speed to base if it gets too low
-        if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed)
-        {
+        if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed) {
             CancelInvoke("DecreaseSpeed");
             f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
         }
@@ -120,8 +121,8 @@ public class HockeyPuckController : MonoBehaviour {
 
             // Deflect and move in direction player is facing
             f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
-            Vector3 facingDirection = other.gameObject.transform.parent.gameObject.transform.forward.normalized;
-            transform.rotation = Quaternion.LookRotation(other.gameObject.transform.parent.gameObject.transform.forward);
+            Vector3 facingDirection = other.gameObject.transform.root.forward.normalized;
+            transform.rotation = Quaternion.LookRotation(other.gameObject.transform.root.forward);
             rb.velocity = facingDirection * f_speed;
         }
     }

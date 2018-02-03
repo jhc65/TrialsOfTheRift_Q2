@@ -12,14 +12,12 @@ public class FlagController : MonoBehaviour {
 
     public CaptureTheFlagObjective ctfo_owner;  // identifies objective flag is a part of
 	public Constants.Global.Color e_color; // identifies owning team - MUST BE SET IN INSPECTOR!
-    private bool b_pickedUp = false; // identifies whether flag is currently being carried
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
     public void DropFlag() {
         transform.SetParent(ctfo_owner.gameObject.transform);
         transform.localPosition = new Vector3(transform.localPosition.x, 0.5f, transform.localPosition.z);
-        b_pickedUp = false;
     }
 
     public void ResetFlagPosition() {
@@ -34,9 +32,9 @@ public class FlagController : MonoBehaviour {
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 	void OnTriggerEnter(Collider other) {
-		if (other.CompareTag("InteractCollider") && !b_pickedUp) {   // player trying to pick up flag
+        // Player trying to pick up flag (and flag not already picked up)
+        if (other.CompareTag("InteractCollider") && transform.root.gameObject.CompareTag("Player")) {
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
-            b_pickedUp = true;
 			other.gameObject.SetActive(false);
 		}
 		if (other.CompareTag("Goal")) {   // player scoring with flag
@@ -44,7 +42,6 @@ public class FlagController : MonoBehaviour {
                 ctfo_owner.UpdateFlagScore();         // increase score and update UI      
 				transform.root.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
                 ResetFlagPosition();   // reset flag to original spawn position
-
             }
 		}
 	}

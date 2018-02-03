@@ -115,8 +115,8 @@ public static class Constants {
         //Ice Hockey Stats
         public static Vector3 C_RedPuckSpawn = new Vector3(-5.0f, 0.5f, 0f);
         public static Vector3 C_BluePuckSpawn = new Vector3(5.0f, 0.5f, 0f);
-        public static Vector3 C_RedHockeyGoalSpawn = new Vector3(-20.0f, 0.01f, 0.0f);
-        public static Vector3 C_BlueHockeyGoalSpawn = new Vector3(20.0f, 0.01f, 0.0f);
+        //public static Vector3 C_RedHockeyGoalSpawn = new Vector3(-20.0f, 0.01f, 0.0f);
+        //public static Vector3 C_BlueHockeyGoalSpawn = new Vector3(20.0f, 0.01f, 0.0f);
         public static int C_HockeyMaxScore = 3;
         public static int C_PuckDamage = 240;
         public static float C_PuckSpeedDecayDelay = 3.0f;       // time after hit to wait before decreasing speed

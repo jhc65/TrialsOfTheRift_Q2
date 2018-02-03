@@ -14,13 +14,13 @@ public class HotPotatoObjective : Objective {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    override public void SetUI() {
+    override protected void SetUI() {
         // @Sam - Turn on Potato UI and verify these
         GameController.GetInstance().CompletionProgress(e_color, Constants.ObjectiveStats.C_PotatoCompletionTimer);
         GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 
-    override public void ResetUI() {
+    override protected void ResetUI() {
         // @Sam - Turn off Potato UI
     }
 

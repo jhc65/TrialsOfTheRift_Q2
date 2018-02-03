@@ -11,7 +11,8 @@ using UnityEngine;
 public class CrystalController : MonoBehaviour {
 
     public CrystalDestructionObjective cdo_owner;  // identifies objective crystal is a part of
-    public Constants.Global.Color e_color;     // identifies owning team
+    [SerializeField]
+    private Constants.Global.Color e_color;     // identifies owning team
     private float f_health;    // indicates how much health the crystal has
 
     // Getters

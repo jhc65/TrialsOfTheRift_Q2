@@ -14,12 +14,12 @@ public class CrystalDestructionObjective : Objective {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    override public void SetUI() {
+    override protected void SetUI() {
         // @Sam - Turn on CD UI
         GameController.GetInstance().CrystalHealth(cc_activeCrystal.Color, Constants.ObjectiveStats.C_CrystalMaxHealth);
     }
 
-    override public void ResetUI() {
+    override protected void ResetUI() {
         // @Sam - Turn off CD UI
     }
 

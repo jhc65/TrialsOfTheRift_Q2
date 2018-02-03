@@ -15,13 +15,13 @@ public class IceHockeyObjective : Objective {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    override public void SetUI()
+    override protected void SetUI()
     {
         // @Sam - Turn on Hockey UI
         GameController.GetInstance().Score(e_color, 0);
     }
 
-    override public void ResetUI()
+    override protected void ResetUI()
     {
         // @Sam - Turn off Hockey UI
     }
