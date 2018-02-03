@@ -5,7 +5,7 @@ using UnityEngine;
 public class ElectricAOEController : MonoBehaviour {
 
 	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
-	public Constants.Color e_color;
+	public Constants.Global.Color e_color;
 	public float f_electricDamage;	// TODO: set this immediately after instantiation
 
 	void Start () {
@@ -39,7 +39,7 @@ public class ElectricAOEController : MonoBehaviour {
 	private void ApplyEffect(GameObject go_target) {
 		if (go_target.tag == "Player") {
 			go_target.GetComponent<PlayerController>().Drop();
-			go_target.GetComponent<PlayerController>().f_canMove = .5f;
+			go_target.GetComponent<PlayerController>().f_canMove = .5f; //TODO: Constants
             go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
 		}
 		else if (go_target.tag == "Enemy") {
@@ -68,7 +68,7 @@ public class ElectricAOEController : MonoBehaviour {
 	// applies AOE damage/heal to crystal every .5s until dissipation
 	IEnumerator ApplyCrystalDamage(GameObject go_target) {
 		if (go_target) {
-			Constants.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
+			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
 			if (crystalColor != e_color) {
 				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_SpellCrystalDamagePercent / 5);
 			}

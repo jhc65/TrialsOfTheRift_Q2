@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FlagController : MonoBehaviour {
 
-	public Constants.Color e_color; // identifies owning team
+	public Constants.Global.Color e_color; // identifies owning team
 	public bool b_scored = false;	// identifies when the flag has been used to score
 	private Vector3 v3_home;        // location of flag in players' base
 
@@ -25,6 +25,21 @@ public class FlagController : MonoBehaviour {
 			}
 		}
 	}
+
+    // TODO: Reinvestigate with Assets.
+    //if the flag happens to drop in the zone but not capture as part of a bug
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag == "Goal")
+    //    {   // player scoring with flag
+    //        if (other.GetComponent<GoalController>().GetColor() != e_color)
+    //        {
+    //            b_scored = true;
+    //            transform.root.GetComponent<PlayerController>().Drop();
+    //            transform.position = v3_home;
+    //        }
+    //    }
+    //}
 
     public void ResetHome() {
         transform.position = v3_home;

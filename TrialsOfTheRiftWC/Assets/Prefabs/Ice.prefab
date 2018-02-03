@@ -9,21 +9,36 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1901559696048798}
+  m_RootGameObject: {fileID: 1457177119730324}
   m_IsPrefabParent: 1
---- !u!1 &1901559696048798
+--- !u!1 &1341939064080336
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4218012986509246}
-  - component: {fileID: 33688660198867062}
-  - component: {fileID: 135242596530449918}
-  - component: {fileID: 23317581289440282}
-  - component: {fileID: 54238661380463760}
-  - component: {fileID: 114555136771973944}
+  - component: {fileID: 4878751277702028}
+  m_Layer: 0
+  m_Name: Wallspawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1457177119730324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4654309494978228}
+  - component: {fileID: 33399697984401418}
+  - component: {fileID: 135118154473236386}
+  - component: {fileID: 23028332141352864}
+  - component: {fileID: 54791575308855370}
+  - component: {fileID: 114287368740584924}
   m_Layer: 9
   m_Name: Ice
   m_TagString: Spell
@@ -31,25 +46,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4218012986509246
+--- !u!4 &4654309494978228
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901559696048798}
+  m_GameObject: {fileID: 1457177119730324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.86, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
-  m_Children: []
+  m_Children:
+  - {fileID: 4878751277702028}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23317581289440282
+--- !u!4 &4878751277702028
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1341939064080336}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4654309494978228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23028332141352864
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901559696048798}
+  m_GameObject: {fileID: 1457177119730324}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -76,19 +105,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33688660198867062
+--- !u!33 &33399697984401418
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901559696048798}
+  m_GameObject: {fileID: 1457177119730324}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54238661380463760
+--- !u!54 &54791575308855370
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901559696048798}
+  m_GameObject: {fileID: 1457177119730324}
   serializedVersion: 2
   m_Mass: 0.0001
   m_Drag: 0
@@ -98,12 +127,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &114555136771973944
+--- !u!114 &114287368740584924
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901559696048798}
+  m_GameObject: {fileID: 1457177119730324}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a712e09782ed9b5428eafe1185108178, type: 3}
@@ -111,17 +140,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   e_color: 0
   f_damage: 20
-  f_liveTime: 0
+  f_charged: 1
+  owner: {fileID: 0}
   s_spellTargetTags:
   - Player
   - Enemy
   - Crystal
---- !u!135 &135242596530449918
+  go_iceWall: {fileID: 1869867071989792, guid: d798902f07a43ae4bbbd91e0ff48cfda, type: 2}
+  go_WallSpawn: {fileID: 1341939064080336}
+--- !u!135 &135118154473236386
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1901559696048798}
+  m_GameObject: {fileID: 1457177119730324}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

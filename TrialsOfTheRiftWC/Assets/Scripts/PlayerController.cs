@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour{
 
     public GameObject go_playerCapsule;      // player main body
 	public GameObject go_playerWisp;         // player wisp body
 	public int i_playerNumber;				// designates player's number for controller mappings
-	public Constants.Color e_Color;			// identifies player's team
-	public Constants.Side e_Side;			// identifies which side of the rift player is on
+	public Constants.Global.Color e_Color;			// identifies player's team
+	public Constants.Global.Side e_Side;			// identifies which side of the rift player is on
 	public Transform t_flagPos;				// location on character model of flag
 	public GameObject go_flagObj;			// flag game object; if not null, player is carrying flag
 	public GameObject go_interactCollider;  // activated with button-press to pickup flag
-	public Transform t_spellSpawn;			// location spells are instantiated
+    public GameObject go_parryShield;       // activated with right stick button press
+    public Transform t_spellSpawn;			// location spells are instantiated
 	public float f_canMove;					// identifies if the player is frozen
 	public GameObject go_magicMissileShot;  // wind spell object
 	public GameObject go_windShot;			// wind spell object
 	public GameObject go_iceShot;           // ice spell object
 	public GameObject go_electricShot;      // ice spell object
+    [SerializeField]private PlayerHUDController phc_hud;    //HUD object  
+    [SerializeField]private PauseController pauc_pause;     //For Pausing.
 
 	public bool isWisp = false;
 
@@ -27,9 +31,20 @@ public class PlayerController : MonoBehaviour{
 	private float f_nextIce;                // time next ice spell can be cast
 	private float f_nextElectric;           // time next ice spell can be cast
 	private float f_nextMagicMissile;       // time next basic attack can be cast
+
+    public bool b_iceboltMode = false;     // player is controlling an icebolt.
+    private GameObject go_icebolt;          // The icebolt the player is controlling.
+
+    private float f_mmCharge;               // current charge of magic missile.
+    private float f_nextMmCharge;           // time till next charge shot can be fired.
+    private float f_iceCharge;              // current charge of ice spell.
+    private float f_windCharge;             // current charge of wind spell.
+    private float f_electricCharge;         // current charge of electric charge.
+
     private float f_nextCast;               // time next spell in general can be cast. (not including MagicMissile)
 	private float f_playerHealth;           // player's current health value
     public float f_projectileSize;          // size of player projectiles.
+    private Color col_originalColor;        // Color of capsule.
 
 
 	private void Move() {
@@ -81,7 +96,7 @@ public class PlayerController : MonoBehaviour{
 		}
 	}
 
-	public Constants.Color GetColor() {
+	public Constants.Global.Color GetColor() {
 		return e_Color;
 	}
 
@@ -90,12 +105,15 @@ public class PlayerController : MonoBehaviour{
         Drop();
         TurnOff();
         isWisp = true;
-        Debug.Log("Increase Volatility by 2.5%");
-        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncraese_PlayerDeath);
+        if(SceneManager.GetActiveScene().name != "WarmUp") {
+            Debug.Log("Increase Volatility by 2.5%");
+            RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
+        } 
         go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
         f_nextIce = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
     }
 
@@ -111,25 +129,45 @@ public class PlayerController : MonoBehaviour{
 	public void TakeDamage(float damage) {
 		if (!isWisp) {
 			f_playerHealth -= damage;
+            //Damage flicker goes here.
+            DamageVisualOn();
+            phc_hud.ShakeUI();
 			if (f_playerHealth <= 0.0f) {
                 PlayerDeath();
 			}
 		}
 	}
 
+    public void DamageVisualOn() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
+        //Call screenshake here.
+        Invoke("DamageVisualOff", 0.1666f * 2);
+    }
+
+    public void DamageVisualOff() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+    }
+
+    public void HealVisualOn() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
+        //Call screenshake here.
+        Invoke("HealVisualOff", 0.1666f * 2);
+    }
+
+    public void HealVisualOff() {
+        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+    }
+
     public void Heal(float heal) {
-        if (!isWisp)
-        {
+        if (!isWisp) {
             print("heal" + heal);
             int tempHp = (int)(f_playerHealth + heal);
-            if (tempHp >= Constants.PlayerStats.C_MaxHealth)
-            {
+            if (tempHp >= Constants.PlayerStats.C_MaxHealth) {
                 f_playerHealth = Constants.PlayerStats.C_MaxHealth;
-            }
-            else
-            {
+            } else {
                 f_playerHealth = tempHp;
             }
+            HealVisualOn();
         }
     }
 
@@ -160,6 +198,7 @@ public class PlayerController : MonoBehaviour{
 
     void Start() {
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
+        col_originalColor = go_playerCapsule.GetComponent<MeshRenderer>().material.color;
 		f_canMove = 1;
 
 		f_nextMagicMissile = 0;
@@ -167,64 +206,143 @@ public class PlayerController : MonoBehaviour{
 		f_nextIce = 0;
 		f_nextElectric = 0;
 		f_nextCast = 0;
+        b_iceboltMode = false;
 
 		if (transform.position.x > 0)
-			e_Side = Constants.Side.RIGHT;
+			e_Side = Constants.Global.Side.RIGHT;
 		else
-			e_Side = Constants.Side.LEFT;
+			e_Side = Constants.Global.Side.LEFT;
 	}
 
 	void FixedUpdate() {
-		Move();
+        if (!b_iceboltMode) {
+            Move();
+            f_nextIce += Time.deltaTime;
+        }
+
 		f_nextMagicMissile += Time.deltaTime;
 		f_nextWind += Time.deltaTime;
-        f_nextIce += Time.deltaTime;
 		f_nextElectric += Time.deltaTime;
 		f_nextCast += Time.deltaTime;
+        f_nextMmCharge += Time.deltaTime;
         f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
 
-		// spells
+
+        // pause
+        if (p_player.GetButtonDown("Menu") && Time.timeScale == 1) {
+            pauc_pause.Pause(this);
+        }
+
+        // spells
+        if (p_player.GetButtonUp("IceSpell")) {
+            b_iceboltMode = false;
+            Destroy(go_icebolt);
+        }
+		
 		if (!go_flagObj && !isWisp) {
-            // Magic Missile
-            if (p_player.GetButtonDown("MagicMissile") && f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
-                f_nextMagicMissile = 0;
+            // Magic Missile (Auto-fire)
+            if (f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
+                if (p_player.GetButtonTimePressed("MagicMissile") != 0) {
+                    f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
+                }
+                if (p_player.GetButton("MagicMissile")) {
+                    f_nextMagicMissile = 0;
+				    GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
+				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
+                    sc_firing.e_color = e_Color;
+				    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+				    go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
+                    sc_firing.Charge(0);
+                    sc_firing.pc_owner = this;
+
+                }                
+			}
+            // Charged Magic Missile (Release)
+            if (p_player.GetButtonUp("MagicMissile") && f_nextMmCharge > Constants.SpellStats.C_MagicMissileChargeCooldown) {
+                f_nextMmCharge = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
-				go_spell.GetComponent<SpellController>().e_color = e_Color;
+				SpellController sc_firing = go_spell.GetComponent<SpellController>();
+                sc_firing.e_color = e_Color;
 				go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
 				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
-			}
+                sc_firing.Charge(f_mmCharge);
+                sc_firing.pc_owner = this;
+                f_mmCharge = 0;
+            }
             // Wind Spell
-            if (p_player.GetButtonDown("WindSpell") && f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
-                f_nextWind = 0;
-				f_nextCast = 0;
-				GameObject go_spell = Instantiate(go_windShot, t_spellSpawn.position, t_spellSpawn.rotation);
-				go_spell.GetComponent<SpellController>().e_color = e_Color;
-				go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-				Debug.Log(transform.forward.normalized);
-				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_WindSpeed;
+            if (f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+                if (p_player.GetButtonTimePressed("WindSpell") != 0) {
+                    f_windCharge += p_player.GetButtonTimePressed("WindSpell");
+                }
+                if (p_player.GetButtonUp("WindSpell")) {
+                    f_nextWind = 0;
+				    f_nextCast = 0;
+                    for (int i = -30; i <= 30; i += 30) {
+                        GameObject go_spell = Instantiate(go_windShot, t_spellSpawn.position, t_spellSpawn.rotation);
+                        SpellController sc_firing = go_spell.GetComponent<SpellController>();
+                        sc_firing.e_color = e_Color;
+                        go_spell.transform.eulerAngles = go_spell.transform.eulerAngles + new Vector3(0,i,0);
+                        Debug.Log(go_spell.transform.forward);
+                        go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+                        go_spell.GetComponent<Rigidbody>().velocity = go_spell.transform.forward * Constants.SpellStats.C_WindSpeed;
+                        sc_firing.Charge(f_windCharge);
+                        sc_firing.pc_owner = this;
+                    }
+                    f_windCharge = 0;
+                } 
+                
 			}
             // Ice Spell
-            if (p_player.GetButtonDown("IceSpell") && f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
-				f_nextIce = 0;
-				f_nextCast = 0;
-				GameObject go_spell = Instantiate(go_iceShot, t_spellSpawn.position, t_spellSpawn.rotation);
-				go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-				go_spell.GetComponent<SpellController>().e_color = e_Color;
-				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
+            if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+                if (p_player.GetButtonDown("IceSpell")) {
+                    b_iceboltMode = true;
+                    f_nextIce = 0;
+                    f_nextCast = 0;
+                    GameObject go_spell = Instantiate(go_iceShot, t_spellSpawn.position, t_spellSpawn.rotation);
+                    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+                    IceController sc_firing = go_spell.GetComponent<IceController>();
+                    sc_firing.SetPlayer(this);
+                    sc_firing.pc_owner = this;
+                    sc_firing.e_color = e_Color;
+                    go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_IceSpeed;
+                    go_icebolt = go_spell;
+                }
+				
 			}
             // Electric Spell
-            if (p_player.GetButtonDown("ElectricitySpell") && f_nextElectric > Constants.SpellStats.C_ElectricCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
-				f_nextElectric = 0;
-				f_nextCast = 0;
-				GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
-				go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-				go_spell.GetComponent<SpellController>().e_color = e_Color;
-				go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
+            if (f_nextElectric > Constants.SpellStats.C_ElectricCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+                if (p_player.GetButtonTimePressed("ElectricitySpell") != 0) {
+                    f_electricCharge += p_player.GetButtonTimePressed("ElectricitySpell");
+                }
+                if (p_player.GetButtonUp("ElectricitySpell")) {
+                    f_nextElectric = 0;
+				    f_nextCast = 0;
+				    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
+				    go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
+                    sc_firing.e_color = e_Color;
+				    go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_ElectricSpeed;
+                    sc_firing.Charge(f_electricCharge);
+                    f_electricCharge = 0;
+                    sc_firing.pc_owner = this;
+                }
+                
 			}
-		}
+            //Parry
+            if (p_player.GetButtonDown("Parry"))
+            {
+                go_parryShield.SetActive(true);
+                Invoke("TurnOffParryShield", 0.25f);
+            }
+        }
 	}
 
-	void Update() {
+    private void TurnOffParryShield()
+    {
+        go_parryShield.SetActive(false);
+    }
+
+    void Update() {
         if (p_player.GetButtonDown("Interact") && !isWisp){
             if (go_flagObj) {
 				Drop();
@@ -239,9 +357,9 @@ public class PlayerController : MonoBehaviour{
         }
 
         if (transform.position.x > 0)
-			e_Side = Constants.Side.RIGHT;
+			e_Side = Constants.Global.Side.RIGHT;
 		else
-			e_Side = Constants.Side.LEFT;
+			e_Side = Constants.Global.Side.LEFT;
 	}
 
     private void TurnOff()

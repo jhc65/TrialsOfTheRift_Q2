@@ -10,11 +10,11 @@ public class ElectricController : SpellController {
 	protected override void BuffSpell() {
         // Increase Volatility by 0.5%
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
-		f_electricDamage = f_electricDamage * Constants.SpellStats.C_ElectricDamageMultiplier;
+		f_electricDamage = f_electricDamage * Constants.SpellStats.C_ElectricRiftDamageMultiplier;
 		transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
 	}
 
-	protected override void ApplyEffect(GameObject go_target) {
+	protected override void ApplyEffect(GameObject go_target, Collision collision) {
 		GameObject go_newAOE = Instantiate(go_aoe, new Vector3(transform.position.x, 0.1f, transform.position.z), Quaternion.identity);
 		go_newAOE.GetComponent<ElectricAOEController>().e_color = e_color;
 		go_newAOE.GetComponent<ElectricAOEController>().f_electricDamage = f_electricDamage;
@@ -27,7 +27,7 @@ public class ElectricController : SpellController {
 
 	protected override void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "Spell") {
-			Constants.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
+			Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
 			if (spellColor != e_color) {
 				Destroy(gameObject);
 			}
@@ -37,7 +37,20 @@ public class ElectricController : SpellController {
 			}
 		}
 		else if (collision.gameObject.tag != "Portal") {
-			ApplyEffect(collision.gameObject);
+			ApplyEffect(collision.gameObject, collision);
 		}
 	}
+
+    public override void Charge(float f_chargeTime) {
+        CancelInvoke();
+        f_charged = ((1f/12f) * f_chargeTime) + 0.05f;
+        if (f_charged > 1f) {
+            f_charged = 1f;
+        }
+        Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime * f_charged);
+    }
+
+    void InvokeDestroy() {
+        ApplyEffect(new GameObject("null"), new Collision());
+    }
 }

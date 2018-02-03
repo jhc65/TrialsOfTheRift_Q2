@@ -22,4 +22,11 @@ public class WarmUpPortalController : MonoBehaviour {
 		}
 	}
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("space")) {
+            SceneManager.LoadScene("BuildSetUp");
+        }
+    }
+
 }
