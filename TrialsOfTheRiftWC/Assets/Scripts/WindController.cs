@@ -12,7 +12,7 @@ public class WindController : SpellController {
         {
             Vector3 v3_direction = transform.forward.normalized;
             go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
-            go_target.GetComponent<PlayerController>().Drop();
+            go_target.GetComponent<PlayerController>().DropFlag();
             go_target.GetComponent<PlayerController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
         }
         else if (go_target.tag == "Enemy")
@@ -23,14 +23,14 @@ public class WindController : SpellController {
         }
         else if (go_target.tag == "Crystal")
         {
-            Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
+            Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
             if (crystalColor != e_color)
             {
-                go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_SpellCrystalDamagePercent);
+                go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalDamagePercent);
             }
             else if (crystalColor == e_color)
             {
-                go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_SpellCrystalHealPercent);
+                go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalHealPercent);
             }
         }
         else if (go_target.tag == "Potato") {

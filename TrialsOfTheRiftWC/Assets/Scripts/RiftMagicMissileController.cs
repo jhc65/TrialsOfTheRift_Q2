@@ -23,7 +23,7 @@ public class RiftMagicMissileController : SpellController
 
     protected override void ApplyEffect(GameObject go_target, Collision collision)
     {
-        go_target.GetComponent<PlayerController>().Drop();
+        go_target.GetComponent<PlayerController>().DropFlag();
         go_target.GetComponent<PlayerController>().TakeDamage(Constants.RiftStats.C_VolatilityMeteorDamage);
     }
 

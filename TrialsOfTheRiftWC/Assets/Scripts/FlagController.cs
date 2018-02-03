@@ -1,28 +1,51 @@
-﻿using System.Collections;
+﻿/*  Flag Controller - Zak Olyarnik
+ * 
+ *  Desc:   Facilitates picking up and scoring with Capture the Flag Objective's Flag object
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FlagController : MonoBehaviour {
 
-	public Constants.Global.Color e_color; // identifies owning team
-	public bool b_scored = false;	// identifies when the flag has been used to score
-	private Vector3 v3_home;        // location of flag in players' base
+    public CaptureTheFlagObjective ctfo_owner;  // identifies objective flag is a part of
+	public Constants.Global.Color e_color; // identifies owning team - MUST BE SET IN INSPECTOR!
+    private bool b_pickedUp = false; // identifies whether flag is currently being carried
 
-	void Start() {
-		v3_home = transform.position;
-	}
+    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    public void DropFlag() {
+        transform.SetParent(ctfo_owner.gameObject.transform);
+        transform.localPosition = new Vector3(transform.localPosition.x, 0.5f, transform.localPosition.z);
+        b_pickedUp = false;
+    }
+
+    public void ResetFlagPosition() {
+        if(e_color == Constants.Global.Color.RED) {
+            transform.position = Constants.ObjectiveStats.C_RedFlagSpawn;
+        }
+        else {
+            transform.position = Constants.ObjectiveStats.C_BlueFlagSpawn;
+        }
+    }
+
+    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 	void OnTriggerEnter(Collider other) {
-		if (other.tag == "InteractCollider" && transform.parent == null) {   // player trying to pick up flag
+		if (other.CompareTag("InteractCollider") && !b_pickedUp) {   // player trying to pick up flag
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
+            b_pickedUp = true;
 			other.gameObject.SetActive(false);
 		}
-		if (other.tag == "Goal") {   // player scoring with flag
-			if (other.GetComponent<GoalController>().GetColor() != e_color) {
-				b_scored = true;
-				transform.root.GetComponent<PlayerController>().Drop();
-				transform.position = v3_home;
-			}
+		if (other.CompareTag("Goal")) {   // player scoring with flag
+			if (other.GetComponent<GoalController>().Color != e_color) {   // check for correct color of flag/goal
+                ctfo_owner.UpdateFlagScore();         // increase score and update UI      
+				transform.root.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
+                ResetFlagPosition();   // reset flag to original spawn position
+
+            }
 		}
 	}
 
@@ -32,7 +55,7 @@ public class FlagController : MonoBehaviour {
     //{
     //    if (other.tag == "Goal")
     //    {   // player scoring with flag
-    //        if (other.GetComponent<GoalController>().GetColor() != e_color)
+    //        if (other.GetComponent<GoalController>().Color != e_color)
     //        {
     //            b_scored = true;
     //            transform.root.GetComponent<PlayerController>().Drop();
@@ -40,8 +63,4 @@ public class FlagController : MonoBehaviour {
     //        }
     //    }
     //}
-
-    public void ResetHome() {
-        transform.position = v3_home;
-    }
 }

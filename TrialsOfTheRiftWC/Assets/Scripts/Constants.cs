@@ -89,10 +89,10 @@ public static class Constants {
     // Objective Stats
     public static class ObjectiveStats {
         // Generic Objective Spawning Stats
-        public static Vector3 C_GenericRedObjectiveTargetSpawn = new Vector3(20.0f, 0.5f, 0f);
-        public static Vector3 C_GenericBlueObjectiveTargetSpawn = new Vector3(-20.0f, 0.5f, 0f);
-        public static Vector3 C_GenericRedObjectiveGoalSpawn = new Vector3(-3.0f, .01f, 0f);
-        public static Vector3 C_GenericBlueObjectiveGoalSpawn = new Vector3(3.0f, .01f, 0f);
+        //public static Vector3 C_GenericRedObjectiveTargetSpawn = new Vector3(20.0f, 0.5f, 0f);
+        //public static Vector3 C_GenericBlueObjectiveTargetSpawn = new Vector3(-20.0f, 0.5f, 0f);
+        //public static Vector3 C_GenericRedObjectiveGoalSpawn = new Vector3(-4.5f, .01f, 0f);
+        //public static Vector3 C_GenericBlueObjectiveGoalSpawn = new Vector3(4.5f, .01f, 0f);
 
         // Potato Stats
         public static Vector3 C_RedPotatoSpawn = new Vector3(-5.0f, 0.5f, 0f);
@@ -101,15 +101,15 @@ public static class Constants {
         public static int C_PotatoSelfDestructTimer = 10;
 
         // CTF Stats
-        public static Vector3 C_RedFlagSpawn = C_GenericBlueObjectiveTargetSpawn;
-        public static Vector3 C_BlueFlagSpawn = C_GenericRedObjectiveTargetSpawn;
-        public static Vector3 C_RedCTFGoalSpawn = C_GenericRedObjectiveGoalSpawn;
-        public static Vector3 C_BlueCTFGoalSpawn = C_GenericBlueObjectiveGoalSpawn;
+        public static Vector3 C_RedFlagSpawn = new Vector3(-20.0f, 0.5f, 0f);
+        public static Vector3 C_BlueFlagSpawn = new Vector3(20.0f, 0.5f, 0f);
+        //public static Vector3 C_RedCTFGoalSpawn = C_GenericRedObjectiveGoalSpawn;
+        //public static Vector3 C_BlueCTFGoalSpawn = C_GenericBlueObjectiveGoalSpawn;
         public static int C_CTFMaxScore = 3;
 
         // Crystal Stats
-        public static Vector3 C_RedCrystalSpawn = C_GenericBlueObjectiveTargetSpawn;
-        public static Vector3 C_BlueCrystalSpawn = C_GenericRedObjectiveTargetSpawn;
+        //public static Vector3 C_RedCrystalSpawn = C_GenericBlueObjectiveTargetSpawn;
+        //public static Vector3 C_BlueCrystalSpawn = C_GenericRedObjectiveTargetSpawn;
         public static float C_CrystalMaxHealth = 500.0f;
 
         //Ice Hockey Stats
@@ -119,11 +119,12 @@ public static class Constants {
         public static Vector3 C_BlueHockeyGoalSpawn = new Vector3(20.0f, 0.01f, 0.0f);
         public static int C_HockeyMaxScore = 3;
         public static int C_PuckDamage = 240;
-        public static float C_PuckSpeedDecayDelay = 3.0f;
-        public static float C_PuckSpeedDecayRate = 1.0f;
-        public static float C_PuckSpeedDecreaseRate = 2.0f;
+        public static float C_PuckSpeedDecayDelay = 3.0f;       // time after hit to wait before decreasing speed
+        public static float C_PuckSpeedDecayRate = 1.0f;        // time between successive speed decreases (after first)
+        public static float C_PuckSpeedDecreaseAmount = 2.0f;   // speed decrease amount at each interval
+        public static float C_PuckSpeedHitIncrease = 5.0f;      // speed increase every time puck is hit
         public static float C_PuckBaseSpeed = 10.0f;
-        public static float C_PuckHitIncreaseSpeed = 5.0f;
+
     }
        
     // Enemy Stats

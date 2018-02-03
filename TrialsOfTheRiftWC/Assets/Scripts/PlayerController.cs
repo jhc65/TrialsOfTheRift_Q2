@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour{
 
 	public void Freeze() {
 		f_canMove = 0;
-		Drop();
+		DropFlag();
 		Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
 	}
 
@@ -84,14 +84,14 @@ public class PlayerController : MonoBehaviour{
 		go_flagObj = flag;
 	}
 
-	public void Drop() {
+	public void DropFlag() {
 		if(go_flagObj) {
             //this value right here is where the flag is being dropped from the bug
             //tried to change it to the transform of the player, didn't really work, maybe
             //try getting player transform, but setting y to 0
-			//go_flagObj.transform.localPosition = new Vector3(0.0f, -1.5f, 0.0f);	// this is relative to t_flagPos
-			go_flagObj.transform.SetParent(null);
-			go_flagObj.transform.localPosition = new Vector3(go_flagObj.transform.localPosition.x, 0.5f, go_flagObj.transform.localPosition.z);
+            //go_flagObj.transform.localPosition = new Vector3(0.0f, -1.5f, 0.0f);	// this is relative to t_flagPos
+
+            go_flagObj.GetComponent<FlagController>().DropFlag();
 			go_flagObj = null;
 		}
 	}
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayerDeath()
     {
-        Drop();
+        DropFlag();
         TurnOff();
         isWisp = true;
         if(SceneManager.GetActiveScene().name != "WarmUp") {
@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour{
     void Update() {
         if (p_player.GetButtonDown("Interact") && !isWisp){
             if (go_flagObj) {
-				Drop();
+				DropFlag();
 			}
 			else {
                 go_interactCollider.SetActive(true);

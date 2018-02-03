@@ -38,7 +38,7 @@ public class ElectricAOEController : MonoBehaviour {
 
 	private void ApplyEffect(GameObject go_target) {
 		if (go_target.tag == "Player") {
-			go_target.GetComponent<PlayerController>().Drop();
+			go_target.GetComponent<PlayerController>().DropFlag();
 			go_target.GetComponent<PlayerController>().f_canMove = .5f; //TODO: Constants
             go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
 		}
@@ -68,12 +68,12 @@ public class ElectricAOEController : MonoBehaviour {
 	// applies AOE damage/heal to crystal every .5s until dissipation
 	IEnumerator ApplyCrystalDamage(GameObject go_target) {
 		if (go_target) {
-			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
+			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
 			if (crystalColor != e_color) {
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_SpellCrystalDamagePercent / 5);
+				go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalDamagePercent / 5);
 			}
 			else if (crystalColor == e_color) {
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_SpellCrystalHealPercent / 5);
+				go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalHealPercent / 5);
 			}
 			yield return new WaitForSeconds(0.5f);
 			StartCoroutine("ApplyCrystalDamage", go_target);

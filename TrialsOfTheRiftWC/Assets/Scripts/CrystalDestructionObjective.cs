@@ -1,39 +1,39 @@
-﻿using System.Collections;
+﻿/*  Crystal Destruction Objective - Dana Thompson
+ * 
+ *  Desc:   Facilitates Crystal Destruction Objective
+ * 
+ */
+ 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CrystalDestructionObjective : Objective {
 
-	public GameObject go_redCrystal, go_blueCrystal;	// referenced crystal objects
-	private GameObject go_activeCrystal;	// active object specific to this objective instance
+	public CrystalController cc_activeCrystal;    // active crystal specific to this objective instance
 
-	override public void Instantiate() {
-		// instantiate prefab based on color
-		if (e_color == Constants.Global.Color.RED) {
-			go_activeCrystal = Instantiate(go_blueCrystal, Constants.ObjectiveStats.C_BlueCrystalSpawn, new Quaternion(0, 0, 0, 0));
-		}
-		else{
-			go_activeCrystal = Instantiate(go_redCrystal, Constants.ObjectiveStats.C_RedCrystalSpawn, new Quaternion(0, 0, 0, 0));
-		}
-	}
+    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-	override public void Complete() {
-		// destroy prefab
-		b_complete = true;
-		GameController.GetInstance().CrystalHealth(go_activeCrystal.GetComponent<CrystalController>().e_color, Constants.ObjectiveStats.C_CrystalMaxHealth);
-		Destroy(go_activeCrystal);
-        Destroy(go_activeRoom);
+    override public void SetUI() {
+        // @Sam - Turn on CD UI
+        GameController.GetInstance().CrystalHealth(cc_activeCrystal.Color, Constants.ObjectiveStats.C_CrystalMaxHealth);
     }
 
-	void Update() {
-        if (go_activeCrystal.GetComponent<CrystalController>().i_health <= 0) {
-            Complete();
+    override public void ResetUI() {
+        // @Sam - Turn off CD UI
+    }
+
+    public void UpdateCrystalHealth(float f) {
+        // @Sam - ideally this gets changed to just e_color when the UI changes but remember this # represents the opposite team's crystal health 
+        GameController.GetInstance().CrystalHealth(cc_activeCrystal.Color, (int)f);   // @Sam - we def want this to be an int, right?
+        if (cc_activeCrystal.Health <= 0) {
+            b_isComplete = true;
         }
-	}
+    }
 
     // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
     public override void ParamReset(float param_in) {
-        go_activeCrystal.GetComponent<CrystalController>().i_health = (int)param_in;
-        GameController.GetInstance().CrystalHealth(go_activeCrystal.GetComponent<CrystalController>().e_color, (int)param_in);
+        cc_activeCrystal.Health = param_in;
+        GameController.GetInstance().CrystalHealth(cc_activeCrystal.Color, (int)param_in);
     }
 }

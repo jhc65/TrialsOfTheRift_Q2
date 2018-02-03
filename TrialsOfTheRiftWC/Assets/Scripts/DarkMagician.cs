@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class DarkMagician : MonoBehaviour {
 
-    public GameObject[] go_objectivesList;
-	public GameObject go_enemy;
+    public Objective[] objv_redObjectiveList;
+    public Objective[] objv_blueObjectiveList;
+    
+    public GameObject go_enemy;
     public int leftEnemies = 0;
     public int rightEnemies = 0;
 	public Text txt_winMsg;
@@ -47,28 +49,31 @@ public class DarkMagician : MonoBehaviour {
 
     public Objective objv_redObjective, objv_blueObjective; 
 
-	private Objective GetNextObjective(Objective o) {
+	private void GetNextObjective(Constants.Global.Color c, int objectiveNumber) {
+        
+        // check for game end
+        if (objectiveNumber == objv_redObjectiveList.Length) {
+			b_gameOver = true;
+			txt_winMsg.text = c + " team won!";
+			return;
+		}
+
         Debug.Log("Volatility Increase by 5%");
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_RoomAdvance);
-		int newObjectiveNumber = o.i_numberInList;
-		if(newObjectiveNumber == go_objectivesList.Length) {
-			//	game over
-			b_gameOver = true;
-			txt_winMsg.text = o.e_color + " team won!";
-			Destroy(o.gameObject);
-			return null;
-		}
-		else {
-			// temporary, alternates between two objectives indefinitely instead of counting up to 5 and ending
-			newObjectiveNumber += 1;
+        objectiveNumber++;
+        Debug.Log(objectiveNumber);
 
-			GameObject go_newObjective = Instantiate(go_objectivesList[newObjectiveNumber - 1]);	// objectiveNumber starts with 1 but array is 0-based
-			go_newObjective.GetComponent<Objective>().Set(o.e_color, newObjectiveNumber);
-			Destroy(o.gameObject);
-			return go_newObjective.GetComponent<Objective>();
+        if (c == Constants.Global.Color.RED) {
+            objv_redObjective.Complete();
+            objv_redObjective = objv_redObjectiveList[objectiveNumber-1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
+        }
+        else if (c == Constants.Global.Color.BLUE) {
+            objv_blueObjective.Complete();
+            objv_blueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
 		}
 	}
 
+    // TODO: move enemy spawn to RiftController
 	public void SpawnEnemies() {
 		int randLeft = Random.Range(0, v3_leftEnemySpawnPositions.Length);
 		int randRight = Random.Range(0, v3_rightEnemySpawnPositions.Length);
@@ -168,45 +173,29 @@ public class DarkMagician : MonoBehaviour {
 
     void Awake() {  // parameter screen dictates that we do this before its Start() is called
 
-        if (instance == null)
-        {
+        if (instance == null) {
             instance = this;
-        }
-
-        if (instance != null && instance != this)
-        {
-            Debug.Log("Destroying DM.");
-            Destroy(this);
         }
 
 		txt_winMsg.enabled = false;
 		b_gameOver = false;
-		ObjectiveShuffle();
+		ShuffleObjectives();
         Time.timeScale = 0;
 
-        objv_redObjective = Instantiate(go_objectivesList[0]).GetComponent<Objective>();
-		objv_blueObjective = Instantiate(go_objectivesList[0]).GetComponent<Objective>();
-		objv_redObjective.Set(Constants.Global.Color.RED, 1);
-		objv_blueObjective.Set(Constants.Global.Color.BLUE, 1);
+        objv_redObjective = objv_redObjectiveList[0].Activate(1);
+        objv_blueObjective = objv_blueObjectiveList[0].Activate(1);
+    }
 
-		// enemies, TODO: this not here
-		//for(int i=0; i< v3_leftEnemySpawnPositions.Length; i++) {
-		//	GameObject g1 = Instantiate(go_enemy, v3_leftEnemySpawnPositions[i], new Quaternion(0, 0, 0, 0));
-		//	g1.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;
-		//	GameObject g2 = Instantiate(go_enemy, v3_rightEnemySpawnPositions[i], new Quaternion(0, 0, 0, 0));
-		//	g2.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
-		//}
-
-		//InvokeRepeating("SpawnEnemies", 7.0f, f_enemySpawnTime);
-	}
-
-	void ObjectiveShuffle() {
-        for (int i = 0; i < go_objectivesList.Length-1; i++ )
-        {
-            GameObject tmp = go_objectivesList[i];
-            int j = Random.Range(i, go_objectivesList.Length-1);
-            go_objectivesList[i] = go_objectivesList[j];
-            go_objectivesList[j] = tmp;
+    // Shuffles the order of both red and blue objective lists in parallel
+	void ShuffleObjectives() {
+        for (int i = 0; i < objv_redObjectiveList.Length-1; i++ ) {
+            Objective tmp1 = objv_redObjectiveList[i];
+            Objective tmp2 = objv_blueObjectiveList[i];
+            int j = Random.Range(i, objv_redObjectiveList.Length-1);
+            objv_redObjectiveList[i] = objv_redObjectiveList[j];
+            objv_blueObjectiveList[i] = objv_blueObjectiveList[j];
+            objv_redObjectiveList[j] = tmp1;
+            objv_blueObjectiveList[j] = tmp2;
         }
 	}
 
@@ -218,12 +207,14 @@ public class DarkMagician : MonoBehaviour {
 			Time.timeScale = 0;
 		}
 		else {
-			if (objv_redObjective.b_complete) {
-				objv_redObjective = GetNextObjective(objv_redObjective);
+			if (objv_redObjective.IsComplete) {
+                Debug.Log("getting next obj");
+                GetNextObjective(objv_redObjective.Color, objv_redObjective.NumberInList);
 			}
-			if(objv_blueObjective.b_complete) {
-				objv_blueObjective = GetNextObjective(objv_blueObjective);
-			}
+			if(objv_blueObjective.IsComplete) {
+                Debug.Log("getting next blue obj");
+                GetNextObjective(objv_blueObjective.Color, objv_blueObjective.NumberInList);
+            }
 		}
 	}
 }
