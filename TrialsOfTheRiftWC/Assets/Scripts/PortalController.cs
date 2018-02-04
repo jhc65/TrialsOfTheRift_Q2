@@ -37,4 +37,9 @@ public class PortalController : MonoBehaviour {
 		}
         
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        f_timeIn = 0;
+    }
 }

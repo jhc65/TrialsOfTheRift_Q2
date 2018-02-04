@@ -79,9 +79,12 @@ public class PlayerController : MonoBehaviour{
     }
 
 	public void Pickup(GameObject flag) {
-		flag.transform.SetParent(t_flagPos);
-		flag.transform.localPosition = new Vector3(0, 0, 0);
-		go_flagObj = flag;
+        if (!isWisp)
+        {
+            flag.transform.SetParent(t_flagPos);
+            flag.transform.localPosition = new Vector3(0, 0, 0);
+            go_flagObj = flag;
+        }
 	}
 
 	public void DropFlag() {
