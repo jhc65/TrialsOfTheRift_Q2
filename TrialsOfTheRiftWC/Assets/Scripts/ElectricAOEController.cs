@@ -19,9 +19,19 @@ public class ElectricAOEController : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
-		foreach (string tag in s_spellTargetTags){
-			if (other.gameObject.tag == tag){
-				ApplyEffect(other.gameObject);
+		foreach (string tag in s_spellTargetTags) {
+
+            //The nested tag check might seem excessive, but I wanted to make sure that the gameObject was actually a Player BEFORE I tried to
+            //get its controller.  Unity most likely has short circuiting for if statements, but this just ensures it doesn't happen
+			if (other.gameObject.tag == tag) {
+                if (tag == "Player") {
+                    if (other.gameObject.GetComponent<PlayerController>().GetColor() != e_color) {
+                        ApplyEffect(other.gameObject);
+                    }
+                }
+                else {
+                    ApplyEffect(other.gameObject);
+                }
 				return;
 			}
 		}
