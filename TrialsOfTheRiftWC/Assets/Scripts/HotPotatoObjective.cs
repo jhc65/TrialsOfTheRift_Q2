@@ -44,6 +44,7 @@ public class HotPotatoObjective : Objective {
     // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
     public override void ParamReset(float param)
     {
+        hpc_activePotato.ResetPotatoPosition();
         hpc_activePotato.SetCompletionTimer((int)Constants.ObjectiveStats.C_PotatoCompletionTimer);
         hpc_activePotato.SetDestructionTimer((int) Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
