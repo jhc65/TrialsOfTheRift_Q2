@@ -17,7 +17,7 @@ public class HotPotatoObjective : Objective {
     override protected void SetUI() {
         // @Sam - Turn on Potato UI and verify these
         GameController.GetInstance().CompletionProgress(e_color, Constants.ObjectiveStats.C_PotatoCompletionTimer);
-        GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        GameController.GetInstance().DestructionProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 
     override protected void ResetUI() {
@@ -34,9 +34,9 @@ public class HotPotatoObjective : Objective {
 
     // Update UI and check to self-destruct
     public void UpdateDestructionTimer(int i) {
-        GameController.GetInstance().SelfDestructProgress(e_color, i);
+        GameController.GetInstance().DestructionProgress(e_color, i);
         if (i <= 0) {
-            GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+            GameController.GetInstance().DestructionProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
             hpc_activePotato.SelfDestruct();
         }
     }
@@ -44,16 +44,7 @@ public class HotPotatoObjective : Objective {
     // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
     public override void ParamReset(float param)
     {
-
-    }
-
-    public void SetCompletionTimer(int time)
-    {
-        hpc_activePotato.GetComponent<HotPotatoController>().setCompletionTimer(time);
-    }
-
-    public void SetSelfDestructTimer(int time)
-    {
-        hpc_activePotato.GetComponent<HotPotatoController>().setSelfDestructTimer(time);
+        hpc_activePotato.SetCompletionTimer((int)Constants.ObjectiveStats.C_PotatoCompletionTimer);
+        hpc_activePotato.SetDestructionTimer((int) Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 }

@@ -268,11 +268,11 @@ public class DebugParametersController : MonoBehaviour
         Constants.ObjectiveStats.C_PotatoCompletionTimer = (int)f_timerIn;
         if (DM.objv_blueObjective.GetComponent<HotPotatoObjective>())
         {
-            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().SetCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
+            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
         }
         if (DM.objv_redObjective.GetComponent<HotPotatoObjective>())
         {
-            DM.objv_redObjective.GetComponent<HotPotatoObjective>().SetCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
+            DM.objv_redObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
         }
     }
 
@@ -282,11 +282,11 @@ public class DebugParametersController : MonoBehaviour
         Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)f_timerIn;
         if (DM.objv_blueObjective.GetComponent<HotPotatoObjective>())
         {
-            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().SetSelfDestructTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
         }
         if (DM.objv_redObjective.GetComponent<HotPotatoObjective>())
         {
-            DM.objv_redObjective.GetComponent<HotPotatoObjective>().SetSelfDestructTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+            DM.objv_redObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
         }
     }
 

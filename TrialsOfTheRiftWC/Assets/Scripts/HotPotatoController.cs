@@ -26,21 +26,19 @@ public class HotPotatoController : MonoBehaviour {
         get { return e_currentSide; }
     }
 
-    public void setCompletionTimer(int time)
-    {
-        i_completionTimer = time;
-        GameController.GetInstance().CompletionProgress(e_color, i_completionTimer);
-    }
-
-    public void setSelfDestructTimer(int time)
-    {
-        i_destructionTimer = time;
-        GameController.GetInstance().SelfDestructProgress(e_color, i_destructionTimer);
-    }
-
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    private void ResetPotatoPosition() {
+    public void SetCompletionTimer(int time) {
+        i_completionTimer = time;
+        hpo_owner.UpdateCompletionTimer(i_completionTimer);
+    }
+
+    public void SetDestructionTimer(int time) {
+        i_destructionTimer = time;
+        hpo_owner.UpdateDestructionTimer(i_destructionTimer);
+    }
+
+    public void ResetPotatoPosition() {
         if (e_color == Constants.Global.Color.RED) {
             transform.position = Constants.ObjectiveStats.C_RedPotatoSpawn;
         }
@@ -93,7 +91,7 @@ public class HotPotatoController : MonoBehaviour {
 
         ResetPotatoPosition();
         i_destructionTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
-        GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        GameController.GetInstance().DestructionProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 
     // Changes potato side when crossing the Rift or through a portal

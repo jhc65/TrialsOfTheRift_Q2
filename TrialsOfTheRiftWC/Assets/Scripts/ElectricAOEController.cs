@@ -20,18 +20,8 @@ public class ElectricAOEController : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		foreach (string tag in s_spellTargetTags) {
-
-            //The nested tag check might seem excessive, but I wanted to make sure that the gameObject was actually a Player BEFORE I tried to
-            //get its controller.  Unity most likely has short circuiting for if statements, but this just ensures it doesn't happen
-			if (other.gameObject.tag == tag) {
-                if (tag == "Player") {
-                    if (other.gameObject.GetComponent<PlayerController>().GetColor() != e_color) {
-                        ApplyEffect(other.gameObject);
-                    }
-                }
-                else {
-                    ApplyEffect(other.gameObject);
-                }
+			if (other.gameObject.tag == tag) {  
+                ApplyEffect(other.gameObject);
 				return;
 			}
 		}
@@ -47,19 +37,21 @@ public class ElectricAOEController : MonoBehaviour {
 	}
 
 	private void ApplyEffect(GameObject go_target) {
-		if (go_target.tag == "Player") {
-			go_target.GetComponent<PlayerController>().DropFlag();
-			go_target.GetComponent<PlayerController>().f_canMove = .5f; //TODO: Constants
-            go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
-		}
-		else if (go_target.tag == "Enemy") {
-			StartCoroutine("ApplyEnemyDamage", go_target);
-			go_target.GetComponent<EnemyController>().Slow(.5f);
-		}
-		else if (go_target.tag == "Crystal") {
-			StartCoroutine("ApplyCrystalDamage", go_target);
+        if (go_target.tag == "Player") {
+            if (go_target.GetComponent<PlayerController>().GetColor() != e_color) {
+                go_target.GetComponent<PlayerController>().DropFlag();
+                go_target.GetComponent<PlayerController>().f_canMove = .5f; //TODO: Constants
+                StartCoroutine("ApplyPlayerDamage", go_target);
+            }
+        }
+        else if (go_target.tag == "Enemy") {
+            StartCoroutine("ApplyEnemyDamage", go_target);
+            go_target.GetComponent<EnemyController>().Slow(.5f);
+        }
+        else if (go_target.tag == "Crystal") {
+            StartCoroutine("ApplyCrystalDamage", go_target);
 
-		}
+        }
 	}
 
 	private void NegateEffect(GameObject go_target) {
@@ -98,5 +90,14 @@ public class ElectricAOEController : MonoBehaviour {
 			StartCoroutine("ApplyEnemyDamage", go_target);
 		}
 	}
+
+    IEnumerator ApplyPlayerDamage(GameObject go_target) {
+        if (go_target)
+        {  //Make sure it's not already dead.
+            go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine("ApplyPlayerDamage", go_target);
+        }
+    }
 
 }

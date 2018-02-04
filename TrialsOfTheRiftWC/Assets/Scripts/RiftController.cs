@@ -55,10 +55,6 @@ public class RiftController : MonoBehaviour {
             Invoke("Restart", Constants.RiftStats.C_VolatilityResetTime);
             //InvertScreen();
             HighDamageAttack();
-
-            //There will be a time delay in the future for when the Rift goes back down to its base volatility level
-            //I'm adding this for the future when its needed
-            Invoke("ResetVolatility", 1.0f);
         }
         else if (f_volatility >= 75.0f && V_currentVolatilityLevel != Constants.RiftStats.Volatility.SEVENTYFIVE) {
             // Change Rift material to L4
@@ -144,11 +140,6 @@ public class RiftController : MonoBehaviour {
 
     public void SpawnPocketRifts() {
 
-    }
-
-    public void ResetVolatility() {
-        f_volatility = 0.0f;
-        f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L1;
     }
 
     public void SpawnFiveSkeletons() {
