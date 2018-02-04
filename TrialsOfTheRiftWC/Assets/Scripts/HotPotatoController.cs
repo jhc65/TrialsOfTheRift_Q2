@@ -13,6 +13,7 @@ public class HotPotatoController : MonoBehaviour {
     public HotPotatoObjective hpo_owner;  // identifies objective potato is a part of
     [SerializeField]
     private Constants.Global.Color e_color;     // identifies owning team - MUST BE SET IN EDITOR!
+
     [SerializeField]
     private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
     private Constants.Global.Side e_currentSide;
@@ -23,6 +24,18 @@ public class HotPotatoController : MonoBehaviour {
     // Getters
     public Constants.Global.Side Side {
         get { return e_currentSide; }
+    }
+
+    public void setCompletionTimer(int time)
+    {
+        i_completionTimer = time;
+        GameController.GetInstance().CompletionProgress(e_color, i_completionTimer);
+    }
+
+    public void setSelfDestructTimer(int time)
+    {
+        i_destructionTimer = time;
+        GameController.GetInstance().SelfDestructProgress(e_color, i_destructionTimer);
     }
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -98,6 +111,7 @@ public class HotPotatoController : MonoBehaviour {
     void Start () {
         i_completionTimer = Constants.ObjectiveStats.C_PotatoCompletionTimer;     // cannot read from Constants.cs in initialization at top
         i_destructionTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
+        e_currentSide = e_startSide;
         Invoke("DestructionTimerTick", 1);
         rb = GetComponent<Rigidbody>();
     }

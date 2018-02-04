@@ -43,6 +43,17 @@ public class HotPotatoObjective : Objective {
 
     // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
     public override void ParamReset(float param)
-    {       // uh... TODO ?
+    {
+
+    }
+
+    public void SetCompletionTimer(int time)
+    {
+        hpc_activePotato.GetComponent<HotPotatoController>().setCompletionTimer(time);
+    }
+
+    public void SetSelfDestructTimer(int time)
+    {
+        hpc_activePotato.GetComponent<HotPotatoController>().setSelfDestructTimer(time);
     }
 }

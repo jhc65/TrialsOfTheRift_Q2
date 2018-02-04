@@ -93,7 +93,7 @@ public abstract class SpellController : MonoBehaviour {
             Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 
             //we need to get the direction the player is facing, so that's why v3_direction is verbose
-            Vector3 v3_direction = other.gameObject.transform.parent.gameObject.transform.forward.normalized;
+            Vector3 v3_direction = other.gameObject.transform.root.forward.normalized;
             gameObject.GetComponent<Rigidbody>().velocity = v3_direction * gameObject.GetComponent<Rigidbody>().velocity.magnitude;
         }
     }

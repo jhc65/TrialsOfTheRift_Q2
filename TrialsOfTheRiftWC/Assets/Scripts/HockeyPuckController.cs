@@ -33,6 +33,11 @@ public class HockeyPuckController : MonoBehaviour {
         else {
             transform.position = Constants.ObjectiveStats.C_BluePuckSpawn;
         }
+
+        //stop its movement entirely
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
     }
 
     private void DecreaseSpeed() {

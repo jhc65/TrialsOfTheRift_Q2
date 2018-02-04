@@ -266,12 +266,28 @@ public class DebugParametersController : MonoBehaviour
     {
         txt_completionTimer.text = slider_completionTimer.value.ToString();
         Constants.ObjectiveStats.C_PotatoCompletionTimer = (int)f_timerIn;
+        if (DM.objv_blueObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().SetCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
+        }
+        if (DM.objv_redObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_redObjective.GetComponent<HotPotatoObjective>().SetCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
+        }
     }
 
     public void ChangeSelfDestructTimer(float f_timerIn)
     {
         txt_selfDestructTimer.text = slider_selfDestructTimer.value.ToString();
         Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)f_timerIn;
+        if (DM.objv_blueObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().SetSelfDestructTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        }
+        if (DM.objv_redObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_redObjective.GetComponent<HotPotatoObjective>().SetSelfDestructTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        }
     }
 
     public void ChangeEnemySpawnCap(float f_capIn)
