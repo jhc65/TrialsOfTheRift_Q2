@@ -10,6 +10,8 @@ public abstract class SpellController : MonoBehaviour {
     public float f_charged = 1;         // Charging multiplier.
     public PlayerController pc_owner;      // Owner of the spell.
 	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
+    [SerializeField]
+    protected ParticleSystem ps_onDestroyParticles;
 
 
     public abstract void Charge(float f_chargeTime);
