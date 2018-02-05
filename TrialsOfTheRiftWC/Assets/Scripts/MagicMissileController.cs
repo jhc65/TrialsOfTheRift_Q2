@@ -6,6 +6,10 @@ public class MagicMissileController : SpellController {
 
     bool i_reflect = false;
 
+    private void OnDestroy() {
+        Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
+    }
+
     protected override void ApplyEffect(GameObject go_target, Collision collision) {
         if (go_target.tag == "Player") {
             if (go_target.GetComponent<PlayerController>().GetColor() != this.e_color)

@@ -13,6 +13,7 @@ public class HotPotatoController : MonoBehaviour {
     public HotPotatoObjective hpo_owner;  // identifies objective potato is a part of
     [SerializeField]
     private Constants.Global.Color e_color;     // identifies owning team - MUST BE SET IN EDITOR!
+
     [SerializeField]
     private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
     private Constants.Global.Side e_currentSide;
@@ -27,7 +28,17 @@ public class HotPotatoController : MonoBehaviour {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    private void ResetPotatoPosition() {
+    public void SetCompletionTimer(int time) {
+        i_completionTimer = time;
+        hpo_owner.UpdateCompletionTimer(i_completionTimer);
+    }
+
+    public void SetDestructionTimer(int time) {
+        i_destructionTimer = time;
+        hpo_owner.UpdateDestructionTimer(i_destructionTimer);
+    }
+
+    public void ResetPotatoPosition() {
         if (e_color == Constants.Global.Color.RED) {
             transform.position = Constants.ObjectiveStats.C_RedPotatoSpawn;
         }
@@ -80,7 +91,7 @@ public class HotPotatoController : MonoBehaviour {
 
         ResetPotatoPosition();
         i_destructionTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
-        GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        GameController.GetInstance().DestructionProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 
     // Changes potato side when crossing the Rift or through a portal
@@ -98,6 +109,7 @@ public class HotPotatoController : MonoBehaviour {
     void Start () {
         i_completionTimer = Constants.ObjectiveStats.C_PotatoCompletionTimer;     // cannot read from Constants.cs in initialization at top
         i_destructionTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
+        e_currentSide = e_startSide;
         Invoke("DestructionTimerTick", 1);
         rb = GetComponent<Rigidbody>();
     }

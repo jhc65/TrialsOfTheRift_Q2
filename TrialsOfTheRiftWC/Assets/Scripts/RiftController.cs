@@ -40,8 +40,10 @@ public class RiftController : MonoBehaviour {
             Debug.Log("Destroying RC");
             Destroy(this);
         }
-
+		
         f_enemyStartingSpeed = Constants.EnemyStats.C_EnemySpeed;
+		AudioManager.Instance.as_volatility.clip = AudioManager.Instance.ac_volatility0;
+		AudioManager.Instance.as_volatility.Play();
     }
 
     public void IncreaseVolatility(float volatilityUp) {
@@ -58,6 +60,8 @@ public class RiftController : MonoBehaviour {
         }
         else if (f_volatility >= 75.0f && V_currentVolatilityLevel != Constants.RiftStats.Volatility.SEVENTYFIVE) {
             // Change Rift material to L4
+			AudioManager.Instance.as_volatility.clip = AudioManager.Instance.ac_volatility4;
+			AudioManager.Instance.as_volatility.Play();
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.SEVENTYFIVE;
             f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L4;
             InvertControls();
@@ -70,6 +74,8 @@ public class RiftController : MonoBehaviour {
         }
         else if (f_volatility >= 50.0f && V_currentVolatilityLevel != Constants.RiftStats.Volatility.FIFTY) {
             // Change Rift material to L3
+			AudioManager.Instance.as_volatility.clip = AudioManager.Instance.ac_volatility3;
+			AudioManager.Instance.as_volatility.Play();
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.FIFTY;
             f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L3;
             SpawnNecromancers();
@@ -81,17 +87,23 @@ public class RiftController : MonoBehaviour {
         }
         else if (f_volatility >= 25.0f && V_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             // Change Rift material to L2
+			AudioManager.Instance.as_volatility.clip = AudioManager.Instance.ac_volatility2;
+			AudioManager.Instance.as_volatility.Play();
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
             f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L2;
             //FireSpells();
         }
         else if (f_volatility >= 5.0f && V_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             // Change Rift material to L1
+			AudioManager.Instance.as_volatility.clip = AudioManager.Instance.ac_volatility1;
+			AudioManager.Instance.as_volatility.Play();
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
             f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L1;
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
         else if (f_volatility < 5.0f) {
+			AudioManager.Instance.as_volatility.clip = AudioManager.Instance.ac_volatility0;
+			AudioManager.Instance.as_volatility.Play();
             CancelInvoke("SpawnEnemies");
             ResetEnemies();
             V_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
@@ -124,6 +136,7 @@ public class RiftController : MonoBehaviour {
         go_riftSpells[3].GetComponent<Rigidbody>().velocity = go_PlayerReferences[3].transform.position * Constants.SpellStats.C_MagicMissileSpeed;
     }
 
+    //TODO: Should we be changing the values of variables in a CONSTANTS file?
     public void EnhanceEnemies() {
         Constants.EnemyStats.C_EnemySpeed += 1.0f;
         Debug.Log("Rift Boosted Enemies!");

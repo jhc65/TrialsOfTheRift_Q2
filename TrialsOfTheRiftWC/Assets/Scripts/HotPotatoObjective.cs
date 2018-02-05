@@ -28,7 +28,7 @@ public class HotPotatoObjective : Objective {
             GameController.GetInstance().txt_blueObjvDescription.text = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things'll happen!";
         }
         GameController.GetInstance().CompletionProgress(e_color, Constants.ObjectiveStats.C_PotatoCompletionTimer);
-        GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        GameController.GetInstance().DestructionProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
 
         GameController.GetInstance().PopupFadeIn(e_color);
     }
@@ -54,15 +54,18 @@ public class HotPotatoObjective : Objective {
 
     // Update UI and check to self-destruct
     public void UpdateDestructionTimer(int i) {
-        GameController.GetInstance().SelfDestructProgress(e_color, i);
+        GameController.GetInstance().DestructionProgress(e_color, i);
         if (i <= 0) {
-            GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+            GameController.GetInstance().DestructionProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
             hpc_activePotato.SelfDestruct();
         }
     }
 
     // [Param Fix] - Used in Parameters Screen. Will be removed in main game (probably)
     public override void ParamReset(float param)
-    {       // uh... TODO ?
+    {
+        hpc_activePotato.ResetPotatoPosition();
+        hpc_activePotato.SetCompletionTimer((int)Constants.ObjectiveStats.C_PotatoCompletionTimer);
+        hpc_activePotato.SetDestructionTimer((int) Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 }

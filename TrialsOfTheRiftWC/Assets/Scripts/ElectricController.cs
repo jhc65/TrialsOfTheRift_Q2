@@ -7,7 +7,7 @@ public class ElectricController : SpellController {
 	public GameObject go_aoe;
 	private float f_electricDamage = Constants.SpellStats.C_ElectricDamage;
 
-	protected override void BuffSpell() {
+    protected override void BuffSpell() {
         // Increase Volatility by 0.5%
         RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
 		f_electricDamage = f_electricDamage * Constants.SpellStats.C_ElectricRiftDamageMultiplier;

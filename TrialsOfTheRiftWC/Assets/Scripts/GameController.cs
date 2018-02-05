@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void SelfDestructProgress(Constants.Global.Color colorIn, int time)
+    public void DestructionProgress(Constants.Global.Color colorIn, int time)
     {
         if (colorIn == Constants.Global.Color.RED)
         {

@@ -7,6 +7,11 @@ public class WindController : SpellController {
 
     private float f_windDamage = Constants.SpellStats.C_WindDamage;
 
+    private void OnDestroy()
+    {
+        Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
+    }
+
     protected override void ApplyEffect(GameObject go_target, Collision collision) {
         if (go_target.tag == "Player")
         {
