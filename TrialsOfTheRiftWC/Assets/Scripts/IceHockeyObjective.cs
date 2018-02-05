@@ -15,15 +15,28 @@ public class IceHockeyObjective : Objective {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    override protected void SetUI()
-    {
+    override protected void SetUI() {
         // @Sam - Turn on Hockey UI
+        if (e_color == Constants.Global.Color.RED) {
+            GameController.GetInstance().txt_redScoreText.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_redObjvTitle.text = "Ice Hockey";
+            GameController.GetInstance().txt_redObjvDescription.text = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind! " + Constants.ObjectiveStats.C_HockeyMaxScore + " Goals wins!";
+        } else {
+            GameController.GetInstance().txt_blueScoreText.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_blueObjvTitle.text = "Ice Hockey";
+            GameController.GetInstance().txt_blueObjvDescription.text = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind! " + Constants.ObjectiveStats.C_HockeyMaxScore + " Goals wins!";
+        }
         GameController.GetInstance().Score(e_color, 0);
+        GameController.GetInstance().PopupFadeIn(e_color);
     }
 
-    override protected void ResetUI()
-    {
+    override protected void ResetUI() {
         // @Sam - Turn off Hockey UI
+        if (e_color == Constants.Global.Color.RED) {
+            GameController.GetInstance().txt_redScoreText.transform.parent.gameObject.SetActive(false);
+        } else {
+            GameController.GetInstance().txt_blueScoreText.transform.parent.gameObject.SetActive(false);
+        }
     }
 
     public void UpdatePuckScore() {

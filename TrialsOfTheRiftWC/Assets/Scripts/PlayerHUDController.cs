@@ -40,7 +40,7 @@ public class PlayerHUDController : MonoBehaviour {
 
         //Statements for doing visual things to the spell counters.
         if (img_icebar.fillAmount == 1) {
-            img_icebar.color = Color.Lerp(col_origIceColor, Color.white, Mathf.PingPong(Time.time, 1));
+            img_icebar.color = Color.Lerp(col_origIceColor, new Color(1,1,1,0.756f), Mathf.PingPong(Time.time, 1));
             img_icebar.rectTransform.sizeDelta = Vector2.Lerp(v2_origIceSize, v2_origIceSize + new Vector2(10f,10f), Mathf.PingPong(Time.time, 1));
         } else {
             img_icebar.color = col_origIceColor;
@@ -48,7 +48,7 @@ public class PlayerHUDController : MonoBehaviour {
         }
 
         if (img_electricbar.fillAmount == 1) {
-            img_electricbar.color = Color.Lerp(col_origElecColor, Color.white, Mathf.PingPong(Time.time, 1));
+            img_electricbar.color = Color.Lerp(col_origElecColor, new Color(1,1,1,0.756f), Mathf.PingPong(Time.time, 1));
             img_electricbar.rectTransform.sizeDelta = Vector2.Lerp(v2_origElecSize, v2_origElecSize + new Vector2(10f,10f), Mathf.PingPong(Time.time, 1));
         } else {
             img_electricbar.color = col_origElecColor;
@@ -56,7 +56,7 @@ public class PlayerHUDController : MonoBehaviour {
         }
 
         if (img_windbar.fillAmount == 1) {
-            img_windbar.color = Color.Lerp(col_origWindColor, Color.white, Mathf.PingPong(Time.time, 1));
+            img_windbar.color = Color.Lerp(col_origWindColor, new Color(1,1,1,0.756f), Mathf.PingPong(Time.time, 1));
             img_windbar.rectTransform.sizeDelta = Vector2.Lerp(v2_origWindSize, v2_origWindSize + new Vector2(10f,10f), Mathf.PingPong(Time.time, 1));
         } else {
             img_windbar.color = col_origWindColor;

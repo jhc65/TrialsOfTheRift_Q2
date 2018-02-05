@@ -16,12 +16,32 @@ public class HotPotatoObjective : Objective {
 
     override protected void SetUI() {
         // @Sam - Turn on Potato UI and verify these
+        if (e_color == Constants.Global.Color.RED) {
+            GameController.GetInstance().txt_redCompletionTimer.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_redSelfDestructTimer.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_redObjvTitle.text = "Reverse Capture the Flag";
+            GameController.GetInstance().txt_redObjvDescription.text = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things'll happen!";
+        } else {
+            GameController.GetInstance().txt_blueCompletionTimer.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_blueSelfDestructTimer.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_blueObjvTitle.text = "Reverse Capture the Flag";
+            GameController.GetInstance().txt_blueObjvDescription.text = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things'll happen!";
+        }
         GameController.GetInstance().CompletionProgress(e_color, Constants.ObjectiveStats.C_PotatoCompletionTimer);
         GameController.GetInstance().SelfDestructProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+
+        GameController.GetInstance().PopupFadeIn(e_color);
     }
 
     override protected void ResetUI() {
         // @Sam - Turn off Potato UI
+        if (e_color == Constants.Global.Color.RED) {
+            GameController.GetInstance().txt_redCompletionTimer.transform.parent.gameObject.SetActive(false);
+            GameController.GetInstance().txt_redSelfDestructTimer.transform.parent.gameObject.SetActive(false);
+        } else {
+            GameController.GetInstance().txt_blueCompletionTimer.transform.parent.gameObject.SetActive(false);
+            GameController.GetInstance().txt_blueSelfDestructTimer.transform.parent.gameObject.SetActive(false);
+        }
     }
 
     // Update UI and check for completion
