@@ -17,11 +17,11 @@ public class CrystalDestructionObjective : Objective {
     override protected void SetUI() {
         // @Sam - Turn on CD UI
         if (e_color == Constants.Global.Color.RED) {
-            GameController.GetInstance().txt_redHealthCounter.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_blueHealthCounter.transform.parent.gameObject.SetActive(true);
             GameController.GetInstance().txt_redObjvTitle.text = "Crystal Destruction";
             GameController.GetInstance().txt_redObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
         } else {
-            GameController.GetInstance().txt_blueHealthCounter.transform.parent.gameObject.SetActive(true);
+            GameController.GetInstance().txt_redHealthCounter.transform.parent.gameObject.SetActive(true);
             GameController.GetInstance().txt_blueObjvTitle.text = "Crystal Destruction";
             GameController.GetInstance().txt_blueObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
         }
@@ -33,9 +33,9 @@ public class CrystalDestructionObjective : Objective {
     override protected void ResetUI() {
         // @Sam - Turn off CD UI
         if (e_color == Constants.Global.Color.RED) {
-            GameController.GetInstance().txt_redHealthCounter.transform.parent.gameObject.SetActive(false);
-        } else {
             GameController.GetInstance().txt_blueHealthCounter.transform.parent.gameObject.SetActive(false);
+        } else {
+            GameController.GetInstance().txt_redHealthCounter.transform.parent.gameObject.SetActive(false);
         }
     }
 

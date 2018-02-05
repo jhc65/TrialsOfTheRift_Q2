@@ -155,5 +155,5 @@ public static class Constants {
         public enum Volatility { ZERO, FIVE, TWENTYFIVE, THIRTYFIVE, FIFTY, SIXTYFIVE, SEVENTYFIVE, ONEHUNDRED };
     }
 
-	public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");
+	//public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");
 }

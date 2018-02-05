@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
     private float f_redStartTime, f_blueStartTime;
     public GameObject go_canvas;
 
+    public static GameObject[] C_Players;
+
     //Singleton
     static GameController instance;
 
@@ -92,7 +94,7 @@ public class GameController : MonoBehaviour {
         img_redPopupBacking.color = Color.Lerp(img_redPopupBacking.color, new Color(0,0,0,0.2f), fracJourney);
         txt_redObjvTitle.color = Color.Lerp(txt_redObjvTitle.color, new Color(1,1,1,1), fracJourney);
         txt_redObjvDescription.color = Color.Lerp(txt_redObjvDescription.color, new Color(1,1,1,1), fracJourney);
-        if (timer > 2f) {
+        if (timer > 5f) {
             CancelInvoke("FadeInRed");
             PopupFadeOut(Constants.Global.Color.RED);
         }
@@ -104,7 +106,7 @@ public class GameController : MonoBehaviour {
         img_bluePopupBacking.color = Color.Lerp(img_bluePopupBacking.color, new Color(0,0,0,0.2f), fracJourney);
         txt_blueObjvTitle.color = Color.Lerp(txt_blueObjvTitle.color, new Color(1,1,1,1), fracJourney);
         txt_blueObjvDescription.color = Color.Lerp(txt_blueObjvDescription.color, new Color(1,1,1,1), fracJourney);
-        if (timer > 2f) {
+        if (timer > 5f) {
             CancelInvoke("FadeInBlue");
             PopupFadeOut(Constants.Global.Color.BLUE);
         }
@@ -161,7 +163,8 @@ public class GameController : MonoBehaviour {
         }
 
         Time.timeScale = 0;
-    }
+        C_Players = GameObject.FindGameObjectsWithTag("Player");
+}
 
 	void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
