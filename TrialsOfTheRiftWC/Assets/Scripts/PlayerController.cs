@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour{
 
 	public void Freeze() {
 		f_canMove = 0;
-		Drop();
+		DropFlag();
 		Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
 	}
 
@@ -79,19 +79,22 @@ public class PlayerController : MonoBehaviour{
     }
 
 	public void Pickup(GameObject flag) {
-		flag.transform.SetParent(t_flagPos);
-		flag.transform.localPosition = new Vector3(0, 0, 0);
-		go_flagObj = flag;
+        if (!isWisp)
+        {
+            flag.transform.SetParent(t_flagPos);
+            flag.transform.localPosition = new Vector3(0, 0, 0);
+            go_flagObj = flag;
+        }
 	}
 
-	public void Drop() {
+	public void DropFlag() {
 		if(go_flagObj) {
             //this value right here is where the flag is being dropped from the bug
             //tried to change it to the transform of the player, didn't really work, maybe
             //try getting player transform, but setting y to 0
-			//go_flagObj.transform.localPosition = new Vector3(0.0f, -1.5f, 0.0f);	// this is relative to t_flagPos
-			go_flagObj.transform.SetParent(null);
-			go_flagObj.transform.localPosition = new Vector3(go_flagObj.transform.localPosition.x, 0.5f, go_flagObj.transform.localPosition.z);
+            //go_flagObj.transform.localPosition = new Vector3(0.0f, -1.5f, 0.0f);	// this is relative to t_flagPos
+
+            go_flagObj.GetComponent<FlagController>().DropFlag();
 			go_flagObj = null;
 		}
 	}
@@ -102,7 +105,7 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayerDeath()
     {
-        Drop();
+        DropFlag();
         TurnOff();
         isWisp = true;
         if(SceneManager.GetActiveScene().name != "WarmUp") {
@@ -246,6 +249,7 @@ public class PlayerController : MonoBehaviour{
                     f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
                 }
                 if (p_player.GetButton("MagicMissile")) {
+					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_magicMissileShoot);
                     f_nextMagicMissile = 0;
 				    GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -259,6 +263,7 @@ public class PlayerController : MonoBehaviour{
 			}
             // Charged Magic Missile (Release)
             if (p_player.GetButtonUp("MagicMissile") && f_nextMmCharge > Constants.SpellStats.C_MagicMissileChargeCooldown) {
+				AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_magicMissileShoot);
                 f_nextMmCharge = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -275,6 +280,7 @@ public class PlayerController : MonoBehaviour{
                     f_windCharge += p_player.GetButtonTimePressed("WindSpell");
                 }
                 if (p_player.GetButtonUp("WindSpell")) {
+					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_windShoot);
                     f_nextWind = 0;
 				    f_nextCast = 0;
                     for (int i = -30; i <= 30; i += 30) {
@@ -295,6 +301,7 @@ public class PlayerController : MonoBehaviour{
             // Ice Spell
             if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 if (p_player.GetButtonDown("IceSpell")) {
+					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_iceShoot);
                     b_iceboltMode = true;
                     f_nextIce = 0;
                     f_nextCast = 0;
@@ -315,6 +322,7 @@ public class PlayerController : MonoBehaviour{
                     f_electricCharge += p_player.GetButtonTimePressed("ElectricitySpell");
                 }
                 if (p_player.GetButtonUp("ElectricitySpell")) {
+					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_electricShoot);
                     f_nextElectric = 0;
 				    f_nextCast = 0;
 				    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
@@ -345,7 +353,7 @@ public class PlayerController : MonoBehaviour{
     void Update() {
         if (p_player.GetButtonDown("Interact") && !isWisp){
             if (go_flagObj) {
-				Drop();
+				DropFlag();
 			}
 			else {
                 go_interactCollider.SetActive(true);

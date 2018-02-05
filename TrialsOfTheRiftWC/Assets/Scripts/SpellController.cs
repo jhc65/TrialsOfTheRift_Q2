@@ -10,6 +10,8 @@ public abstract class SpellController : MonoBehaviour {
     public float f_charged = 1;         // Charging multiplier.
     public PlayerController pc_owner;      // Owner of the spell.
 	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
+    [SerializeField]
+    protected ParticleSystem ps_onDestroyParticles;
 
 
     public abstract void Charge(float f_chargeTime);
@@ -50,12 +52,12 @@ public abstract class SpellController : MonoBehaviour {
 
         if (collision.gameObject.tag == "Puck")
         {
-            collision.gameObject.GetComponent<HockeyPuckController>().f_speed += Constants.ObjectiveStats.C_PuckHitIncreaseSpeed;
+            collision.gameObject.GetComponent<HockeyPuckController>().Speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
 
             //we need to get the direction the player is facing, so that's why v3_direction is verbose
             Vector3 v3_direction = transform.forward.normalized;
             transform.rotation = Quaternion.LookRotation(transform.forward);
-            collision.gameObject.GetComponent<Rigidbody>().velocity = v3_direction * collision.gameObject.GetComponent<HockeyPuckController>().f_speed;
+            collision.gameObject.GetComponent<Rigidbody>().velocity = v3_direction * collision.gameObject.GetComponent<HockeyPuckController>().Speed;
         }
 
         if (collision.gameObject.tag == "Spell") {
@@ -93,7 +95,7 @@ public abstract class SpellController : MonoBehaviour {
             Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 
             //we need to get the direction the player is facing, so that's why v3_direction is verbose
-            Vector3 v3_direction = other.gameObject.transform.parent.gameObject.transform.forward.normalized;
+            Vector3 v3_direction = other.gameObject.transform.root.forward.normalized;
             gameObject.GetComponent<Rigidbody>().velocity = v3_direction * gameObject.GetComponent<Rigidbody>().velocity.magnitude;
         }
     }

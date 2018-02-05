@@ -266,12 +266,28 @@ public class DebugParametersController : MonoBehaviour
     {
         txt_completionTimer.text = slider_completionTimer.value.ToString();
         Constants.ObjectiveStats.C_PotatoCompletionTimer = (int)f_timerIn;
+        if (DM.objv_blueObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
+        }
+        if (DM.objv_redObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_redObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
+        }
     }
 
     public void ChangeSelfDestructTimer(float f_timerIn)
     {
         txt_selfDestructTimer.text = slider_selfDestructTimer.value.ToString();
         Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)f_timerIn;
+        if (DM.objv_blueObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_blueObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
+        }
+        if (DM.objv_redObjective.GetComponent<HotPotatoObjective>())
+        {
+            DM.objv_redObjective.GetComponent<HotPotatoObjective>().ParamReset(0.0f);
+        }
     }
 
     public void ChangeEnemySpawnCap(float f_capIn)
@@ -319,7 +335,7 @@ public class DebugParametersController : MonoBehaviour
     public void ChangePuckSpeedDecreaseRate(float f_decrease)
     {
         txt_puckSpeedDecreaseRate.text = slider_puckSpeedDecreaseRate.value.ToString();
-        Constants.ObjectiveStats.C_PuckSpeedDecreaseRate = (int)f_decrease;
+        Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount = (int)f_decrease;
     }
 
     public void ChangePuckBaseSpeed(float f_speed)
@@ -331,14 +347,14 @@ public class DebugParametersController : MonoBehaviour
     public void ChangePuckHitIncreaseSpeed(float f_hit)
     {
         txt_puckHitIncreaseSpeed.text = slider_puckHitIncreaseSpeed.value.ToString();
-        Constants.ObjectiveStats.C_PuckHitIncreaseSpeed = (int)f_hit;
+        Constants.ObjectiveStats.C_PuckSpeedHitIncrease = (int)f_hit;
     }
 
     public void ObjectiveReset()
     {
         //Drop the flag before resetting (for CTF)
         foreach (PlayerController playerController in l_playerControllers) {
-            playerController.Drop();
+            playerController.DropFlag();
         }
         //Then reset. 
         DM.objv_redObjective.ParamReset(Constants.ObjectiveStats.C_CrystalMaxHealth);
@@ -516,16 +532,16 @@ public class DebugParametersController : MonoBehaviour
         slider_puckSpeedDecayRate.value = Constants.ObjectiveStats.C_PuckSpeedDecayRate;
 
         //Hockey Puck Decreasse Rate
-        txt_puckSpeedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate.ToString();
-        slider_puckSpeedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseRate;
+        txt_puckSpeedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount.ToString();
+        slider_puckSpeedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount;
 
         //Hockey Puck Base Speed
         txt_puckBaseSpeed.text = Constants.ObjectiveStats.C_PuckBaseSpeed.ToString();
         slider_puckBaseSpeed.value = Constants.ObjectiveStats.C_PuckBaseSpeed;
 
         //Hockey Puck Hit Increase Speed
-        txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_PuckHitIncreaseSpeed.ToString();
-        slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_PuckHitIncreaseSpeed;
+        txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_PuckSpeedHitIncrease.ToString();
+        slider_hockeyMaxScore.value = Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
 
 
         //---------------------------

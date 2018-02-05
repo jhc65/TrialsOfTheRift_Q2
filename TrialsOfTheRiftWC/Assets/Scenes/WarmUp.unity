@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 1}
+  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ObjectiveReset
         m_Mode: 1
         m_Arguments:
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeEnemyHealth
         m_Mode: 0
         m_Arguments:
@@ -1910,7 +1910,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangePlayerSpeed
         m_Mode: 0
         m_Arguments:
@@ -2143,7 +2143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41176468, g: 0.018166106, b: 0.018166106, a: 1}
+  m_Color: {r: 0.41176468, g: 0.018166106, b: 0.018166106, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2393,7 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2565,6 +2565,391 @@ RectTransform:
   m_AnchoredPosition: {x: -550.45984, y: -363}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &337135806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 337135815}
+  - component: {fileID: 337135811}
+  - component: {fileID: 337135810}
+  - component: {fileID: 337135809}
+  - component: {fileID: 337135808}
+  - component: {fileID: 337135807}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &337135807
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337135806}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243670260948230910, guid: b84d127fc53c53845a64f14bfecd8d1f,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &337135808
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337135806}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243345270848966172, guid: b84d127fc53c53845a64f14bfecd8d1f,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &337135809
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337135806}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243345270848966172, guid: b84d127fc53c53845a64f14bfecd8d1f,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &337135810
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337135806}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243590736178938662, guid: b84d127fc53c53845a64f14bfecd8d1f,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &337135811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337135806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d5f472124aa2542a69c86122e86ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  as_bgm: {fileID: 337135810}
+  as_volatility: {fileID: 337135809}
+  as_sfx: {fileID: 337135808}
+  as_voi: {fileID: 337135807}
+  ac_bgm0: {fileID: 8300000, guid: b47ff1c405120e547ae785020df333e7, type: 3}
+  ac_windShoot: {fileID: 8300000, guid: e3b5dbd1b6726564bb93b35c0ef2b20e, type: 3}
+  ac_iceShoot: {fileID: 8300000, guid: 6222912dcc711654e920f2e6413c66e8, type: 3}
+  ac_electricShoot: {fileID: 8300000, guid: 174a27c3907b9b44a9a7c1906afb2e61, type: 3}
+  ac_magicMissileShoot: {fileID: 8300000, guid: 8c58d02df17fa26459b92884379f9b73,
+    type: 3}
+  ac_enemyHit: {fileID: 8300000, guid: afc15df9a0fa0e84baad73c6d9d0f8f3, type: 3}
+  ac_enemyDie: {fileID: 8300000, guid: 7011b10a80ca1854d8de6609609f8917, type: 3}
+  ac_volatility0: {fileID: 8300000, guid: 8c2866d8ec7512c47880db8d720818c2, type: 3}
+  ac_volatility1: {fileID: 8300000, guid: f0a3a010bad0c684fa491adbc83f1806, type: 3}
+  ac_volatility2: {fileID: 8300000, guid: 8eb00891712ecae469d986f421963ce4, type: 3}
+  ac_volatility3: {fileID: 8300000, guid: fae422b4487322844b9d645fd09acbd4, type: 3}
+  ac_volatility4: {fileID: 8300000, guid: 4375b0361f4b9fb4ab5a618d9083d6f6, type: 3}
+--- !u!4 &337135815
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337135806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.757843, y: -0.116760254, z: -0.3830924}
+  m_LocalScale: {x: 0.78020585, y: 0.78020585, z: 0.78020585}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &344114086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,7 +3033,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeElectricSpeed
         m_Mode: 0
         m_Arguments:
@@ -2745,7 +3130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3271,7 +3656,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeEnemyDamage
         m_Mode: 0
         m_Arguments:
@@ -3510,7 +3895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41176468, g: 0.018166106, b: 0.018166106, a: 1}
+  m_Color: {r: 0.41176468, g: 0.018166106, b: 0.018166106, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4456,7 +4841,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeSpellLifetime
         m_Mode: 0
         m_Arguments:
@@ -4620,7 +5005,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeElectricLiveTime
         m_Mode: 0
         m_Arguments:
@@ -4683,7 +5068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.986207, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.986207, g: 1, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4999,7 +5384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.986207, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.986207, g: 1, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5071,7 +5456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.986207, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.986207, g: 1, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5271,7 +5656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498689}
+      - m_Target: {fileID: 0}
         m_MethodName: InitGame
         m_Mode: 1
         m_Arguments:
@@ -5367,7 +5752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 1}
+  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5540,7 +5925,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeCrystalHealth
         m_Mode: 0
         m_Arguments:
@@ -5636,7 +6021,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeCompletionTimer
         m_Mode: 0
         m_Arguments:
@@ -5723,89 +6108,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 30
---- !u!1 &658498688
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 658498690}
-  - component: {fileID: 658498689}
-  - component: {fileID: 658498691}
-  - component: {fileID: 658498692}
-  m_Layer: 0
-  m_Name: GameController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &658498689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 658498688}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8a593c049a790459622da6887b99c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txt_redScoreText: {fileID: 0}
-  txt_blueScoreText: {fileID: 0}
-  txt_redScoreText2: {fileID: 0}
-  txt_blueScoreText2: {fileID: 0}
-  txt_redCompletionTimer: {fileID: 0}
-  txt_blueCompletionTimer: {fileID: 0}
-  txt_redSelfDestructTimer: {fileID: 0}
-  txt_blueSelfDestructTimer: {fileID: 0}
-  go_canvas: {fileID: 181209746}
---- !u!4 &658498690
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 658498688}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0545594, y: -0.19655323, z: -0.49101448}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &658498691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 658498688}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ea3469dec111946bb5f4d806497833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &658498692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 658498688}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29f5e6b56eeef048bfbeba978db1250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  go_objectivesList:
-  - {fileID: 1452077301921158, guid: b049ff75103b5e04eabc3053628da878, type: 2}
-  - {fileID: 1105177977694010, guid: 2638f8d7de90284469b59ca93aee9969, type: 2}
-  - {fileID: 1105177977694010, guid: e6b52a52547eec945b6da79c9fc4cb7b, type: 2}
-  go_enemy: {fileID: 1361453887809848, guid: dcf428e369c5eca45aca3fd48073e9db, type: 2}
-  leftEnemies: 0
-  rightEnemies: 0
-  txt_winMsg: {fileID: 0}
-  objv_redObjective: {fileID: 0}
-  objv_blueObjective: {fileID: 0}
 --- !u!1 &660469296
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,7 +6370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.33544636, b: 0.99264705, a: 1}
+  m_Color: {r: 0, g: 0.33544636, b: 0.99264705, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7140,7 +7442,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4636058159455576, guid: 90e8ad0eb698c4544becbcc568222a15, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114653368810392768, guid: 90e8ad0eb698c4544becbcc568222a15,
         type: 2}
@@ -7633,7 +7935,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeRespawnTime
         m_Mode: 0
         m_Arguments:
@@ -7892,7 +8194,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498689}
+      - m_Target: {fileID: 0}
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
@@ -8542,7 +8844,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeElectricCooldown
         m_Mode: 0
         m_Arguments:
@@ -9005,7 +9307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9293,7 +9595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 1}
+  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -10299,7 +10601,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4611621689480248, guid: 5e307854a2bac4c48827b4c6a69bca44, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e307854a2bac4c48827b4c6a69bca44, type: 2}
@@ -10387,7 +10689,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeWindCooldown
         m_Mode: 0
         m_Arguments:
@@ -11031,7 +11333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -11821,7 +12123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 1}
+  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12218,7 +12520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12721,7 +13023,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMagicMissileSpeed
         m_Mode: 0
         m_Arguments:
@@ -12783,7 +13085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 1}
+  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -12881,7 +13183,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeWindSpeed
         m_Mode: 0
         m_Arguments:
@@ -13597,7 +13899,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeEnemySpeed
         m_Mode: 0
         m_Arguments:
@@ -13660,7 +13962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 1}
+  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -13753,7 +14055,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4398198023010460, guid: 9eba1a2d8d8bf794ba2c56098f25687c, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114467604127061754, guid: 9eba1a2d8d8bf794ba2c56098f25687c,
         type: 2}
@@ -13891,7 +14193,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeFreezeDuration
         m_Mode: 0
         m_Arguments:
@@ -13917,7 +14219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 1}
+  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -14015,7 +14317,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeWindForce
         m_Mode: 0
         m_Arguments:
@@ -14179,7 +14481,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeSpawnRate
         m_Mode: 0
         m_Arguments:
@@ -14441,7 +14743,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4479948879524012, guid: ce28f14c4d7ac0144880eded20f3d8e4, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114402147449209724, guid: ce28f14c4d7ac0144880eded20f3d8e4,
         type: 2}
@@ -14943,7 +15245,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeProjectileSize
         m_Mode: 0
         m_Arguments:
@@ -15141,7 +15443,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangePlayerHealth
         m_Mode: 0
         m_Arguments:
@@ -15204,7 +15506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 1}
+  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15375,7 +15677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 1}
+  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15683,7 +15985,7 @@ Transform:
   - {fileID: 1185068875}
   - {fileID: 1373953341}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902879031
 GameObject:
@@ -16226,7 +16528,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeSelfDestructTimer
         m_Mode: 0
         m_Arguments:
@@ -16322,7 +16624,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangePlayerWispSpeed
         m_Mode: 0
         m_Arguments:
@@ -16860,7 +17162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.018166106, g: 0.16746213, b: 0.41176468, a: 1}
+  m_Color: {r: 0.018166106, g: 0.16746213, b: 0.41176468, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -16965,7 +17267,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeIceSpeed
         m_Mode: 0
         m_Arguments:
@@ -17097,7 +17399,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeCTFMaxScore
         m_Mode: 0
         m_Arguments:
@@ -17257,7 +17559,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4420336661076468, guid: 98767151e13fd074882b689c3a25f075, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114425632406730226, guid: 98767151e13fd074882b689c3a25f075,
         type: 2}
@@ -17361,7 +17663,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498691}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeIceCooldown
         m_Mode: 0
         m_Arguments:

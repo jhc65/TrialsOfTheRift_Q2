@@ -13,10 +13,10 @@ public class MeleeController : EnemyController {
 		go_closestTarget = null;
 		float f_minDistance = 9999f;
 		float f_currentDistance;
-		for(int i = 0; i < Constants.C_Players.Length; i++){	
-			f_currentDistance = Vector3.Distance(Constants.C_Players[i].transform.position,transform.position);
-			if(Constants.C_Players[i].GetComponent<PlayerController>().e_Side == e_Side && f_currentDistance < f_minDistance && Constants.C_Players[i].GetComponent<PlayerController>().isWisp == false){
-				go_closestTarget = Constants.C_Players[i];
+		for(int i = 0; i < GameController.C_Players.Length; i++){	
+			f_currentDistance = Vector3.Distance(GameController.C_Players[i].transform.position,transform.position);
+			if(GameController.C_Players[i].GetComponent<PlayerController>().e_Side == e_Side && f_currentDistance < f_minDistance && GameController.C_Players[i].GetComponent<PlayerController>().isWisp == false){
+				go_closestTarget = GameController.C_Players[i];
 				f_minDistance = f_currentDistance;
 			}
 		}

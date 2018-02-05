@@ -32,8 +32,14 @@ public class PortalController : MonoBehaviour {
                 other.gameObject.transform.position = new Vector3(transform.position.x + -1 * (int)e_side * f_portalOffset,
                     0.5f,
                     transform.position.z);
+                f_timeIn = 0;
             }
 		}
         
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        f_timeIn = 0;
     }
 }

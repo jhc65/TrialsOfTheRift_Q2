@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 222059033515229640}
   - component: {fileID: 114248141009208486}
   - component: {fileID: 114153525837671846}
-  - component: {fileID: 114893387554577416}
+  - component: {fileID: 114645680811962108}
   m_Layer: 5
   m_Name: HUD_backing
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 1}
+  m_Color: {r: 0.035034586, g: 0.7941176, b: 0.26014197, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.986207, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.986207, g: 1, b: 0, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playc_trackedPlayer: {fileID: 0}
-  sshk_shaker: {fileID: 114893387554577416}
+  sshk_shaker: {fileID: 114645680811962108}
   img_healthbar: {fileID: 114097130305044006}
   img_windbar: {fileID: 114604900646578072}
   img_icebar: {fileID: 114979598428504446}
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.018166106, g: 0.16746213, b: 0.41176468, a: 1}
+  m_Color: {r: 0.018166106, g: 0.16746213, b: 0.41176468, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.33544636, b: 0.99264705, a: 1}
+  m_Color: {r: 0, g: 0.33544636, b: 0.99264705, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 1}
+  m_Color: {r: 0.6322516, g: 1, b: 0.2794118, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -285,6 +285,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114645680811962108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778593857043360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeAmt: 0
 --- !u!114 &114868981604497902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -317,19 +329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: P4
---- !u!114 &114893387554577416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778593857043360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmt: 0
+  m_Text: P3
 --- !u!114 &114979598428504446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 1}
+  m_Color: {r: 0.26859865, g: 0.9220857, b: 1, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

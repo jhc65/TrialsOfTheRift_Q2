@@ -6,12 +6,16 @@ public class MagicMissileController : SpellController {
 
     bool i_reflect = false;
 
+    private void OnDestroy() {
+        Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
+    }
+
     protected override void ApplyEffect(GameObject go_target, Collision collision) {
         if (go_target.tag == "Player") {
             if (go_target.GetComponent<PlayerController>().GetColor() != this.e_color)
             {
                 go_target.GetComponent<PlayerController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage * f_charged);
-                go_target.GetComponent<PlayerController>().Drop();
+                go_target.GetComponent<PlayerController>().DropFlag();
             }
             else {
                 go_target.GetComponent<PlayerController>().Heal(Constants.SpellStats.C_MagicMissileHeal * f_charged);
@@ -21,12 +25,12 @@ public class MagicMissileController : SpellController {
             go_target.GetComponent<EnemyController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage * f_charged);
         }
 		else if (go_target.tag == "Crystal"){
-			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().e_color;
+			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
 			if (crystalColor != e_color){
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MagicMissileCrystalDamagePercent * f_charged);
+				go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_MagicMissileCrystalDamagePercent * f_charged);
 			}
 			else if (crystalColor == e_color) {
-				go_target.GetComponent<CrystalController>().ChangeHealth(Constants.SpellStats.C_MagicMissileCrystalHealPercent * f_charged);
+				go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_MagicMissileCrystalHealPercent * f_charged);
 			}
 		} else if (go_target.tag == "Wall") {
             if (i_reflect) {

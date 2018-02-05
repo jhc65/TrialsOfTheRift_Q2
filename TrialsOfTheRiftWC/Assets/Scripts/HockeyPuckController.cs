@@ -1,144 +1,47 @@
-﻿using System.Collections;
+﻿/*  Hockey Puck Controller - Dana Thompson
+ * 
+ *  Desc:   Controls changes to Ice Hockey Objective's Puck movement and speed
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HockeyPuckController : MonoBehaviour {
 
-    public Constants.Global.Color e_color; // identifies owning team
-    public Constants.Global.Side e_startSide;
-    public Constants.Global.Side e_Side;
-    public float f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
-    public bool b_scored = false;   // identifies when the puck has been used to score
-    private Vector3 v3_home;        // location of flag in players' base
+    public IceHockeyObjective iho_owner;    // identifies objective puck is a part of
+    [SerializeField]
+    private Constants.Global.Color e_color;  // identifies owning team
+    [SerializeField]
+    private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
+    private float f_speed;
     private Rigidbody rb;
-    private bool isPuckStuck = false;
 
-    void Start()
-    {
-        v3_home = transform.position;
-        rb = GetComponent<Rigidbody>();
-
-        SetVelocitySide();
+    // Getters
+   public float Speed {
+        get { return f_speed; }
+        set { f_speed = value; }
     }
 
-    private void Update()
-    {
-        //Incase the portal glitch pops up again, keep until portal is known issue
-        //Vector3 v3_rightPortal = new Vector3(37.25f, 0.5f, -15.25f);
-        //Vector3 v3_leftPortal = new Vector3(-37.25f, 0.5f, 15.25f);
+    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-        ////calls the function if the puck is believed to be stuck.  This way of invoking saves frames
-        //if (!isPuckStuck && (transform.position == v3_rightPortal || transform.position == v3_leftPortal)) {
-        //    Invoke("PuckIsStuckInPortal", 5.0f);
-        //    Debug.Log("We're stuck in Portal potentially.");
-        //    isPuckStuck = true;
-        //}
-
-        if (transform.position.x > 0)
-            e_Side = Constants.Global.Side.RIGHT;
-        else
-            e_Side = Constants.Global.Side.LEFT;
-
-        if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed)
-        {
-            CancelInvoke("DecreaseSpeed");
-            f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
+    public void ResetPuckPosition() {
+        if (e_color == Constants.Global.Color.RED) {
+            transform.position = Constants.ObjectiveStats.C_RedPuckSpawn;
+        }
+        else {
+            transform.position = Constants.ObjectiveStats.C_BluePuckSpawn;
         }
 
-        Vector3 v3_dir = rb.velocity.normalized;
-        rb.velocity = v3_dir * f_speed;
-        Debug.Log(GetComponent<Rigidbody>().velocity);
+        //stop its movement entirely
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "HockeyGoal")
-        {   // player scoring with puck
-            if (e_startSide == Constants.Global.Side.LEFT && rb.velocity.x > 0 
-                && other.GetComponent<GoalController>().GetColor() != e_color)
-            {
-                b_scored = true;
-                transform.position = v3_home;
-                SetVelocitySide();
-            }
-            if (e_startSide == Constants.Global.Side.RIGHT && rb.velocity.x < 0 
-                && other.GetComponent<GoalController>().GetColor() != e_color)
-            {
-                b_scored = true;
-                transform.position = v3_home;
-                SetVelocitySide();
-            }
-        }
-
-        if (other.tag == "ParryShield")
-        {
-            //if the Puck hasn't been hit by a spell or parry, start the speed cooldown
-            CancelInvoke();
-            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
-
-            //we need to get the direction the player is facing, so that's why v3_direction is verbose
-            f_speed += Constants.ObjectiveStats.C_PuckHitIncreaseSpeed;
-            Vector3 v3_direction = other.gameObject.transform.parent.gameObject.transform.forward.normalized;
-            transform.rotation = Quaternion.LookRotation(other.gameObject.transform.parent.gameObject.transform.forward);
-            gameObject.GetComponent<Rigidbody>().velocity = v3_direction * f_speed;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "Enemy") {
-            collision.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth);
-        }
-        else if (collision.gameObject.tag == "Player") {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage);
-        }
-        else if (collision.gameObject.tag == "Spell") {
-            //if the Puck hasn't been hit by a spell or parry, start the speed cooldown
-            CancelInvoke();
-            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
-        }
-        //if (collision.gameObject.tag == "Floor")
-        //{
-        //    //ignores any collision detection between the floor and puck
-        //    Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-        //}
-        else if (collision.gameObject.tag != "Portal" || collision.gameObject.tag != "Rift"){
-            Debug.Log(GetComponent<Rigidbody>().velocity);
-            Debug.Log("I am here");
-            Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
-            float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
-            transform.eulerAngles = new Vector3(0, rot, 0);
-            GetComponent<Rigidbody>().velocity = transform.forward * f_speed;
-            Debug.Log(GetComponent<Rigidbody>().velocity);
-        }
-
-    }
-
-    public void ResetHome()
-    {
-        transform.position = v3_home;
-    }
-
-    //completely sets the pucks default state
-    private void SetVelocitySide() {
-        if (v3_home.x < 0)
-        {
-            e_startSide = Constants.Global.Side.LEFT;
-            e_Side = e_startSide;
-            rb.velocity = new Vector3(0.0f, 0.0f, 1.0f) * f_speed;
-        }
-        else
-        {
-            e_startSide = Constants.Global.Side.RIGHT;
-            e_Side = e_startSide;
-            rb.velocity = new Vector3(0.0f, 0.0f, 1.0f) * f_speed;
-        }
-    }
-
-    //used to decrement the speed every second after 3 seconds
     private void DecreaseSpeed() {
-        f_speed -= Constants.ObjectiveStats.C_PuckSpeedDecreaseRate;
+        f_speed -= Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount;
     }
 
     ////if the puck gets stuck in the portal, move it over from it and reset its speed
@@ -155,4 +58,77 @@ public class HockeyPuckController : MonoBehaviour {
 
     //    isPuckStuck = false;
     //}
+
+    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+    void Start() {
+        rb = GetComponent<Rigidbody>();
+        f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;     // cannot read from Constants.cs in initialization at top
+    }
+
+    void Update() {
+        //Incase the portal glitch pops up again, keep until portal is known issue
+        //Vector3 v3_rightPortal = new Vector3(37.25f, 0.5f, -15.25f);
+        //Vector3 v3_leftPortal = new Vector3(-37.25f, 0.5f, 15.25f);
+
+        ////calls the function if the puck is believed to be stuck.  This way of invoking saves frames
+        //if (!isPuckStuck && (transform.position == v3_rightPortal || transform.position == v3_leftPortal)) {
+        //    Invoke("PuckIsStuckInPortal", 5.0f);
+        //    Debug.Log("We're stuck in Portal potentially.");
+        //    isPuckStuck = true;
+        //}
+
+        // Set speed to base if it gets too low
+        if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed) {
+            CancelInvoke("DecreaseSpeed");
+            f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
+        }
+
+        Vector3 v3_dir = rb.velocity.normalized;
+        rb.velocity = v3_dir * f_speed;
+    }
+
+    void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("Enemy")) {
+            collision.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth);
+        }
+        else if (collision.gameObject.CompareTag("Player")) {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage);
+        }
+        else if (collision.gameObject.CompareTag("Spell")) {
+            // Reset slowdown invoke
+            CancelInvoke();
+            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
+        }
+        else if (!collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Rift")) {
+            // Reflect puck on collision
+                // https://youtube.com/watch?v=u_p50wENBY
+            Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
+            float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
+            transform.eulerAngles = new Vector3(0, rot, 0);
+            rb.velocity = transform.forward * f_speed;
+        }
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "HockeyGoal") {   // player scoring with puck TODO: look at layers and tags
+            if(other.GetComponent<GoalController>().Color != e_color &&
+                ((e_startSide == Constants.Global.Side.LEFT && rb.velocity.x > 0 ||
+                  e_startSide == Constants.Global.Side.RIGHT && rb.velocity.x < 0))) { 
+                iho_owner.UpdatePuckScore();
+                ResetPuckPosition();
+            }
+        }
+        else if (other.tag == "ParryShield") {
+            // Reset slowdown invoke
+            CancelInvoke();
+            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
+
+            // Deflect and move in direction player is facing
+            f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
+            Vector3 facingDirection = other.gameObject.transform.root.forward.normalized;
+            transform.rotation = Quaternion.LookRotation(other.gameObject.transform.root.forward);
+            rb.velocity = facingDirection * f_speed;
+        }
+    }
 }
