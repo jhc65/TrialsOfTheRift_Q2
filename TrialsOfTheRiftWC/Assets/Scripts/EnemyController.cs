@@ -96,6 +96,7 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected void EnterStateDie() {
 		e_State = State.DIE;
+		AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_enemyDie);
 		ChildEnterStateDie();
     }
 	protected abstract void ChildEnterStateDie();
@@ -113,6 +114,7 @@ public abstract class EnemyController : MonoBehaviour {
 	protected abstract void ChildUpdateDie();
 	
 	public void TakeDamage(float damage){
+		AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_enemyHit);
 		f_health -= (int)damage;
 		//Debug.Log(i_health);
 		//if(i_health <= 0f){
