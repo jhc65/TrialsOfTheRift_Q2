@@ -35,14 +35,7 @@ public sealed class AudioManager : MonoBehaviour {
 	}
 	
 	void Awake() {
-        if (instance == null) {
-            instance = this;
-        }
-
-        if (instance != null && instance != this) {
-            Debug.Log("Destroying non-primary GC.");
-            Destroy(this);
-        }
+        instance = this;
     }
 
 	// Use this for initialization
