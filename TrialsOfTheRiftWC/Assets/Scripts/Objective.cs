@@ -16,6 +16,7 @@ public abstract class Objective : MonoBehaviour {
     protected GameObject go_activeRoom;      // active room specific to this objective instance 
     protected int i_numberInList;            // this is the i'th objective faced by this team (1-based)
     protected bool b_isComplete = false;     // set when criteria to beat the objective is met
+    protected Calligrapher calligrapher;     // reference to UI singleton
 
     // Getters
     public Constants.Global.Color Color {
@@ -30,12 +31,13 @@ public abstract class Objective : MonoBehaviour {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    public abstract void ParamReset(float param_in);        //[Param Fix] - Used for Param Screen. Probably should be removed in release.
+    public abstract void ParamReset();        //[Param Fix] - Used for Param Screen. TODO: remove for release.
     protected abstract void SetUI();
     protected abstract void ResetUI();
 
     // Activates all aspects of this objective
     public Objective Activate(int i) {
+        calligrapher = Calligrapher.Instance;
         b_isComplete = false;           // initialize variables
         i_numberInList = i;
         SetUI();                        // set UI

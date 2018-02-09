@@ -17,16 +17,18 @@ public abstract class EnemyController : MonoBehaviour {
 	protected Rigidbody r_rigidbody;
 	protected UnityEngine.AI.NavMeshAgent nma_agent;
 	public float f_canMove = 1f;
+    protected RiftController riftController;
 	
 	protected void Start() {
 		r_rigidbody = GetComponent<Rigidbody>();
 		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		f_health = Constants.EnemyStats.C_EnemyHealth;
 		f_damage = Constants.EnemyStats.C_EnemyDamage;
-		nma_agent.speed = Constants.EnemyStats.C_EnemySpeed;
-		nma_agent.acceleration = nma_agent.acceleration* (Constants.EnemyStats.C_EnemySpeed / 3.5f);
+		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
+		nma_agent.acceleration = nma_agent.acceleration* (Constants.EnemyStats.C_EnemyBaseSpeed / 3.5f);
 		EnterStateChase ();
-	}
+        riftController = RiftController.Instance;     // reference to Rift singleton
+    }
 	
 	// Update is called once per frame
 	protected void Update () {
@@ -96,25 +98,20 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected void EnterStateDie() {
 		e_State = State.DIE;
-		AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_enemyDie);
+		Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_enemyDie);
 		ChildEnterStateDie();
     }
 	protected abstract void ChildEnterStateDie();
 
     protected void UpdateDie() {
 		ChildUpdateDie();
-        if (e_Side == Constants.Global.Side.LEFT) {
-            DarkMagician.GetInstance().leftEnemies--;
-        } else {
-            DarkMagician.GetInstance().rightEnemies--;
-        }
-        
+        riftController.DecreaseEnemies(e_Side);
 		Destroy(gameObject);
     }
 	protected abstract void ChildUpdateDie();
 	
 	public void TakeDamage(float damage){
-		AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_enemyHit);
+		Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_enemyHit);
 		f_health -= (int)damage;
 		//Debug.Log(i_health);
 		//if(i_health <= 0f){
@@ -182,7 +179,7 @@ public abstract class EnemyController : MonoBehaviour {
     }
 	
 	private void UpdateSpeed(){
-		nma_agent.speed = Constants.EnemyStats.C_EnemySpeed * f_canMove;
+		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed * f_canMove;
 		//nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f) * f_canMove;
 	}
 }

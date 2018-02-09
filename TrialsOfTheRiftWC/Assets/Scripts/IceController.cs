@@ -110,7 +110,7 @@ public class IceController : SpellController {
 
     protected override void BuffSpell() {
         // Increase Volatility by 0.5%
-        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
+        RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
         f_iceDamage = f_iceDamage * Constants.SpellStats.C_IceRiftDamageMultiplier;
         transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
     }

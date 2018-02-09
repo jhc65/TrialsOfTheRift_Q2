@@ -630,16 +630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efe22be8d945f64ca0bd2ca6d2ffe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_RiftMagicMissile: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
-    type: 2}
-  go_PlayerReferences:
-  - {fileID: 831298294}
-  - {fileID: 1854477934}
-  - {fileID: 1117903695}
-  - {fileID: 151429909}
-  go_PocketRift: {fileID: 0}
-  v3_PocketRiftLocations: []
-  mainCamera: {fileID: 1373953340}
+  go_riftDeathBolt: {fileID: 0}
+  go_playerReferences: []
+  go_enemyPrefab: {fileID: 0}
 --- !u!4 &21829176
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,7 +2585,7 @@ GameObject:
   - component: {fileID: 168601247}
   - component: {fileID: 168601246}
   m_Layer: 5
-  m_Name: BlueSelfDestructTimer
+  m_Name: BlueDestructionTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8692,16 +8685,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efe22be8d945f64ca0bd2ca6d2ffe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_RiftMagicMissile: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
-    type: 2}
-  go_PlayerReferences:
+  go_riftDeathBolt: {fileID: 0}
+  go_playerReferences:
   - {fileID: 831298294}
   - {fileID: 1854477934}
   - {fileID: 1117903695}
   - {fileID: 151429909}
-  go_PocketRift: {fileID: 0}
-  v3_PocketRiftLocations: []
-  mainCamera: {fileID: 1373953340}
+  go_enemyPrefab: {fileID: 1361453887809848, guid: dcf428e369c5eca45aca3fd48073e9db,
+    type: 2}
 --- !u!65 &598513397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8964,7 +8955,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498689}
+      - m_Target: {fileID: 658498691}
         m_MethodName: InitGame
         m_Mode: 1
         m_Arguments:
@@ -9876,8 +9867,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 658498690}
-  - component: {fileID: 658498689}
   - component: {fileID: 658498692}
+  - component: {fileID: 658498689}
   - component: {fileID: 658498691}
   - component: {fileID: 658498696}
   - component: {fileID: 658498695}
@@ -9904,19 +9895,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txt_redScoreText: {fileID: 1414906998}
   txt_blueScoreText: {fileID: 894766292}
-  txt_redHealthCounter: {fileID: 507043081}
-  txt_blueHealthCounter: {fileID: 517801366}
+  txt_redHealthText: {fileID: 507043081}
+  txt_blueHealthText: {fileID: 517801366}
   txt_redCompletionTimer: {fileID: 1634195036}
   txt_blueCompletionTimer: {fileID: 429351599}
-  txt_redSelfDestructTimer: {fileID: 2014181298}
-  txt_blueSelfDestructTimer: {fileID: 115892537}
+  txt_redDestructionTimer: {fileID: 2014181298}
+  txt_blueDestructionTimer: {fileID: 115892537}
   txt_redObjvTitle: {fileID: 44498260}
   txt_blueObjvTitle: {fileID: 1533985548}
   txt_redObjvDescription: {fileID: 1549475174}
   txt_blueObjvDescription: {fileID: 658159082}
   img_redPopupBacking: {fileID: 330405080}
   img_bluePopupBacking: {fileID: 1944213339}
-  go_canvas: {fileID: 181209746}
 --- !u!4 &658498690
 Transform:
   m_ObjectHideFlags: 0
@@ -9941,9 +9931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e6de4a2cbcde945b73e9bf180e7de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GC: {fileID: 658498689}
   DM: {fileID: 658498692}
-  l_playerControllers:
+  playerControllers:
   - {fileID: 1806757833}
   - {fileID: 1763601064}
   - {fileID: 2118622282}
@@ -9952,6 +9941,7 @@ MonoBehaviour:
   butt_spellSelect: {fileID: 2112633917}
   butt_enemySelect: {fileID: 480798754}
   butt_objectiveSelect: {fileID: 2080086434}
+  go_topMenu: {fileID: 181209746}
   go_playerMenu: {fileID: 558199849}
   go_spellMenu: {fileID: 1491427147}
   go_enemyMenu: {fileID: 871671455}
@@ -10047,12 +10037,9 @@ MonoBehaviour:
   - {fileID: 1331734953}
   - {fileID: 934301715}
   - {fileID: 8193994}
-  go_enemy: {fileID: 1361453887809848, guid: dcf428e369c5eca45aca3fd48073e9db, type: 2}
-  leftEnemies: 0
-  rightEnemies: 0
+  objv_currentRedObjective: {fileID: 0}
+  objv_currentBlueObjective: {fileID: 0}
   txt_winMsg: {fileID: 2146816463}
-  objv_redObjective: {fileID: 0}
-  objv_blueObjective: {fileID: 0}
 --- !u!82 &658498693
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10319,11 +10306,12 @@ MonoBehaviour:
     type: 3}
   ac_enemyHit: {fileID: 8300000, guid: afc15df9a0fa0e84baad73c6d9d0f8f3, type: 3}
   ac_enemyDie: {fileID: 8300000, guid: 7011b10a80ca1854d8de6609609f8917, type: 3}
-  ac_volatility0: {fileID: 8300000, guid: 8c2866d8ec7512c47880db8d720818c2, type: 3}
-  ac_volatility1: {fileID: 8300000, guid: f0a3a010bad0c684fa491adbc83f1806, type: 3}
-  ac_volatility2: {fileID: 8300000, guid: 8eb00891712ecae469d986f421963ce4, type: 3}
-  ac_volatility3: {fileID: 8300000, guid: fae422b4487322844b9d645fd09acbd4, type: 3}
-  ac_volatility4: {fileID: 8300000, guid: 4375b0361f4b9fb4ab5a618d9083d6f6, type: 3}
+  ac_volatility:
+  - {fileID: 8300000, guid: 8c2866d8ec7512c47880db8d720818c2, type: 3}
+  - {fileID: 8300000, guid: f0a3a010bad0c684fa491adbc83f1806, type: 3}
+  - {fileID: 8300000, guid: 8eb00891712ecae469d986f421963ce4, type: 3}
+  - {fileID: 8300000, guid: fae422b4487322844b9d645fd09acbd4, type: 3}
+  - {fileID: 8300000, guid: 4375b0361f4b9fb4ab5a618d9083d6f6, type: 3}
 --- !u!82 &658498697
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17728,7 +17716,7 @@ GameObject:
   - component: {fileID: 1232826904}
   - component: {fileID: 1232826903}
   m_Layer: 5
-  m_Name: RedScore (2)
+  m_Name: RedHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22047,7 +22035,7 @@ GameObject:
   - component: {fileID: 1555251672}
   - component: {fileID: 1555251671}
   m_Layer: 5
-  m_Name: RedSelfDestructTimer
+  m_Name: RedDestructionTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25455,7 +25443,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 658498689}
+      - m_Target: {fileID: 658498691}
         m_MethodName: Params
         m_Mode: 1
         m_Arguments:
@@ -26085,7 +26073,7 @@ GameObject:
   - component: {fileID: 1830240384}
   - component: {fileID: 1830240383}
   m_Layer: 5
-  m_Name: BlueScore (2)
+  m_Name: BlueHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

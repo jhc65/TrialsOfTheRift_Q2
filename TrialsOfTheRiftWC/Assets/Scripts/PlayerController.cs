@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour{
         isWisp = true;
         if(SceneManager.GetActiveScene().name != "WarmUp") {
             Debug.Log("Increase Volatility by 2.5%");
-            RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
+            RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
         go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour{
                     f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
                 }
                 if (p_player.GetButton("MagicMissile")) {
-					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_magicMissileShoot);
+					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_magicMissileShoot);
                     f_nextMagicMissile = 0;
 				    GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -263,7 +263,7 @@ public class PlayerController : MonoBehaviour{
 			}
             // Charged Magic Missile (Release)
             if (p_player.GetButtonUp("MagicMissile") && f_nextMmCharge > Constants.SpellStats.C_MagicMissileChargeCooldown) {
-				AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_magicMissileShoot);
+				Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_magicMissileShoot);
                 f_nextMmCharge = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour{
                     f_windCharge += p_player.GetButtonTimePressed("WindSpell");
                 }
                 if (p_player.GetButtonUp("WindSpell")) {
-					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_windShoot);
+					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_windShoot);
                     f_nextWind = 0;
 				    f_nextCast = 0;
                     for (int i = -30; i <= 30; i += 30) {
@@ -301,7 +301,7 @@ public class PlayerController : MonoBehaviour{
             // Ice Spell
             if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 if (p_player.GetButtonDown("IceSpell")) {
-					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_iceShoot);
+					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_iceShoot);
                     b_iceboltMode = true;
                     f_nextIce = 0;
                     f_nextCast = 0;
@@ -322,7 +322,7 @@ public class PlayerController : MonoBehaviour{
                     f_electricCharge += p_player.GetButtonTimePressed("ElectricitySpell");
                 }
                 if (p_player.GetButtonUp("ElectricitySpell")) {
-					AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_electricShoot);
+					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_electricShoot);
                     f_nextElectric = 0;
 				    f_nextCast = 0;
 				    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
@@ -384,13 +384,14 @@ public class PlayerController : MonoBehaviour{
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Rift") {
+            DropFlag();
 			TakeDamage(f_playerHealth);
             while (!isWisp) {
                 Debug.Log("I'm waiting for the player to be a wisp, because then they will have dropped the flag and I can move them across the rift.");
             }
-			transform.position = transform.position + (int)e_Side * new Vector3(-2, 0, 0);
+			transform.position = transform.position + (int)e_Side * Constants.RiftStats.C_RiftTeleportOffset;
 		}
-	}
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

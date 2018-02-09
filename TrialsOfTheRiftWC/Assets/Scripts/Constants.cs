@@ -112,7 +112,7 @@ public static class Constants {
         //public static Vector3 C_BlueCrystalSpawn = C_GenericRedObjectiveTargetSpawn;
         public static float C_CrystalMaxHealth = 500.0f;
 
-        //Ice Hockey Stats
+        // Ice Hockey Stats
         public static Vector3 C_RedPuckSpawn = new Vector3(-5.0f, 0.5f, 0f);
         public static Vector3 C_BluePuckSpawn = new Vector3(5.0f, 0.5f, 0f);
         //public static Vector3 C_RedHockeyGoalSpawn = new Vector3(-20.0f, 0.01f, 0.0f);
@@ -125,12 +125,14 @@ public static class Constants {
         public static float C_PuckSpeedHitIncrease = 5.0f;      // speed increase every time puck is hit
         public static float C_PuckBaseSpeed = 10.0f;
 
+        // Rift Boss Stats
+        public static float C_RiftBossMaxHealth = 3000f;
     }
        
     // Enemy Stats
     public static class EnemyStats {
         public static int C_EnemySpawnCapPerSide = 30;
-        public static float C_EnemySpeed = 3.5f;
+        public static float C_EnemyBaseSpeed = 3.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 75.0f;
         public static float C_EnemyDamage = 25.0f;
@@ -138,6 +140,8 @@ public static class Constants {
 
     // Rift Stats
     public static class RiftStats {
+        public static Vector3 C_RiftTeleportOffset = new Vector3(-4, 0, 0);
+
         public static float C_VolatilityResetTime = 5.0f;
         //public static float C_Volatility_CameraFlipTime = 5.0f;
         public static float C_VolatilityEnemySpawnTimer = 7.0f;
