@@ -11,8 +11,7 @@ using UnityEngine;
 public abstract class Objective : MonoBehaviour {
 
     public GameObject[] go_roomPool;         // rooms allowed for this objective to be played in
-    [SerializeField]
-    protected Constants.Global.Color e_color;// identifies owning team - MUST BE SET IN INSPECTOR!
+    [SerializeField] protected Constants.Global.Color e_color;  // identifies owning team - MUST BE SET IN INSPECTOR!
     protected GameObject go_activeRoom;      // active room specific to this objective instance 
     protected int i_numberInList;            // this is the i'th objective faced by this team (1-based)
     protected bool b_isComplete = false;     // set when criteria to beat the objective is met

@@ -11,16 +11,14 @@ using UnityEngine.AI;
 
 public sealed class RiftController : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject go_riftDeathBolt;
+    [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;
     //public GameObject go_PocketRift;
     //public Vector3[] v3_PocketRiftLocations;
     //public Camera mainCamera;
 
     // enemies
-    [SerializeField]
-    private GameObject go_enemyPrefab;
+    [SerializeField] private GameObject go_enemyPrefab;
     private int leftEnemies = 0;
     private int rightEnemies = 0;
     private Vector3[] v3_rightEnemySpawnPositions = new Vector3[] {

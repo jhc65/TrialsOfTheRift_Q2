@@ -24,7 +24,7 @@ public sealed class Maestro : MonoBehaviour {
 	public AudioClip ac_enemyHit;
 	public AudioClip ac_enemyDie;
 
-    public AudioClip[] ac_volatility;
+    [SerializeField] private AudioClip[] ac_volatility;
 	
     // Singleton
     private static Maestro instance;

@@ -12,14 +12,11 @@ using UnityEngine.UI;
 
 public sealed class DarkMagician : MonoBehaviour {
 
-    [SerializeField]
-    private Objective[] objv_redObjectiveList;
-    [SerializeField]
-    private Objective[] objv_blueObjectiveList;
+    [SerializeField] private Objective[] objv_redObjectiveList;
+    [SerializeField] private Objective[] objv_blueObjectiveList;
     public Objective objv_currentRedObjective, objv_currentBlueObjective;   // goddamn debug parameters TODO: change to private for release
 
-    [SerializeField]
-    private Text txt_winMsg;
+    [SerializeField] private Text txt_winMsg;
 	private bool b_gameOver;
     private RiftController riftController;     // reference to Rift singleton
 
