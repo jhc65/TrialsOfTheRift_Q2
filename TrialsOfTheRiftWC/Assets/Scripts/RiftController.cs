@@ -48,6 +48,11 @@ public sealed class RiftController : MonoBehaviour {
         get { return instance; }
     }
 
+    // Getters
+    public GameObject[] PlayerReferences {
+        get { return go_playerReferences; }
+    }
+
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
     public void IncreaseVolatility(float volatilityUp) {
@@ -139,9 +144,7 @@ public sealed class RiftController : MonoBehaviour {
     // Rift Effects
     public void BoardClear() {
         foreach (GameObject player in go_playerReferences) {
-            if (player.GetComponent<PlayerController>().GetColor() == Constants.Global.Color.RED) {
-                player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth);
-            }
+            player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth);
         }
 
         //TODO: kill all enemies

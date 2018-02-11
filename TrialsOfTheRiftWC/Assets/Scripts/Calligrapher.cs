@@ -19,8 +19,6 @@ public sealed class Calligrapher : MonoBehaviour {
     public Text txt_redObjvDescription, txt_blueObjvDescription;
     public Image img_redPopupBacking, img_bluePopupBacking;
 
-    //public static GameObject[] C_Players;
-
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
 
     // Singleton
@@ -276,7 +274,5 @@ public sealed class Calligrapher : MonoBehaviour {
 
     void Awake() {
         instance = this;
-        Time.timeScale = 0;
-        //C_Players = GameObject.FindGameObjectsWithTag("Player");
     }
 }

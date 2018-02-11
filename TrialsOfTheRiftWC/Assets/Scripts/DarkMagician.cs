@@ -69,7 +69,7 @@ public sealed class DarkMagician : MonoBehaviour {
         objv_currentBlueObjective = objv_blueObjectiveList[0].Activate(1);
     }
 
-    private void Start() {
+    void Start() {
         riftController = RiftController.Instance;
     }
 

@@ -229,8 +229,7 @@ public class DebugParametersController : MonoBehaviour {
         Constants.PlayerStats.C_RespawnTimer = f_respawnTimeIn;
     }
 
-    public void ChangeCrystalHealth(float f_crystalHealthIn)
-    {
+    public void ChangeCrystalHealth(float f_crystalHealthIn) {
         txt_crystalHealth.text = slider_crystalHealth.value.ToString();
         Constants.ObjectiveStats.C_CrystalMaxHealth = (int)f_crystalHealthIn;
         // if currently playing Crystal Destruction Objective TODO: remove for release
@@ -242,8 +241,7 @@ public class DebugParametersController : MonoBehaviour {
         }
     }
 
-    public void ChangeCTFMaxScore(float f_CTFScoreIn)
-    {
+    public void ChangeCTFMaxScore(float f_CTFScoreIn) {
         txt_CTFScore.text = slider_CTFScore.value.ToString();
         Constants.ObjectiveStats.C_CTFMaxScore = (int)f_CTFScoreIn;
     }
@@ -381,6 +379,8 @@ public class DebugParametersController : MonoBehaviour {
 
     // Get initial values from Constants.cs
     void Start() {
+        Time.timeScale = 0;
+
         //----------------------------
         // Player
 
