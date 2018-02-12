@@ -10,8 +10,8 @@ using UnityEngine;
 
 public class FlagController : MonoBehaviour {
 
-    public CaptureTheFlagObjective ctfo_owner;  // identifies objective flag is a part of
-	public Constants.Global.Color e_color; // identifies owning team - MUST BE SET IN INSPECTOR!
+    [SerializeField] private CaptureTheFlagObjective ctfo_owner;  // identifies objective flag is a part of
+    [SerializeField] private Constants.Global.Color e_color; // identifies owning team - MUST BE SET IN INSPECTOR!
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 

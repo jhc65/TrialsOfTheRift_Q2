@@ -63,7 +63,7 @@ public sealed class DarkMagician : MonoBehaviour {
 		txt_winMsg.enabled = false;
 		b_gameOver = false;
 		ShuffleObjectives();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         objv_currentRedObjective = objv_redObjectiveList[0].Activate(1);
         objv_currentBlueObjective = objv_blueObjectiveList[0].Activate(1);

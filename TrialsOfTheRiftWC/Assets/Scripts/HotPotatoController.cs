@@ -26,12 +26,12 @@ public class HotPotatoController : MonoBehaviour {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    public void SetCompletionTimer(int time) {
+    public void UpdateCompletionTimer(int time) {
         i_completionTimer = time;
         hpo_owner.UpdateCompletionTimer(i_completionTimer);
     }
 
-    public void SetDestructionTimer(int time) {
+    public void UpdateDestructionTimer(int time) {
         i_destructionTimer = time;
         hpo_owner.UpdateDestructionTimer(i_destructionTimer);
     }
