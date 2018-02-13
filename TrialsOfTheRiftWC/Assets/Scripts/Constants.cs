@@ -42,11 +42,11 @@ public static class Constants {
         public static float C_MagicMissileDamage = 25.0f;
         public static float C_MagicMissileCooldown = 0.34f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
-        public static float C_MagicMissileChargeCooldown = 0.50f;
+        public static float C_MagicMissileChargeCooldown = 0.5f;
         public static float C_MagicMissileHeal = 10.0f;
 
         // Wind Stats
-        public static float C_WindLiveTime = 0.20f;
+        public static float C_WindLiveTime = 0.2f;
         public static float C_WindSpeed = 20.0f;
         public static float C_WindDamage = 50.0f;
         public static float C_WindCooldown = 3.0f;
@@ -63,8 +63,8 @@ public static class Constants {
         public static float C_IceCooldown = 5.0f;
         public static float C_IceChargeTime = C_SpellChargeTime;
         public static float C_IceRiftDamageMultiplier = C_RiftDamageMultiplier;
-        public static float C_IceFreezeTime = 3.0f;
         public static float C_IcePlayerDamageMultiplier = 0.5f;
+        public static float C_IceFreezeTime = 3.0f;
 
         // it's ELECTRIC! (boogie woogie woogie) Stats
         // TODO: make charge time and Live time tied
@@ -74,13 +74,13 @@ public static class Constants {
 		public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
         public static float C_ElectricRiftDamageMultiplier = C_RiftDamageMultiplier;
+        public static float C_ElectricPlayerDamageMultiplier = 0.5f;
         public static float C_ElectricAOESlowDownMultiplier = 0.5f;
         public static float C_ElectricAOELiveTime = 5.0f;
-        public static float C_ElectricPlayerDamageMultiplier = 0.5f;
 
         // Crystal based percentages Stats
         // TODO: uhh... why is it percent for this? make it real damage instead
-        public static float C_SpellCrystalDamagePercent = -0.10f;
+        public static float C_SpellCrystalDamagePercent = -0.1f;
         public static float C_SpellCrystalHealPercent = 0.05f;
         public static float C_MagicMissileCrystalDamagePercent = -0.01f;
         public static float C_MagicMissileCrystalHealPercent = 0.005f;
@@ -118,7 +118,7 @@ public static class Constants {
         //public static Vector3 C_RedHockeyGoalSpawn = new Vector3(-20.0f, 0.01f, 0.0f);
         //public static Vector3 C_BlueHockeyGoalSpawn = new Vector3(20.0f, 0.01f, 0.0f);
         public static int C_HockeyMaxScore = 3;
-        public static int C_PuckDamage = 240;
+        public static float C_PuckDamage = 240.0f;
         public static float C_PuckSpeedDecayDelay = 3.0f;       // time after hit to wait before decreasing speed
         public static float C_PuckSpeedDecayRate = 1.0f;        // time between successive speed decreases (after first)
         public static float C_PuckSpeedDecreaseAmount = 2.0f;   // speed decrease amount at each interval

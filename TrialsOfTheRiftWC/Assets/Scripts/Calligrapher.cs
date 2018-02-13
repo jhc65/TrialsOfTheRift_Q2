@@ -11,13 +11,13 @@ using UnityEngine;
 
 public sealed class Calligrapher : MonoBehaviour {
 
-    public Text txt_redScoreText, txt_blueScoreText;
-    public Text txt_redHealthText, txt_blueHealthText;
-    public Text txt_redCompletionTimer, txt_blueCompletionTimer;
-    public Text txt_redDestructionTimer, txt_blueDestructionTimer;
-    public Text txt_redObjvTitle, txt_blueObjvTitle;
-    public Text txt_redObjvDescription, txt_blueObjvDescription;
-    public Image img_redPopupBacking, img_bluePopupBacking;
+    [SerializeField] private Text txt_redScoreText, txt_blueScoreText;
+    [SerializeField] private Text txt_redCrystalHealthText, txt_blueCrystalHealthText;
+    [SerializeField] private Text txt_redCompletionTimer, txt_blueCompletionTimer;
+    [SerializeField] private Text txt_redDestructionTimer, txt_blueDestructionTimer;
+    [SerializeField] private Text txt_redObjvTitle, txt_blueObjvTitle;
+    [SerializeField] private Text txt_redObjvDescription, txt_blueObjvDescription;
+    [SerializeField] private Image img_redPopupBacking, img_bluePopupBacking;
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
 
@@ -42,10 +42,10 @@ public sealed class Calligrapher : MonoBehaviour {
     // update health (Crystal Destruction)
 	public void UpdateCrystalHealthUI(Constants.Global.Color colorIn, float healthIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+            txt_redCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+            txt_blueCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
         }
     }
 
@@ -60,22 +60,22 @@ public sealed class Calligrapher : MonoBehaviour {
     }
 
     // update completion timer (Hot Potato)
-    public void UpdateCompletionTimerUI(Constants.Global.Color colorIn, int time) {
+    public void UpdateCompletionTimerUI(Constants.Global.Color colorIn, int timeIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redCompletionTimer.text = time.ToString();
+            txt_redCompletionTimer.text = timeIn.ToString();
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueCompletionTimer.text = time.ToString();
+            txt_blueCompletionTimer.text = timeIn.ToString();
         }
     }
 
     // update destruction timer (Hot Potato)
-    public void UpdateDestructionTimerUI(Constants.Global.Color colorIn, int time) {
+    public void UpdateDestructionTimerUI(Constants.Global.Color colorIn, int timeIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redDestructionTimer.text = time.ToString();
+            txt_redDestructionTimer.text = timeIn.ToString();
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueDestructionTimer.text = time.ToString();
+            txt_blueDestructionTimer.text = timeIn.ToString();
         }
     }
 
@@ -114,13 +114,13 @@ public sealed class Calligrapher : MonoBehaviour {
     public void CrystalDestructionInit(Constants.Global.Color colorIn) {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.transform.parent.gameObject.SetActive(true);
+            txt_redCrystalHealthText.transform.parent.gameObject.SetActive(true);
             txt_blueObjvTitle.text = "Crystal Destruction";
             txt_blueObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
             PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
-            txt_blueHealthText.transform.parent.gameObject.SetActive(true);
+            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(true);
             txt_redObjvTitle.text = "Crystal Destruction";
             txt_redObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
             PopupFadeIn(Constants.Global.Color.RED);
@@ -175,10 +175,10 @@ public sealed class Calligrapher : MonoBehaviour {
 
     public void CrystalDestructionReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.transform.parent.gameObject.SetActive(false);
+            txt_redCrystalHealthText.transform.parent.gameObject.SetActive(false);
         }
         else {
-            txt_blueHealthText.transform.parent.gameObject.SetActive(false);
+            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(false);
         }
     }
 
@@ -204,8 +204,8 @@ public sealed class Calligrapher : MonoBehaviour {
 
     //----------------------------
     // Fade in/out objective description UI at the start of each objective
-    public void PopupFadeIn(Constants.Global.Color e_color) {
-        if (e_color == Constants.Global.Color.RED) {
+    private void PopupFadeIn(Constants.Global.Color colorIn) {
+        if (colorIn == Constants.Global.Color.RED) {
             f_redStartTime = Time.time;
             InvokeRepeating("FadeInRed", 0.1f, 0.075f);
         } else {
@@ -214,8 +214,8 @@ public sealed class Calligrapher : MonoBehaviour {
         }
     }
 
-    public void PopupFadeOut(Constants.Global.Color e_color) {
-        if (e_color == Constants.Global.Color.RED) {
+    private void PopupFadeOut(Constants.Global.Color colorIn) {
+        if (colorIn == Constants.Global.Color.RED) {
             f_redStartTime = Time.time;
             InvokeRepeating("FadeOutRed", 0.1f, 0.075f);
         } else {
