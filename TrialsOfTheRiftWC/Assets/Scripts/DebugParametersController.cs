@@ -334,7 +334,7 @@ public class DebugParametersController : MonoBehaviour {
     // TODO: remove for final build
     public void GameReset() {
         RiftController.Instance.ResetVolatility();
-        SceneManager.LoadScene("WarmUp");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void InitGame() {

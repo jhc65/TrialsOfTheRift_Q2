@@ -159,5 +159,18 @@ public static class Constants {
         public enum Volatility { ZERO, FIVE, TWENTYFIVE, THIRTYFIVE, FIFTY, SIXTYFIVE, SEVENTYFIVE, ONEHUNDRED };
     }
 
+    //Text descriptions for Objectives.
+    public static class ObjectiveText {
+
+    }
+
+    //Carry over for volume options from the main menu.
+    public static class VolOptions {
+        public static float C_MasterVolume = 0.0f;
+        public static float C_BGMVolume = 0.0f;
+        public static float C_SFXVolume = 0.0f;
+        public static float C_VOIVolume = 0.0f;
+    }
+
 	//public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");
 }

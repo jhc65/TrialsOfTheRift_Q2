@@ -7,8 +7,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public sealed class Maestro : MonoBehaviour {
+    public AudioMixer am_masterMix;
+
 	public AudioSource as_bgm;
 	public AudioSource as_volatility;
 	public AudioSource as_sfx;
@@ -50,6 +53,10 @@ public sealed class Maestro : MonoBehaviour {
 	void Start () {
 		as_bgm.clip = ac_bgm0;
 		as_bgm.Play();
+        am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
+        am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
+        am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
+        am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
 	}
 	
 	// Update is called once per frame
