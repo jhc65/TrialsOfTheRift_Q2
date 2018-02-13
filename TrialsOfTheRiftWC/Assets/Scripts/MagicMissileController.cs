@@ -24,7 +24,12 @@ public class MagicMissileController : SpellController {
 		else if (go_target.tag == "Enemy") {
             go_target.GetComponent<EnemyController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage * f_charged);
         }
-		else if (go_target.tag == "Crystal"){
+        else if (go_target.tag == "RiftBoss")
+        {
+            Debug.Log(go_target.tag);
+            go_target.GetComponent<RiftBossController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage * f_charged);
+        }
+        else if (go_target.tag == "Crystal"){
 			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
 			if (crystalColor != e_color){
 				go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_MagicMissileCrystalDamagePercent * f_charged);

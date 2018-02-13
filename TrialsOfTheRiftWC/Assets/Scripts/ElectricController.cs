@@ -36,7 +36,11 @@ public class ElectricController : SpellController {
 				Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
 			}
 		}
-		else if (collision.gameObject.tag != "Portal") {
+        else if (collision.gameObject.tag == "RiftBoss")
+        {
+            collision.gameObject.GetComponent<RiftBossController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
+        }
+        else if (collision.gameObject.tag != "Portal") {
 			ApplyEffect(collision.gameObject, collision);
 		}
 	}
