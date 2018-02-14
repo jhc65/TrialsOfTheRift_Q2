@@ -6375,6 +6375,7 @@ MonoBehaviour:
   txt_pauseIndicator: {fileID: 1601269668}
   butt_select: {fileID: 1772853271}
   rsim: {fileID: 673789552}
+  es_master: {fileID: 673789553}
 --- !u!114 &450424408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11087,7 +11088,7 @@ MonoBehaviour:
   m_SubmitButton: UISubmit
   m_CancelButton: UICancel
   m_InputActionsPerSecond: 20
-  m_RepeatDelay: 0
+  m_RepeatDelay: 0.25
   m_allowMouseInput: 0
   m_allowMouseInputIfTouchSupported: 0
   m_ForceModuleActive: 0
