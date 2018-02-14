@@ -31,6 +31,8 @@ public class PauseController : MonoBehaviour {
             img_pauseBacking.SetActive(true);
 
             rsim.RewiredPlayerIds = new int[] { pc_owner.i_playerNumber };
+
+            //Properly highlight the button.
             butt_select.Select();
             butt_select.OnSelect(null);
 
