@@ -38,7 +38,11 @@ public class ElectricController : SpellController {
 		}
         else if (collision.gameObject.tag == "RiftBoss")
         {
-            collision.gameObject.GetComponent<RiftBossController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
+            Debug.Log("Inside Controller");
+            if (collision.gameObject.GetComponent<RiftBossController>().Color == e_color) {
+                collision.gameObject.GetComponent<RiftBossController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
+                ApplyEffect(collision.gameObject, collision);
+            }
         }
         else if (collision.gameObject.tag != "Portal") {
 			ApplyEffect(collision.gameObject, collision);

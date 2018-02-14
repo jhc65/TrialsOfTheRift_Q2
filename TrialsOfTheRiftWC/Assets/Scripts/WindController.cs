@@ -27,7 +27,9 @@ public class WindController : SpellController {
             go_target.GetComponent<EnemyController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
         }
         else if (go_target.tag == "RiftBoss") {
-            go_target.GetComponent<RiftBossController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
+            if (go_target.gameObject.GetComponent<RiftBossController>().Color == e_color) {
+                go_target.GetComponent<RiftBossController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
+            }
         }
         else if (go_target.tag == "Crystal")
         {
