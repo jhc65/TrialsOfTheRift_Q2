@@ -31,7 +31,8 @@ public class PauseController : MonoBehaviour {
             img_pauseBacking.SetActive(true);
 
             rsim.RewiredPlayerIds = new int[] { pc_owner.i_playerNumber };
-            StartCoroutine(SelectContinueButtonLater());
+            butt_select.Select();
+            butt_select.OnSelect(null);
 
             Time.timeScale = 0;
             
@@ -48,12 +49,4 @@ public class PauseController : MonoBehaviour {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
-
-     IEnumerator SelectContinueButtonLater() {
-         yield return null;
-         es_master.SetSelectedGameObject(null);
-         es_master.SetSelectedGameObject(butt_select.gameObject);
-     }
-
-
 }
