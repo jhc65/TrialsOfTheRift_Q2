@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour{
             Debug.Log("Increase Volatility by 2.5%");
             RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
+		Maestro.Instance.Play(Maestro.Instance.ac_playerDie);
         go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
@@ -122,6 +123,7 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayerRespawn() {
 		isWisp = false;
+		Maestro.Instance.Play(Maestro.Instance.ac_playerRespawn);
         go_playerCapsule.SetActive(true);
         go_playerWisp.SetActive(false);
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
@@ -249,7 +251,7 @@ public class PlayerController : MonoBehaviour{
                     f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
                 }
                 if (p_player.GetButton("MagicMissile")) {
-					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_magicMissileShoot);
+					Maestro.Instance.Play(Maestro.Instance.ac_magicMissileShoot);
                     f_nextMagicMissile = 0;
 				    GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -263,7 +265,7 @@ public class PlayerController : MonoBehaviour{
 			}
             // Charged Magic Missile (Release)
             if (p_player.GetButtonUp("MagicMissile") && f_nextMmCharge > Constants.SpellStats.C_MagicMissileChargeCooldown) {
-				Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_magicMissileShoot);
+				Maestro.Instance.Play(Maestro.Instance.ac_magicMissileShoot);
                 f_nextMmCharge = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -280,7 +282,7 @@ public class PlayerController : MonoBehaviour{
                     f_windCharge += p_player.GetButtonTimePressed("WindSpell");
                 }
                 if (p_player.GetButtonUp("WindSpell")) {
-					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_windShoot);
+					Maestro.Instance.Play(Maestro.Instance.ac_windShoot);
                     f_nextWind = 0;
 				    f_nextCast = 0;
                     for (int i = -30; i <= 30; i += 30) {
@@ -301,7 +303,7 @@ public class PlayerController : MonoBehaviour{
             // Ice Spell
             if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 if (p_player.GetButtonDown("IceSpell")) {
-					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_iceShoot);
+					Maestro.Instance.Play(Maestro.Instance.ac_iceShoot);
                     b_iceboltMode = true;
                     f_nextIce = 0;
                     f_nextCast = 0;
@@ -322,7 +324,7 @@ public class PlayerController : MonoBehaviour{
                     f_electricCharge += p_player.GetButtonTimePressed("ElectricitySpell");
                 }
                 if (p_player.GetButtonUp("ElectricitySpell")) {
-					Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_electricShoot);
+					Maestro.Instance.Play(Maestro.Instance.ac_electricShoot);
                     f_nextElectric = 0;
 				    f_nextCast = 0;
 				    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);

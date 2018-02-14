@@ -98,7 +98,7 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected void EnterStateDie() {
 		e_State = State.DIE;
-		Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_enemyDie);
+		Maestro.Instance.Play(Maestro.Instance.ac_enemyDie);
 		ChildEnterStateDie();
     }
 	protected abstract void ChildEnterStateDie();
@@ -111,7 +111,7 @@ public abstract class EnemyController : MonoBehaviour {
 	protected abstract void ChildUpdateDie();
 	
 	public void TakeDamage(float damage){
-		Maestro.Instance.as_sfx.PlayOneShot(Maestro.Instance.ac_enemyHit);
+		Maestro.Instance.Play(Maestro.Instance.ac_enemyHit);
 		f_health -= (int)damage;
 		//Debug.Log(i_health);
 		//if(i_health <= 0f){
