@@ -63,4 +63,24 @@ public sealed class Maestro : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void AdjustMasterVolume(float f_volIn) {
+        Constants.VolOptions.C_MasterVolume = f_volIn;
+        am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
+    }
+
+    public void AdjustBGMVolume(float f_volIn) {
+        Constants.VolOptions.C_BGMVolume = f_volIn;
+        am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
+    }
+
+    public void AdjustSFXVolume(float f_volIn) {
+        Constants.VolOptions.C_SFXVolume = f_volIn;
+        am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
+    }
+
+    public void AdjustVOIVolume(float f_volIn) {
+        Constants.VolOptions.C_VOIVolume = f_volIn;
+        am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
+    }
 }
