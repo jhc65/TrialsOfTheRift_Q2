@@ -84,13 +84,13 @@ public sealed class Calligrapher : MonoBehaviour {
     public void CTFInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Capture The Flag";
-            txt_redObjvDescription.text = "Pick up the opponent's flag with [Interact] and drag it back to your goal! " + Constants.ObjectiveStats.C_CTFMaxScore + " Goals wins!";
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Capture The Flag";
-            txt_blueObjvDescription.text = "Pick up the opponent's flag with [Interact] and drag it back to your goal! " + Constants.ObjectiveStats.C_CTFMaxScore + " Goals wins!";
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
         }
         UpdateScoreUI(colorIn, 0);
         PopupFadeIn(colorIn);
@@ -99,13 +99,13 @@ public sealed class Calligrapher : MonoBehaviour {
     public void IceHockeyInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Ice Hockey";
-            txt_redObjvDescription.text = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind! " + Constants.ObjectiveStats.C_HockeyMaxScore + " Goals wins!";
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Ice Hockey";
-            txt_blueObjvDescription.text = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind! " + Constants.ObjectiveStats.C_HockeyMaxScore + " Goals wins!";
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
         }
         UpdateScoreUI(colorIn, 0);
         PopupFadeIn(colorIn);
@@ -115,14 +115,14 @@ public sealed class Calligrapher : MonoBehaviour {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCrystalHealthText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Crystal Destruction";
-            txt_blueObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
             PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
             txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Crystal Destruction";
-            txt_redObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
             PopupFadeIn(Constants.Global.Color.RED);
         }
         UpdateCrystalHealthUI(colorIn, Constants.ObjectiveStats.C_CrystalMaxHealth);
@@ -132,14 +132,14 @@ public sealed class Calligrapher : MonoBehaviour {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCompletionTimer.transform.parent.gameObject.SetActive(true);
             txt_redDestructionTimer.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Reverse Capture the Flag";
-            txt_redObjvDescription.text = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things will happen!";
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
         }
         else {
             txt_blueCompletionTimer.transform.parent.gameObject.SetActive(true);
             txt_blueDestructionTimer.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Reverse Capture the Flag";
-            txt_blueObjvDescription.text = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things will happen!";
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
         }
         UpdateCompletionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoCompletionTimer);
         UpdateDestructionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);

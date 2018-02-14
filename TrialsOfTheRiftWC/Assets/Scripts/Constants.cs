@@ -159,5 +159,27 @@ public static class Constants {
         public enum Volatility { ZERO, FIVE, TWENTYFIVE, THIRTYFIVE, FIFTY, SIXTYFIVE, SEVENTYFIVE, ONEHUNDRED };
     }
 
+    //Text descriptions for Objectives.
+    public static class ObjectiveText {
+        public static string C_CTFTitle = "Capture The Flag";
+        public static string C_CTFDescription = "Pick up the opponent's flag with [Interact] and drag it back to your goal!";
+        public static string C_CrystalDestructTitle = "Crystal Destruction";
+        public static string C_CrystalDestructDescription = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
+        public static string C_HockeyTitle = "Hockey";
+        public static string C_HockeyDescription = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind!";
+        public static string C_PotatoTitle = "Keep Away";
+        public static string C_PotatoDescription = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things will happen!";
+        public static string C_BossTitle = "The Final Trial";
+        public static string C_BossDescription = "Use all your prowess and spells to defeat the Rift!";
+    }
+
+    //Carry over for volume options from the main menu.
+    public static class VolOptions {
+        public static float C_MasterVolume = 0.0f;
+        public static float C_BGMVolume = 0.0f;
+        public static float C_SFXVolume = 0.0f;
+        public static float C_VOIVolume = 0.0f;
+    }
+
 	//public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");
 }
