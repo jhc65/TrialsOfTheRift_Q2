@@ -349,18 +349,18 @@ public class DebugParametersController : MonoBehaviour {
 
     // Light buttons up as they are selected
     public void LightUp(int which) {
-        for (int i = 0; i < 4; i++) {
-            ColorBlock cb = butt_buttonArray[i].colors;
-            if (i == which) {
-                cb.normalColor = Color.cyan;
-                cb.highlightedColor = Color.cyan;
-            }
-            else {
-                cb.normalColor = Color.white;
-                cb.highlightedColor = Color.white;
-            }
-            butt_buttonArray[i].colors = cb;
-        }
+        //for (int i = 0; i < 4; i++) {
+        //    ColorBlock cb = butt_buttonArray[i].colors;
+        //    if (i == which) {
+        //        cb.normalColor = Color.cyan;
+        //        cb.highlightedColor = Color.cyan;
+        //    }
+        //    else {
+        //        cb.normalColor = Color.white;
+        //        cb.highlightedColor = Color.white;
+        //    }
+        //    butt_buttonArray[i].colors = cb;
+        //}
     }
 
     // Show the proper menu on click
