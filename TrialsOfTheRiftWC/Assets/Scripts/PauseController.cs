@@ -19,7 +19,6 @@ public class PauseController : MonoBehaviour {
     //private Player p_player;
     private float f_unPause;
     [SerializeField]Button butt_select;
-    [SerializeField]GameObject go_paraButton;
     [SerializeField] Rewired.Integration.UnityUI.RewiredStandaloneInputModule rsim;
 
 
@@ -28,9 +27,6 @@ public class PauseController : MonoBehaviour {
             pc_owner = pc_in;
             txt_pauseIndicator.text = "P" + (pc_owner.i_playerNumber + 1) + " Pause.";
             img_pauseBacking.SetActive(true);
-            if (go_paraButton != null) {
-                go_paraButton.SetActive(false);
-            }
             butt_select.Select();
             Time.timeScale = 0;
 
@@ -42,9 +38,6 @@ public class PauseController : MonoBehaviour {
     public void Unpause() {
         pc_owner = null;
         img_pauseBacking.SetActive(false);
-        if (go_paraButton != null) {
-                go_paraButton.SetActive(true);
-            }
         Time.timeScale = 1;
     }
 
