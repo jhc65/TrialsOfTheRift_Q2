@@ -269,26 +269,26 @@ public abstract class EnemyController : MonoBehaviour {
 	//This will reset the destination with in bounds
 	protected void CheckOutOfBounds() {
 		if (e_Side == Constants.Global.Side.LEFT) {
-			if (destination.x <= -40.0f) {
+			if (destination.x < -39.0f) {
 				destination.x = -39.0f;
 			}
-			else if (destination.x >= 0.0f) {
+			else if (destination.x > -1.0f) {
 				destination.x = -1.0f;
 			}
 		}
 		else {
-			if (destination.x >= 40.0f) {
+			if (destination.x > 39.0f) {
 				destination.x = 39.0f;
 			}
-			else if (destination.x <= 0.0f) {
+			else if (destination.x < 1.0f) {
 				destination.x = 1.0f;
 			}
 		}
 
-		if (destination.z >= 22.0f) {
+		if (destination.z > 21.0f) {
 			destination.z = 21.0f;
 		}
-		else if (destination.z <= -22.0f) {
+		else if (destination.z < -21.0f) {
 			destination.z = -21.0f;
 		}
 	}

@@ -60,12 +60,12 @@ public class NecromancerController : EnemyController {
 
         if (timer >= timeLimit || Vector3.Distance(transform.position, destination) <= 1.0f ) {
 
-			bool b_isDestinationValid = false;
+			//bool b_isDestinationValid = false;
 
-			while(b_isDestinationValid == false) {
+			//while(b_isDestinationValid == false) {
 				destination = GetWanderPos(transform.position, wanderingRadius);
-				b_isDestinationValid = IsWithinBounds(transform.position, e_Side);
-			}
+				//b_isDestinationValid = IsWithinBounds(transform.position, e_Side);
+			//}
 
             nma_agent.SetDestination(destination);
 
