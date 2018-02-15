@@ -115,13 +115,13 @@ public sealed class Calligrapher : MonoBehaviour {
     public void CrystalDestructionInit(Constants.Global.Color colorIn) {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_redCrystalHealthText.transform.parent.gameObject.SetActive(true);
             txt_blueObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
             txt_blueObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
             PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
-            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(true);
             txt_redObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
             txt_redObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
             PopupFadeIn(Constants.Global.Color.RED);
