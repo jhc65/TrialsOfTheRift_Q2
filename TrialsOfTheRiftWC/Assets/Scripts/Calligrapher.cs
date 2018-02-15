@@ -115,15 +115,15 @@ public sealed class Calligrapher : MonoBehaviour {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
             txt_redHealthText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Crystal Destruction";
-            txt_blueObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
-            PopupFadeIn(Constants.Global.Color.BLUE);
-        }
-        else {
-            txt_blueHealthText.transform.parent.gameObject.SetActive(true);
             txt_redObjvTitle.text = "Crystal Destruction";
             txt_redObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
             PopupFadeIn(Constants.Global.Color.RED);
+        }
+        else {
+            txt_blueHealthText.transform.parent.gameObject.SetActive(true);
+            txt_blueObjvTitle.text = "Crystal Destruction";
+            txt_blueObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
+            PopupFadeIn(Constants.Global.Color.BLUE);
         }
         UpdateCrystalHealthUI(colorIn, Constants.ObjectiveStats.C_CrystalMaxHealth);
     }
@@ -149,14 +149,14 @@ public sealed class Calligrapher : MonoBehaviour {
     public void RiftBossInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redHealthText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Rift Boss";
-            txt_blueObjvDescription.text = "The final Boss!  Wait for its shield to go down to attack!";
+            txt_redObjvTitle.text = "Rift Boss";
+            txt_redObjvDescription.text = "The final Boss!  Wait for its shield to go down to attack!";
             PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
             txt_blueHealthText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Rift Boss";
-            txt_redObjvDescription.text = "TThe final Boss!  Wait for its shield to go down to attack!";
+            txt_blueObjvTitle.text = "Rift Boss";
+            txt_blueObjvDescription.text = "TThe final Boss!  Wait for its shield to go down to attack!";
             PopupFadeIn(Constants.Global.Color.RED);
         }
         UpdateRiftBossHealthUI(colorIn, Constants.ObjectiveStats.C_RiftBossMaxHealth);
