@@ -10303,21 +10303,32 @@ MonoBehaviour:
   as_voi: {fileID: 658498693}
   ac_bgm0: {fileID: 8300000, guid: b47ff1c405120e547ae785020df333e7, type: 3}
   ac_windShoot: {fileID: 8300000, guid: 845f96f3c43a3fb4d9a35fd5d176135f, type: 3}
-  ac_iceShoot: {fileID: 8300000, guid: 6222912dcc711654e920f2e6413c66e8, type: 3}
+  ac_iceShoot: {fileID: 8300000, guid: 297ae035c2f736f4d8d75997dbae1dc2, type: 3}
   ac_electricShoot: {fileID: 8300000, guid: 174a27c3907b9b44a9a7c1906afb2e61, type: 3}
-  ac_magicMissileShoot: {fileID: 8300000, guid: 8c58d02df17fa26459b92884379f9b73,
+  ac_magicMissileShoot: {fileID: 8300000, guid: 33b548b5ee289a24ca93cde1bba31237,
     type: 3}
   ac_enemyHit: {fileID: 8300000, guid: afc15df9a0fa0e84baad73c6d9d0f8f3, type: 3}
   ac_enemyDie: {fileID: 8300000, guid: 7011b10a80ca1854d8de6609609f8917, type: 3}
-  ac_playerRespawn: {fileID: 8300000, guid: 253d7acb426679f4a8f0c40ddf872345, type: 3}
+  ac_enemySpawn: {fileID: 8300000, guid: acf16c78048b41b47b60738291e3591b, type: 3}
+  ac_playerSpawn: {fileID: 8300000, guid: 253d7acb426679f4a8f0c40ddf872345, type: 3}
   ac_playerDie: {fileID: 8300000, guid: 69e0924d291d5da46b0dfd786638aed3, type: 3}
   ac_portal: {fileID: 8300000, guid: 65725faf9972d6e4699e13489a6e91ec, type: 3}
-  ac_volatility:
+  ac_volatility_ambience:
   - {fileID: 8300000, guid: 8c2866d8ec7512c47880db8d720818c2, type: 3}
   - {fileID: 8300000, guid: f0a3a010bad0c684fa491adbc83f1806, type: 3}
   - {fileID: 8300000, guid: 8eb00891712ecae469d986f421963ce4, type: 3}
   - {fileID: 8300000, guid: fae422b4487322844b9d645fd09acbd4, type: 3}
   - {fileID: 8300000, guid: 4375b0361f4b9fb4ab5a618d9083d6f6, type: 3}
+  ac_volatility_noise_0:
+  - {fileID: 8300000, guid: 0956b964108ec18448894800c4c411ed, type: 3}
+  ac_volatility_noise_1:
+  - {fileID: 8300000, guid: 372c775ae88e4c44fbced1365e3ae84e, type: 3}
+  ac_volatility_noise_2:
+  - {fileID: 8300000, guid: 794cf7cb612eaf54a956de60d66fb25c, type: 3}
+  ac_volatility_noise_3:
+  - {fileID: 8300000, guid: 9177fd83e99940b44b8fddddea79b48c, type: 3}
+  ac_volatility_noise_4:
+  - {fileID: 8300000, guid: ca092ff594b3ce34cb177ba4caf901ea, type: 3}
 --- !u!82 &658498698
 AudioSource:
   m_ObjectHideFlags: 0

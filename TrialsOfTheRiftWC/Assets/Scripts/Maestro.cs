@@ -3,7 +3,7 @@
  *  Desc:   Facilitates all in-game music and sound effects.
  * 
  */
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,17 +34,48 @@ public sealed class Maestro : MonoBehaviour {
 	
 	public AudioClip ac_portal;
 
-    [SerializeField] private AudioClip[] ac_volatility;
+    [SerializeField] private AudioClip[] ac_volatility_ambience;
+	[SerializeField] private AudioClip[] ac_volatility_noise_0;
+	[SerializeField] private AudioClip[] ac_volatility_noise_1;
+	[SerializeField] private AudioClip[] ac_volatility_noise_2;
+	[SerializeField] private AudioClip[] ac_volatility_noise_3;
+	[SerializeField] private AudioClip[] ac_volatility_noise_4;
 	
     // Singleton
     private static Maestro instance;
+	
+	void Awake(){
+		instance = this;
+	}
+	
     public static Maestro Instance {
         get { return instance; }
     }
 
-    public void PlayVolatility(int i) {
-        as_volatility.clip = ac_volatility[i];
+    public void PlayVolatilityAmbience(int i) {
+        as_volatility.clip = ac_volatility_ambience[i];
         as_volatility.Play();
+    }
+	
+	public void PlayVolatilityNoise(int i) {
+		System.Random r = new System.Random();
+		switch(i){
+			case(0):
+				as_sfxLo.PlayOneShot(ac_volatility_noise_0[r.Next(0, ac_volatility_noise_0.Length)]);
+				break;
+			case(1):
+				as_sfxLo.PlayOneShot(ac_volatility_noise_1[r.Next(0, ac_volatility_noise_1.Length)]);
+				break;
+			case(2):
+				as_sfxLo.PlayOneShot(ac_volatility_noise_2[r.Next(0, ac_volatility_noise_2.Length)]);
+				break;
+			case(3):
+				as_sfxLo.PlayOneShot(ac_volatility_noise_3[r.Next(0, ac_volatility_noise_3.Length)]);
+				break;
+			case(4):
+				as_sfxLo.PlayOneShot(ac_volatility_noise_4[r.Next(0, ac_volatility_noise_4.Length)]);
+				break;
+		}
     }
 	
 	public void PlayWindShoot(){
@@ -63,16 +94,16 @@ public sealed class Maestro : MonoBehaviour {
 		as_sfxMe.PlayOneShot(ac_enemyHit);
 	}
 	public void PlayEnemyDie(){
-		as_sfxMe.PlayOneShot(ac_enemyDie);
+		as_sfxHi.PlayOneShot(ac_enemyDie);
 	}
 	public void PlayEnemySpawn(){
-		as_sfxMe.PlayOneShot(ac_enemySpawn);
+		as_sfxHi.PlayOneShot(ac_enemySpawn);
 	}
 	public void PlayPlayerSpawn(){
-		as_sfxMe.PlayOneShot(ac_playerSpawn);
+		as_sfxHi.PlayOneShot(ac_playerSpawn);
 	}
 	public void PlayPlayerDie(){
-		as_sfxMe.PlayOneShot(ac_playerDie);
+		as_sfxHi.PlayOneShot(ac_playerDie);
 	}
 	public void PlayPortal(){
 		as_sfxMe.PlayOneShot(ac_portal);
