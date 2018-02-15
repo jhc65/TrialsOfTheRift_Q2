@@ -295,26 +295,26 @@ public abstract class EnemyController : MonoBehaviour {
 
 	protected bool IsWithinBounds(Vector3 position, Constants.Global.Side side) {
 		if (side == Constants.Global.Side.LEFT) {
-			if (position.x <= -40.0f) {
+			if (position.x <= -39.0f) {
 				return false;
 			}
-			else if (position.x >= 0.0f) {
+			else if (position.x >= 1.0f) {
 				return false;
 			}
 		}
 		else {
-			if (position.x >= 40.0f) {
+			if (position.x >= 39.0f) {
 				return false;
 			}
-			else if (position.x <= 0.0f) {
+			else if (position.x <= 1.0f) {
 				return false;
 			}
 		}
 
-		if (position.z >= 22.0f) {
+		if (position.z >= 21.0f) {
 			return false;
 		}
-		else if (position.z <= -22.0f) {
+		else if (position.z <= -21.0f) {
 			return false;
 		}
 
