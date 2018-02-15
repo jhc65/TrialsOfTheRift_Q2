@@ -17,6 +17,7 @@ public class DebugParametersController : MonoBehaviour {
     //public GameController GC;
     public DarkMagician DM; // TODO: remove for release
     public PlayerController[] playerControllers;
+    private bool firstrun = true;
 
     // Menu buttons
     public Button butt_playerSelect;
@@ -24,6 +25,11 @@ public class DebugParametersController : MonoBehaviour {
     public Button butt_enemySelect;
     public Button butt_objectiveSelect;
     private Button[] butt_buttonArray = new Button[4];
+    
+    //Other button references (for navigation)
+    [SerializeField]private Button butt_objReset;
+    [SerializeField]private Button butt_go;
+    [SerializeField]private Button butt_resume;
 
     // Menu organization
     public GameObject go_topMenu;
@@ -32,6 +38,9 @@ public class DebugParametersController : MonoBehaviour {
     public GameObject go_enemyMenu;
     public GameObject go_objectiveMenu;
     private GameObject[] go_menuArray = new GameObject[4];
+
+    //Other menu references
+    [SerializeField] GameObject go_pauseMenu;
 
     // UI sliders (set in editor)
     public Slider slider_playerMoveSpeed;
@@ -374,17 +383,25 @@ public class DebugParametersController : MonoBehaviour {
     // TODO: remove for final build
     public void GameReset() {
         RiftController.Instance.ResetVolatility();
-        SceneManager.LoadScene("WarmUp");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void InitGame() {
         go_topMenu.SetActive(false);
-        Time.timeScale = 1f;
+        if (firstrun) {
+            Time.timeScale = 1f;
+            firstrun = false;
+        } else {
+            go_pauseMenu.SetActive(true);
+            butt_resume.Select();
+        }
+        
     }
 
     public void Params() {
         go_topMenu.SetActive(true);
-        Time.timeScale = 0f;
+        go_pauseMenu.SetActive(false);
+        butt_playerSelect.Select();
     }
 
     // Light buttons up as they are selected
@@ -393,11 +410,9 @@ public class DebugParametersController : MonoBehaviour {
             ColorBlock cb = butt_buttonArray[i].colors;
             if (i == which) {
                 cb.normalColor = Color.cyan;
-                cb.highlightedColor = Color.cyan;
             }
             else {
                 cb.normalColor = Color.white;
-                cb.highlightedColor = Color.white;
             }
             butt_buttonArray[i].colors = cb;
         }
@@ -408,6 +423,28 @@ public class DebugParametersController : MonoBehaviour {
         for (int i = 0; i < 4; i++) {
             if (i == which) {
                 go_menuArray[i].SetActive(true);
+                Navigation nav_objResetNav = butt_objReset.navigation;
+                Navigation nav_goNav = butt_go.navigation;
+                switch (i) {
+                    case 0:
+                        nav_objResetNav.selectOnUp = slider_respawnTime;
+                        nav_goNav.selectOnUp = slider_playerHealth;
+                        break;
+                    case 1:
+                        nav_objResetNav.selectOnUp = slider_electricPlayerDamage;
+                        nav_goNav.selectOnUp = slider_icePlayerDamage;
+                        break;
+                    case 2:
+                        nav_objResetNav.selectOnUp = slider_enemyDamage;
+                        nav_goNav.selectOnUp = slider_enemyHealth;
+                        break;
+                    case 3:
+                        nav_objResetNav.selectOnUp = slider_selfDestructTimer;
+                        nav_goNav.selectOnUp = slider_puckSpeedDecayRate;
+                        break;
+                }
+                butt_objReset.navigation = nav_objResetNav;
+                butt_go.navigation = nav_goNav;
             }
             else {
                 go_menuArray[i].SetActive(false);
@@ -599,6 +636,7 @@ public class DebugParametersController : MonoBehaviour {
         butt_buttonArray[3] = butt_objectiveSelect;
 
         LightUp(0);
+        butt_playerSelect.Select();
 
         // Organize menus
         go_menuArray[0] = go_playerMenu;

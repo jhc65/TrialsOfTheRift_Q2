@@ -11,13 +11,14 @@ using UnityEngine;
 
 public sealed class Calligrapher : MonoBehaviour {
 
-    public Text txt_redScoreText, txt_blueScoreText;
-    public Text txt_redHealthText, txt_blueHealthText;
-    public Text txt_redCompletionTimer, txt_blueCompletionTimer;
-    public Text txt_redDestructionTimer, txt_blueDestructionTimer;
-    public Text txt_redObjvTitle, txt_blueObjvTitle;
-    public Text txt_redObjvDescription, txt_blueObjvDescription;
-    public Image img_redPopupBacking, img_bluePopupBacking;
+    [SerializeField] private Text txt_redScoreText, txt_blueScoreText;
+    [SerializeField] private Text txt_redCrystalHealthText, txt_blueCrystalHealthText;
+    [SerializeField] private Text txt_redRiftBossHealthText, txt_blueRiftBossHealthText;
+    [SerializeField] private Text txt_redCompletionTimer, txt_blueCompletionTimer;
+    [SerializeField] private Text txt_redDestructionTimer, txt_blueDestructionTimer;
+    [SerializeField] private Text txt_redObjvTitle, txt_blueObjvTitle;
+    [SerializeField] private Text txt_redObjvDescription, txt_blueObjvDescription;
+    [SerializeField] private Image img_redPopupBacking, img_bluePopupBacking;
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
 
@@ -42,40 +43,40 @@ public sealed class Calligrapher : MonoBehaviour {
     // update health (Crystal Destruction)
 	public void UpdateCrystalHealthUI(Constants.Global.Color colorIn, float healthIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+            txt_redCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+            txt_blueCrystalHealthText.text = Mathf.CeilToInt(healthIn).ToString();
         }
     }
 
     // update health (Rift Boss)
 	public void UpdateRiftBossHealthUI(Constants.Global.Color colorIn, float healthIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.text = Mathf.CeilToInt(healthIn).ToString();  //TODO: new ui txt objects
+            txt_redRiftBossHealthText.text = Mathf.CeilToInt(healthIn).ToString();  //TODO: new ui txt objects
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+            txt_blueRiftBossHealthText.text = Mathf.CeilToInt(healthIn).ToString();
         }
     }
 
     // update completion timer (Hot Potato)
-    public void UpdateCompletionTimerUI(Constants.Global.Color colorIn, int time) {
+    public void UpdateCompletionTimerUI(Constants.Global.Color colorIn, int timeIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redCompletionTimer.text = time.ToString();
+            txt_redCompletionTimer.text = timeIn.ToString();
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueCompletionTimer.text = time.ToString();
+            txt_blueCompletionTimer.text = timeIn.ToString();
         }
     }
 
     // update destruction timer (Hot Potato)
-    public void UpdateDestructionTimerUI(Constants.Global.Color colorIn, int time) {
+    public void UpdateDestructionTimerUI(Constants.Global.Color colorIn, int timeIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redDestructionTimer.text = time.ToString();
+            txt_redDestructionTimer.text = timeIn.ToString();
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            txt_blueDestructionTimer.text = time.ToString();
+            txt_blueDestructionTimer.text = timeIn.ToString();
         }
     }
 
@@ -84,13 +85,13 @@ public sealed class Calligrapher : MonoBehaviour {
     public void CTFInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Capture The Flag";
-            txt_redObjvDescription.text = "Pick up the opponent's flag with [Interact] and drag it back to your goal! " + Constants.ObjectiveStats.C_CTFMaxScore + " Goals wins!";
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Capture The Flag";
-            txt_blueObjvDescription.text = "Pick up the opponent's flag with [Interact] and drag it back to your goal! " + Constants.ObjectiveStats.C_CTFMaxScore + " Goals wins!";
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
         }
         UpdateScoreUI(colorIn, 0);
         PopupFadeIn(colorIn);
@@ -99,13 +100,13 @@ public sealed class Calligrapher : MonoBehaviour {
     public void IceHockeyInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Ice Hockey";
-            txt_redObjvDescription.text = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind! " + Constants.ObjectiveStats.C_HockeyMaxScore + " Goals wins!";
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Ice Hockey";
-            txt_blueObjvDescription.text = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind! " + Constants.ObjectiveStats.C_HockeyMaxScore + " Goals wins!";
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
         }
         UpdateScoreUI(colorIn, 0);
         PopupFadeIn(colorIn);
@@ -114,16 +115,16 @@ public sealed class Calligrapher : MonoBehaviour {
     public void CrystalDestructionInit(Constants.Global.Color colorIn) {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Crystal Destruction";
-            txt_redObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
-            PopupFadeIn(Constants.Global.Color.RED);
+            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
+            PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
-            txt_blueHealthText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Crystal Destruction";
-            txt_blueObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
-            PopupFadeIn(Constants.Global.Color.BLUE);
+            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
+            PopupFadeIn(Constants.Global.Color.RED);
         }
         UpdateCrystalHealthUI(colorIn, Constants.ObjectiveStats.C_CrystalMaxHealth);
     }
@@ -132,14 +133,14 @@ public sealed class Calligrapher : MonoBehaviour {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCompletionTimer.transform.parent.gameObject.SetActive(true);
             txt_redDestructionTimer.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Reverse Capture the Flag";
-            txt_redObjvDescription.text = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things will happen!";
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
         }
         else {
             txt_blueCompletionTimer.transform.parent.gameObject.SetActive(true);
             txt_blueDestructionTimer.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Reverse Capture the Flag";
-            txt_blueObjvDescription.text = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things will happen!";
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
         }
         UpdateCompletionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoCompletionTimer);
         UpdateDestructionTimerUI(colorIn, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
@@ -148,15 +149,15 @@ public sealed class Calligrapher : MonoBehaviour {
 
     public void RiftBossInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Rift Boss";
-            txt_redObjvDescription.text = "The final Boss!  Wait for its shield to go down to attack!";
+            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
-            txt_blueHealthText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Rift Boss";
-            txt_blueObjvDescription.text = "TThe final Boss!  Wait for its shield to go down to attack!";
+            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             PopupFadeIn(Constants.Global.Color.RED);
         }
         UpdateRiftBossHealthUI(colorIn, Constants.ObjectiveStats.C_RiftBossMaxHealth);
@@ -175,10 +176,10 @@ public sealed class Calligrapher : MonoBehaviour {
 
     public void CrystalDestructionReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.transform.parent.gameObject.SetActive(false);
+            txt_redCrystalHealthText.transform.parent.gameObject.SetActive(false);
         }
         else {
-            txt_blueHealthText.transform.parent.gameObject.SetActive(false);
+            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(false);
         }
     }
 
@@ -195,17 +196,17 @@ public sealed class Calligrapher : MonoBehaviour {
 
     public void RiftBossReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redHealthText.transform.parent.gameObject.SetActive(false); //TODO: new ui txt objects
+            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(false); //TODO: new ui txt objects
         }
         else {
-            txt_blueHealthText.transform.parent.gameObject.SetActive(false);
+            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(false);
         }
     }
 
     //----------------------------
     // Fade in/out objective description UI at the start of each objective
-    public void PopupFadeIn(Constants.Global.Color e_color) {
-        if (e_color == Constants.Global.Color.RED) {
+    private void PopupFadeIn(Constants.Global.Color colorIn) {
+        if (colorIn == Constants.Global.Color.RED) {
             f_redStartTime = Time.time;
             InvokeRepeating("FadeInRed", 0.1f, 0.075f);
         } else {
@@ -214,8 +215,8 @@ public sealed class Calligrapher : MonoBehaviour {
         }
     }
 
-    public void PopupFadeOut(Constants.Global.Color e_color) {
-        if (e_color == Constants.Global.Color.RED) {
+    private void PopupFadeOut(Constants.Global.Color colorIn) {
+        if (colorIn == Constants.Global.Color.RED) {
             f_redStartTime = Time.time;
             InvokeRepeating("FadeOutRed", 0.1f, 0.075f);
         } else {

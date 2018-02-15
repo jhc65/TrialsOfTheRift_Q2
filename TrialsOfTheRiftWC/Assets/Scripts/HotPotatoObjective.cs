@@ -42,7 +42,7 @@ public class HotPotatoObjective : Objective {
     // [Param Fix] - Used in Parameters Screen. TODO: remove for release.
     public override void ParamReset() {
         hpc_activePotato.ResetPotatoPosition();
-        hpc_activePotato.SetCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
-        hpc_activePotato.SetDestructionTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
+        hpc_activePotato.UpdateCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
+        hpc_activePotato.UpdateDestructionTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 }

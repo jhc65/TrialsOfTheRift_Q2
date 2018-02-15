@@ -11,8 +11,7 @@ using UnityEngine;
 public class CrystalController : MonoBehaviour {
 
     public CrystalDestructionObjective cdo_owner;  // identifies objective crystal is a part of
-    [SerializeField]
-    private Constants.Global.Color e_color;     // identifies owning team
+    [SerializeField] private Constants.Global.Color e_color;     // identifies owning team
     private float f_health;    // indicates how much health the crystal has
 
     // Getters
@@ -26,7 +25,7 @@ public class CrystalController : MonoBehaviour {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    public void ChangeCrystalHealth(float percentage) { //TODO: rename this in_variable when we decide percentage or no
+    public void UpdateCrystalHealth(float percentage) { //TODO: rename this in_variable when we decide percentage or no
         f_health += percentage * Constants.ObjectiveStats.C_CrystalMaxHealth;
         if(f_health > Constants.ObjectiveStats.C_CrystalMaxHealth) {
             f_health = Constants.ObjectiveStats.C_CrystalMaxHealth;

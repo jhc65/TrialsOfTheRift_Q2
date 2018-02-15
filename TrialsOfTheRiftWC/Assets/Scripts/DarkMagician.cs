@@ -17,6 +17,8 @@ public sealed class DarkMagician : MonoBehaviour {
     public Objective objv_currentRedObjective, objv_currentBlueObjective;   // goddamn debug parameters TODO: change to private for release
 
     [SerializeField] private Text txt_winMsg;
+    [SerializeField] private Button butt_winSelect;
+    [SerializeField] private GameObject go_paraButton;
 	private bool b_gameOver;
     private RiftController riftController;     // reference to Rift singleton
 
@@ -63,7 +65,7 @@ public sealed class DarkMagician : MonoBehaviour {
 		txt_winMsg.enabled = false;
 		b_gameOver = false;
 		ShuffleObjectives();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         objv_currentRedObjective = objv_redObjectiveList[0].Activate(1);
         objv_currentBlueObjective = objv_blueObjectiveList[0].Activate(1);
@@ -82,6 +84,9 @@ public sealed class DarkMagician : MonoBehaviour {
         // check for completion of objectives
         if (b_gameOver) {
 			txt_winMsg.enabled = true;
+            go_paraButton.SetActive(false);
+            butt_winSelect.gameObject.SetActive(true);
+            butt_winSelect.Select();
 			Time.timeScale = 0;
 		}
 		else {

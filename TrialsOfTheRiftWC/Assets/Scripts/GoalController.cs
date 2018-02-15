@@ -10,8 +10,7 @@ using UnityEngine;
 
 public class GoalController : MonoBehaviour {
 
-    [SerializeField]
-    private Constants.Global.Color e_color; // identifies owning team
+    [SerializeField] private Constants.Global.Color e_color; // identifies owning team
 
     // Getters
     public Constants.Global.Color Color {

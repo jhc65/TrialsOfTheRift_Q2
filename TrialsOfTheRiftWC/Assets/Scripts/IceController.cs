@@ -96,10 +96,10 @@ public class IceController : SpellController {
         {
             Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
 			if (crystalColor != e_color){
-				go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalDamagePercent);
+				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_SpellCrystalDamagePercent);
 			}
 			else if (crystalColor == e_color) {
-				go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalHealPercent);
+				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_SpellCrystalHealPercent);
 			}
         }
     }
