@@ -6,8 +6,10 @@ public class PortalController : MonoBehaviour {
 	public float f_portalOffset = 1.5f;
     private float f_timeIn = 0;
 	private Constants.Global.Side e_side;
+	protected Maestro maestro;
 
 	void Start(){
+		maestro = Maestro.Instance;     // reference to Rift singleton
 		if (transform.position.x < 0) {
 			e_side = Constants.Global.Side.LEFT;
 		}
@@ -19,6 +21,7 @@ public class PortalController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 
 		if (other.tag == "Player" || other.tag == "Spell" || other.tag == "Potato" || other.tag == "Puck") {
+			maestro.PlayPortal();
 			other.gameObject.transform.position = new Vector3(-1*other.transform.position.x + (int)e_side * f_portalOffset,
 				other.transform.position.y, -1*other.transform.position.z);
 		}
