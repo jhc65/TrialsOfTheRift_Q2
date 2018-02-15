@@ -10467,7 +10467,7 @@ MonoBehaviour:
   objv_currentBlueObjective: {fileID: 0}
   txt_winMsg: {fileID: 2146816463}
   butt_winSelect: {fileID: 0}
-  go_paraButton: {fileID: 0}
+  go_paraButton: {fileID: 621041201}
 --- !u!82 &658498693
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11095,7 +11095,7 @@ MonoBehaviour:
   m_CancelButton: UICancel
   m_InputActionsPerSecond: 20
   m_RepeatDelay: 0.25
-  m_allowMouseInput: 0
+  m_allowMouseInput: 1
   m_allowMouseInputIfTouchSupported: 0
   m_ForceModuleActive: 0
 --- !u!114 &673789553
