@@ -11,6 +11,7 @@ public class ElectricAOEController : MonoBehaviour {
 	void Start () {
 		//Destroy(gameObject, Constants.SpellStats.C_ElectricAOELiveTime);
 		Invoke("Die", Constants.SpellStats.C_ElectricAOELiveTime);
+        f_electricDamage = Constants.SpellStats.C_ElectricDamage;
 	}
 	
 	private void Die(){
@@ -20,7 +21,7 @@ public class ElectricAOEController : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		foreach (string tag in s_spellTargetTags) {
-			if (other.gameObject.tag == tag) {  
+            if (other.gameObject.tag == tag) {  
                 ApplyEffect(other.gameObject);
 				return;
 			}
@@ -38,7 +39,8 @@ public class ElectricAOEController : MonoBehaviour {
 
 	private void ApplyEffect(GameObject go_target) {
         if (go_target.tag == "Player") {
-            if (go_target.GetComponent<PlayerController>().GetColor() != e_color) {
+            if (go_target.GetComponent<PlayerController>().GetColor() != e_color)
+            {
                 go_target.GetComponent<PlayerController>().DropFlag();
                 go_target.GetComponent<PlayerController>().f_canMove = .5f; //TODO: Constants
                 StartCoroutine("ApplyPlayerDamage", go_target);
@@ -48,9 +50,12 @@ public class ElectricAOEController : MonoBehaviour {
             StartCoroutine("ApplyEnemyDamage", go_target);
             go_target.GetComponent<EnemyController>().Slow(.5f);
         }
+        else if (go_target.tag == "RiftBoss") {
+            Debug.Log(go_target.tag);
+            StartCoroutine("ApplyRiftBossDamage", go_target);
+        }
         else if (go_target.tag == "Crystal") {
             StartCoroutine("ApplyCrystalDamage", go_target);
-
         }
 	}
 
@@ -62,7 +67,10 @@ public class ElectricAOEController : MonoBehaviour {
 			StopCoroutine("ApplyEnemyDamage");
 			go_target.GetComponent<EnemyController>().Unslow();
 		}
-		else if (go_target.tag == "Crystal") { 
+        else if (go_target.tag == "RiftBoss") {
+            StopCoroutine("ApplyRiftBossDamage");
+        }
+        else if (go_target.tag == "Crystal") { 
 			StopCoroutine("ApplyCrystalDamage");	// shouldn't be practically necessary
 		}
 	}
@@ -82,8 +90,24 @@ public class ElectricAOEController : MonoBehaviour {
 		}
 	}
 
-	// applies AOE damage to enemy every .5s until dissipation or triggerexit
-	IEnumerator ApplyEnemyDamage(GameObject go_target) {
+    // applies AOE damage/heal to Rift Boss every .5s until dissipation
+    IEnumerator ApplyRiftBossDamage(GameObject go_target)
+    {
+        if (go_target)
+        {
+            Constants.Global.Color riftBossColor = go_target.GetComponent<RiftBossController>().Color;
+            if (riftBossColor == e_color)
+            {
+                go_target.GetComponent<RiftBossController>().TakeDamage(f_electricDamage);
+            }
+
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine("ApplyRiftBossDamage", go_target);
+        }
+    }
+
+    // applies AOE damage to enemy every .5s until dissipation or triggerexit
+    IEnumerator ApplyEnemyDamage(GameObject go_target) {
 		if(go_target){  //Make sure it's not already dead.
 			go_target.GetComponent<EnemyController>().TakeDamage(f_electricDamage);
 			yield return new WaitForSeconds(0.5f);

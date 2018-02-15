@@ -126,7 +126,13 @@ public static class Constants {
         public static float C_PuckBaseSpeed = 10.0f;
 
         // Rift Boss Stats
+        public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
+        public static Vector3 C_BlueRiftBossSpawn = new Vector3(5.0f, 0.5f, 0f);
         public static float C_RiftBossMaxHealth = 3000f;
+        public static float C_RuneSpawnInterval = 8.0f;
+        public static float C_DeathBoltCooldown = 6.0f;
+        public static float C_ForceFieldCooldown = 7.0f;
+        public static float C_RuneDamage = 750.0f;
     }
        
     // Enemy Stats

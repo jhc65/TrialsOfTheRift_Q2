@@ -86,6 +86,12 @@ public class IceController : SpellController {
             go_target.GetComponent<EnemyController>().TakeDamage(f_iceDamage);
             go_target.GetComponent<EnemyController>().Freeze(0f);
         }
+        else if (go_target.tag == "RiftBoss")
+        {
+            if (go_target.gameObject.GetComponent<RiftBossController>().Color == e_color) {
+                go_target.GetComponent<RiftBossController>().TakeDamage(f_iceDamage * Constants.SpellStats.C_IcePlayerDamageMultiplier);
+            }
+        }
         else if (go_target.tag == "Crystal")
         {
             Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;

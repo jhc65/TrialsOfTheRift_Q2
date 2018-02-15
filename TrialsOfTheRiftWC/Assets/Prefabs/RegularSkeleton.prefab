@@ -159,9 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_Side: 1
-  i_health: 75
+  f_health: 0
   f_damage: 5
-  f_attackDistance: 1.5
+  f_canMove: 1
 --- !u!135 &135008623372215768
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -13,6 +13,7 @@ public sealed class Calligrapher : MonoBehaviour {
 
     [SerializeField] private Text txt_redScoreText, txt_blueScoreText;
     [SerializeField] private Text txt_redCrystalHealthText, txt_blueCrystalHealthText;
+    [SerializeField] private Text txt_redRiftBossHealthText, txt_blueRiftBossHealthText;
     [SerializeField] private Text txt_redCompletionTimer, txt_blueCompletionTimer;
     [SerializeField] private Text txt_redDestructionTimer, txt_blueDestructionTimer;
     [SerializeField] private Text txt_redObjvTitle, txt_blueObjvTitle;
@@ -52,10 +53,10 @@ public sealed class Calligrapher : MonoBehaviour {
     // update health (Rift Boss)
 	public void UpdateRiftBossHealthUI(Constants.Global.Color colorIn, float healthIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            //txt_redHealthText.text = Mathf.CeilToInt(healthIn).ToString();  TODO: new ui txt objects
+            txt_redRiftBossHealthText.text = Mathf.CeilToInt(healthIn).ToString();  //TODO: new ui txt objects
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
-            //txt_blueHealthText.text = Mathf.CeilToInt(healthIn).ToString();
+            txt_blueRiftBossHealthText.text = Mathf.CeilToInt(healthIn).ToString();
         }
     }
 
@@ -148,15 +149,15 @@ public sealed class Calligrapher : MonoBehaviour {
 
     public void RiftBossInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            /*txt_redHealthText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = "Crystal Destruction";
-            txt_blueObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";*/
+            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
-            /*txt_blueHealthText.transform.parent.gameObject.SetActive(true);
-            txt_redObjvTitle.text = "Crystal Destruction";
-            txt_redObjvDescription.text = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";*/
+            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_redObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
+            txt_redObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             PopupFadeIn(Constants.Global.Color.RED);
         }
         UpdateRiftBossHealthUI(colorIn, Constants.ObjectiveStats.C_RiftBossMaxHealth);
@@ -195,10 +196,10 @@ public sealed class Calligrapher : MonoBehaviour {
 
     public void RiftBossReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            //txt_redScoreText.transform.parent.gameObject.SetActive(false); TODO: new ui txt objects
+            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(false); //TODO: new ui txt objects
         }
         else {
-            //txt_blueScoreText.transform.parent.gameObject.SetActive(false);
+            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(false);
         }
     }
 
