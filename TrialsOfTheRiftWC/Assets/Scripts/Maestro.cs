@@ -9,13 +9,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public sealed class Maestro : MonoBehaviour {
-	public AudioSource as_bgm;
-	public AudioSource as_volatility;
-	public AudioSource as_sfxHi;
-	public AudioSource as_sfxMe;
-	public AudioSource as_sfxLo;
-	public AudioSource as_voi;
+	[Header("Audio Sources")]
+	public AudioSource as_bgm;			// background music audio source
+	public AudioSource as_volatility;	// volatility ambience audio source
+	public AudioSource as_sfxHi;		// high priority sound effect audio source
+	public AudioSource as_sfxMe;		// medium priority sound effect audio source
+	public AudioSource as_sfxLo;		// low priority sound effect audio source
+	public AudioSource as_voi;			// voice audio source
 	
+	[Header("Audio Clips")]
 	public AudioClip ac_bgm0;
 	
 	public AudioClip ac_windShoot;
@@ -25,14 +27,12 @@ public sealed class Maestro : MonoBehaviour {
 	
 	public AudioClip ac_enemyHit;
 	public AudioClip ac_enemyDie;
+	public AudioClip ac_enemySpawn;
 	
-	public AudioClip ac_playerRespawn;
+	public AudioClip ac_playerSpawn;
 	public AudioClip ac_playerDie;
 	
 	public AudioClip ac_portal;
-	
-	//I think this means I load every sound twice...
-	private Dictionary<AudioClip,AudioSource> d_sourceMap;
 
     [SerializeField] private AudioClip[] ac_volatility;
 	
@@ -47,25 +47,36 @@ public sealed class Maestro : MonoBehaviour {
         as_volatility.Play();
     }
 	
-	public void Play(AudioClip clip){
-		d_sourceMap[clip].PlayOneShot(clip);
+	public void PlayWindShoot(){
+		as_sfxMe.PlayOneShot(ac_windShoot);
 	}
-
-    void Awake() {
-        instance = this;
-		d_sourceMap = new Dictionary<AudioClip,AudioSource>{
-			{ac_bgm0,				as_bgm},
-			{ac_windShoot,			as_sfxHi},
-			{ac_iceShoot,			as_sfxHi},
-			{ac_electricShoot,		as_sfxHi},
-			{ac_magicMissileShoot,	as_sfxHi},
-			{ac_enemyHit,			as_sfxMe},
-			{ac_enemyDie,			as_sfxHi},
-			{ac_playerRespawn,		as_sfxHi},
-			{ac_playerDie,			as_sfxHi},
-			{ac_portal,				as_sfxHi},
-		};
-    }
+	public void PlayIceShoot(){
+		as_sfxMe.PlayOneShot(ac_iceShoot);
+	}
+	public void PlayElectricShoot(){
+		as_sfxMe.PlayOneShot(ac_electricShoot);
+	}
+	public void PlayMagicMissileShoot(){
+		as_sfxMe.PlayOneShot(ac_magicMissileShoot);
+	}
+	public void PlayEnemyHit(){
+		as_sfxMe.PlayOneShot(ac_enemyHit);
+	}
+	public void PlayEnemyDie(){
+		as_sfxMe.PlayOneShot(ac_enemyDie);
+	}
+	public void PlayEnemySpawn(){
+		as_sfxMe.PlayOneShot(ac_enemySpawn);
+	}
+	public void PlayPlayerSpawn(){
+		as_sfxMe.PlayOneShot(ac_playerSpawn);
+	}
+	public void PlayPlayerDie(){
+		as_sfxMe.PlayOneShot(ac_playerDie);
+	}
+	public void PlayPortal(){
+		as_sfxMe.PlayOneShot(ac_portal);
+	}
 
 	// Use this for initialization
 	void Start () {

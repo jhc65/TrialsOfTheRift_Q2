@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour{
 	private float f_playerHealth;           // player's current health value
     public float f_projectileSize;          // size of player projectiles.
     private Color col_originalColor;        // Color of capsule.
+	protected Maestro maestro;				// Reference to Maestro singleton.
+
 
 
 	private void Move() {
@@ -112,7 +114,7 @@ public class PlayerController : MonoBehaviour{
             Debug.Log("Increase Volatility by 2.5%");
             RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_PlayerDeath);
         } 
-		Maestro.Instance.Play(Maestro.Instance.ac_playerDie);
+		maestro.PlayPlayerDie();
         go_playerCapsule.SetActive(false);
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
@@ -123,7 +125,7 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayerRespawn() {
 		isWisp = false;
-		Maestro.Instance.Play(Maestro.Instance.ac_playerRespawn);
+		maestro.PlayPlayerSpawn();
         go_playerCapsule.SetActive(true);
         go_playerWisp.SetActive(false);
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
@@ -212,6 +214,8 @@ public class PlayerController : MonoBehaviour{
 		f_nextElectric = 0;
 		f_nextCast = 0;
         b_iceboltMode = false;
+		
+		maestro = Maestro.Instance;     // reference to Rift singleton
 
 		if (transform.position.x > 0)
 			e_Side = Constants.Global.Side.RIGHT;
@@ -251,7 +255,7 @@ public class PlayerController : MonoBehaviour{
                     f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
                 }
                 if (p_player.GetButton("MagicMissile")) {
-					Maestro.Instance.Play(Maestro.Instance.ac_magicMissileShoot);
+					maestro.PlayMagicMissileShoot();
                     f_nextMagicMissile = 0;
 				    GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -265,7 +269,7 @@ public class PlayerController : MonoBehaviour{
 			}
             // Charged Magic Missile (Release)
             if (p_player.GetButtonUp("MagicMissile") && f_nextMmCharge > Constants.SpellStats.C_MagicMissileChargeCooldown) {
-				Maestro.Instance.Play(Maestro.Instance.ac_magicMissileShoot);
+				maestro.PlayMagicMissileShoot();
                 f_nextMmCharge = 0;
 				GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -282,7 +286,7 @@ public class PlayerController : MonoBehaviour{
                     f_windCharge += p_player.GetButtonTimePressed("WindSpell");
                 }
                 if (p_player.GetButtonUp("WindSpell")) {
-					Maestro.Instance.Play(Maestro.Instance.ac_windShoot);
+					maestro.PlayWindShoot();
                     f_nextWind = 0;
 				    f_nextCast = 0;
                     for (int i = -30; i <= 30; i += 30) {
@@ -303,7 +307,7 @@ public class PlayerController : MonoBehaviour{
             // Ice Spell
             if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 if (p_player.GetButtonDown("IceSpell")) {
-					Maestro.Instance.Play(Maestro.Instance.ac_iceShoot);
+					maestro.PlayIceShoot();
                     b_iceboltMode = true;
                     f_nextIce = 0;
                     f_nextCast = 0;
@@ -324,7 +328,7 @@ public class PlayerController : MonoBehaviour{
                     f_electricCharge += p_player.GetButtonTimePressed("ElectricitySpell");
                 }
                 if (p_player.GetButtonUp("ElectricitySpell")) {
-					Maestro.Instance.Play(Maestro.Instance.ac_electricShoot);
+					maestro.PlayElectricShoot();
                     f_nextElectric = 0;
 				    f_nextCast = 0;
 				    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);

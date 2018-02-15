@@ -18,6 +18,7 @@ public abstract class EnemyController : MonoBehaviour {
 	protected UnityEngine.AI.NavMeshAgent nma_agent;
 	public float f_canMove = 1f;
     protected RiftController riftController;
+    protected Maestro maestro;
 	
 	protected void Start() {
 		r_rigidbody = GetComponent<Rigidbody>();
@@ -28,6 +29,8 @@ public abstract class EnemyController : MonoBehaviour {
 		nma_agent.acceleration = nma_agent.acceleration* (Constants.EnemyStats.C_EnemyBaseSpeed / 3.5f);
 		EnterStateChase ();
         riftController = RiftController.Instance;     // reference to Rift singleton
+		maestro = Maestro.Instance;     // reference to Rift singleton
+		maestro.PlayEnemySpawn();
     }
 	
 	// Update is called once per frame
@@ -98,7 +101,7 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected void EnterStateDie() {
 		e_State = State.DIE;
-		Maestro.Instance.Play(Maestro.Instance.ac_enemyDie);
+		maestro.PlayEnemyDie();
 		ChildEnterStateDie();
     }
 	protected abstract void ChildEnterStateDie();
@@ -111,7 +114,7 @@ public abstract class EnemyController : MonoBehaviour {
 	protected abstract void ChildUpdateDie();
 	
 	public void TakeDamage(float damage){
-		Maestro.Instance.Play(Maestro.Instance.ac_enemyHit);
+		maestro.PlayEnemyHit();
 		f_health -= (int)damage;
 		//Debug.Log(i_health);
 		//if(i_health <= 0f){
