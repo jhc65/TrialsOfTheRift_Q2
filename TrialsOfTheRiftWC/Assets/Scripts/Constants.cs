@@ -138,14 +138,18 @@ public static class Constants {
     // Enemy Stats
     public static class EnemyStats {
         public static int C_EnemySpawnCapPerSide = 30;
+		public static int C_NecromancerSpawnCapPerSide = 1;
         public static float C_EnemyBaseSpeed = 3.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 75.0f;
         public static float C_EnemyDamage = 25.0f;
+		public static float C_RuneDamage = 75.0f;
     }
 
     // Rift Stats
     public static class RiftStats {
+		public static int	C_RuneSpawnCapPerSide = 4;
+		public static float C_VolatilityNecromancerSpawnTimer = 30.0f;
         public static Vector3 C_RiftTeleportOffset = new Vector3(-4, 0, 0);
 
         public static float C_VolatilityResetTime = 5.0f;

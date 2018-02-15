@@ -1,40 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-public class RuneController : MonoBehaviour
-{
-    public string[] s_runeTargetTags;
-    void Start()
-    {
-        //Destroy(gameObject, Constants.SpellStats.C_ElectricAOELiveTime);
-        Invoke("Die", Constants.ObjectiveStats.C_RuneSpawnInterval);
-    }
+public class RuneController : MonoBehaviour {
+	private float timer = 4.0f;
+	private bool activated = false;
+	public GameObject go_explosionPrefab;
 
-    private void Die()
-    {
-        gameObject.SetActive(false);
-    }
+	public void Start() {
 
-    void OnTriggerEnter(Collider other)
+	}
+
+	public void Update() {
+
+		if (activated) {
+			timer -= Time.deltaTime;
+		}
+
+		if (timer < 0) {
+			InvokeDestroy(); 
+		}
+
+	}
+
+    void OnTriggerEnter(Collider collider)
     {
-        foreach (string tag in s_runeTargetTags)
+        if(collider.gameObject.tag == "Player"  || collider.gameObject.tag == "Enemy")
         {
-            if (other.gameObject.tag == tag)
-            {
-                ApplyEffect(other.gameObject);
-                CancelInvoke("Die");
-                Die();
-                break;
-            }
+            activated = true;
         }
     }
 
-    private void ApplyEffect(GameObject go_target)
-    {
-        if (go_target.tag == "Player")
-        {
-            go_target.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_RuneDamage);
-        }
+	void InvokeDestroy() {
+		Instantiate(go_explosionPrefab, transform.position, Quaternion.identity);
+		Destroy(gameObject);
     }
-}
+} 
