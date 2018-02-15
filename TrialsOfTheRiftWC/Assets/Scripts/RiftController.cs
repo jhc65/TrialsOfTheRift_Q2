@@ -124,6 +124,7 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility < 5.0f) {
 			i_volatilityLevel = 0;
             EnterNewVolatilityLevel();
+			InvokeRepeating("SpawnNecromancers", 0.0f, Constants.RiftStats.C_VolatilityNecromancerSpawnTimer);
         }
     }
 

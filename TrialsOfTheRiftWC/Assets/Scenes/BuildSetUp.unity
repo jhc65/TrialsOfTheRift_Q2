@@ -633,6 +633,8 @@ MonoBehaviour:
   go_riftDeathBolt: {fileID: 0}
   go_playerReferences: []
   go_enemyPrefab: {fileID: 0}
+  go_necromancerPrefab: {fileID: 0}
+  go_runePrefab: {fileID: 0}
 --- !u!4 &21829176
 Transform:
   m_ObjectHideFlags: 0
@@ -9108,6 +9110,10 @@ MonoBehaviour:
   - {fileID: 1117903695}
   - {fileID: 151429909}
   go_enemyPrefab: {fileID: 1361453887809848, guid: dcf428e369c5eca45aca3fd48073e9db,
+    type: 2}
+  go_necromancerPrefab: {fileID: 1361453887809848, guid: c89b9f30d09fb974f9de55e0c9d8b2c0,
+    type: 2}
+  go_runePrefab: {fileID: 1399838814026098, guid: 38d462540237a354db992ca2128f29a9,
     type: 2}
 --- !u!65 &598513397
 BoxCollider:
