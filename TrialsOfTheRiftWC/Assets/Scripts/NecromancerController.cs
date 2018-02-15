@@ -64,6 +64,7 @@ public class NecromancerController : EnemyController {
 
 			//while(b_isDestinationValid == false) {
 				destination = GetWanderPos(transform.position, wanderingRadius);
+				CheckOutOfBounds();
 				//b_isDestinationValid = IsWithinBounds(transform.position, e_Side);
 			//}
 
