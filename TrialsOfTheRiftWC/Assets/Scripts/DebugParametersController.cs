@@ -69,6 +69,10 @@ public class DebugParametersController : MonoBehaviour {
     public Slider slider_puckSpeedDecreaseRate;
     public Slider slider_puckBaseSpeed;
     public Slider slider_puckHitIncreaseSpeed;
+    public Slider slider_riftBossHealth;
+    public Slider slider_runeSpawnInterval;
+    public Slider slider_deathBoltCooldown;
+    public Slider slider_forceFieldCooldown;
 
     // UI text (set in editor)
     public Text txt_playerMoveSpeed;
@@ -106,6 +110,10 @@ public class DebugParametersController : MonoBehaviour {
     public Text txt_puckSpeedDecreaseRate;
     public Text txt_puckBaseSpeed;
     public Text txt_puckHitIncreaseSpeed;
+    public Text txt_riftBossHealth;
+    public Text txt_runeSpawnInterval;
+    public Text txt_deathBoltCooldown;
+    public Text txt_forceFieldCooldown;
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -318,6 +326,38 @@ public class DebugParametersController : MonoBehaviour {
     public void ChangePuckHitIncreaseSpeed(float f_hit) {
         txt_puckHitIncreaseSpeed.text = slider_puckHitIncreaseSpeed.value.ToString();
         Constants.ObjectiveStats.C_PuckSpeedHitIncrease = (int)f_hit;
+    }
+
+    public void ChangeRiftBossHealth(float f_riftBossHealthIn)
+    {
+        txt_riftBossHealth.text = slider_riftBossHealth.value.ToString();
+        Constants.ObjectiveStats.C_RiftBossMaxHealth = (int)f_riftBossHealthIn;
+        if (DM.objv_currentBlueObjective.gameObject.GetComponent<RiftBossObjective>())
+        {
+            DM.objv_currentBlueObjective.gameObject.GetComponent<RiftBossObjective>().ParamReset();
+        }
+        if (DM.objv_currentRedObjective.gameObject.GetComponent<RiftBossObjective>())
+        {
+            DM.objv_currentRedObjective.gameObject.GetComponent<RiftBossObjective>().ParamReset();
+        }
+    }
+
+    public void ChangeRuneSpawnInterval(float f_interval)
+    {
+        txt_runeSpawnInterval.text = slider_runeSpawnInterval.value.ToString();
+        Constants.ObjectiveStats.C_RuneSpawnInterval = (int)f_interval;
+    }
+
+    public void ChangeDeathBoltCooldown(float f_cooldown)
+    {
+        txt_deathBoltCooldown.text = slider_deathBoltCooldown.value.ToString();
+        Constants.ObjectiveStats.C_DeathBoltCooldown = (int)f_cooldown;
+    }
+
+    public void ChangeForceFieldCooldown(float f_cooldown)
+    {
+        txt_forceFieldCooldown.text = slider_forceFieldCooldown.value.ToString();
+        Constants.ObjectiveStats.C_ForceFieldCooldown = (int)f_cooldown;
     }
 
     // TODO: remove for final build
@@ -534,6 +574,22 @@ public class DebugParametersController : MonoBehaviour {
         // Hockey Puck Speed Decrease Amount
         txt_puckSpeedDecreaseRate.text = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount.ToString();
         slider_puckSpeedDecreaseRate.value = Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount;
+
+        // Rift Boss Max Health
+        txt_riftBossHealth.text = Constants.ObjectiveStats.C_RiftBossMaxHealth.ToString();
+        slider_riftBossHealth.value = Constants.ObjectiveStats.C_RiftBossMaxHealth;
+
+        // Rift Boss Rune Spawn Interval
+        txt_runeSpawnInterval.text = Constants.ObjectiveStats.C_RuneSpawnInterval.ToString();
+        slider_runeSpawnInterval.value = Constants.ObjectiveStats.C_RuneSpawnInterval;
+
+        // Rift Boss Death Bolt Cooldown
+        txt_deathBoltCooldown.text = Constants.ObjectiveStats.C_DeathBoltCooldown.ToString();
+        slider_deathBoltCooldown.value = Constants.ObjectiveStats.C_DeathBoltCooldown;
+
+        // Force Field Cooldown
+        txt_forceFieldCooldown.text = Constants.ObjectiveStats.C_ForceFieldCooldown.ToString();
+        slider_forceFieldCooldown.value = Constants.ObjectiveStats.C_ForceFieldCooldown;
 
         //---------------------------
         // Organize menu buttons
