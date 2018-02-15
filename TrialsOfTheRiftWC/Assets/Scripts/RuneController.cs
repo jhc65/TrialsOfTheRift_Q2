@@ -18,7 +18,7 @@ public class RuneController : MonoBehaviour {
 		}
 
 		if (timer < 0) {
-			Invoke("InvokeDestroy", 0.0f); 
+			InvokeDestroy(); 
 		}
 
 	}
