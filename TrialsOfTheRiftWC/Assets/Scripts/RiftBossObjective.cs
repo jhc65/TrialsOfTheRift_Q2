@@ -1,6 +1,6 @@
-﻿/*  Crystal Destruction Objective - Dana Thompson
+﻿/*  Rift Boss Objective - Dana Thompson
  * 
- *  Desc:   Facilitates Crystal Destruction Objective
+ *  Desc:   Facilitates Rift Boss Objective
  * 
  */
  

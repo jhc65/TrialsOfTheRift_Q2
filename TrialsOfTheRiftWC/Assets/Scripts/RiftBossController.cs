@@ -1,6 +1,6 @@
-﻿/*  Crystal Controller - Dana Thompson
+﻿/*  Rift Boss Controller - Dana Thompson
  * 
- *  Desc:   Controls changes to Crystal Destruction Objective's Crystal health
+ *  Desc:   Controls how the Rift Boss works
  * 
  */
 
@@ -40,7 +40,7 @@ public class RiftBossController : MonoBehaviour {
 
     void Start() {
         f_health = Constants.ObjectiveStats.C_RiftBossMaxHealth;     // cannot read from Constants.cs in initialization at top
-        rc_riftController = new RiftController();
+        rc_riftController = RiftController.Instance;
 
         InvokeRepeating("FireDeathBolts", Constants.ObjectiveStats.C_DeathBoltCooldown, 
             Constants.ObjectiveStats.C_DeathBoltCooldown + Constants.ObjectiveStats.C_ForceFieldCooldown);
