@@ -10288,9 +10288,10 @@ GameObject:
   - component: {fileID: 658498691}
   - component: {fileID: 658498696}
   - component: {fileID: 658498695}
-  - component: {fileID: 658498697}
-  - component: {fileID: 658498694}
   - component: {fileID: 658498693}
+  - component: {fileID: 658498694}
+  - component: {fileID: 658498699}
+  - component: {fileID: 658498698}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -10480,7 +10481,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 1
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -10551,7 +10552,7 @@ AudioSource:
   m_GameObject: {fileID: 658498688}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243345270848966172, guid: b84d127fc53c53845a64f14bfecd8d1f,
+  OutputAudioMixerGroup: {fileID: 243646568720848684, guid: b84d127fc53c53845a64f14bfecd8d1f,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -10561,7 +10562,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 2
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -10642,7 +10643,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -10718,24 +10719,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   am_masterMix: {fileID: 24100000, guid: b84d127fc53c53845a64f14bfecd8d1f, type: 2}
   as_bgm: {fileID: 658498695}
-  as_volatility: {fileID: 658498697}
-  as_sfx: {fileID: 658498694}
+  as_volatility: {fileID: 658498694}
+  as_sfxHi: {fileID: 658498694}
+  as_sfxMe: {fileID: 658498699}
+  as_sfxLo: {fileID: 658498698}
   as_voi: {fileID: 658498693}
   ac_bgm0: {fileID: 8300000, guid: b47ff1c405120e547ae785020df333e7, type: 3}
-  ac_windShoot: {fileID: 8300000, guid: e3b5dbd1b6726564bb93b35c0ef2b20e, type: 3}
-  ac_iceShoot: {fileID: 8300000, guid: 6222912dcc711654e920f2e6413c66e8, type: 3}
+  ac_windShoot: {fileID: 8300000, guid: 845f96f3c43a3fb4d9a35fd5d176135f, type: 3}
+  ac_iceShoot: {fileID: 8300000, guid: 297ae035c2f736f4d8d75997dbae1dc2, type: 3}
   ac_electricShoot: {fileID: 8300000, guid: 174a27c3907b9b44a9a7c1906afb2e61, type: 3}
-  ac_magicMissileShoot: {fileID: 8300000, guid: 8c58d02df17fa26459b92884379f9b73,
+  ac_magicMissileShoot: {fileID: 8300000, guid: 33b548b5ee289a24ca93cde1bba31237,
     type: 3}
   ac_enemyHit: {fileID: 8300000, guid: afc15df9a0fa0e84baad73c6d9d0f8f3, type: 3}
   ac_enemyDie: {fileID: 8300000, guid: 7011b10a80ca1854d8de6609609f8917, type: 3}
-  ac_volatility:
+  ac_enemySpawn: {fileID: 8300000, guid: acf16c78048b41b47b60738291e3591b, type: 3}
+  ac_playerSpawn: {fileID: 8300000, guid: 253d7acb426679f4a8f0c40ddf872345, type: 3}
+  ac_playerDie: {fileID: 8300000, guid: 69e0924d291d5da46b0dfd786638aed3, type: 3}
+  ac_portal: {fileID: 8300000, guid: 65725faf9972d6e4699e13489a6e91ec, type: 3}
+  ac_volatility_ambience:
   - {fileID: 8300000, guid: 8c2866d8ec7512c47880db8d720818c2, type: 3}
   - {fileID: 8300000, guid: f0a3a010bad0c684fa491adbc83f1806, type: 3}
   - {fileID: 8300000, guid: 8eb00891712ecae469d986f421963ce4, type: 3}
   - {fileID: 8300000, guid: fae422b4487322844b9d645fd09acbd4, type: 3}
   - {fileID: 8300000, guid: 4375b0361f4b9fb4ab5a618d9083d6f6, type: 3}
---- !u!82 &658498697
+  ac_volatility_noise_0:
+  - {fileID: 8300000, guid: 0956b964108ec18448894800c4c411ed, type: 3}
+  ac_volatility_noise_1:
+  - {fileID: 8300000, guid: 372c775ae88e4c44fbced1365e3ae84e, type: 3}
+  ac_volatility_noise_2:
+  - {fileID: 8300000, guid: 794cf7cb612eaf54a956de60d66fb25c, type: 3}
+  ac_volatility_noise_3:
+  - {fileID: 8300000, guid: 9177fd83e99940b44b8fddddea79b48c, type: 3}
+  ac_volatility_noise_4:
+  - {fileID: 8300000, guid: ca092ff594b3ce34cb177ba4caf901ea, type: 3}
+--- !u!82 &658498698
 AudioSource:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -10743,13 +10760,94 @@ AudioSource:
   m_GameObject: {fileID: 658498688}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243345270848966172, guid: b84d127fc53c53845a64f14bfecd8d1f,
+  OutputAudioMixerGroup: {fileID: 243899807197026604, guid: b84d127fc53c53845a64f14bfecd8d1f,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 256
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &658498699
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658498688}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243712921232922628, guid: b84d127fc53c53845a64f14bfecd8d1f,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

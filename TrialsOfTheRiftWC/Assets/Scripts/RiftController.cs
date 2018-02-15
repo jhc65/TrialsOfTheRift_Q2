@@ -3,7 +3,7 @@
  *  Desc:   Facilitates Rift volatility and enemy spawn.
  * 
  */
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,10 +37,13 @@ public sealed class RiftController : MonoBehaviour {
     };
     private float f_enemySpeed;
 
+	private int i_volatilityLevel;
     private float f_volatility;
     private float f_volatilityMultiplier;
     private Constants.RiftStats.Volatility e_currentVolatilityLevel;
     private Maestro maestro;     // reference to audio singleton
+	
+	private System.Random r_random = new System.Random();
 
     // Singleton
     private static RiftController instance;
@@ -69,12 +72,14 @@ public sealed class RiftController : MonoBehaviour {
         }
         else if (f_volatility >= 75.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SEVENTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.SEVENTYFIVE;
-            EnterNewVolatilityLevel(4);
+			i_volatilityLevel = 4;
+            EnterNewVolatilityLevel();
             //InvertControls();
         }
         else if (f_volatility >= 65.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SIXTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.SIXTYFIVE;
-            EnterNewVolatilityLevel(3);
+			i_volatilityLevel = 3;
+            EnterNewVolatilityLevel();
             for (int i = 0; i < 5; i++) {
                 SpawnEnemies();
             }
@@ -82,33 +87,38 @@ public sealed class RiftController : MonoBehaviour {
         }
         else if (f_volatility >= 50.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIFTY) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIFTY;
-            EnterNewVolatilityLevel(3);
+			i_volatilityLevel = 3;
+            EnterNewVolatilityLevel();
             //SpawnNecromancers();
         }
         else if (f_volatility >= 35.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.THIRTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.THIRTYFIVE;
-            EnterNewVolatilityLevel(2);
+			i_volatilityLevel = 2;
+            EnterNewVolatilityLevel();
             f_enemySpeed += 1.0f;
         }
         else if (f_volatility >= 25.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
-            EnterNewVolatilityLevel(2);
+			i_volatilityLevel = 2;
+            EnterNewVolatilityLevel();
             //FireDeathBolts(Constants.Global.Color.RED);
             //FireDeathBolts(Constants.Global.Color.BLUE);
         }
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
-            EnterNewVolatilityLevel(1);
+			i_volatilityLevel = 1;
+            EnterNewVolatilityLevel();
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
         else if (f_volatility < 5.0f) {
-            EnterNewVolatilityLevel(0);
+			i_volatilityLevel = 0;
+            EnterNewVolatilityLevel();
         }
     }
 
-    private void EnterNewVolatilityLevel(int i) {
-        maestro.PlayVolatility(i);
-        switch (i) {
+    private void EnterNewVolatilityLevel() {
+        maestro.PlayVolatilityAmbience(i_volatilityLevel);
+        switch (i_volatilityLevel) {
             case 0:
                 // Change rift visual to L0
                 e_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
@@ -137,7 +147,8 @@ public sealed class RiftController : MonoBehaviour {
 
     public void ResetVolatility() {
         f_volatility = 0.0f;
-        EnterNewVolatilityLevel(0);
+		i_volatilityLevel = 0;
+        EnterNewVolatilityLevel();
     }
 
     //----------------------------
@@ -154,8 +165,8 @@ public sealed class RiftController : MonoBehaviour {
 
     // Spawns one enemy on either side of the Rift, randomly chosen position
     public void SpawnEnemies() {
-        int randLeft = Random.Range(0, v3_leftEnemySpawnPositions.Length);
-        int randRight = Random.Range(0, v3_rightEnemySpawnPositions.Length);
+        int randLeft = UnityEngine.Random.Range(0, v3_leftEnemySpawnPositions.Length);
+        int randRight = UnityEngine.Random.Range(0, v3_rightEnemySpawnPositions.Length);
 
         if (i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
             GameObject leftEnemy = Instantiate(go_enemyPrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
@@ -211,7 +222,7 @@ public sealed class RiftController : MonoBehaviour {
 
     // Gets a random Vector3 position within a given radius
     private Vector3 RandomCircle(Vector3 center, Constants.Global.Side side, float radius) {
-        float ang = Random.value * 360;
+        float ang = UnityEngine.Random.value * 360;
         Vector3 pos;
 
         // by absolute valueing the x position, we can tell the enemy which side it should of the map it should be on
@@ -292,13 +303,19 @@ public sealed class RiftController : MonoBehaviour {
     }*/
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+	
+	void PlayNoise(){
+		maestro.PlayVolatilityNoise(i_volatilityLevel);
+		Invoke("PlayNoise", r_random.Next(0,10));
+	}
 
     void Awake() {
         instance = this;
     }
 
     void Start() {
-        maestro = Maestro.Instance;
+		maestro = Maestro.Instance;
         ResetVolatility();
+		Invoke("PlayNoise", r_random.Next(0,10));
     }
 }
