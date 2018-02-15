@@ -145,7 +145,9 @@ public static class Constants {
         public static float C_VolatilityResetTime = 5.0f;
         //public static float C_Volatility_CameraFlipTime = 5.0f;
         public static float C_VolatilityEnemySpawnTimer = 7.0f;
-        public static float C_VolatilityMeteorDamage = 50.0f;
+        public static float C_VolatilityDeathboltLiveTimer = 12.0f;
+        public static float C_VolatilityDeathboltSpeed = 10.0f;
+        public static float C_VolatilityDeathboltDamage = 300.0f;
 
         public static float C_VolatilityIncrease_RoomAdvance = 5.0f;
         public static float C_VolatilityIncrease_SpellCross = 0.5f;

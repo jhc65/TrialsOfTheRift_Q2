@@ -93,12 +93,13 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility >= 25.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
             EnterNewVolatilityLevel(2);
-            //FireDeathBolts(Constants.Global.Color.RED);
-            //FireDeathBolts(Constants.Global.Color.BLUE);
+            FireDeathBolts(Constants.Global.Color.RED);
+            FireDeathBolts(Constants.Global.Color.BLUE);
         }
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
             EnterNewVolatilityLevel(1);
+            FireDeathBolts(Constants.Global.Color.RED);
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
         else if (f_volatility < 5.0f) {
@@ -147,7 +148,13 @@ public sealed class RiftController : MonoBehaviour {
             player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth);
         }
 
-        //TODO: kill all enemies
+        /* Do shit with the runes once I get Jeff and Dana's shit in
+        */
+
+        GameObject[] go_allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < go_allEnemies.Length; i++) {
+            Destroy(go_allEnemies[i]);
+        }
     }
 
     //TODO: revisit enemy spawn with pooling
@@ -245,26 +252,21 @@ public sealed class RiftController : MonoBehaviour {
     }
 
     // @Joe get this working
-    /*public void FireDeathBolts(Constants.Global.Color c) {
-     * // Only shoot at players of color, make not collide with anything EXCEPT players (layer matrix, probably)
-     * 
-     * 
+    // Joe: NO BITCH, I DO WHAT I WANT! >:(
+    public void FireDeathBolts(Constants.Global.Color c) {
+     // Only shoot at players of Color c, and don't collide with anything EXCEPT players (layer matrix, probably)
+
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
         List<GameObject> go_riftSpells = new List<GameObject>();
 
         for (int i = 0; i < 4; i++) {
-            GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
-            go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-            go_spell.GetComponent<Rigidbody>().velocity = transform.forward * Constants.SpellStats.C_MagicMissileSpeed;
-
-            go_riftSpells.Add(Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation));
+            if (go_playerReferences[i].GetComponent<PlayerController>().GetColor() == c) {
+                GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
+                go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
+                go_spell.GetComponent<Rigidbody>().velocity = go_playerReferences[i].transform.position.normalized * Constants.RiftStats.C_VolatilityDeathboltSpeed;
+            }
         }
-
-        go_riftSpells[0].GetComponent<Rigidbody>().velocity = go_playerReferences[0].transform.position * Constants.SpellStats.C_MagicMissileSpeed;
-        go_riftSpells[1].GetComponent<Rigidbody>().velocity = go_playerReferences[1].transform.position * Constants.SpellStats.C_MagicMissileSpeed;
-        go_riftSpells[2].GetComponent<Rigidbody>().velocity = go_playerReferences[2].transform.position * Constants.SpellStats.C_MagicMissileSpeed;
-        go_riftSpells[3].GetComponent<Rigidbody>().velocity = go_playerReferences[3].transform.position * Constants.SpellStats.C_MagicMissileSpeed;
-    }*/
+    }
 
     /*public void SpawnNecromancers() {
         Debug.Log("Spawn necromancers when we have them");
