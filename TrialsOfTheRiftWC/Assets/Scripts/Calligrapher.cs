@@ -150,15 +150,15 @@ public sealed class Calligrapher : MonoBehaviour {
     public void RiftBossInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(true);
-            txt_blueObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
-            txt_blueObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
-            PopupFadeIn(Constants.Global.Color.BLUE);
-        }
-        else {
-            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
             txt_redObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
             txt_redObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             PopupFadeIn(Constants.Global.Color.RED);
+        }
+        else {
+            txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            txt_blueObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
+            txt_blueObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
+            PopupFadeIn(Constants.Global.Color.BLUE);
         }
         UpdateRiftBossHealthUI(colorIn, Constants.ObjectiveStats.C_RiftBossMaxHealth);
     }

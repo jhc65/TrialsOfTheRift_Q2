@@ -8,7 +8,7 @@ public class RiftBossRuneController : MonoBehaviour
     void Start()
     {
         //Destroy(gameObject, Constants.SpellStats.C_ElectricAOELiveTime);
-        Invoke("Die", Constants.ObjectiveStats.C_RuneSpawnInterval);
+        //Invoke("Die", Constants.ObjectiveStats.C_RuneSpawnInterval);
     }
 
     private void Die()
@@ -23,7 +23,7 @@ public class RiftBossRuneController : MonoBehaviour
             if (other.gameObject.tag == tag)
             {
                 ApplyEffect(other.gameObject);
-                CancelInvoke("Die");
+                //CancelInvoke("Die");
                 Die();
                 break;
             }
