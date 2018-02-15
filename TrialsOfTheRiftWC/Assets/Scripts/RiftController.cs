@@ -99,7 +99,6 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
             EnterNewVolatilityLevel(1);
-            FireDeathBolts(Constants.Global.Color.RED);
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
         else if (f_volatility < 5.0f) {
