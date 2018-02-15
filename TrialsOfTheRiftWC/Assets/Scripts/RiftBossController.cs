@@ -63,7 +63,7 @@ public class RiftBossController : MonoBehaviour {
     }
 
     private void FireDeathBolts() {
-        //rc_riftController.FireDeathBolts(e_color);
+        rc_riftController.FireDeathBolts(e_color);
         go_ForceField.SetActive(false);
         Invoke("TurnOnForceField", Constants.ObjectiveStats.C_ForceFieldCooldown);
     }

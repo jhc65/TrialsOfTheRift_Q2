@@ -7623,12 +7623,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 480798752}
---- !u!114 &483434536 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114404955938652292, guid: 4283a83d2382611408980775eb1895ec,
-    type: 2}
-  m_PrefabInternal: {fileID: 1068293294}
-  m_Script: {fileID: 11500000, guid: 8a8475a7cd6ad964288c64dd1ea978fc, type: 3}
 --- !u!4 &483434537 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4504866560062754, guid: 4283a83d2382611408980775eb1895ec,
@@ -9781,7 +9775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efe22be8d945f64ca0bd2ca6d2ffe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_riftDeathBolt: {fileID: 0}
+  go_riftDeathBolt: {fileID: 1934989086911316, guid: 3afbac15f1f5a4f41a1440adfac082be,
+    type: 2}
   go_playerReferences:
   - {fileID: 831298294}
   - {fileID: 1854477934}
@@ -9789,8 +9784,10 @@ MonoBehaviour:
   - {fileID: 151429909}
   go_enemyPrefab: {fileID: 1361453887809848, guid: dcf428e369c5eca45aca3fd48073e9db,
     type: 2}
-  go_necromancerPrefab: {fileID: 0}
-  go_runePrefab: {fileID: 0}
+  go_necromancerPrefab: {fileID: 1361453887809848, guid: c89b9f30d09fb974f9de55e0c9d8b2c0,
+    type: 2}
+  go_runePrefab: {fileID: 1399838814026098, guid: 38d462540237a354db992ca2128f29a9,
+    type: 2}
 --- !u!65 &598513397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10996,8 +10993,8 @@ MonoBehaviour:
   txt_blueScoreText: {fileID: 894766292}
   txt_redCrystalHealthText: {fileID: 507043081}
   txt_blueCrystalHealthText: {fileID: 894766292}
-  txt_redRiftBossHealthText: {fileID: 1765618726}
-  txt_blueRiftBossHealthText: {fileID: 419366233}
+  txt_redRiftBossHealthText: {fileID: 0}
+  txt_blueRiftBossHealthText: {fileID: 0}
   txt_redCompletionTimer: {fileID: 1634195036}
   txt_blueCompletionTimer: {fileID: 429351599}
   txt_redDestructionTimer: {fileID: 2014181298}
@@ -11086,10 +11083,10 @@ MonoBehaviour:
   slider_puckSpeedDecreaseRate: {fileID: 1747431807}
   slider_puckBaseSpeed: {fileID: 1880051683}
   slider_puckHitIncreaseSpeed: {fileID: 914580993}
-  slider_riftBossHealth: {fileID: 1397305289}
-  slider_runeSpawnInterval: {fileID: 1114680377}
-  slider_deathBoltCooldown: {fileID: 1481357748}
-  slider_forceFieldCooldown: {fileID: 1073665992}
+  slider_riftBossHealth: {fileID: 0}
+  slider_runeSpawnInterval: {fileID: 0}
+  slider_deathBoltCooldown: {fileID: 0}
+  slider_forceFieldCooldown: {fileID: 0}
   txt_playerMoveSpeed: {fileID: 1896081438}
   txt_windSpeed: {fileID: 6911925}
   txt_iceSpeed: {fileID: 1280094396}
@@ -11125,10 +11122,10 @@ MonoBehaviour:
   txt_puckSpeedDecreaseRate: {fileID: 1262855690}
   txt_puckBaseSpeed: {fileID: 266005242}
   txt_puckHitIncreaseSpeed: {fileID: 1732621003}
-  txt_riftBossHealth: {fileID: 1835044273}
-  txt_runeSpawnInterval: {fileID: 236476825}
-  txt_deathBoltCooldown: {fileID: 324289783}
-  txt_forceFieldCooldown: {fileID: 1210247762}
+  txt_riftBossHealth: {fileID: 0}
+  txt_runeSpawnInterval: {fileID: 0}
+  txt_deathBoltCooldown: {fileID: 0}
+  txt_forceFieldCooldown: {fileID: 0}
 --- !u!114 &658498692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11145,13 +11142,13 @@ MonoBehaviour:
   - {fileID: 179575052}
   - {fileID: 187073835}
   - {fileID: 1969613477}
-  - {fileID: 1371143726}
+  - {fileID: 0}
   objv_blueObjectiveList:
   - {fileID: 208908248}
   - {fileID: 1331734953}
   - {fileID: 934301715}
   - {fileID: 8193994}
-  - {fileID: 483434536}
+  - {fileID: 0}
   objv_currentRedObjective: {fileID: 0}
   objv_currentBlueObjective: {fileID: 0}
   txt_winMsg: {fileID: 2146816463}
@@ -22834,12 +22831,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4878815122652740, guid: f981430eb51e2cb44bd79bb554e56b86,
     type: 2}
   m_PrefabInternal: {fileID: 97190522}
---- !u!114 &1371143726 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114950012174937082, guid: f981430eb51e2cb44bd79bb554e56b86,
-    type: 2}
-  m_PrefabInternal: {fileID: 97190522}
-  m_Script: {fileID: 11500000, guid: 8a8475a7cd6ad964288c64dd1ea978fc, type: 3}
 --- !u!1 &1373953336
 GameObject:
   m_ObjectHideFlags: 0
