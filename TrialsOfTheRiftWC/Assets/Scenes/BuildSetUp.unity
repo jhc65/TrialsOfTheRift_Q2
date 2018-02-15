@@ -1856,6 +1856,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f981430eb51e2cb44bd79bb554e56b86, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &97190523 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114950012174937082, guid: f981430eb51e2cb44bd79bb554e56b86,
+    type: 2}
+  m_PrefabInternal: {fileID: 97190522}
+  m_Script: {fileID: 11500000, guid: 8a8475a7cd6ad964288c64dd1ea978fc, type: 3}
 --- !u!1 &98881209
 GameObject:
   m_ObjectHideFlags: 0
@@ -10993,8 +10999,8 @@ MonoBehaviour:
   txt_blueScoreText: {fileID: 894766292}
   txt_redCrystalHealthText: {fileID: 507043081}
   txt_blueCrystalHealthText: {fileID: 894766292}
-  txt_redRiftBossHealthText: {fileID: 0}
-  txt_blueRiftBossHealthText: {fileID: 0}
+  txt_redRiftBossHealthText: {fileID: 1765618726}
+  txt_blueRiftBossHealthText: {fileID: 419366233}
   txt_redCompletionTimer: {fileID: 1634195036}
   txt_blueCompletionTimer: {fileID: 429351599}
   txt_redDestructionTimer: {fileID: 2014181298}
@@ -11083,10 +11089,10 @@ MonoBehaviour:
   slider_puckSpeedDecreaseRate: {fileID: 1747431807}
   slider_puckBaseSpeed: {fileID: 1880051683}
   slider_puckHitIncreaseSpeed: {fileID: 914580993}
-  slider_riftBossHealth: {fileID: 0}
-  slider_runeSpawnInterval: {fileID: 0}
-  slider_deathBoltCooldown: {fileID: 0}
-  slider_forceFieldCooldown: {fileID: 0}
+  slider_riftBossHealth: {fileID: 1397305289}
+  slider_runeSpawnInterval: {fileID: 1114680377}
+  slider_deathBoltCooldown: {fileID: 1481357748}
+  slider_forceFieldCooldown: {fileID: 1073665992}
   txt_playerMoveSpeed: {fileID: 1896081438}
   txt_windSpeed: {fileID: 6911925}
   txt_iceSpeed: {fileID: 1280094396}
@@ -11122,10 +11128,10 @@ MonoBehaviour:
   txt_puckSpeedDecreaseRate: {fileID: 1262855690}
   txt_puckBaseSpeed: {fileID: 266005242}
   txt_puckHitIncreaseSpeed: {fileID: 1732621003}
-  txt_riftBossHealth: {fileID: 0}
-  txt_runeSpawnInterval: {fileID: 0}
-  txt_deathBoltCooldown: {fileID: 0}
-  txt_forceFieldCooldown: {fileID: 0}
+  txt_riftBossHealth: {fileID: 1835044273}
+  txt_runeSpawnInterval: {fileID: 236476825}
+  txt_deathBoltCooldown: {fileID: 324289783}
+  txt_forceFieldCooldown: {fileID: 1210247762}
 --- !u!114 &658498692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11142,13 +11148,13 @@ MonoBehaviour:
   - {fileID: 179575052}
   - {fileID: 187073835}
   - {fileID: 1969613477}
-  - {fileID: 0}
+  - {fileID: 97190523}
   objv_blueObjectiveList:
   - {fileID: 208908248}
   - {fileID: 1331734953}
   - {fileID: 934301715}
   - {fileID: 8193994}
-  - {fileID: 0}
+  - {fileID: 1068293295}
   objv_currentRedObjective: {fileID: 0}
   objv_currentBlueObjective: {fileID: 0}
   txt_winMsg: {fileID: 2146816463}
@@ -17958,6 +17964,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4283a83d2382611408980775eb1895ec, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1068293295 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114404955938652292, guid: 4283a83d2382611408980775eb1895ec,
+    type: 2}
+  m_PrefabInternal: {fileID: 1068293294}
+  m_Script: {fileID: 11500000, guid: 8a8475a7cd6ad964288c64dd1ea978fc, type: 3}
 --- !u!1 &1073665990
 GameObject:
   m_ObjectHideFlags: 0
