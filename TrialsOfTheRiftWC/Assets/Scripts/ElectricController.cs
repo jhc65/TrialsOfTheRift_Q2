@@ -9,7 +9,7 @@ public class ElectricController : SpellController {
 
     protected override void BuffSpell() {
         // Increase Volatility by 0.5%
-        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
+        RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
 		f_electricDamage = f_electricDamage * Constants.SpellStats.C_ElectricRiftDamageMultiplier;
 		transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
 	}
@@ -36,7 +36,15 @@ public class ElectricController : SpellController {
 				Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
 			}
 		}
-		else if (collision.gameObject.tag != "Portal") {
+        else if (collision.gameObject.tag == "RiftBoss")
+        {
+            Debug.Log("Inside Controller");
+            if (collision.gameObject.GetComponent<RiftBossController>().Color == e_color) {
+                collision.gameObject.GetComponent<RiftBossController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
+                ApplyEffect(collision.gameObject, collision);
+            }
+        }
+        else if (collision.gameObject.tag != "Portal") {
 			ApplyEffect(collision.gameObject, collision);
 		}
 	}

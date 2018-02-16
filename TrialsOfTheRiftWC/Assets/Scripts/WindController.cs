@@ -26,19 +26,25 @@ public class WindController : SpellController {
             go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
             go_target.GetComponent<EnemyController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
         }
+        else if (go_target.tag == "RiftBoss") {
+            if (go_target.gameObject.GetComponent<RiftBossController>().Color == e_color) {
+                go_target.GetComponent<RiftBossController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
+            }
+        }
         else if (go_target.tag == "Crystal")
         {
             Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
             if (crystalColor != e_color)
             {
-                go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalDamagePercent);
+                go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_SpellCrystalDamagePercent);
             }
             else if (crystalColor == e_color)
             {
-                go_target.GetComponent<CrystalController>().ChangeCrystalHealth(Constants.SpellStats.C_SpellCrystalHealPercent);
+                go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_SpellCrystalHealPercent);
             }
         }
-        else if (go_target.tag == "Potato") {
+        else if (go_target.tag == "Potato")
+        {
             go_target.GetComponent<Rigidbody>().isKinematic = false;
             Vector3 v3_direction = transform.forward.normalized;
             go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
@@ -47,7 +53,7 @@ public class WindController : SpellController {
 
     protected override void BuffSpell() {
         // Increase Volatility by 0.5%
-        RiftController.GetInstance().IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
+        RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
         f_windDamage = f_windDamage * Constants.SpellStats.C_WindRiftDamageMultiplier;
         transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
     }

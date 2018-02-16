@@ -7,7 +7,8 @@ using System.Collections;
 
 public abstract class EnemyController : MonoBehaviour {
 
-    protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE};
+	//Added WANDER and FLEE states
+    protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE, WANDER, FLEE, SUMMONING, DROPPING};
 	[SerializeField] public Constants.Global.Side e_Side;
 	[SerializeField] protected float f_health;
 	[SerializeField] protected float f_damage;
@@ -17,16 +18,38 @@ public abstract class EnemyController : MonoBehaviour {
 	protected Rigidbody r_rigidbody;
 	protected UnityEngine.AI.NavMeshAgent nma_agent;
 	public float f_canMove = 1f;
-	
+    protected RiftController riftController;
+	protected Maestro maestro;
+
+	//The random destination the bot chooses when wandering
+	protected Vector3 destination;
+
+	//The radius of which the bot will pick it's random destination
+	protected float wanderingRadius = 10.0f;
+
+	//The a timer that keeps track of how long a bot has been wandering
+	protected float timer;
+
+	//The time limit for the bot to wander
+	protected float timeLimit = 4.0f;
+
 	protected void Start() {
 		r_rigidbody = GetComponent<Rigidbody>();
 		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		f_health = Constants.EnemyStats.C_EnemyHealth;
 		f_damage = Constants.EnemyStats.C_EnemyDamage;
-		nma_agent.speed = Constants.EnemyStats.C_EnemySpeed;
-		nma_agent.acceleration = nma_agent.acceleration* (Constants.EnemyStats.C_EnemySpeed / 3.5f);
-		EnterStateChase ();
-	}
+		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
+		nma_agent.acceleration = nma_agent.acceleration* (Constants.EnemyStats.C_EnemyBaseSpeed / 3.5f);
+
+		//Initializing the timer, destination, and wanderingRadius
+		timer = 0.0f;
+		destination = transform.position;
+
+		EnterStateWander ();
+        riftController = RiftController.Instance;     // reference to Rift singleton
+		maestro = Maestro.Instance;     // reference to Rift singleton
+		maestro.PlayEnemySpawn();			   
+    }
 	
 	// Update is called once per frame
 	protected void Update () {
@@ -38,6 +61,18 @@ public abstract class EnemyController : MonoBehaviour {
 		switch (e_State) {
 		case State.CHASE:
 			UpdateChase ();
+			break;
+		case State.WANDER:
+			UpdateWander ();
+			break;
+		case State.FLEE:
+			UpdateFlee ();
+			break;
+		case State.SUMMONING:
+			UpdateSummoning ();
+			break;
+		case State.DROPPING:
+			UpdateDropping ();
 			break;
 		case State.ATTACK:
 			UpdateAttack();
@@ -52,18 +87,70 @@ public abstract class EnemyController : MonoBehaviour {
 			UpdateDie ();
 			break;
 		}
+
+		ChildUpdate();
     }
+
+	protected virtual void ChildUpdate(){}
 
 	protected void EnterStateChase() {
 		e_State = State.CHASE;
 		ChildEnterStateChase();
     }
-	protected abstract void ChildEnterStateChase();
+	protected virtual void ChildEnterStateChase(){}
 
     protected void UpdateChase() {
 		ChildUpdateChase();
     }
-	protected abstract void ChildUpdateChase();
+	protected virtual void ChildUpdateChase(){}
+
+	protected void EnterStateFlee() {
+		e_State = State.FLEE;
+		ChildEnterStateFlee();
+    }
+
+	protected virtual void ChildEnterStateFlee(){}
+
+    protected void UpdateFlee() {
+		ChildUpdateFlee();
+    }
+	protected virtual void ChildUpdateFlee(){}
+
+	protected void EnterStateWander() {
+		e_State = State.WANDER;
+		ChildEnterStateWander();
+    }
+
+	protected virtual void ChildEnterStateWander(){}
+
+    protected void UpdateWander() {
+		ChildUpdateWander();
+    }
+	protected virtual void ChildUpdateWander(){}
+
+	protected void EnterStateSummoning() {
+		e_State = State.SUMMONING;
+		ChildEnterStateSummoning();
+    }
+
+	protected virtual void ChildEnterStateSummoning(){}
+
+    protected void UpdateSummoning() {
+		ChildUpdateSummoning();
+    }
+	protected virtual void ChildUpdateSummoning(){}
+
+	protected void EnterStateDropping() {
+		e_State = State.DROPPING;
+		ChildEnterStateDropping();
+    }
+
+	protected virtual void ChildEnterStateDropping(){}
+
+    protected void UpdateDropping() {
+		ChildUpdateDropping();
+    }
+	protected virtual void ChildUpdateDropping(){}
 
     protected void EnterStateAttack() {
 		if(e_State != State.ATTACK)
@@ -71,17 +158,17 @@ public abstract class EnemyController : MonoBehaviour {
         e_State = State.ATTACK;
 		ChildEnterStateAttack();
     }
-	protected abstract void ChildEnterStateAttack();
+	protected virtual void ChildEnterStateAttack(){}
 
     protected void UpdateAttack() {
 		ChildUpdateAttack();
     }
-	protected abstract void ChildUpdateAttack();
+	protected virtual void ChildUpdateAttack(){}
 
     protected void DoAttack() {
 		ChildDoAttack();
     }
-	protected abstract void ChildDoAttack();
+	protected virtual void ChildDoAttack(){}
 
     protected void AttackOver() {
 		switch (e_previousState) {
@@ -96,25 +183,20 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected void EnterStateDie() {
 		e_State = State.DIE;
-		AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_enemyDie);
+		maestro.PlayEnemyDie();
 		ChildEnterStateDie();
     }
-	protected abstract void ChildEnterStateDie();
+	protected virtual void ChildEnterStateDie(){}
 
     protected void UpdateDie() {
 		ChildUpdateDie();
-        if (e_Side == Constants.Global.Side.LEFT) {
-            DarkMagician.GetInstance().leftEnemies--;
-        } else {
-            DarkMagician.GetInstance().rightEnemies--;
-        }
-        
+        //riftController.DecreaseEnemies(e_Side);
 		Destroy(gameObject);
     }
-	protected abstract void ChildUpdateDie();
+	protected virtual void ChildUpdateDie(){}
 	
 	public void TakeDamage(float damage){
-		AudioManager.Instance.as_sfx.PlayOneShot(AudioManager.Instance.ac_enemyHit);
+		maestro.PlayEnemyHit();
 		f_health -= (int)damage;
 		//Debug.Log(i_health);
 		//if(i_health <= 0f){
@@ -131,12 +213,12 @@ public abstract class EnemyController : MonoBehaviour {
 		Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
 		ChildEnterStateFrozen();
     }
-	protected abstract void ChildEnterStateFrozen();
+	protected virtual void ChildEnterStateFrozen(){}
 
     protected void UpdateFrozen() {
 		ChildUpdateFrozen();
     }
-	protected abstract void ChildUpdateFrozen();
+	protected virtual void ChildUpdateFrozen(){}
 	
 	public void Freeze(float f){
 		EnterStateFrozen(f);
@@ -156,12 +238,12 @@ public abstract class EnemyController : MonoBehaviour {
 		UpdateSpeed();
 		ChildEnterStateSlowed();
     }
-	protected abstract void ChildEnterStateSlowed();
+	protected virtual void ChildEnterStateSlowed(){}
 
     protected void UpdateSlowed() {
 		ChildUpdateSlowed();
     }
-	protected abstract void ChildUpdateSlowed();
+	protected virtual void ChildUpdateSlowed(){}
 	
 	public void Slow(float f){
 		EnterStateSlowed(f);
@@ -182,7 +264,63 @@ public abstract class EnemyController : MonoBehaviour {
     }
 	
 	private void UpdateSpeed(){
-		nma_agent.speed = Constants.EnemyStats.C_EnemySpeed * f_canMove;
+		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed * f_canMove;
 		//nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f) * f_canMove;
+	}
+
+	//If the bot tries to move to a destination that's out of bounds
+	//This will reset the destination with in bounds
+	protected void CheckOutOfBounds() {
+		if (e_Side == Constants.Global.Side.LEFT) {
+			if (destination.x < -37.0f) {
+				destination.x = -37.0f;
+			}
+			else if (destination.x > -1.0f) {
+				destination.x = -1.0f;
+			}
+		}
+		else {
+			if (destination.x > 37.0f) {
+				destination.x = 37.0f;
+			}
+			else if (destination.x < 1.0f) {
+				destination.x = 1.0f;
+			}
+		}
+
+		if (destination.z > 21.0f) {
+			destination.z = 21.0f;
+		}
+		else if (destination.z < -21.0f) {
+			destination.z = -21.0f;
+		}
+	}
+
+	protected bool IsWithinBounds(Vector3 position, Constants.Global.Side side) {
+		if (side == Constants.Global.Side.LEFT) {
+			if (position.x <= -39.0f) {
+				return false;
+			}
+			else if (position.x >= 1.0f) {
+				return false;
+			}
+		}
+		else {
+			if (position.x >= 39.0f) {
+				return false;
+			}
+			else if (position.x <= 1.0f) {
+				return false;
+			}
+		}
+
+		if (position.z >= 21.0f) {
+			return false;
+		}
+		else if (position.z <= -21.0f) {
+			return false;
+		}
+
+		return true;
 	}
 }

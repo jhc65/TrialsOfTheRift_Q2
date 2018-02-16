@@ -11,10 +11,8 @@ using UnityEngine;
 public class HockeyPuckController : MonoBehaviour {
 
     public IceHockeyObjective iho_owner;    // identifies objective puck is a part of
-    [SerializeField]
-    private Constants.Global.Color e_color;  // identifies owning team
-    [SerializeField]
-    private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
+    [SerializeField] private Constants.Global.Color e_color;  // identifies owning team
+    [SerializeField] private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
     private float f_speed;
     private Rigidbody rb;
 

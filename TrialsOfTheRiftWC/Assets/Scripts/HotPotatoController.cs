@@ -11,15 +11,13 @@ using UnityEngine;
 public class HotPotatoController : MonoBehaviour {
 
     public HotPotatoObjective hpo_owner;  // identifies objective potato is a part of
-    [SerializeField]
-    private Constants.Global.Color e_color;     // identifies owning team - MUST BE SET IN EDITOR!
-
-    [SerializeField]
-    private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
+    [SerializeField] private Constants.Global.Color e_color;     // identifies owning team - MUST BE SET IN EDITOR!
+    [SerializeField] private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
     private Constants.Global.Side e_currentSide;
     private int i_completionTimer;      // tracks time of potato being on opposite side
     private int i_destructionTimer;     // tracks time of potato being on team's side
     private Rigidbody rb;
+    private RiftController riftController;     // reference to Rift singleton
 
     // Getters
     public Constants.Global.Side Side {
@@ -28,12 +26,12 @@ public class HotPotatoController : MonoBehaviour {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    public void SetCompletionTimer(int time) {
+    public void UpdateCompletionTimer(int time) {
         i_completionTimer = time;
         hpo_owner.UpdateCompletionTimer(i_completionTimer);
     }
 
-    public void SetDestructionTimer(int time) {
+    public void UpdateDestructionTimer(int time) {
         i_destructionTimer = time;
         hpo_owner.UpdateDestructionTimer(i_destructionTimer);
     }
@@ -86,12 +84,10 @@ public class HotPotatoController : MonoBehaviour {
     public void SelfDestruct() {
         // Spawn 3 enemies at current location
         for (int i = 0; i < 3; i++) {
-            DarkMagician.GetInstance().CircularSpawn(transform.position, e_startSide);
+            riftController.CircularEnemySpawn(transform.position, e_startSide);
         }
-
         ResetPotatoPosition();
         i_destructionTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
-        GameController.GetInstance().DestructionProgress(e_color, Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
 
     // Changes potato side when crossing the Rift or through a portal
@@ -112,6 +108,7 @@ public class HotPotatoController : MonoBehaviour {
         e_currentSide = e_startSide;
         Invoke("DestructionTimerTick", 1);
         rb = GetComponent<Rigidbody>();
+        riftController = RiftController.Instance;
     }
 	
 	//// Check to see if the potato has changed sides
@@ -126,7 +123,11 @@ public class HotPotatoController : MonoBehaviour {
 
     // Forces the potato over the Rift
     void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Rift") || other.CompareTag("Portal")) {
+        if (other.CompareTag("Rift")) {
+            transform.position = transform.position + (int)e_currentSide * Constants.RiftStats.C_RiftTeleportOffset;
+            ToggleSide();
+        }
+        else if (other.CompareTag("Portal")) {
             ToggleSide();
         }
     }

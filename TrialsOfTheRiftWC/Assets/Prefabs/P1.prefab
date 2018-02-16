@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4428023283618246}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Flag Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 54583861262537824}
   - component: {fileID: 114402147449209724}
   - component: {fileID: 136243509933635456}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: P1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022492638415136}
   - component: {fileID: 65641941858582144}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Interact Collider
   m_TagString: InteractCollider
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4295789817693736}
   - component: {fileID: 33127237604006050}
   - component: {fileID: 23751639290610566}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4563314193208866}
   - component: {fileID: 33982532255173856}
   - component: {fileID: 23132895242232860}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Wisp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4972948675608854}
   - component: {fileID: 33813054349431928}
   - component: {fileID: 23287481596709480}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 4870362728272504}
   - component: {fileID: 33593169734521620}
   - component: {fileID: 23417388527165188}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 4726764915964242}
   - component: {fileID: 136685617105761666}
   - component: {fileID: 23638170093354680}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ParryShield
   m_TagString: ParryShield
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4255145862711342}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Spell Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
