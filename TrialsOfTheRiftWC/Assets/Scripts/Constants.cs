@@ -144,6 +144,9 @@ public static class Constants {
         public static float C_EnemyHealth = 75.0f;
         public static float C_EnemyDamage = 25.0f;
 		public static float C_RuneDamage = 75.0f;
+        public static float C_SpawnRadius = 1.5f;
+        public static float C_MapBoundryXAxis = 14.5f;
+        public static float C_MapBoundryZAxis = 9.5f;
     }
 
     // Rift Stats

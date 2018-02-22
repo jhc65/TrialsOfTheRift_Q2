@@ -242,18 +242,24 @@ public sealed class RiftController : MonoBehaviour {
     // Spawns an enemy at a specified position
     public void SpawnEnemy(Vector3 position, Constants.Global.Side side) {
         // only spawn if below enemy side cap TODO: is this expected behavior?
-        if ((side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) ||
-            (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide)) {
+        if (side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
             GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
             enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
             enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+            i_leftEnemies++;
+        } else if (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
+            GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
+            enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
+            enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
+            enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+            i_rightEnemies++;
         }
     }
 
     // Spawns an enemy within a radius when a valid position is selected
     public void CircularEnemySpawn(Vector3 center, Constants.Global.Side side) {
-        Vector3 spawnPos = RandomCircle(center, side, 3.0f);
+        Vector3 spawnPos = RandomCircle(center, side, Constants.EnemyStats.C_SpawnRadius);
 
         // Checks to see if the spawn position is already occupied by anything with a collider
             // If it is, find a new spawn position for the enemy
@@ -366,23 +372,21 @@ public sealed class RiftController : MonoBehaviour {
         pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
 
         // Reposition the enemies if they spawn outside of the map TODO: revisit once map is scaled, and these should be Constants anyway
-        if (pos.z >= 22) {
-            float diff = pos.z - 22;
+        if (pos.z >= Constants.EnemyStats.C_MapBoundryZAxis) {
+            float diff = pos.z - Constants.EnemyStats.C_MapBoundryZAxis;
             pos.z = pos.z - diff - 1;
         }
-        else if (pos.z <= -22) {
-            Debug.Log(pos.z);
-            float diff = pos.z + 22;
+        else if (pos.z <= (-1.0f * Constants.EnemyStats.C_MapBoundryZAxis)) {
+            float diff = pos.z + Constants.EnemyStats.C_MapBoundryZAxis;
             pos.z = pos.z - diff + 1;
-            Debug.Log(pos.z);
         }
 
-        if (pos.x >= 40) {
-            float diff = pos.x - 40;
+        if (pos.x >= Constants.EnemyStats.C_MapBoundryXAxis) {
+            float diff = pos.x - Constants.EnemyStats.C_MapBoundryXAxis;
             pos.x = pos.x - diff - 1;
         }
-        else if (pos.x <= -40) {
-            float diff = pos.x + 40;
+        else if (pos.x <= (-1.0f * Constants.EnemyStats.C_MapBoundryXAxis)) {
+            float diff = pos.x + Constants.EnemyStats.C_MapBoundryXAxis;
             pos.x = pos.x - diff + 1;
         }
 
