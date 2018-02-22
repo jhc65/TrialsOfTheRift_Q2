@@ -11,8 +11,8 @@ public class ElectricController : SpellController {
         // Increase Volatility by 0.5%
         RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
 		f_electricDamage = f_electricDamage * Constants.SpellStats.C_ElectricRiftDamageMultiplier;
-		transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
-	}
+        transform.localScale *= Constants.SpellStats.C_SpellScaleMultiplier;
+    }
 
 	protected override void ApplyEffect(GameObject go_target, Collision collision) {
 		GameObject go_newAOE = Instantiate(go_aoe, new Vector3(transform.position.x, 0.1f, transform.position.z), Quaternion.identity);

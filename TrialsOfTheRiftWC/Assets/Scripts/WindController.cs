@@ -55,7 +55,7 @@ public class WindController : SpellController {
         // Increase Volatility by 0.5%
         RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
         f_windDamage = f_windDamage * Constants.SpellStats.C_WindRiftDamageMultiplier;
-        transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+        transform.localScale *= Constants.SpellStats.C_SpellScaleMultiplier;
     }
 
     public override void Charge(float f_chargeTime) {
@@ -64,6 +64,6 @@ public class WindController : SpellController {
             f_charged = 2f;
         }
         f_windDamage *= ((f_charged*1/12) + 1);
-        transform.localScale *= f_charged;
+        transform.localScale *= f_charged*0.7f;
     }
 }

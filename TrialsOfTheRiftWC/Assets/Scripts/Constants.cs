@@ -19,8 +19,8 @@ public static class Constants {
 
     // Player Stats
     public static class PlayerStats {
-        public static float C_MovementSpeed = 10.0f;
-        public static float C_WispMovementSpeed = 2.0f;
+        public static float C_MovementSpeed = 6.0f;
+        public static float C_WispMovementSpeed = 1.5f;
         public static float C_RespawnTimer = 5.0f;
         public static float C_MaxHealth = 300.0f;
     }
@@ -33,12 +33,12 @@ public static class Constants {
         public static float C_SpellLiveTime = 2.0f;
         public static float C_SpellChargeTime = 3.0f;
         public static float C_NextSpellDelay = 0.5f;
-        public static float C_PlayerProjectileSize = 0.75f;
+        public static float C_PlayerProjectileSize = 0.5f;
         public static float C_SpellScaleMultiplier = 1.15f;
 
         // Magic Missile Stats
         public static float C_MagicMissileLiveTime = 0.35f;
-		public static float C_MagicMissileSpeed = 20.0f;
+		public static float C_MagicMissileSpeed = 15.0f;
         public static float C_MagicMissileDamage = 25.0f;
         public static float C_MagicMissileCooldown = 0.34f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
@@ -47,7 +47,7 @@ public static class Constants {
 
         // Wind Stats
         public static float C_WindLiveTime = 0.2f;
-        public static float C_WindSpeed = 20.0f;
+        public static float C_WindSpeed = 15.0f;
         public static float C_WindDamage = 50.0f;
         public static float C_WindCooldown = 3.0f;
         public static float C_WindChargeTime = C_SpellChargeTime;
@@ -58,7 +58,7 @@ public static class Constants {
         // Ice Stats
         // TODO: UHHHHH....? (live time vs. charge time... FIGHT)
         public static float C_IceLiveTime = 3.00f;
-        public static float C_IceSpeed = 10.0f;
+        public static float C_IceSpeed = 8.0f;
         public static float C_IceDamage = 75.0f;
         public static float C_IceCooldown = 5.0f;
         public static float C_IceChargeTime = C_SpellChargeTime;
@@ -69,7 +69,7 @@ public static class Constants {
         // it's ELECTRIC! (boogie woogie woogie) Stats
         // TODO: make charge time and Live time tied
         public static float C_ElectricLiveTime = 0.3f;
-        public static float C_ElectricSpeed = 20.0f;
+        public static float C_ElectricSpeed = 15.0f;
 		public static float C_ElectricDamage = 40.0f;
 		public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
@@ -95,14 +95,14 @@ public static class Constants {
         //public static Vector3 C_GenericBlueObjectiveGoalSpawn = new Vector3(4.5f, .01f, 0f);
 
         // Potato Stats
-        public static Vector3 C_RedPotatoSpawn = new Vector3(-5.0f, 0.5f, 0f);
-        public static Vector3 C_BluePotatoSpawn = new Vector3(5.0f, 0.5f, 0f);
+        public static Vector3 C_RedPotatoSpawn = new Vector3(-3.5f, 0.5f, 0f);
+        public static Vector3 C_BluePotatoSpawn = new Vector3(3.5f, 0.5f, 0f);
         public static int C_PotatoCompletionTimer = 30;
         public static int C_PotatoSelfDestructTimer = 10;
 
         // CTF Stats
-        public static Vector3 C_RedFlagSpawn = new Vector3(-20.0f, 0.5f, 0f);
-        public static Vector3 C_BlueFlagSpawn = new Vector3(20.0f, 0.5f, 0f);
+        public static Vector3 C_RedFlagSpawn = new Vector3(-16.0f, 0.5f, 0f);
+        public static Vector3 C_BlueFlagSpawn = new Vector3(16.0f, 0.5f, 0f);
         //public static Vector3 C_RedCTFGoalSpawn = C_GenericRedObjectiveGoalSpawn;
         //public static Vector3 C_BlueCTFGoalSpawn = C_GenericBlueObjectiveGoalSpawn;
         public static int C_CTFMaxScore = 3;
@@ -126,8 +126,8 @@ public static class Constants {
         public static float C_PuckBaseSpeed = 10.0f;
 
         // Rift Boss Stats
-        public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
-        public static Vector3 C_BlueRiftBossSpawn = new Vector3(5.0f, 0.5f, 0f);
+        //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);
+        //public static Vector3 C_BlueRiftBossSpawn = new Vector3(5.0f, 0.5f, 0f);
         public static float C_RiftBossMaxHealth = 3000f;
         public static float C_RuneSpawnInterval = 8.0f;
         public static float C_DeathBoltCooldown = 6.0f;
@@ -139,7 +139,7 @@ public static class Constants {
     public static class EnemyStats {
         public static int C_EnemySpawnCapPerSide = 30;
 		public static int C_NecromancerSpawnCapPerSide = 1;
-        public static float C_EnemyBaseSpeed = 3.5f;
+        public static float C_EnemyBaseSpeed = 1.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 75.0f;
         public static float C_EnemyDamage = 25.0f;
@@ -148,10 +148,10 @@ public static class Constants {
 
     // Rift Stats
     public static class RiftStats {
-		public static int	C_RuneSpawnCapPerSide = 4;
+		public static int C_RuneSpawnCapPerSide = 4;
 		public static float C_VolatilityNecromancerSpawnTimer = 30.0f;
-        public static Vector3 C_RiftTeleportOffset = new Vector3(-4, 0, 0);
-        public static float C_PortalTeleportOffset = 1.5f;
+        public static Vector3 C_RiftTeleportOffset = new Vector3(-2, 0, 0);
+        public static float C_PortalTeleportOffset = 0.75f;
 
         public static float C_VolatilityResetTime = 5.0f;
         //public static float C_Volatility_CameraFlipTime = 5.0f;

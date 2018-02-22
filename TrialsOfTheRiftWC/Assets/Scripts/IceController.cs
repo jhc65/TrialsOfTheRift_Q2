@@ -68,7 +68,7 @@ public class IceController : SpellController {
     protected override void Start() {
         rb_body = GetComponent<Rigidbody>();
         Invoke("InvokeDestroy", Constants.SpellStats.C_IceLiveTime);
-        InvokeRepeating("MakeWall", 0.3f, 0.3f);
+        InvokeRepeating("MakeWall", 0.15f, 0.15f);
     }
 
     void MakeWall() {
@@ -118,7 +118,7 @@ public class IceController : SpellController {
         // Increase Volatility by 0.5%
         RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_SpellCross);
         f_iceDamage = f_iceDamage * Constants.SpellStats.C_IceRiftDamageMultiplier;
-        transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+        transform.localScale *= Constants.SpellStats.C_SpellScaleMultiplier;
     }
 
     public void SetPlayer(PlayerController pc_in) {
