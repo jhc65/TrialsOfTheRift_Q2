@@ -151,6 +151,7 @@ public static class Constants {
 		public static int	C_RuneSpawnCapPerSide = 4;
 		public static float C_VolatilityNecromancerSpawnTimer = 30.0f;
         public static Vector3 C_RiftTeleportOffset = new Vector3(-4, 0, 0);
+        public static float C_PortalTeleportOffset = 1.5f;
 
         public static float C_VolatilityResetTime = 5.0f;
         //public static float C_Volatility_CameraFlipTime = 5.0f;

@@ -536,6 +536,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1015386945}
     m_Modifications:
+    - target: {fileID: 114201209817594814, guid: 04e1940160c89644dab3db7f77c28e42,
+        type: 2}
+      propertyPath: go_roomPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4324443353586388, guid: 04e1940160c89644dab3db7f77c28e42, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -572,7 +577,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 540218739}
+      objectReference: {fileID: 1590458491}
     - target: {fileID: 114201209817594814, guid: 04e1940160c89644dab3db7f77c28e42,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -1952,7 +1957,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 395637435}
+      objectReference: {fileID: 751104584}
     - target: {fileID: 114950012174937082, guid: f981430eb51e2cb44bd79bb554e56b86,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -6551,11 +6556,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 394992116}
---- !u!1 &395637435 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1728485901231888, guid: 4441871c769c10049b8eb68921ccd5e2,
-    type: 2}
-  m_PrefabInternal: {fileID: 572689561}
 --- !u!4 &395637436 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4024859996456010, guid: 4441871c769c10049b8eb68921ccd5e2,
@@ -8968,7 +8968,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 540218739}
+      objectReference: {fileID: 1590458491}
     - target: {fileID: 114171931449179728, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -9674,11 +9674,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &540218739 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1613668851645750, guid: a59da6afcaefe674a9339e8fd370dfb8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1101984051}
 --- !u!4 &540218740 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4738927476405554, guid: a59da6afcaefe674a9339e8fd370dfb8,
@@ -14134,7 +14129,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 395637435}
+      objectReference: {fileID: 751104584}
     - target: {fileID: 114980289765004476, guid: f133622674575e54c89142093b338ea6,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -14145,6 +14140,10 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 366032108}
+    - target: {fileID: 1258882638583858, guid: f133622674575e54c89142093b338ea6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f133622674575e54c89142093b338ea6, type: 2}
   m_IsPrefabParent: 0
@@ -14472,6 +14471,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &751104584 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1751059552468222, guid: ba168cf4eabfa6d4ab1d17e68d7c71d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1845894876}
 --- !u!4 &751104586 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4388097572519828, guid: ba168cf4eabfa6d4ab1d17e68d7c71d3,
@@ -16950,7 +16954,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 540218739}
+      objectReference: {fileID: 1590458491}
     - target: {fileID: 114651926557978906, guid: 1f6452573653d4242b25fd7aba3f2dbf,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -18340,7 +18344,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 395637435}
+      objectReference: {fileID: 751104584}
     - target: {fileID: 114251381420450200, guid: f8ba2bf30071d9446ba41e4b1984c887,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -20169,7 +20173,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 540218739}
+      objectReference: {fileID: 1590458491}
     - target: {fileID: 114404955938652292, guid: 4283a83d2382611408980775eb1895ec,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -23124,7 +23128,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 395637435}
+      objectReference: {fileID: 751104584}
     - target: {fileID: 114048660257854474, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -23971,7 +23975,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 540218739}
+      objectReference: {fileID: 1590458491}
     - target: {fileID: 114041289190177280, guid: 8ce5dcaba78bbae4b9df37b219fbd280,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
@@ -29858,6 +29862,11 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1590458491 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1730328085295608, guid: 65fc7eb1dfaf2784f9e891f574a866c8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1229649642}
 --- !u!4 &1590458493 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4819683341348350, guid: 65fc7eb1dfaf2784f9e891f574a866c8,
@@ -30946,6 +30955,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1015386945}
     m_Modifications:
+    - target: {fileID: 114583166485856520, guid: 434b33ba9458c2e4dbe93368126f500a,
+        type: 2}
+      propertyPath: go_roomPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4265010622216386, guid: 434b33ba9458c2e4dbe93368126f500a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30986,7 +31000,7 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 395637435}
+      objectReference: {fileID: 751104584}
     - target: {fileID: 114583166485856520, guid: 434b33ba9458c2e4dbe93368126f500a,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
