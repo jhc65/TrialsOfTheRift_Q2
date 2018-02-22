@@ -34,18 +34,18 @@ public sealed class RiftController : MonoBehaviour {
     private int i_rightEnemies = 0;
 
     private Vector3[] v3_rightEnemySpawnPositions = new Vector3[] {
-        new Vector3(18f, 0.5f, 0f),
-        new Vector3(18f, 0.5f, -16.5f),
-        new Vector3(18f, 0.5f, 14f),
-        new Vector3(5f, 0.5f, 14f),
-        new Vector3(5f, 0.5f, -16.5f)
+        new Vector3(9f, 0.5f, 0f),
+        new Vector3(9f, 0.5f, -8f),
+        new Vector3(9f, 0.5f, 7f),
+        new Vector3(2.5f, 0.5f, 7f),
+        new Vector3(2.5f, 0.5f, -8f)
     };
     private Vector3[] v3_leftEnemySpawnPositions = new Vector3[] {
-        new Vector3(-18f, 0.5f, 0f),
-        new Vector3(-18f, 0.5f, -16.5f),
-        new Vector3(-18f, 0.5f, 14f),
-        new Vector3(-5f, 0.5f, 14f),
-        new Vector3(-5f, 0.5f, -16.5f)
+        new Vector3(-9f, 0.5f, 0f),
+        new Vector3(-9f, 0.5f, -8f),
+        new Vector3(-9f, 0.5f, 7f),
+        new Vector3(-2.5f, 0.5f, 7f),
+        new Vector3(-2.5f, 0.5f, -8f)
     };
     private float f_enemySpeed;
 

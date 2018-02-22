@@ -176,9 +176,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571805450456432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.38211894, y: 0, z: 0, w: 0.9241132}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 224185971603609934}
   - {fileID: 224026387057018784}
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   pc_trackedPlayer: {fileID: 0}
-  v3_offset: {x: 0, y: 2, z: 1.5}
+  v3_offset: {x: 0, y: 1, z: 1}
 --- !u!114 &114224459848520392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   pc_trackedPlayer: {fileID: 0}
-  v3_offset: {x: 0, y: 2, z: 1.5}
+  v3_offset: {x: 0, y: 1, z: 1}
 --- !u!114 &114275703255059466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   pc_trackedPlayer: {fileID: 0}
-  v3_offset: {x: 0, y: 2, z: 1.5}
+  v3_offset: {x: 0, y: 1, z: 1}
 --- !u!114 &114772941699116168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   pc_trackedPlayer: {fileID: 0}
-  v3_offset: {x: 0, y: 2, z: 1.5}
+  v3_offset: {x: 0, y: 1, z: 1}
 --- !u!114 &114822344920077754
 MonoBehaviour:
   m_ObjectHideFlags: 1
