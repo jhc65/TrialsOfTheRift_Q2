@@ -22,10 +22,10 @@ public class FlagController : MonoBehaviour {
 
     public void ResetFlagPosition() {
         if(e_color == Constants.Global.Color.RED) {
-            transform.position = Constants.ObjectiveStats.C_RedFlagSpawn;
+            transform.localPosition = Constants.ObjectiveStats.C_RedFlagSpawn;
         }
         else {
-            transform.position = Constants.ObjectiveStats.C_BlueFlagSpawn;
+            transform.localPosition = Constants.ObjectiveStats.C_BlueFlagSpawn;
         }
     }
 

@@ -38,10 +38,10 @@ public class HotPotatoController : MonoBehaviour {
 
     public void ResetPotatoPosition() {
         if (e_color == Constants.Global.Color.RED) {
-            transform.position = Constants.ObjectiveStats.C_RedPotatoSpawn;
+            transform.localPosition = Constants.ObjectiveStats.C_RedPotatoSpawn;
         }
         else {
-            transform.position = Constants.ObjectiveStats.C_BluePotatoSpawn;
+            transform.localPosition = Constants.ObjectiveStats.C_BluePotatoSpawn;
         }
     }
 

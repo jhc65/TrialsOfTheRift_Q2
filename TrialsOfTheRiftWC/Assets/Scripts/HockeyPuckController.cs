@@ -26,10 +26,10 @@ public class HockeyPuckController : MonoBehaviour {
 
     public void ResetPuckPosition() {
         if (e_color == Constants.Global.Color.RED) {
-            transform.position = Constants.ObjectiveStats.C_RedPuckSpawn;
+            transform.localPosition = Constants.ObjectiveStats.C_RedPuckSpawn;
         }
         else {
-            transform.position = Constants.ObjectiveStats.C_BluePuckSpawn;
+            transform.localPosition = Constants.ObjectiveStats.C_BluePuckSpawn;
         }
 
         //stop its movement entirely
