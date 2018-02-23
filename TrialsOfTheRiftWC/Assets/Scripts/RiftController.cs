@@ -401,7 +401,7 @@ public sealed class RiftController : MonoBehaviour {
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
         List<GameObject> go_riftSpells = new List<GameObject>();
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 1; i++) {
             if (go_playerReferences[i].GetComponent<PlayerController>().GetColor() == c) {
                 GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);

@@ -38,7 +38,7 @@ public static class Constants {
 
         // Magic Missile Stats
         public static float C_MagicMissileLiveTime = 0.35f;
-		public static float C_MagicMissileSpeed = 15.0f;
+		public static float C_MagicMissileSpeed = 10.0f;
         public static float C_MagicMissileDamage = 25.0f;
         public static float C_MagicMissileCooldown = 0.34f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
@@ -98,7 +98,7 @@ public static class Constants {
         public static Vector3 C_RedPotatoSpawn = new Vector3(-3.5f, 0.5f, 0f);
         public static Vector3 C_BluePotatoSpawn = new Vector3(3.5f, 0.5f, 0f);
         public static int C_PotatoCompletionTimer = 30;
-        public static int C_PotatoSelfDestructTimer = 10;
+        public static int C_PotatoSelfDestructTimer = 15;
         public static int C_EnemySpawnAmount = 3;
 
         // CTF Stats
@@ -143,7 +143,7 @@ public static class Constants {
         public static float C_EnemyBaseSpeed = 1.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 75.0f;
-        public static float C_EnemyDamage = 25.0f;
+        public static float C_EnemyDamage = 15.0f;
 		public static float C_RuneDamage = 75.0f;
         public static float C_SpawnRadius = 1.5f;
         public static float C_MapBoundryXAxis = 14.5f;
