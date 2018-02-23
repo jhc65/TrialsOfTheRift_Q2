@@ -83,7 +83,7 @@ public class HotPotatoController : MonoBehaviour {
     // Potato destroys itself, spawns enemies, and resets to original spawn position
     public void SelfDestruct() {
         // Spawn 3 enemies at current location
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Constants.ObjectiveStats.C_EnemySpawnAmount; i++) {
             riftController.CircularEnemySpawn(transform.position, e_startSide);
         }
         ResetPotatoPosition();

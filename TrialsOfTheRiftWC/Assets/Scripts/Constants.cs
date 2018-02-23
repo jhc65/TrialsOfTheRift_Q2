@@ -99,6 +99,7 @@ public static class Constants {
         public static Vector3 C_BluePotatoSpawn = new Vector3(3.5f, 0.5f, 0f);
         public static int C_PotatoCompletionTimer = 30;
         public static int C_PotatoSelfDestructTimer = 10;
+        public static int C_EnemySpawnAmount = 3;
 
         // CTF Stats
         public static Vector3 C_RedFlagSpawn = new Vector3(-16.0f, 0.5f, 0f);
@@ -137,7 +138,7 @@ public static class Constants {
        
     // Enemy Stats
     public static class EnemyStats {
-        public static int C_EnemySpawnCapPerSide = 30;
+        public static int C_EnemySpawnCapPerSide = 7;
 		public static int C_NecromancerSpawnCapPerSide = 1;
         public static float C_EnemyBaseSpeed = 1.5f;
 		public static float C_EnemyAttackRange = 1.5f;
