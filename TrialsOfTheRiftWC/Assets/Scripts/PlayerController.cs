@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour{
     private float f_nextCast;               // time next spell in general can be cast. (not including MagicMissile)
 	private float f_playerHealth;           // player's current health value
     public float f_projectileSize;          // size of player projectiles.
-    private Color col_originalColor;        // Color of capsule.
+    //private Color col_originalColor;        // Color of capsule.
 	protected Maestro maestro;				// Reference to Maestro singleton.
 
 
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour{
 		go_playerWisp.SetActive(true);
 		f_nextWind = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
         f_nextIce = Time.time + (Constants.PlayerStats.C_RespawnTimer + 3.0f);
-        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
         Invoke("PlayerRespawn", Constants.PlayerStats.C_RespawnTimer);
     }
 
@@ -146,23 +146,23 @@ public class PlayerController : MonoBehaviour{
 	}
 
     public void DamageVisualOn() {
-        go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
+ //       go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.yellow;
         //Call screenshake here.
         Invoke("DamageVisualOff", 0.1666f * 2);
     }
 
     public void DamageVisualOff() {
-        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     }
 
     public void HealVisualOn() {
-        go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
+ //       go_playerCapsule.GetComponent<MeshRenderer>().material.color = Color.green;
         //Call screenshake here.
         Invoke("HealVisualOff", 0.1666f * 2);
     }
 
     public void HealVisualOff() {
-        go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
+        //go_playerCapsule.GetComponent<MeshRenderer>().material.color = col_originalColor;
     }
 
     public void Heal(float heal) {
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour{
 
     void Start() {
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
-        col_originalColor = go_playerCapsule.GetComponent<MeshRenderer>().material.color;
+        //col_originalColor = go_playerCapsule.GetComponent<MeshRenderer>().material.color;
 		f_canMove = 1;
 
 		f_nextMagicMissile = 0;
