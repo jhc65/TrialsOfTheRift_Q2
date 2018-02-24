@@ -11,7 +11,7 @@ public class PlayerHUDController : MonoBehaviour {
     [SerializeField] Image img_windbar;
     [SerializeField] Image img_icebar;
 	[SerializeField] Image img_electricbar;
-    [SerializeField] Image img_UIBacking;
+    [SerializeField] float f_shakeAmt;
 
     private Color col_origIceColor;
     private Color col_origWindColor;
@@ -19,7 +19,6 @@ public class PlayerHUDController : MonoBehaviour {
     private Vector2 v2_origIceSize;
     private Vector2 v2_origWindSize;
     private Vector2 v2_origElecSize;
-    private Color col_origUIColor;
 
     private void Start() {
         col_origElecColor = img_electricbar.color;
@@ -28,7 +27,6 @@ public class PlayerHUDController : MonoBehaviour {
         v2_origIceSize = img_icebar.rectTransform.sizeDelta;
         v2_origElecSize = img_electricbar.rectTransform.sizeDelta;
         v2_origWindSize = img_windbar.rectTransform.sizeDelta;
-        col_origUIColor = img_UIBacking.color;
     }
 
     void Update () {
@@ -62,17 +60,10 @@ public class PlayerHUDController : MonoBehaviour {
             img_windbar.color = col_origWindColor;
             img_windbar.rectTransform.sizeDelta = v2_origWindSize;
         }
-
-        //Statements for doing visual things to the UI itself.
-        if (img_healthbar.fillAmount <= 0) {
-            img_UIBacking.color = Color.gray;
-        } else {
-            img_UIBacking.color = col_origUIColor;
-        }
 	}
 
     public void ShakeUI() {
-        sshk_shaker.SetShake(1);
+        sshk_shaker.SetShake(f_shakeAmt);
         sshk_shaker.StartShake();
     }
 }

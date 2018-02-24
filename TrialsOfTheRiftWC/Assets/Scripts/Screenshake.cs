@@ -8,17 +8,12 @@ public class Screenshake : MonoBehaviour
 
     Vector3 originalCameraPosition;
 
-    [SerializeField] float shakeAmt = 0;
-    private RectTransform go_UI;
-
-    void Start() {
-        go_UI = GetComponent<RectTransform>();
-        originalCameraPosition = go_UI.anchoredPosition;
-        
-    }
+    private float shakeAmt = 0;
+    [SerializeField] private RectTransform go_UI;
 
     public void StartShake()
-    {
+    {   
+        originalCameraPosition = go_UI.anchoredPosition;
         InvokeRepeating("CameraShake", 0, .008f);
         Invoke("StopShaking", 0.1666f * 2);
     }
@@ -30,7 +25,7 @@ public class Screenshake : MonoBehaviour
             float quakeAmt = Random.value*shakeAmt*2f - shakeAmt;
             Vector3 pp = go_UI.anchoredPosition;
             pp.y+= quakeAmt;
-            pp.x+= quakeAmt;// can also add to x and/or z
+            pp.x+= quakeAmt; // can also add to x and/or z
             go_UI.anchoredPosition = pp;
         }
     }
