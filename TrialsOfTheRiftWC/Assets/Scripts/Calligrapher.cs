@@ -1,6 +1,6 @@
 ﻿/*  Calligrapher - Sam Caulker
  * 
- *  Desc:   Facilitates UI score updates
+ *  Desc:   Facilitates UI and score updates
  * 
  */
 
@@ -19,8 +19,10 @@ public sealed class Calligrapher : MonoBehaviour {
     [SerializeField] private Text txt_redObjvTitle, txt_blueObjvTitle;
     [SerializeField] private Text txt_redObjvDescription, txt_blueObjvDescription;
     [SerializeField] private Image img_redPopupBacking, img_bluePopupBacking;
+    [SerializeField] private Image img_redFlashBacking, img_blueFlashBacking;
 
     private float f_redStartTime, f_blueStartTime;  // controls UI pop-up fading
+    private float f_redFlashTime, f_blueFlashTime;  // separate timers for flash to avoid overwriting, since both animations play at roughly the same time.
 
     // Singleton
     private static Calligrapher instance;
@@ -164,6 +166,19 @@ public sealed class Calligrapher : MonoBehaviour {
     }
 
     //----------------------------
+    // Flash to mask room switching.
+
+    public void Flash(Constants.Global.Color colorIn) {
+        if (colorIn == Constants.Global.Color.RED) {
+            f_redFlashTime = Time.time;
+            InvokeRepeating("RedFlash", 0.05f, 0.075f);
+        } else {
+            f_blueFlashTime = Time.time;
+            InvokeRepeating("BlueFlash", 0.05f, 0.075f);
+        }
+    }
+
+    //----------------------------
     // Reset of different UI objects
     public void ScoreReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
@@ -208,9 +223,11 @@ public sealed class Calligrapher : MonoBehaviour {
     private void PopupFadeIn(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             f_redStartTime = Time.time;
+            img_redFlashBacking.color = Color.white;
             InvokeRepeating("FadeInRed", 0.1f, 0.075f);
         } else {
             f_blueStartTime = Time.time;
+            img_blueFlashBacking.color = Color.white;
             InvokeRepeating("FadeInBlue", 0.1f, 0.075f);
         }
     }
@@ -268,6 +285,24 @@ public sealed class Calligrapher : MonoBehaviour {
         txt_blueObjvDescription.color = Color.Lerp(txt_blueObjvDescription.color, new Color(1,1,1,0), fracJourney);
         if (timer > 2f) {
             CancelInvoke("FadeOutBlue");
+        }
+    }
+
+    private void BlueFlash() {
+        float timer = (Time.time - f_blueFlashTime);
+        float fracJourney = timer / 0.4f;
+        img_blueFlashBacking.color = Color.Lerp(img_blueFlashBacking.color, new Color(1,1,1,0), fracJourney);
+        if (timer > 0.4f) {
+            CancelInvoke("BlueFlash");
+        }
+    }
+
+    private void RedFlash() {
+        float timer = (Time.time - f_redFlashTime);
+        float fracJourney = timer / 0.4f;
+        img_redFlashBacking.color = Color.Lerp(img_redFlashBacking.color, new Color(1,1,1,0), fracJourney);
+        if (timer > 0.4f) {
+            CancelInvoke("RedFlash");
         }
     }
 
