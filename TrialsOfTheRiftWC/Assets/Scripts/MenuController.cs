@@ -17,7 +17,7 @@ public class MenuController : MonoBehaviour {
     [SerializeField]Button butt_mainSelect;
 
 	public void PlayTheFuckinGame() {
-        SceneManager.LoadScene("WarmUp");
+        SceneManager.LoadScene("RegisterPlayers");
     }
 
     public void OpenOptions() {

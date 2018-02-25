@@ -23,6 +23,16 @@ public static class Constants {
         public static float C_WispMovementSpeed = 1.5f;
         public static float C_RespawnTimer = 5.0f;
         public static float C_MaxHealth = 300.0f;
+
+        public static Global.Color C_p1Color = Global.Color.RED;
+        public static Global.Color C_p2Color = Global.Color.RED;
+        public static Global.Color C_p3Color = Global.Color.BLUE;
+        public static Global.Color C_p4Color = Global.Color.BLUE;
+
+        public static int C_p1Hat = 0;
+        public static int C_p2Hat = 1;
+        public static int C_p3Hat = 2;
+        public static int C_p4Hat = 3;
     }
 
     // Spell Stats

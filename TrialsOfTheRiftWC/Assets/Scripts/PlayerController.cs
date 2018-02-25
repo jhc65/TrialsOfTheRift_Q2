@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour{
 	public GameObject go_windShot;			// wind spell object
 	public GameObject go_iceShot;           // ice spell object
 	public GameObject go_electricShot;      // ice spell object
-    [SerializeField]private PlayerHUDController phc_hud;    //HUD object  
+    //[SerializeField]private PlayerHUDController phc_hud;    //HUD object  
     [SerializeField]private PauseController pauc_pause;     //For Pausing.
 
 	public bool isWisp = false;
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour{
 			f_playerHealth -= damage;
             //Damage flicker goes here.
             DamageVisualOn();
-            phc_hud.ShakeUI();
+            //phc_hud.ShakeUI();
 			if (f_playerHealth <= 0.0f) {
                 PlayerDeath();
 			}
@@ -199,11 +199,12 @@ public class PlayerController : MonoBehaviour{
     //    f_playerHealth = f_healthIn;
     //}
 
-    void Awake() {
-        p_player = ReInput.players.GetPlayer(i_playerNumber);
-    }
+    //void Awake() {
+    //    p_player = ReInput.players.GetPlayer(i_playerNumber);
+    //}
 
     void Start() {
+        p_player = ReInput.players.GetPlayer(i_playerNumber);
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
         //col_originalColor = go_playerCapsule.GetComponent<MeshRenderer>().material.color;
 		f_canMove = 1;

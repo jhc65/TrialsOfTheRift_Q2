@@ -676,10 +676,10 @@ MonoBehaviour:
   rewiredPlayerIds: 00000000
   usePlayingPlayersOnly: 0
   moveOneElementPerAxisPress: 0
-  m_HorizontalAxis: UIHorizontal
-  m_VerticalAxis: UIVertical
-  m_SubmitButton: UISubmit
-  m_CancelButton: UICancel
+  m_HorizontalAxis: MenuUIHorizontal
+  m_VerticalAxis: MenuUIVertical
+  m_SubmitButton: MenuUISubmit
+  m_CancelButton: MenuUICancel
   m_InputActionsPerSecond: 25
   m_RepeatDelay: 0.25
   m_allowMouseInput: 0

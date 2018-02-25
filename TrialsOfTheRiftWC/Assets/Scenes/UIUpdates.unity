@@ -8034,6 +8034,16 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 450424407}
+    - target: {fileID: 114561086288472644, guid: 662dafb73de54c14ca0a48bf6f985eef,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114998718547827962, guid: 662dafb73de54c14ca0a48bf6f985eef,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 662dafb73de54c14ca0a48bf6f985eef, type: 2}
   m_IsPrefabParent: 0
@@ -16524,12 +16534,6 @@ RectTransform:
   m_AnchoredPosition: {x: -89, y: 167}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &909123684 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114403809360525116, guid: 3d4c3d15d6a5aa64c96748a3ee5aa957,
-    type: 2}
-  m_PrefabInternal: {fileID: 1123699094}
-  m_Script: {fileID: 11500000, guid: 2e75da56c068a8943831cd068d78f443, type: 3}
 --- !u!1 &912280405
 GameObject:
   m_ObjectHideFlags: 0
@@ -23008,6 +23012,16 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 450424407}
+    - target: {fileID: 114852477227990024, guid: fb7ee213cedfa5c45af293b7a02e91c8,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114752342407356924, guid: fb7ee213cedfa5c45af293b7a02e91c8,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb7ee213cedfa5c45af293b7a02e91c8, type: 2}
   m_IsPrefabParent: 0
@@ -26103,11 +26117,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114178846378376402, guid: e4063cc5f759b594eafdb5f7d36c0269,
+    - target: {fileID: 114001580696348198, guid: e4063cc5f759b594eafdb5f7d36c0269,
         type: 2}
-      propertyPath: phc_hud
+      propertyPath: cam_Camera
       value: 
-      objectReference: {fileID: 909123684}
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114535716780152652, guid: e4063cc5f759b594eafdb5f7d36c0269,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
     - target: {fileID: 114178846378376402, guid: e4063cc5f759b594eafdb5f7d36c0269,
         type: 2}
       propertyPath: pauc_pause
@@ -37128,6 +37147,16 @@ Prefab:
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 450424407}
+    - target: {fileID: 114837281980928806, guid: 42441a1f758be144e932a2a56dcba44c,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114164504089944732, guid: 42441a1f758be144e932a2a56dcba44c,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42441a1f758be144e932a2a56dcba44c, type: 2}
   m_IsPrefabParent: 0
