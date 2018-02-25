@@ -4173,6 +4173,7 @@ MonoBehaviour:
   img_windbar: {fileID: 114331235173685566}
   img_icebar: {fileID: 114852268088030094}
   img_electricbar: {fileID: 114422563664017464}
+  rt_hpBar: {fileID: 224867136998449646}
   f_shakeAmt: 5
 --- !u!114 &114145950528841872
 MonoBehaviour:
@@ -4327,7 +4328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_UI: {fileID: 224867136998449646}
 --- !u!114 &114732950366442456
 MonoBehaviour:
   m_ObjectHideFlags: 1
