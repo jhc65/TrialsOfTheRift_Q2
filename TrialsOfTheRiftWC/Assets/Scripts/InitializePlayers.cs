@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*  Initialize Players - Zak Olyarnik
+ * 
+ *  Desc:   Configures player models based on values saved into Constants
+ * 
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +15,7 @@ public class InitializePlayers : MonoBehaviour {
     [SerializeField] private Text txt_r1Indicator, txt_r2Indicator, txt_b1Indicator, txt_b2Indicator;
     private bool b_r1Used = false, b_r2Used = false, b_b1Used = false, b_b2Used = false;
 
-
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
     void Awake () {
         // p1

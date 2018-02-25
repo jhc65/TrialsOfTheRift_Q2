@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*  Register Players - Zak Olyarnik
+ * 
+ *  Desc:   Connects controllers and allows player and team selection.
+ * 
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,7 +24,8 @@ public class RegisterPlayers : MonoBehaviour {
     private int i_numRed = 0, i_numBlue = 0;
     private int i_p1Hat, i_p2Hat, i_p3Hat, i_p4Hat;
 
-
+	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+		
     void Awake()
     {
         p_player1 = ReInput.players.GetPlayer(0);
@@ -28,7 +34,7 @@ public class RegisterPlayers : MonoBehaviour {
         p_player4 = ReInput.players.GetPlayer(3);
     }
 
-    private void Start()
+    void Start()
     {
         e_p1Color = Constants.PlayerStats.C_p1Color;
         e_p2Color = Constants.PlayerStats.C_p2Color;
