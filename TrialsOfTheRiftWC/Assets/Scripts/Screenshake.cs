@@ -9,7 +9,7 @@ public class Screenshake : MonoBehaviour
     Vector3 originalCameraPosition;
 
     private float shakeAmt = 0;
-    [SerializeField] private RectTransform go_UI;
+    private RectTransform go_UI;
 
     public void StartShake()
     {   
@@ -37,8 +37,9 @@ public class Screenshake : MonoBehaviour
         shakeAmt = 0;
     }
 
-    public void SetShake(float shake_in) {
+    public void SetShake(float shake_in, RectTransform rectIn) {
         shakeAmt = shake_in;
+        go_UI = rectIn;
     }
 
 }
