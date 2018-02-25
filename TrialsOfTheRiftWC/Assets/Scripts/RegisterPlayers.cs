@@ -292,7 +292,7 @@ public class RegisterPlayers : MonoBehaviour {
             {
                 i_numBlue--;
             }
-            txt_p1Message.text = "";
+            txt_p1Message.text = "CONNECTED!";
             b_p1Ready = false;
         }
         if (p_player2.GetButton("UICancel") && b_p2Ready)
@@ -306,7 +306,7 @@ public class RegisterPlayers : MonoBehaviour {
             {
                 i_numBlue--;
             }
-            txt_p2Message.text = "";
+            txt_p2Message.text = "CONNECTED!";
             b_p2Ready = false;
         }
         if (p_player3.GetButton("UICancel") && b_p3Ready)
@@ -320,7 +320,7 @@ public class RegisterPlayers : MonoBehaviour {
             {
                 i_numBlue--;
             }
-            txt_p3Message.text = "";
+            txt_p3Message.text = "CONNECTED!";
             b_p3Ready = false;
         }
         if (p_player4.GetButton("UICancel") && b_p4Ready)
@@ -334,7 +334,7 @@ public class RegisterPlayers : MonoBehaviour {
             {
                 i_numBlue--;
             }
-            txt_p4Message.text = "";
+            txt_p4Message.text = "CONNECTED!";
             b_p4Ready = false;
         }
 
