@@ -96,6 +96,7 @@ public abstract class SpellController : MonoBehaviour {
 
             //we need to get the direction the player is facing, so that's why v3_direction is verbose
             Vector3 v3_direction = other.gameObject.transform.root.forward.normalized;
+            other.gameObject.transform.Rotate(other.gameObject.transform.root.forward.normalized);
             gameObject.GetComponent<Rigidbody>().velocity = v3_direction * gameObject.GetComponent<Rigidbody>().velocity.magnitude;
         }
     }
