@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 65713109365565742}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 4326712338194752}
   m_Layer: 11
   m_Name: bookShelf_T
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 4849734767465878}
   m_Layer: 11
   m_Name: bookShelves_L
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 65731359298259952}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 4530489766111994}
   m_Layer: 11
   m_Name: cornerBarrelVase_L
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 65648057205845762}
   m_Layer: 11
   m_Name: alchemyTable_L
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 65888472865031608}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -838,14 +838,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4388097572519828}
   - component: {fileID: 114043680157858096}
-  - component: {fileID: 114386096965367420}
+  - component: {fileID: 114629551503787782}
   m_Layer: 0
   m_Name: arena_LZ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1751167637731600
 GameObject:
   m_ObjectHideFlags: 1
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 65834586580285328}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4273,7 +4273,7 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: fdcb2da548e6de64c9eeccae79011702, type: 2}
---- !u!114 &114386096965367420
+--- !u!114 &114629551503787782
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

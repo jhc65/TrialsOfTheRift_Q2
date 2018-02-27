@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 65816720129143494}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 65594095638336270}
   m_Layer: 11
   m_Name: alchemyTable_R
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 4642176922477204}
   m_Layer: 11
   m_Name: bookShelves_R
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 65258338858218088}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -971,7 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4819683341348350}
   - component: {fileID: 114623586502821020}
-  - component: {fileID: 114651093984809338}
+  - component: {fileID: 114777524291960626}
   m_Layer: 0
   m_Name: arena_RZ
   m_TagString: Untagged
@@ -989,7 +989,7 @@ GameObject:
   - component: {fileID: 4973881217887504}
   m_Layer: 11
   m_Name: cornerBarrelVase_R
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 65325453652162678}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1088,7 +1088,7 @@ GameObject:
   - component: {fileID: 65884269801770914}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4273,7 +4273,7 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: e81a8a43e6f08cd45aeaf6933d41118a, type: 2}
---- !u!114 &114651093984809338
+--- !u!114 &114777524291960626
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
