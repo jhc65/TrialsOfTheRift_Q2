@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour{
     public float f_projectileSize;          // size of player projectiles.
     //private Color col_originalColor;        // Color of capsule.
 	protected Maestro maestro;				// Reference to Maestro singleton.
-
-
+	private bool b_stepOk;
+	private float f_stepDelay = 0.4f;
 
 	private void Move() {
         float f_inputX = p_player.GetAxis("MoveHorizontal");
@@ -67,6 +67,12 @@ public class PlayerController : MonoBehaviour{
 		}
 		else {
 			GetComponent<Rigidbody>().velocity = (v3_moveDir * Constants.PlayerStats.C_MovementSpeed) * f_canMove;
+			if(v3_moveDir.magnitude > 0 && b_stepOk == true){
+				b_stepOk = false;
+				maestro.PlayPlayerFootstep();
+				maestro.PlayPlayerClothing();
+			}
+			
 		}
 	}
 
@@ -107,6 +113,7 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayerDeath()
     {
+		maestro.PlayAnnouncementWispGeneric();
         DropFlag();
         TurnOff();
         isWisp = true;
@@ -135,6 +142,7 @@ public class PlayerController : MonoBehaviour{
 
 	public void TakeDamage(float damage) {
 		if (!isWisp) {
+			maestro.PlayPlayerHit();
 			f_playerHealth -= damage;
             //Damage flicker goes here.
             DamageVisualOn();
@@ -204,6 +212,8 @@ public class PlayerController : MonoBehaviour{
     //}
 
     void Start() {
+		b_stepOk = true;
+		InvokeRepeating("StepDelay",f_stepDelay,f_stepDelay);
         p_player = ReInput.players.GetPlayer(i_playerNumber);
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
         //col_originalColor = go_playerCapsule.GetComponent<MeshRenderer>().material.color;
@@ -407,4 +417,8 @@ public class PlayerController : MonoBehaviour{
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
         }
     }
+	
+	private void StepDelay(){
+		b_stepOk = true;
+	}
 }
