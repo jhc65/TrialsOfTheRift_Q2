@@ -15,6 +15,8 @@ public sealed class RiftController : MonoBehaviour {
 
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;
+    public GameObject[] go_rightEnemySpawners;
+    public GameObject[] go_leftEnemySpawners;
     //public GameObject go_PocketRift;
     //public Vector3[] v3_PocketRiftLocations;
     //public Camera mainCamera;
@@ -66,6 +68,17 @@ public sealed class RiftController : MonoBehaviour {
     // Getters
     public GameObject[] PlayerReferences {
         get { return go_playerReferences; }
+    }
+
+    //Setters
+    public void SetRightEnemySpawners(GameObject[] spawners) {
+        go_rightEnemySpawners = spawners;
+    }
+
+    //Setters
+    public void SetLeftEnemySpawners(GameObject[] spawners)
+    {
+        go_leftEnemySpawners = spawners;
     }
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -184,22 +197,16 @@ public sealed class RiftController : MonoBehaviour {
 
     // Spawns one enemy on either side of the Rift, randomly chosen position
     public void SpawnEnemies() {
-        int randLeft = UnityEngine.Random.Range(0, v3_leftEnemySpawnPositions.Length);
-        int randRight = UnityEngine.Random.Range(0, v3_rightEnemySpawnPositions.Length);
+        int randLeft = UnityEngine.Random.Range(0, go_leftEnemySpawners.Length);
+        int randRight = UnityEngine.Random.Range(0, go_rightEnemySpawners.Length);
 
         if (i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
-            GameObject leftEnemy = Instantiate(go_enemyPrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
-            leftEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;  //TODO: is there a better way to set-up enemies?
-            leftEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            leftEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-            i_leftEnemies++;
+            Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
+            CircularEnemySpawn(pos, Constants.Global.Side.LEFT);
         }
         if (i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
-            GameObject rightEnemy = Instantiate(go_enemyPrefab, v3_rightEnemySpawnPositions[randRight], Quaternion.identity);
-            rightEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
-            rightEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            rightEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-            i_rightEnemies++;
+            Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
+            CircularEnemySpawn(pos, Constants.Global.Side.RIGHT);
         }
     }
 
@@ -220,18 +227,22 @@ public sealed class RiftController : MonoBehaviour {
 
     // Spawns one necromancers on either side of the Rift, randomly chosen position
     public void SpawnNecromancers() {
-        int randLeft = UnityEngine.Random.Range(0, v3_leftEnemySpawnPositions.Length);
-        int randRight = UnityEngine.Random.Range(0, v3_rightEnemySpawnPositions.Length);
+        int randLeft = UnityEngine.Random.Range(0, go_leftEnemySpawners.Length);
+        int randRight = UnityEngine.Random.Range(0, go_rightEnemySpawners.Length);
 
         if (i_leftNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
-            GameObject leftEnemy = Instantiate(go_necromancerPrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
+            Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
+            pos = new Vector3(pos.x - 1.0f, pos.y, pos.z);
+            GameObject leftEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
             leftEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;  //TODO: is there a better way to set-up enemies?
             leftEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             leftEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
             i_leftNecromancers++;
         }
         if (i_rightNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
-            GameObject rightEnemy = Instantiate(go_necromancerPrefab, v3_rightEnemySpawnPositions[randRight], Quaternion.identity);
+            Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
+            pos = new Vector3(pos.x + 1.0f, pos.y, pos.z);
+            GameObject rightEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
             rightEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
             rightEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             rightEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
