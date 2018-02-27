@@ -15,8 +15,7 @@ public sealed class RiftController : MonoBehaviour {
 
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;
-    public GameObject[] go_rightEnemySpawners;
-    public GameObject[] go_leftEnemySpawners;
+    
     //public GameObject go_PocketRift;
     //public Vector3[] v3_PocketRiftLocations;
     //public Camera mainCamera;
@@ -34,6 +33,9 @@ public sealed class RiftController : MonoBehaviour {
 
     private int i_leftEnemies = 0;
     private int i_rightEnemies = 0;
+
+    private GameObject[] go_rightEnemySpawners;
+    private GameObject[] go_leftEnemySpawners;
 
     private Vector3[] v3_rightEnemySpawnPositions = new Vector3[] {
         new Vector3(9f, 0.5f, 0f),
@@ -70,15 +72,12 @@ public sealed class RiftController : MonoBehaviour {
         get { return go_playerReferences; }
     }
 
-    //Setters
-    public void SetRightEnemySpawners(GameObject[] spawners) {
-        go_rightEnemySpawners = spawners;
+    public GameObject[] RightEnemySpawners {
+        set { go_rightEnemySpawners = value; }
     }
 
-    //Setters
-    public void SetLeftEnemySpawners(GameObject[] spawners)
-    {
-        go_leftEnemySpawners = spawners;
+    public GameObject[] LeftEnemySpawners {
+        set { go_leftEnemySpawners = value; }
     }
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/

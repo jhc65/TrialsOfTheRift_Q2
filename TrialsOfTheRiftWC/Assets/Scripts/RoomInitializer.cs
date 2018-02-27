@@ -11,18 +11,24 @@ using UnityEngine;
 public class RoomInitializer : MonoBehaviour
 {
 
-    public GameObject[] go_spawnerPool;         // rooms allowed for this objective to be played in
-    public Constants.Global.Side side;
+    [SerializeField] private GameObject[] go_spawnerPool;         // rooms allowed for this objective to be played in
+    [SerializeField] private Constants.Global.Side side;
+    private RiftController rc_riftController;
 
-    private void OnEnable()
-    {
-        if (side == Constants.Global.Side.RIGHT)
-        {
-            RiftController.Instance.SetRightEnemySpawners(go_spawnerPool);
+    void Awake() {
+        rc_riftController = RiftController.Instance;
+    }
+
+    void OnEnable() {
+        if (side == Constants.Global.Side.RIGHT) {
+            rc_riftController.RightEnemySpawners = go_spawnerPool;
         }
-        else
-        {
-            RiftController.Instance.SetLeftEnemySpawners(go_spawnerPool);
+        else {
+            rc_riftController.LeftEnemySpawners = go_spawnerPool;
         }
+    }
+
+    private void Start() {
+    
     }
 }
