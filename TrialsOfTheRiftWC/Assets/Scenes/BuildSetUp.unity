@@ -8428,12 +8428,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 114561086288472644, guid: 662dafb73de54c14ca0a48bf6f985eef,
+    - target: {fileID: 114998718547827962, guid: 662dafb73de54c14ca0a48bf6f985eef,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114998718547827962, guid: 662dafb73de54c14ca0a48bf6f985eef,
+    - target: {fileID: 114561086288472644, guid: 662dafb73de54c14ca0a48bf6f985eef,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -10294,6 +10294,9 @@ MonoBehaviour:
     type: 2}
   go_runePrefab: {fileID: 1399838814026098, guid: 38d462540237a354db992ca2128f29a9,
     type: 2}
+  go_enemyIndiPrefab: {fileID: 1023037031901888, guid: 0d30b51bd6841fa4e878262c4315899c,
+    type: 2}
+  cam_camera: {fileID: 1859528229}
 --- !u!65 &633227898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19738,12 +19741,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 114752342407356924, guid: fb7ee213cedfa5c45af293b7a02e91c8,
+    - target: {fileID: 114852477227990024, guid: fb7ee213cedfa5c45af293b7a02e91c8,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114852477227990024, guid: fb7ee213cedfa5c45af293b7a02e91c8,
+    - target: {fileID: 114752342407356924, guid: fb7ee213cedfa5c45af293b7a02e91c8,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -25925,12 +25928,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 114164504089944732, guid: 42441a1f758be144e932a2a56dcba44c,
+    - target: {fileID: 114837281980928806, guid: 42441a1f758be144e932a2a56dcba44c,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114837281980928806, guid: 42441a1f758be144e932a2a56dcba44c,
+    - target: {fileID: 114164504089944732, guid: 42441a1f758be144e932a2a56dcba44c,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -32496,12 +32499,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114001580696348198, guid: e4063cc5f759b594eafdb5f7d36c0269,
+    - target: {fileID: 114535716780152652, guid: e4063cc5f759b594eafdb5f7d36c0269,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114535716780152652, guid: e4063cc5f759b594eafdb5f7d36c0269,
+    - target: {fileID: 114001580696348198, guid: e4063cc5f759b594eafdb5f7d36c0269,
         type: 2}
       propertyPath: cam_Camera
       value: 
