@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4738667294149184}
   - component: {fileID: 198298397519555048}
   - component: {fileID: 199364952803323040}
+  - component: {fileID: 114609004854583238}
   m_Layer: 9
   m_Name: Cast Particle
   m_TagString: Untagged
@@ -182,6 +183,17 @@ MonoBehaviour:
   - Potato
   - RiftBoss
   ps_onDestroyParticles: {fileID: 198298397519555048}
+--- !u!114 &114609004854583238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1648139858272706}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a21617d0dab8e46be3ecc760553a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135882178223678438
 SphereCollider:
   m_ObjectHideFlags: 1

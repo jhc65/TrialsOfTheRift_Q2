@@ -9,7 +9,8 @@ public class WindController : SpellController {
 
     private void OnDestroy()
     {
-        Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
+        ParticleSystem ps_particle = Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
+        ps_particle.GetComponent<ParticleSystemController>().enabled = true;
     }
 
     protected override void ApplyEffect(GameObject go_target, Collision collision) {
