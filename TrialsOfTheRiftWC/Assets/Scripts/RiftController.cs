@@ -15,6 +15,7 @@ public sealed class RiftController : MonoBehaviour {
 
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;
+    
     //public GameObject go_PocketRift;
     //public Vector3[] v3_PocketRiftLocations;
     //public Camera mainCamera;
@@ -23,6 +24,8 @@ public sealed class RiftController : MonoBehaviour {
     [SerializeField] private GameObject go_enemyPrefab;
 	[SerializeField] private GameObject go_necromancerPrefab;
 	[SerializeField] private GameObject go_runePrefab;
+    [SerializeField] private GameObject go_enemyIndiPrefab;
+    [SerializeField] private Camera cam_camera;
 
 	private int i_leftRunes = 0;
 	private int i_rightRunes = 0;
@@ -32,6 +35,9 @@ public sealed class RiftController : MonoBehaviour {
 
     private int i_leftEnemies = 0;
     private int i_rightEnemies = 0;
+
+    private GameObject[] go_rightEnemySpawners;
+    private GameObject[] go_leftEnemySpawners;
 
     private Vector3[] v3_rightEnemySpawnPositions = new Vector3[] {
         new Vector3(9f, 0.5f, 0f),
@@ -66,6 +72,14 @@ public sealed class RiftController : MonoBehaviour {
     // Getters
     public GameObject[] PlayerReferences {
         get { return go_playerReferences; }
+    }
+
+    public GameObject[] RightEnemySpawners {
+        set { go_rightEnemySpawners = value; }
+    }
+
+    public GameObject[] LeftEnemySpawners {
+        set { go_leftEnemySpawners = value; }
     }
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -184,22 +198,16 @@ public sealed class RiftController : MonoBehaviour {
 
     // Spawns one enemy on either side of the Rift, randomly chosen position
     public void SpawnEnemies() {
-        int randLeft = UnityEngine.Random.Range(0, v3_leftEnemySpawnPositions.Length);
-        int randRight = UnityEngine.Random.Range(0, v3_rightEnemySpawnPositions.Length);
+        int randLeft = UnityEngine.Random.Range(0, go_leftEnemySpawners.Length);
+        int randRight = UnityEngine.Random.Range(0, go_rightEnemySpawners.Length);
 
         if (i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
-            GameObject leftEnemy = Instantiate(go_enemyPrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
-            leftEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;  //TODO: is there a better way to set-up enemies?
-            leftEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            leftEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-            i_leftEnemies++;
+            Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
+            CircularEnemySpawn(pos, Constants.Global.Side.LEFT);
         }
         if (i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
-            GameObject rightEnemy = Instantiate(go_enemyPrefab, v3_rightEnemySpawnPositions[randRight], Quaternion.identity);
-            rightEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
-            rightEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            rightEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-            i_rightEnemies++;
+            Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
+            CircularEnemySpawn(pos, Constants.Global.Side.RIGHT);
         }
     }
 
@@ -220,21 +228,36 @@ public sealed class RiftController : MonoBehaviour {
 
     // Spawns one necromancers on either side of the Rift, randomly chosen position
     public void SpawnNecromancers() {
-        int randLeft = UnityEngine.Random.Range(0, v3_leftEnemySpawnPositions.Length);
-        int randRight = UnityEngine.Random.Range(0, v3_rightEnemySpawnPositions.Length);
+        int randLeft = UnityEngine.Random.Range(0, go_leftEnemySpawners.Length);
+        int randRight = UnityEngine.Random.Range(0, go_rightEnemySpawners.Length);
 
         if (i_leftNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
-            GameObject leftEnemy = Instantiate(go_necromancerPrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
+            Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
+            pos = new Vector3(pos.x - 1.0f, pos.y, pos.z);
+            GameObject leftEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
             leftEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;  //TODO: is there a better way to set-up enemies?
             leftEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             leftEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = leftEnemy;
             i_leftNecromancers++;
         }
         if (i_rightNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
-            GameObject rightEnemy = Instantiate(go_necromancerPrefab, v3_rightEnemySpawnPositions[randRight], Quaternion.identity);
+            Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
+            pos = new Vector3(pos.x + 1.0f, pos.y, pos.z);
+            GameObject rightEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
             rightEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
             rightEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             rightEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = rightEnemy;
             i_rightNecromancers++;
         }
     }
@@ -247,12 +270,22 @@ public sealed class RiftController : MonoBehaviour {
             enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
             enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = enemy;
             i_leftEnemies++;
         } else if (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
             GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
             enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
             enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = enemy;
             i_rightEnemies++;
         }
     }
@@ -401,7 +434,7 @@ public sealed class RiftController : MonoBehaviour {
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
         List<GameObject> go_riftSpells = new List<GameObject>();
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 4; i++) {
             if (go_playerReferences[i].GetComponent<PlayerController>().GetColor() == c) {
                 GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);

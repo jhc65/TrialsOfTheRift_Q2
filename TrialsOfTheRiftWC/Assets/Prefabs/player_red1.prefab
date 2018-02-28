@@ -4086,7 +4086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
-  pc_trackedPlayer: {fileID: 114178846378376402}
+  go_trackedObject: {fileID: 1290248339614138}
   v3_offset: {x: 0, y: 1, z: 1.6}
 --- !u!114 &114023849788793114
 MonoBehaviour:
@@ -4267,6 +4267,7 @@ MonoBehaviour:
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
   pauc_pause: {fileID: 0}
+  go_deathOrbPrefab: {fileID: 0}
   isWisp: 0
   b_iceboltMode: 0
   f_projectileSize: 0
@@ -4330,7 +4331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
-  pc_trackedPlayer: {fileID: 114178846378376402}
+  go_trackedObject: {fileID: 1290248339614138}
   v3_offset: {x: -0.25, y: 0.1, z: -0.8}
 --- !u!114 &114552556126766812
 MonoBehaviour:
