@@ -86,7 +86,7 @@ public sealed class RiftController : MonoBehaviour {
 
     public void IncreaseVolatility(float volatilityUp) {
         Debug.Log("Volatility increased!");
-
+		maestro.PlayAnnouncementVolatilityUp();
         volatilityUp += (volatilityUp * f_volatilityMultiplier);
         f_volatility += volatilityUp;
 

@@ -43,6 +43,22 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_volatility_noise_2;
 	[SerializeField] private AudioClip[] ac_volatility_noise_3;
 	[SerializeField] private AudioClip[] ac_volatility_noise_4;
+	[SerializeField] private AudioClip[] ac_player_footstep;
+	[SerializeField] private AudioClip[] ac_player_hit;
+	[SerializeField] private AudioClip[] ac_player_clothing;
+	
+	[Header("Audio Clips (Announcer)")]
+	[SerializeField] private AudioClip[] ac_generic;
+	[SerializeField] private AudioClip[] ac_volatility_up;
+	[SerializeField] private AudioClip[] ac_trial_transition;
+	[SerializeField] private AudioClip[] ac_wisp_generic;
+	[SerializeField] private AudioClip[] ac_intro;
+	
+	[Header("Settings")]
+	public float f_announcementDelay;		// An announcement can only play after this many seconds have elapsed.
+	public float f_genericAnnouncementDelay;
+	[Range(0,1)] public float f_announcementChance;	// Announcements have a probability of playing.
+	private bool b_announcementOk;
 	
     // Singleton
     private static Maestro instance;
@@ -111,9 +127,66 @@ public sealed class Maestro : MonoBehaviour {
 	public void PlayPortal(){
 		as_sfxMe.PlayOneShot(ac_portal);
 	}
+	public void PlayPlayerFootstep(){
+		System.Random r = new System.Random();
+		as_sfxLo.PlayOneShot(ac_player_footstep[r.Next(0, ac_player_footstep.Length)]);
+	}
+	public void PlayPlayerClothing(){
+		System.Random r = new System.Random();
+		as_sfxLo.PlayOneShot(ac_player_clothing[r.Next(0, ac_player_clothing.Length)]);
+	}
+	public void PlayPlayerHit(){
+		System.Random r = new System.Random();
+		as_sfxMe.PlayOneShot(ac_player_hit[r.Next(0, ac_player_hit.Length)]);
+	}
+	
+	public void PlayAnnouncementGeneric(){
+		System.Random r = new System.Random();
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
+				b_announcementOk = false;
+				as_voi.PlayOneShot(ac_generic[r.Next(0, ac_generic.Length)]);
+				Invoke("AnnouncementOk",f_announcementDelay);
+			}
+	}
+	public void PlayAnnouncementVolatilityUp(){
+		System.Random r = new System.Random();
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
+				b_announcementOk = false;
+				as_voi.PlayOneShot(ac_volatility_up[r.Next(0, ac_volatility_up.Length)]);
+				Invoke("AnnouncementOk",f_announcementDelay);
+			}
+	}
+	public void PlayAnnouncementTrialTransition(){
+		System.Random r = new System.Random();
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
+				b_announcementOk = false;
+				as_voi.PlayOneShot(ac_trial_transition[r.Next(0, ac_trial_transition.Length)]);
+				Invoke("AnnouncementOk",f_announcementDelay);
+			}
+	}
+	public void PlayAnnouncementWispGeneric(){
+		System.Random r = new System.Random();
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
+				b_announcementOk = false;
+				as_voi.PlayOneShot(ac_wisp_generic[r.Next(0, ac_wisp_generic.Length)]);
+				Invoke("AnnouncementOk",f_announcementDelay);
+			}
+	}
+	
+	public void PlayAnnouncementIntro(){
+		System.Random r = new System.Random();
+		if(b_announcementOk){
+				b_announcementOk = false;
+				as_voi.PlayOneShot(ac_intro[r.Next(0, ac_intro.Length)]);
+				Invoke("AnnouncementOk",f_announcementDelay);
+			}
+	}
 
 	// Use this for initialization
 	void Start () {
+		b_announcementOk = true;
+		InvokeRepeating("GenericOk",f_genericAnnouncementDelay,f_genericAnnouncementDelay);
+		PlayAnnouncementIntro();
 		as_bgm.clip = ac_bgm0;
 		as_bgm.Play();
         am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
@@ -125,6 +198,14 @@ public sealed class Maestro : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+	
+	private void AnnouncementOk(){
+		b_announcementOk = true;
+	}
+	
+	private void GenericOk(){
+		PlayAnnouncementGeneric();
 	}
 
     public void AdjustMasterVolume(float f_volIn) {
