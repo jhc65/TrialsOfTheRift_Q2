@@ -13,11 +13,7 @@ using UnityEngine.AI;
 
 public class DebugParametersController : MonoBehaviour {
     // Public Vars
-    // Controllers (probably set in editor this time? No instances to pull from in this Playable)
-    //public GameController GC;
-    public DarkMagician DM; // TODO: remove for release
-    public PlayerController[] playerControllers;
-    private bool firstrun = true;
+    [SerializeField] PlayerSelectController psc_master;
 
     // Menu buttons
     public Button butt_playerSelect;
@@ -27,20 +23,18 @@ public class DebugParametersController : MonoBehaviour {
     private Button[] butt_buttonArray = new Button[4];
     
     //Other button references (for navigation)
-    [SerializeField]private Button butt_objReset;
     [SerializeField]private Button butt_go;
-    [SerializeField]private Button butt_resume;
 
     // Menu organization
     public GameObject go_topMenu;
+    public GameObject go_select;
+    public GameObject go_regController;
+
     public GameObject go_playerMenu;
     public GameObject go_spellMenu;
     public GameObject go_enemyMenu;
     public GameObject go_objectiveMenu;
     private GameObject[] go_menuArray = new GameObject[4];
-
-    //Other menu references
-    [SerializeField] GameObject go_pauseMenu;
 
     // UI sliders (set in editor)
     public Slider slider_playerMoveSpeed;
@@ -254,13 +248,6 @@ public class DebugParametersController : MonoBehaviour {
         float value = f_crystalHealthIn * 50.0f;
         txt_crystalHealth.text = value.ToString();
         Constants.ObjectiveStats.C_CrystalMaxHealth = (int)value;
-        // if currently playing Crystal Destruction Objective TODO: remove for release
-        if (DM.objv_currentBlueObjective.gameObject.GetComponent<CrystalDestructionObjective>()) {
-            DM.objv_currentBlueObjective.gameObject.GetComponent<CrystalDestructionObjective>().ParamReset();
-        }
-        if (DM.objv_currentRedObjective.gameObject.GetComponent<CrystalDestructionObjective>()) {
-            DM.objv_currentRedObjective.gameObject.GetComponent<CrystalDestructionObjective>().ParamReset();
-        }
     }
 
     public void ChangeCTFMaxScore(float f_CTFScoreIn) {
@@ -272,26 +259,12 @@ public class DebugParametersController : MonoBehaviour {
         float value = f_timerIn * 5.0f;
         txt_completionTimer.text = value.ToString();
         Constants.ObjectiveStats.C_PotatoCompletionTimer = (int)value;
-        // if currently playing Hot Potato Objective TODO: remove for release
-        if (DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>()) {
-            DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>().ParamReset();
-        }
-        if (DM.objv_currentRedObjective.GetComponent<HotPotatoObjective>()) {
-            DM.objv_currentRedObjective.GetComponent<HotPotatoObjective>().ParamReset();
-        }
     }
 
     public void ChangeSelfDestructTimer(float f_timerIn) {
         float value = f_timerIn * 5.0f;
         txt_selfDestructTimer.text = value.ToString();
         Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)value;
-        // if currently playing Hot Potato Objective TODO: remove for release
-        if (DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>()) {
-            DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>().ParamReset();
-        }
-        if (DM.objv_currentRedObjective.GetComponent<HotPotatoObjective>()) {
-            DM.objv_currentRedObjective.GetComponent<HotPotatoObjective>().ParamReset();
-        }
     }
 
     public void ChangeEnemySpawnCap(float f_capIn) {
@@ -349,14 +322,6 @@ public class DebugParametersController : MonoBehaviour {
         float value = f_riftBossHealthIn * 250.0f;
         txt_riftBossHealth.text = value.ToString();
         Constants.ObjectiveStats.C_RiftBossMaxHealth = (int)value;
-        if (DM.objv_currentBlueObjective.gameObject.GetComponent<RiftBossObjective>())
-        {
-            DM.objv_currentBlueObjective.gameObject.GetComponent<RiftBossObjective>().ParamReset();
-        }
-        if (DM.objv_currentRedObjective.gameObject.GetComponent<RiftBossObjective>())
-        {
-            DM.objv_currentRedObjective.gameObject.GetComponent<RiftBossObjective>().ParamReset();
-        }
     }
 
     public void ChangeRuneSpawnInterval(float f_interval)
@@ -375,41 +340,6 @@ public class DebugParametersController : MonoBehaviour {
     {
         txt_forceFieldCooldown.text = slider_forceFieldCooldown.value.ToString();
         Constants.ObjectiveStats.C_ForceFieldCooldown = (int)f_cooldown;
-    }
-
-    // TODO: remove for final build
-    public void ObjectiveReset() {
-        // Drop the flag before resetting (for CTF)
-        foreach (PlayerController playerController in playerControllers) {
-            playerController.DropFlag();
-        }
-
-        DM.objv_currentRedObjective.ParamReset();
-        DM.objv_currentBlueObjective.ParamReset();
-    }
-
-    // TODO: remove for final build
-    public void GameReset() {
-        RiftController.Instance.ResetVolatility();
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void InitGame() {
-        go_topMenu.SetActive(false);
-        if (firstrun) {
-            Time.timeScale = 1f;
-            firstrun = false;
-        } else {
-            go_pauseMenu.SetActive(true);
-            butt_resume.Select();
-        }
-        
-    }
-
-    public void Params() {
-        go_topMenu.SetActive(true);
-        go_pauseMenu.SetActive(false);
-        butt_playerSelect.Select();
     }
 
     // Light buttons up as they are selected
@@ -431,27 +361,25 @@ public class DebugParametersController : MonoBehaviour {
         for (int i = 0; i < 4; i++) {
             if (i == which) {
                 go_menuArray[i].SetActive(true);
-                Navigation nav_objResetNav = butt_objReset.navigation;
                 Navigation nav_goNav = butt_go.navigation;
                 switch (i) {
                     case 0:
-                        nav_objResetNav.selectOnUp = slider_respawnTime;
                         nav_goNav.selectOnUp = slider_playerHealth;
+                        nav_goNav.selectOnRight = slider_respawnTime;
                         break;
                     case 1:
-                        nav_objResetNav.selectOnUp = slider_electricPlayerDamage;
                         nav_goNav.selectOnUp = slider_icePlayerDamage;
+                        nav_goNav.selectOnRight = slider_electricPlayerDamage;
                         break;
                     case 2:
-                        nav_objResetNav.selectOnUp = slider_enemyDamage;
                         nav_goNav.selectOnUp = slider_enemyHealth;
+                        nav_goNav.selectOnRight = slider_enemyDamage;
                         break;
                     case 3:
-                        nav_objResetNav.selectOnUp = slider_selfDestructTimer;
                         nav_goNav.selectOnUp = slider_puckSpeedDecayRate;
+                        nav_goNav.selectOnRight = slider_selfDestructTimer;
                         break;
                 }
-                butt_objReset.navigation = nav_objResetNav;
                 butt_go.navigation = nav_goNav;
             }
             else {
@@ -464,7 +392,6 @@ public class DebugParametersController : MonoBehaviour {
 
     // Get initial values from Constants.cs
     void Start() {
-        Time.timeScale = 0;
 
         //----------------------------
         // Player
