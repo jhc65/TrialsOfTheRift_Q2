@@ -69,4 +69,8 @@ public class PauseController : MonoBehaviour {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void MatchRestart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
