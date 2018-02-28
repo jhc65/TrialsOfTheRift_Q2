@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour{
 		}
 		else {
 			GetComponent<Rigidbody>().velocity = (v3_moveDir * Constants.PlayerStats.C_MovementSpeed) * f_canMove;
-			if(v3_moveDir.magnitude > 0 && b_stepOk == true){
+			if(v3_moveDir.magnitude > 0 && b_stepOk){
 				b_stepOk = false;
 				maestro.PlayPlayerFootstep();
 				maestro.PlayPlayerClothing();

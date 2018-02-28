@@ -142,7 +142,7 @@ public sealed class Maestro : MonoBehaviour {
 	
 	public void PlayAnnouncementGeneric(){
 		System.Random r = new System.Random();
-		if(b_announcementOk == true && r.NextDouble() <= f_announcementChance){
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
 				b_announcementOk = false;
 				as_voi.PlayOneShot(ac_generic[r.Next(0, ac_generic.Length)]);
 				Invoke("AnnouncementOk",f_announcementDelay);
@@ -150,7 +150,7 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	public void PlayAnnouncementVolatilityUp(){
 		System.Random r = new System.Random();
-		if(b_announcementOk == true && r.NextDouble() <= f_announcementChance){
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
 				b_announcementOk = false;
 				as_voi.PlayOneShot(ac_volatility_up[r.Next(0, ac_volatility_up.Length)]);
 				Invoke("AnnouncementOk",f_announcementDelay);
@@ -158,7 +158,7 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	public void PlayAnnouncementTrialTransition(){
 		System.Random r = new System.Random();
-		if(b_announcementOk == true && r.NextDouble() <= f_announcementChance){
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
 				b_announcementOk = false;
 				as_voi.PlayOneShot(ac_trial_transition[r.Next(0, ac_trial_transition.Length)]);
 				Invoke("AnnouncementOk",f_announcementDelay);
@@ -166,7 +166,7 @@ public sealed class Maestro : MonoBehaviour {
 	}
 	public void PlayAnnouncementWispGeneric(){
 		System.Random r = new System.Random();
-		if(b_announcementOk == true && r.NextDouble() <= f_announcementChance){
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
 				b_announcementOk = false;
 				as_voi.PlayOneShot(ac_wisp_generic[r.Next(0, ac_wisp_generic.Length)]);
 				Invoke("AnnouncementOk",f_announcementDelay);
@@ -175,7 +175,7 @@ public sealed class Maestro : MonoBehaviour {
 	
 	public void PlayAnnouncementIntro(){
 		System.Random r = new System.Random();
-		if(b_announcementOk == true){
+		if(b_announcementOk){
 				b_announcementOk = false;
 				as_voi.PlayOneShot(ac_intro[r.Next(0, ac_intro.Length)]);
 				Invoke("AnnouncementOk",f_announcementDelay);
