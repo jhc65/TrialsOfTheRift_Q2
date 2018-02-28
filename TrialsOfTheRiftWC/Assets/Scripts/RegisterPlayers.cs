@@ -218,7 +218,7 @@ public class RegisterPlayers : MonoBehaviour {
 
 
         // confirm selection
-        if (p_player1.GetButton("UISubmit") && !b_p1Ready)
+        if (p_player1.GetButtonDown("UISubmit") && !b_p1Ready)
         {
             if (e_p1Color == Constants.Global.Color.RED && i_numRed < 2)
             {
@@ -233,7 +233,7 @@ public class RegisterPlayers : MonoBehaviour {
                 b_p1Ready = true;
             }
         }
-        if (p_player2.GetButton("UISubmit") && !b_p2Ready)
+        if (p_player2.GetButtonDown("UISubmit") && !b_p2Ready)
         {
             if (e_p2Color == Constants.Global.Color.RED && i_numRed < 2)
             {
@@ -248,7 +248,7 @@ public class RegisterPlayers : MonoBehaviour {
                 b_p2Ready = true;
             }
         }
-        if (p_player3.GetButton("UISubmit") && !b_p3Ready)
+        if (p_player3.GetButtonDown("UISubmit") && !b_p3Ready)
         {
             if (e_p3Color == Constants.Global.Color.RED && i_numRed < 2)
             {
@@ -263,7 +263,7 @@ public class RegisterPlayers : MonoBehaviour {
                 b_p3Ready = true;
             }
         }
-        if (p_player4.GetButton("UISubmit") && !b_p4Ready)
+        if (p_player4.GetButtonDown("UISubmit") && !b_p4Ready)
         {
             if (e_p4Color == Constants.Global.Color.RED && i_numRed < 2)
             {
@@ -281,7 +281,7 @@ public class RegisterPlayers : MonoBehaviour {
         
 
         // reset selection
-        if (p_player1.GetButton("UICancel") && b_p1Ready)
+        if (p_player1.GetButtonDown("UICancel") && b_p1Ready)
         {
             // reduce color number
             if (e_p1Color == Constants.Global.Color.RED)
@@ -295,7 +295,7 @@ public class RegisterPlayers : MonoBehaviour {
             txt_p1Message.text = "CONNECTED!";
             b_p1Ready = false;
         }
-        if (p_player2.GetButton("UICancel") && b_p2Ready)
+        if (p_player2.GetButtonDown("UICancel") && b_p2Ready)
         {
             // reduce color number
             if (e_p2Color == Constants.Global.Color.RED)
@@ -309,7 +309,7 @@ public class RegisterPlayers : MonoBehaviour {
             txt_p2Message.text = "CONNECTED!";
             b_p2Ready = false;
         }
-        if (p_player3.GetButton("UICancel") && b_p3Ready)
+        if (p_player3.GetButtonDown("UICancel") && b_p3Ready)
         {
             // reduce color number
             if (e_p3Color == Constants.Global.Color.RED)
@@ -323,7 +323,7 @@ public class RegisterPlayers : MonoBehaviour {
             txt_p3Message.text = "CONNECTED!";
             b_p3Ready = false;
         }
-        if (p_player4.GetButton("UICancel") && b_p4Ready)
+        if (p_player4.GetButtonDown("UICancel") && b_p4Ready)
         {
             // reduce color number
             if (e_p4Color == Constants.Global.Color.RED)

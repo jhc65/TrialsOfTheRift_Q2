@@ -22,7 +22,7 @@ public class PlayerSelectController : MonoBehaviour {
 
     public void SettingsFree() {
         b_settingsActive = false;
-        rsim.RewiredPlayerIds = new int[] {0,1,2,3};
+        //rsim.RewiredPlayerIds = new int[] {0,1,2,3};
     }
 
     public void OpenParams() {
@@ -75,55 +75,57 @@ public class PlayerSelectController : MonoBehaviour {
 
     void Awake() {
         p_player1 = ReInput.players.GetPlayer(0);
-        p_player2 = ReInput.players.GetPlayer(1);
-        p_player3 = ReInput.players.GetPlayer(2);
-        p_player4 = ReInput.players.GetPlayer(3);
+        //p_player2 = ReInput.players.GetPlayer(1);
+        //p_player3 = ReInput.players.GetPlayer(2);
+        //p_player4 = ReInput.players.GetPlayer(3);
     }
 	
 	void Update () {
         //Check for settings.
-		if (p_player1.GetButtonShortPressDown("MenuSettings") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 0 , 1};
+		if (p_player1.GetButtonDown("MenuSettings") && !b_settingsActive) {
+            //rsim.RewiredPlayerIds = new int[] { 0 , 1};
             b_settingsActive = true;
             OpenParams();
-        } else if (p_player2.GetButtonShortPressDown("MenuSettings") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 1 };
-            b_settingsActive = true;
-            OpenParams();
-        } else if (p_player3.GetButtonShortPressDown("MenuSettings") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 2 };
-            b_settingsActive = true;
-            OpenParams();
-        } else if (p_player4.GetButtonShortPressDown("MenuSettings") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 3 };
-            b_settingsActive = true;
-            OpenParams();
+        //} else if (p_player2.GetButtonShortPressDown("MenuSettings") && !b_settingsActive) {
+        //    rsim.RewiredPlayerIds = new int[] { 1 };
+        //    b_settingsActive = true;
+        //    OpenParams();
+        //} else if (p_player3.GetButtonShortPressDown("MenuSettings") && !b_settingsActive) {
+        //    rsim.RewiredPlayerIds = new int[] { 2 };
+        //    b_settingsActive = true;
+        //    OpenParams();
+        //} else if (p_player4.GetButtonShortPressDown("MenuSettings") && !b_settingsActive) {
+        //    rsim.RewiredPlayerIds = new int[] { 3 };
+        //    b_settingsActive = true;
+        //    OpenParams();
         }
         
 
         //check for options.
         if (p_player1.GetButtonShortPressDown("MenuOptions") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 0 , 1};
+            //rsim.RewiredPlayerIds = new int[] { 0 , 1};
             b_settingsActive = true;
             OpenOptions();
-        } else if (p_player2.GetButtonShortPressDown("MenuOptions") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 1 };
-            b_settingsActive = true;
-            OpenOptions();
-        } else if (p_player3.GetButtonShortPressDown("MenuOptions") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 2 };
-            b_settingsActive = true;
-            OpenOptions();
-        } else if  (p_player4.GetButtonShortPressDown("MenuOptions") && !b_settingsActive) {
-            rsim.RewiredPlayerIds = new int[] { 3 };
-            b_settingsActive = true;
-            OpenOptions();
+        //} else if (p_player2.GetButtonShortPressDown("MenuOptions") && !b_settingsActive) {
+        //    rsim.RewiredPlayerIds = new int[] { 1 };
+        //    b_settingsActive = true;
+        //    OpenOptions();
+        //} else if (p_player3.GetButtonShortPressDown("MenuOptions") && !b_settingsActive) {
+        //    rsim.RewiredPlayerIds = new int[] { 2 };
+        //    b_settingsActive = true;
+        //    OpenOptions();
+        //} else if  (p_player4.GetButtonShortPressDown("MenuOptions") && !b_settingsActive) {
+        //    rsim.RewiredPlayerIds = new int[] { 3 };
+        //    b_settingsActive = true;
+        //    OpenOptions();
         }  
 
         //check for back.
         //This can be from anyone.
-        if ( (p_player1.GetButtonShortPressDown("MenuBack") || p_player2.GetButtonShortPressDown("MenuBack") ||
-             p_player3.GetButtonShortPressDown("MenuBack") || p_player4.GetButtonShortPressDown("MenuBack")) && !b_settingsActive) {
+        //if ( (p_player1.GetButtonShortPressDown("MenuBack") || p_player2.GetButtonShortPressDown("MenuBack") ||
+         //    p_player3.GetButtonShortPressDown("MenuBack") || p_player4.GetButtonShortPressDown("MenuBack")) && !b_settingsActive) {
+         if ((p_player1.GetButtonDown("MenuBack")) && !b_settingsActive)
+        {
             SceneManager.LoadScene("MainMenu");
         }
 	}
