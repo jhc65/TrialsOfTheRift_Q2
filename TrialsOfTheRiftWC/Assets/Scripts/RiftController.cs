@@ -24,6 +24,8 @@ public sealed class RiftController : MonoBehaviour {
     [SerializeField] private GameObject go_enemyPrefab;
 	[SerializeField] private GameObject go_necromancerPrefab;
 	[SerializeField] private GameObject go_runePrefab;
+    [SerializeField] private GameObject go_enemyIndiPrefab;
+    [SerializeField] private Camera cam_camera;
 
 	private int i_leftRunes = 0;
 	private int i_rightRunes = 0;
@@ -236,6 +238,11 @@ public sealed class RiftController : MonoBehaviour {
             leftEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;  //TODO: is there a better way to set-up enemies?
             leftEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             leftEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = leftEnemy;
             i_leftNecromancers++;
         }
         if (i_rightNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
@@ -245,6 +252,12 @@ public sealed class RiftController : MonoBehaviour {
             rightEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
             rightEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             rightEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = rightEnemy;
             i_rightNecromancers++;
         }
     }
@@ -257,12 +270,22 @@ public sealed class RiftController : MonoBehaviour {
             enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
             enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = enemy;
             i_leftEnemies++;
         } else if (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
             GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
             enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
             enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
             enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+
+            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            cfb_this.cam_Camera = cam_camera;
+            cfb_this.go_trackedObject = enemy;
             i_rightEnemies++;
         }
     }
