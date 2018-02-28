@@ -202,8 +202,9 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeWindForce(float f_windForceIn) {
-        txt_windForce.text = slider_windForce.value.ToString();
-        Constants.SpellStats.C_WindForce = f_windForceIn;
+        float value = f_windForceIn * 250.0f;
+        txt_windForce.text = value.ToString();
+        Constants.SpellStats.C_WindForce = value;
     }
 
     public void ChangeFreezeDuration(float f_iceFreezeIn) {
@@ -227,18 +228,21 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeEnemyHealth(float f_enemyHealthIn) {
-        txt_enemyHealth.text = slider_enemyHealth.value.ToString();
-        Constants.EnemyStats.C_EnemyHealth = (int)f_enemyHealthIn;
+        float value = f_enemyHealthIn * 25.0f;
+        txt_enemyHealth.text = value.ToString();
+        Constants.EnemyStats.C_EnemyHealth = (int)value;
     }
 
     public void ChangeEnemyDamage(float f_enemyDamageIn) {
-        txt_enemyDamage.text = slider_enemyDamage.value.ToString();
-        Constants.EnemyStats.C_EnemyDamage = (int)f_enemyDamageIn;
+        float value = f_enemyDamageIn * 5.0f;
+        txt_enemyDamage.text = value.ToString();
+        Constants.EnemyStats.C_EnemyDamage = (int)value;
     }
 
     public void ChangePlayerHealth(float f_playerHealthIn) {
-        txt_playerHealth.text = slider_playerHealth.value.ToString();
-        Constants.PlayerStats.C_MaxHealth = (int)f_playerHealthIn;
+        float value = f_playerHealthIn * 50.0f;
+        txt_playerHealth.text = value.ToString();
+        Constants.PlayerStats.C_MaxHealth = (int)value;
     }
 
     public void ChangeRespawnTime(float f_respawnTimeIn) {
@@ -247,8 +251,9 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeCrystalHealth(float f_crystalHealthIn) {
-        txt_crystalHealth.text = slider_crystalHealth.value.ToString();
-        Constants.ObjectiveStats.C_CrystalMaxHealth = (int)f_crystalHealthIn;
+        float value = f_crystalHealthIn * 50.0f;
+        txt_crystalHealth.text = value.ToString();
+        Constants.ObjectiveStats.C_CrystalMaxHealth = (int)value;
         // if currently playing Crystal Destruction Objective TODO: remove for release
         if (DM.objv_currentBlueObjective.gameObject.GetComponent<CrystalDestructionObjective>()) {
             DM.objv_currentBlueObjective.gameObject.GetComponent<CrystalDestructionObjective>().ParamReset();
@@ -264,8 +269,9 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeCompletionTimer(float f_timerIn) {
-        txt_completionTimer.text = slider_completionTimer.value.ToString();
-        Constants.ObjectiveStats.C_PotatoCompletionTimer = (int)f_timerIn;
+        float value = f_timerIn * 5.0f;
+        txt_completionTimer.text = value.ToString();
+        Constants.ObjectiveStats.C_PotatoCompletionTimer = (int)value;
         // if currently playing Hot Potato Objective TODO: remove for release
         if (DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>()) {
             DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>().ParamReset();
@@ -276,8 +282,9 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangeSelfDestructTimer(float f_timerIn) {
-        txt_selfDestructTimer.text = slider_selfDestructTimer.value.ToString();
-        Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)f_timerIn;
+        float value = f_timerIn * 5.0f;
+        txt_selfDestructTimer.text = value.ToString();
+        Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)value;
         // if currently playing Hot Potato Objective TODO: remove for release
         if (DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>()) {
             DM.objv_currentBlueObjective.GetComponent<HotPotatoObjective>().ParamReset();
@@ -313,8 +320,9 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangePuckDamage(float f_damage) {
-        txt_puckDamage.text = slider_puckDamage.value.ToString();
-        Constants.ObjectiveStats.C_PuckDamage = (int)f_damage;
+        float value = f_damage * 10.0f;
+        txt_puckDamage.text = value.ToString();
+        Constants.ObjectiveStats.C_PuckDamage = (int)value;
     }
 
     public void ChangePuckSpeedDecayRate(float f_decay) {
@@ -337,10 +345,10 @@ public class DebugParametersController : MonoBehaviour {
         Constants.ObjectiveStats.C_PuckSpeedHitIncrease = (int)f_hit;
     }
 
-    public void ChangeRiftBossHealth(float f_riftBossHealthIn)
-    {
-        txt_riftBossHealth.text = slider_riftBossHealth.value.ToString();
-        Constants.ObjectiveStats.C_RiftBossMaxHealth = (int)f_riftBossHealthIn;
+    public void ChangeRiftBossHealth(float f_riftBossHealthIn) {
+        float value = f_riftBossHealthIn * 250.0f;
+        txt_riftBossHealth.text = value.ToString();
+        Constants.ObjectiveStats.C_RiftBossMaxHealth = (int)value;
         if (DM.objv_currentBlueObjective.gameObject.GetComponent<RiftBossObjective>())
         {
             DM.objv_currentBlueObjective.gameObject.GetComponent<RiftBossObjective>().ParamReset();
@@ -471,7 +479,7 @@ public class DebugParametersController : MonoBehaviour {
 
         // Player Health
         txt_playerHealth.text = Constants.PlayerStats.C_MaxHealth.ToString();
-        slider_playerHealth.value = Constants.PlayerStats.C_MaxHealth;
+        slider_playerHealth.value = Constants.PlayerStats.C_MaxHealth / 50;
         
         // Respawn Rate
         txt_respawnTime.text = Constants.PlayerStats.C_RespawnTimer.ToString();
@@ -491,11 +499,11 @@ public class DebugParametersController : MonoBehaviour {
 
         // Enemy Health
         txt_enemyHealth.text = Constants.EnemyStats.C_EnemyHealth.ToString();
-        slider_enemyHealth.value = Constants.EnemyStats.C_EnemyHealth;
+        slider_enemyHealth.value = Constants.EnemyStats.C_EnemyHealth / 25;
 
         // Enemy Damage
         txt_enemyDamage.text = Constants.EnemyStats.C_EnemyDamage.ToString();
-        slider_enemyDamage.value = Constants.EnemyStats.C_EnemyDamage;
+        slider_enemyDamage.value = Constants.EnemyStats.C_EnemyDamage / 5;
 
         // Enemy Spawn Cap
         txt_enemySpawnCap.text = Constants.EnemyStats.C_EnemySpawnCapPerSide.ToString();
@@ -546,7 +554,7 @@ public class DebugParametersController : MonoBehaviour {
 
         // Wind Force
         txt_windForce.text = Constants.SpellStats.C_WindForce.ToString();
-        slider_windForce.value = Constants.SpellStats.C_WindForce;
+        slider_windForce.value = Constants.SpellStats.C_WindForce / 250;
 
         // Ice Freeze Duration
         txt_iceFreeze.text = Constants.SpellStats.C_IceFreezeTime.ToString();
@@ -578,15 +586,15 @@ public class DebugParametersController : MonoBehaviour {
         
         // Crystal Health
         txt_crystalHealth.text = Constants.ObjectiveStats.C_CrystalMaxHealth.ToString();
-        slider_crystalHealth.value = Constants.ObjectiveStats.C_CrystalMaxHealth;
+        slider_crystalHealth.value = Constants.ObjectiveStats.C_CrystalMaxHealth / 50;
 
         // Hot Potato Completion Timer 
         txt_completionTimer.text = Constants.ObjectiveStats.C_PotatoCompletionTimer.ToString();
-        slider_completionTimer.value = Constants.ObjectiveStats.C_PotatoCompletionTimer;
+        slider_completionTimer.value = Constants.ObjectiveStats.C_PotatoCompletionTimer / 5;
 
         // Hot Potato Self Destruct Timer
         txt_selfDestructTimer.text = Constants.ObjectiveStats.C_PotatoSelfDestructTimer.ToString();
-        slider_selfDestructTimer.value = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
+        slider_selfDestructTimer.value = Constants.ObjectiveStats.C_PotatoSelfDestructTimer / 5;
 
         // Hockey Max Score
         txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_HockeyMaxScore.ToString();
@@ -594,7 +602,7 @@ public class DebugParametersController : MonoBehaviour {
 
         // Hockey Puck Damage
         txt_puckDamage.text = Constants.ObjectiveStats.C_PuckDamage.ToString();
-        slider_puckDamage.value = Constants.ObjectiveStats.C_PuckDamage;
+        slider_puckDamage.value = Constants.ObjectiveStats.C_PuckDamage / 10;
 
         // Hockey Puck Base Speed
         txt_puckBaseSpeed.text = Constants.ObjectiveStats.C_PuckBaseSpeed.ToString();
@@ -614,7 +622,7 @@ public class DebugParametersController : MonoBehaviour {
 
         // Rift Boss Max Health
         txt_riftBossHealth.text = Constants.ObjectiveStats.C_RiftBossMaxHealth.ToString();
-        slider_riftBossHealth.value = Constants.ObjectiveStats.C_RiftBossMaxHealth;
+        slider_riftBossHealth.value = Constants.ObjectiveStats.C_RiftBossMaxHealth / 250;
 
         // Rift Boss Rune Spawn Interval
         txt_runeSpawnInterval.text = Constants.ObjectiveStats.C_RuneSpawnInterval.ToString();
