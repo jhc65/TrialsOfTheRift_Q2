@@ -203,10 +203,10 @@ public static class Constants {
 
     //Carry over for volume options from the main menu.
     public static class VolOptions {
-        public static float C_MasterVolume = 0.0f;
-        public static float C_BGMVolume = 0.0f;
-        public static float C_SFXVolume = 0.0f;
-        public static float C_VOIVolume = 0.0f;
+        public static float C_MasterVolume = 1f;
+        public static float C_BGMVolume = 1f;
+        public static float C_SFXVolume = 1f;
+        public static float C_VOIVolume = 1f;
     }
 
 	//public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");
