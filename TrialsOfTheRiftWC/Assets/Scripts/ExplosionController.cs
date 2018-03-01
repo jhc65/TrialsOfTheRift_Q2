@@ -16,7 +16,7 @@ public class ExplosionController : MonoBehaviour {
     {
         if(collider.gameObject.tag == "Player" )
         {
-            collider.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_RuneDamage);
+            collider.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_RuneDamage,Constants.Global.DamageType.RUNE);
         }
 		else if (collider.gameObject.tag == "Enemy") {
 			collider.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_RuneDamage);

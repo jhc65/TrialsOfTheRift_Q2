@@ -15,6 +15,7 @@ public static class Constants {
     public static class Global {
         public enum Color { RED, BLUE };
         public enum Side { LEFT = -1, RIGHT = 1 };
+		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
     }
 
     // Player Stats

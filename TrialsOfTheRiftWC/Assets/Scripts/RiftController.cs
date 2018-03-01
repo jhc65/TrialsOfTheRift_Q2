@@ -182,7 +182,7 @@ public sealed class RiftController : MonoBehaviour {
     // Rift Effects
     private void BoardClear() {
         foreach (GameObject player in go_playerReferences) {
-            player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth);
+            player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth,Constants.Global.DamageType.RIFT);
         }
 
         /* Do shit with the runes once I get Jeff and Dana's shit in

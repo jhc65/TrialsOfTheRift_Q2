@@ -141,9 +141,10 @@ public class PlayerController : MonoBehaviour{
         f_nextIce = Time.time;
     }
 
-	public void TakeDamage(float damage) {
+	public void TakeDamage(float damage, Constants.Global.DamageType d) {
 		if (!isWisp) {
 			maestro.PlayPlayerHit();
+			maestro.PlayPlayerDamage(i_playerNumber,d);
 			f_playerHealth -= damage;
             //Damage flicker goes here.
             DamageVisualOn();
@@ -408,7 +409,7 @@ public class PlayerController : MonoBehaviour{
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Rift") {
             DropFlag();
-			TakeDamage(f_playerHealth);
+			TakeDamage(f_playerHealth,Constants.Global.DamageType.RIFT);
             while (!isWisp) {
                 Debug.Log("I'm waiting for the player to be a wisp, because then they will have dropped the flag and I can move them across the rift.");
             }

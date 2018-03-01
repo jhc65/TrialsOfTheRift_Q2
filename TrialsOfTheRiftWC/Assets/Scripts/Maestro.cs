@@ -139,6 +139,9 @@ public sealed class Maestro : MonoBehaviour {
 		System.Random r = new System.Random();
 		as_sfxMe.PlayOneShot(ac_player_hit[r.Next(0, ac_player_hit.Length)]);
 	}
+	public void PlayPlayerDamage(int playerNum, Constants.Global.DamageType d){
+		
+	}
 	
 	public void PlayAnnouncementGeneric(){
 		System.Random r = new System.Random();

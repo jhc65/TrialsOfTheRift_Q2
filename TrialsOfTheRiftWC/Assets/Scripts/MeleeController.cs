@@ -101,7 +101,7 @@ public class MeleeController : EnemyController {
     }
 
     protected override void ChildDoAttack() {
-		go_closestTarget.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_EnemyDamage);
+		go_closestTarget.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_EnemyDamage,Constants.Global.DamageType.ENEMY);
     }
 	
 	protected override void ChildUpdateSlowed(){

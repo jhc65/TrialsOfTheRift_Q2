@@ -16,7 +16,7 @@ public class RiftDeathbolt : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         // DIE! DIE! DIE!
-        collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.RiftStats.C_VolatilityDeathboltDamage);
+        collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.RiftStats.C_VolatilityDeathboltDamage,Constants.Global.DamageType.DEATHBOLT);
         DestroyDeathbolt();
 
     }
