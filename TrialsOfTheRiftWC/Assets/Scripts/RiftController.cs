@@ -233,6 +233,10 @@ public sealed class RiftController : MonoBehaviour {
 	    for (int i = 0; i < go_necromancers.Length; i++) {
 			if (!(go_necromancers[i].activeSelf)) {
 
+				GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+				CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+				cfb_this.cam_Camera = cam_camera;
+
 				if (position.x < 0f) {
 					go_necromancers[i].transform.position = position;
 					go_necromancers[i].GetComponent<NecromancerController>().Init(Constants.Global.Side.LEFT);
@@ -243,6 +247,8 @@ public sealed class RiftController : MonoBehaviour {
 					go_necromancers[i].GetComponent<NecromancerController>().Init(Constants.Global.Side.RIGHT);
 					go_necromancers[i].SetActive(true);
 				}
+
+				cfb_this.go_trackedObject = go_necromancers[i];
 				i = go_necromancers.Length;
 			}
         }
