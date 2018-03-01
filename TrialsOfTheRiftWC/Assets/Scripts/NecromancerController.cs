@@ -4,31 +4,38 @@ using UnityEngine.AI;
 
 public class NecromancerController : EnemyController {
 
-	private float avoidDistance = 10.0f;
-	private float runeTimer = 8.0f;
-	private float summoningTimer = 8.0f;
-	[SerializeField] private GameObject go_enemyPrefab;
-	[SerializeField] private GameObject go_runePrefab;
+	private float f_runeTimer = 8.0f;
+	private float f_summoningTimer = 8.0f;
+	//[SerializeField] private GameObject go_enemyPrefab;
+	//[SerializeField] private GameObject go_runePrefab;
 
-	protected override void ChildUpdate() {
-		runeTimer -= Time.deltaTime;
-		summoningTimer -= Time.deltaTime;
+	public override void Init(Constants.Global.Side side) {
+		base.Init(side);
+		e_side = side;
+		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
+		f_health = Constants.EnemyStats.C_NecromancerHealth;
+	}
 
-		if (runeTimer < 0 ) {
+	protected override void Update() {
+		base.Update();
+		f_runeTimer -= Time.deltaTime;
+		f_summoningTimer -= Time.deltaTime;
+
+		if (f_runeTimer < 0 ) {
 			EnterStateDropping();
 		}
 
-		if (summoningTimer < 0) {
+		if (f_summoningTimer < 0) {
 			EnterStateSummoning();
 		}
 	}
 
-    protected override void ChildUpdateWander() {
-
+    protected override void UpdateWander() {
+		base.UpdateWander();
 		bool b_playersAvailable = false;
 		for(int i = 0; i < riftController.go_playerReferences.Length; i++){	
-			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().e_Side == e_Side && riftController.go_playerReferences[i].GetComponent<PlayerController>().isWisp == false){
-				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < avoidDistance) {
+			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().e_Side == e_side && riftController.go_playerReferences[i].GetComponent<PlayerController>().isWisp == false){
+				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < Constants.EnemyStats.C_NecromancerAvoidDistance) {
 					b_playersAvailable = true;
 					break;
 				}
@@ -43,57 +50,62 @@ public class NecromancerController : EnemyController {
 		}
     }
 
-	protected override void ChildUpdateDropping() {
-		runeTimer = 2.0f;
-		DropRune();
+	protected override void UpdateDropping() {
+		base.UpdateDropping();
+		f_runeTimer = 2.0f;
+		riftController.ActivateRune(transform.position);
 		EnterStateWander();
 	}
 
-	protected override void ChildUpdateSummoning() {
-		summoningTimer = 8.0f;
-		riftController.SummonEnemiesAroundNecromancer(transform.position, e_Side);
+	protected override void UpdateSummoning() {
+		base.UpdateSummoning();
+		f_summoningTimer = 8.0f;
+
+		for (int i = 0; i < 4; i++) {
+			riftController.CircularEnemySpawn(transform.position, e_side);
+		}
+
 		EnterStateWander();
 	}
 
 	private void Wander() {
-		timer += Time.deltaTime;
+		f_timer += Time.deltaTime;
 
-        if (timer >= timeLimit || Vector3.Distance(transform.position, destination) <= 1.0f ) {
+        if (f_timer >= f_timeLimit || Vector3.Distance(transform.position, v3_destination) <= 1.0f ) {
 
 			//bool b_isDestinationValid = false;
 
 			//while(b_isDestinationValid == false) {
-				destination = GetWanderPos(transform.position, wanderingRadius);
+				v3_destination = GetWanderPos(transform.position, f_wanderingRadius);
 				CheckOutOfBounds();
-				//b_isDestinationValid = IsWithinBounds(transform.position, e_Side);
+				//b_isDestinationValid = IsWithinBounds(transform.position, e_side);
 			//}
 
-            nma_agent.SetDestination(destination);
+            nma_agent.SetDestination(v3_destination);
 
-            timer = 0;
+            f_timer = 0;
         }
 	}
 
-    private static Vector3 GetWanderPos(Vector3 transform, float wanderingRadius) {
+    private static Vector3 GetWanderPos(Vector3 transform, float f_wanderingRadius) {
  
 		float angle = Random.Range(0, 2 * Mathf.PI);
-		float deltaZ = Mathf.Sin(angle)*wanderingRadius;
-		float deltaX = Mathf.Cos(angle)*wanderingRadius;
+		float deltaZ = Mathf.Sin(angle)*f_wanderingRadius;
+		float deltaX = Mathf.Cos(angle)*f_wanderingRadius;
 		Vector3 position = new Vector3(transform.x + deltaX, 0, transform.z + deltaZ);
  
         NavMeshHit navHit;
  
-        NavMesh.SamplePosition (position, out navHit, wanderingRadius, -1);
+        NavMesh.SamplePosition (position, out navHit, f_wanderingRadius, -1);
  
         return navHit.position;
     }
 	
-	protected override void ChildUpdateFlee() {
+	protected override void UpdateFlee() {
+
+		base.UpdateFlee();
 
 		int count = 0;
-
-		float deltaX = 0.0f;
-		float deltaZ = 0.0f;
 
 		float angle = 0.0f;
 		float sumAngle = 0.0f;
@@ -103,9 +115,9 @@ public class NecromancerController : EnemyController {
 
 		for(int i = 0; i < riftController.go_playerReferences.Length; i++){
 
-			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().e_Side == e_Side && riftController.go_playerReferences[i].GetComponent<PlayerController>().isWisp == false) {
+			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().e_Side == e_side && riftController.go_playerReferences[i].GetComponent<PlayerController>().isWisp == false) {
 
-				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < avoidDistance) {
+				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < Constants.EnemyStats.C_NecromancerAvoidDistance) {
 
 					count = count + 1;
 
@@ -126,78 +138,36 @@ public class NecromancerController : EnemyController {
 
 			angle = sumAngle/count;
 
-			deltaZ = Mathf.Sin((angle * Mathf.PI)/180)*avoidDistance;
-			deltaX = Mathf.Cos((angle * Mathf.PI)/180)*avoidDistance;
+			float deltaZ = Mathf.Sin((angle * Mathf.PI)/180)*Constants.EnemyStats.C_NecromancerAvoidDistance;
+			float deltaX = Mathf.Cos((angle * Mathf.PI)/180)*Constants.EnemyStats.C_NecromancerAvoidDistance;
 
-			destination = new Vector3(transform.position.x + deltaX, 0, transform.position.z + deltaZ);
+			v3_destination = new Vector3(transform.position.x + deltaX, 0, transform.position.z + deltaZ);
 
 			
 			CheckOutOfBounds();
 
-			nma_agent.SetDestination(destination);
+			nma_agent.SetDestination(v3_destination);
 		}
 		else {
-			timer = timeLimit;
+			f_timer = f_timeLimit;
 			EnterStateWander();
 		}
 
 	}
 
-	protected override void ChildEnterStateWander() {
-		//Reset timer
-		timer = timeLimit;
+	protected override void EnterStateWander() {
+		base.EnterStateWander();
+		//Reset f_timer
+		f_timer = f_timeLimit;
 	}
 
-	protected override void ChildUpdateDie() {
-		riftController.DecreaseNecromancers(e_Side);
+	protected override void UpdateDie() {
+		base.UpdateDie();
+		riftController.DecreaseNecromancers(e_side);
 	}
 
 	private void DropRune() {
-		//Vector3 dropPos = RandomCircle(transform.position, e_Side, 1.0f);
-            
-		// If it is, find a new spawn position for the enemy
-        //var hitColliders = Physics.OverlapSphere(dropPos, 0.005f);
-        //if (hitColliders.Length > 0) {
-        //    DropRune();
-        //}
-        //else {
-            Instantiate(go_runePrefab, transform.position, Quaternion.identity);
-        //}
+		riftController.ActivateRune(transform.position);
 	}
-
-    // Gets a random Vector3 position within a given radius
-    private Vector3 RandomCircle(Vector3 center, Constants.Global.Side side, float radius) {
-        float ang = Random.value * 360;
-        Vector3 pos;
-
-        // by absolute valueing the x position, we can tell the enemy which side it should of the map it should be on
-        int s = (int)side;
-        pos.x = s * Mathf.Abs(center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad));
-        pos.y = center.y;
-        pos.z = center.z + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-
-        // Reposition the enemies if they spawn outside of the map TODO: revisit once map is scaled, and these should be Constants anyway
-        if (pos.z >= 22) {
-            float diff = pos.z - 22;
-            pos.z = pos.z - diff - 1;
-        }
-        else if (pos.z <= -22) {
-            Debug.Log(pos.z);
-            float diff = pos.z + 22;
-            pos.z = pos.z - diff + 1;
-            Debug.Log(pos.z);
-        }
-
-        if (pos.x >= 40) {
-            float diff = pos.x - 40;
-            pos.x = pos.x - diff - 1;
-        }
-        else if (pos.x <= -40) {
-            float diff = pos.x + 40;
-            pos.x = pos.x - diff + 1;
-        }
-
-        return pos;
-    }
 
 }

@@ -48,7 +48,7 @@ public class ElectricAOEController : MonoBehaviour {
         }
         else if (go_target.tag == "Enemy") {
             StartCoroutine("ApplyEnemyDamage", go_target);
-            go_target.GetComponent<EnemyController>().Slow(.5f);
+            go_target.GetComponent<EnemyController>().Slow();
         }
         else if (go_target.tag == "RiftBoss") {
             Debug.Log(go_target.tag);

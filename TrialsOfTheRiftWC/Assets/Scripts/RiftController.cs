@@ -21,9 +21,13 @@ public sealed class RiftController : MonoBehaviour {
     //public Camera mainCamera;
 
     // enemies
-    [SerializeField] private GameObject go_enemyPrefab;
-	[SerializeField] private GameObject go_necromancerPrefab;
-	[SerializeField] private GameObject go_runePrefab;
+	[SerializeField] private GameObject[] go_skeletons;
+	[SerializeField] private GameObject[] go_necromancers;
+	[SerializeField] private GameObject[] go_runes;
+
+    //[SerializeField] private GameObject go_enemyPrefab;
+	//[SerializeField] private GameObject go_necromancerPrefab;
+	//[SerializeField] private GameObject go_runePrefab;
     [SerializeField] private GameObject go_enemyIndiPrefab;
     [SerializeField] private Camera cam_camera;
 
@@ -140,6 +144,7 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility < 5.0f) {
 			i_volatilityLevel = 0;
             EnterNewVolatilityLevel();
+			InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
     }
 
@@ -195,6 +200,66 @@ public sealed class RiftController : MonoBehaviour {
     }
 
     //TODO: revisit enemy spawn with pooling
+	public void ActivateEnemy(Vector3 position) {
+	    for (int i = 0; i < go_skeletons.Length; i++) {
+			if (!(go_skeletons[i].activeSelf)) {
+
+				GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+				CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+				cfb_this.cam_Camera = cam_camera;
+
+				if (position.x < 0f) {
+					go_skeletons[i].transform.position = position;
+					go_skeletons[i].GetComponent<SkeletonController>().Init(Constants.Global.Side.LEFT);
+					go_skeletons[i].SetActive(true);
+				}
+				else {
+					go_skeletons[i].transform.position = position;
+					go_skeletons[i].GetComponent<SkeletonController>().Init(Constants.Global.Side.RIGHT);
+					go_skeletons[i].SetActive(true);
+				}
+
+				cfb_this.go_trackedObject = go_skeletons[i];
+				i = go_skeletons.Length;
+			}
+        }
+	}
+
+	public void ActivateNecromancer(Vector3 position) {
+	    for (int i = 0; i < go_necromancers.Length; i++) {
+			if (!(go_necromancers[i].activeSelf)) {
+
+				if (position.x < 0f) {
+					go_necromancers[i].transform.position = position;
+					go_necromancers[i].GetComponent<NecromancerController>().Init(Constants.Global.Side.LEFT);
+					go_necromancers[i].SetActive(true);
+				}
+				else {
+					go_necromancers[i].transform.position = position;
+					go_necromancers[i].GetComponent<NecromancerController>().Init(Constants.Global.Side.RIGHT);
+					go_necromancers[i].SetActive(true);
+				}
+				i = go_necromancers.Length;
+			}
+        }
+	}
+
+	public void ActivateRune(Vector3 position) {
+	    for (int i = 0; i < go_runes.Length; i++) {
+			if (!(go_runes[i].activeSelf)) {
+
+				if (position.x < 0f) {
+					go_runes[i].transform.position = position;
+					go_runes[i].SetActive(true);
+				}
+				else {
+					go_runes[i].transform.position = position;
+					go_runes[i].SetActive(true);
+				}
+				i = go_runes.Length;
+			}
+        }
+	}
 
     // Spawns one enemy on either side of the Rift, randomly chosen position
     public void SpawnEnemies() {
@@ -217,12 +282,14 @@ public sealed class RiftController : MonoBehaviour {
         int randRight = UnityEngine.Random.Range(0, v3_rightEnemySpawnPositions.Length);
 
         if (i_leftRunes < Constants.RiftStats.C_RuneSpawnCapPerSide) {
-            GameObject leftEnemy = Instantiate(go_runePrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
-            i_leftRunes++;
+            //GameObject leftEnemy = Instantiate(go_runePrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
+            ActivateRune(v3_leftEnemySpawnPositions[randLeft]);
+			i_leftRunes++;
         }
         if (i_rightRunes < Constants.RiftStats.C_RuneSpawnCapPerSide) {
-            GameObject rightEnemy = Instantiate(go_runePrefab, v3_rightEnemySpawnPositions[randRight], Quaternion.identity);
-            i_rightRunes++;
+            //GameObject rightEnemy = Instantiate(go_runePrefab, v3_rightEnemySpawnPositions[randRight], Quaternion.identity);
+            ActivateRune(v3_rightEnemySpawnPositions[randRight]);
+			i_rightRunes++;
         }
     }
 
@@ -234,31 +301,35 @@ public sealed class RiftController : MonoBehaviour {
         if (i_leftNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
             Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
             pos = new Vector3(pos.x - 1.0f, pos.y, pos.z);
-            GameObject leftEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
-            leftEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;  //TODO: is there a better way to set-up enemies?
-            leftEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            leftEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+            //GameObject leftEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
+            //leftEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.LEFT;  //TODO: is there a better way to set-up enemies?
+            //leftEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
+            //leftEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
 
-            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
-            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-            cfb_this.cam_Camera = cam_camera;
-            cfb_this.go_trackedObject = leftEnemy;
-            i_leftNecromancers++;
+            //GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
+            //CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            //cfb_this.cam_Camera = cam_camera;
+            //cfb_this.go_trackedObject = leftEnemy;
+
+			ActivateNecromancer(pos);
+			i_leftNecromancers++;
         }
         if (i_rightNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
             Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
             pos = new Vector3(pos.x + 1.0f, pos.y, pos.z);
-            GameObject rightEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
-            rightEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
-            rightEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            rightEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+            //GameObject rightEnemy = Instantiate(go_necromancerPrefab, pos, Quaternion.identity);
+            //rightEnemy.GetComponent<EnemyController>().e_Side = Constants.Global.Side.RIGHT;
+            //rightEnemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
+            //rightEnemy.GetComponent<NecromancerController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
 
 
-            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
-            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-            cfb_this.cam_Camera = cam_camera;
-            cfb_this.go_trackedObject = rightEnemy;
-            i_rightNecromancers++;
+            //GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, pos, Quaternion.identity);
+            //CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            //cfb_this.cam_Camera = cam_camera;
+            //cfb_this.go_trackedObject = rightEnemy;
+
+            ActivateNecromancer(pos);
+			i_rightNecromancers++;
         }
     }
 
@@ -266,26 +337,30 @@ public sealed class RiftController : MonoBehaviour {
     public void SpawnEnemy(Vector3 position, Constants.Global.Side side) {
         // only spawn if below enemy side cap TODO: is this expected behavior?
         if (side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
-            GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
-            enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
-            enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+            //GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
+            //enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
+            //enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
+            //enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
 
-            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-            cfb_this.cam_Camera = cam_camera;
-            cfb_this.go_trackedObject = enemy;
+            //GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+            //CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            //cfb_this.cam_Camera = cam_camera;
+            //cfb_this.go_trackedObject = enemy;
+
+			ActivateEnemy(position);
             i_leftEnemies++;
         } else if (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
-            GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
-            enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
-            enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
-            enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
+            //GameObject enemy = Instantiate(go_enemyPrefab, position, Quaternion.identity);
+            //enemy.GetComponent<EnemyController>().e_Side = side;        //TODO: is there a better way to set-up enemies?
+            //enemy.GetComponent<NavMeshAgent>().speed = f_enemySpeed;
+            //enemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
 
-            GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-            CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-            cfb_this.cam_Camera = cam_camera;
-            cfb_this.go_trackedObject = enemy;
+            //GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+            //CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+            //cfb_this.cam_Camera = cam_camera;
+            //cfb_this.go_trackedObject = enemy;
+
+			ActivateEnemy(position);
             i_rightEnemies++;
         }
     }
@@ -321,77 +396,6 @@ public sealed class RiftController : MonoBehaviour {
             i_rightNecromancers--;
         }
     }
-
-	public void SummonEnemiesAroundNecromancer(Vector3 center, Constants.Global.Side side) {
-
-		var hitColliders = Physics.OverlapSphere(new Vector3(center.x-3, center.y, center.z), 0.005f);
-		if (!(hitColliders.Length > 0)) {
-			if ((side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) || (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide && center.x-3 > 0)) {
-				GameObject leftEnemy = Instantiate(go_enemyPrefab, new Vector3(center.x-3, center.y, center.z), Quaternion.identity);
-				leftEnemy.GetComponent<EnemyController>().e_Side = side;  //TODO: is there a better way to set-up enemies?
-				leftEnemy.GetComponent<NavMeshAgent>().speed = Constants.EnemyStats.C_EnemyBaseSpeed;
-				leftEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-
-				if (side == Constants.Global.Side.LEFT) {
-					i_leftEnemies++;
-				}
-				else {
-					i_rightEnemies++;
-				}
-			}
-		}
-
-		hitColliders = Physics.OverlapSphere(new Vector3(center.x+3, center.y, center.z), 0.005f);
-		if (!(hitColliders.Length > 0)) {
-			if ((side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide && center.x+3 < 0) || (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide)) {
-				GameObject rightEnemy = Instantiate(go_enemyPrefab, new Vector3(center.x+3, center.y, center.z), Quaternion.identity);
-				rightEnemy.GetComponent<EnemyController>().e_Side = side;
-				rightEnemy.GetComponent<NavMeshAgent>().speed = Constants.EnemyStats.C_EnemyBaseSpeed;
-				rightEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-
-				if (side == Constants.Global.Side.LEFT) {
-					i_leftEnemies++;
-				}
-				else {
-					i_rightEnemies++;
-				}
-			}
-		}
-
-		hitColliders = Physics.OverlapSphere(new Vector3(center.x, center.y, center.z+3), 0.005f);
-		if (!(hitColliders.Length > 0)) {
-			if ((side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) || (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide)) {
-				GameObject topEnemy = Instantiate(go_enemyPrefab, new Vector3(center.x, center.y, center.z+3), Quaternion.identity);
-				topEnemy.GetComponent<EnemyController>().e_Side = side;  //TODO: is there a better way to set-up enemies?
-				topEnemy.GetComponent<NavMeshAgent>().speed = Constants.EnemyStats.C_EnemyBaseSpeed;
-				topEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-
-				if (side == Constants.Global.Side.LEFT) {
-					i_leftEnemies++;
-				}
-				else {
-					i_rightEnemies++;
-				}
-			}
-		}
-
-		hitColliders = Physics.OverlapSphere(new Vector3(center.x, center.y, center.z-3), 0.005f);
-		if (!(hitColliders.Length > 0)) {
-			if ((side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) || (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide)) {
-				GameObject bottomEnemy = Instantiate(go_enemyPrefab, new Vector3(center.x, center.y, center.z-3), Quaternion.identity);
-				bottomEnemy.GetComponent<EnemyController>().e_Side = side;
-				bottomEnemy.GetComponent<NavMeshAgent>().speed = Constants.EnemyStats.C_EnemyBaseSpeed;
-				bottomEnemy.GetComponent<MeleeController>().SetHealth(Constants.EnemyStats.C_EnemyHealth);
-
-				if (side == Constants.Global.Side.LEFT) {
-					i_leftEnemies++;
-				}
-				else {
-					i_rightEnemies++;
-				}
-			}
-		}
-	}
 
     // Gets a random Vector3 position within a given radius
     private Vector3 RandomCircle(Vector3 center, Constants.Global.Side side, float radius) {
