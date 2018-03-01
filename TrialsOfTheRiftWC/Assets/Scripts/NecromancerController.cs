@@ -1,33 +1,28 @@
+/*  Necromancer Controller - Jeff Brown
+ * 
+ *  Desc:   Extends wander state from enemy controller, implements riftController for summoning and rune dropping
+ * 
+ */
+ 
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
 public class NecromancerController : EnemyController {
 
-	private float f_runeTimer = 8.0f;
-	private float f_summoningTimer = 8.0f;
 	//[SerializeField] private GameObject go_enemyPrefab;
 	//[SerializeField] private GameObject go_runePrefab;
 
 	public override void Init(Constants.Global.Side side) {
 		base.Init(side);
-		e_side = side;
 		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
 		f_health = Constants.EnemyStats.C_NecromancerHealth;
+		InvokeRepeating("DropRune", 10.0f, Constants.EnemyStats.C_RuneTimer);
+		InvokeRepeating("Summon", 16.0f, Constants.EnemyStats.C_SummonTimer);
 	}
 
 	protected override void Update() {
 		base.Update();
-		f_runeTimer -= Time.deltaTime;
-		f_summoningTimer -= Time.deltaTime;
-
-		if (f_runeTimer < 0 ) {
-			EnterStateDropping();
-		}
-
-		if (f_summoningTimer < 0) {
-			EnterStateSummoning();
-		}
 	}
 
     protected override void UpdateWander() {
@@ -50,23 +45,7 @@ public class NecromancerController : EnemyController {
 		}
     }
 
-	protected override void UpdateDropping() {
-		base.UpdateDropping();
-		f_runeTimer = 2.0f;
-		riftController.ActivateRune(transform.position);
-		EnterStateWander();
-	}
-
-	protected override void UpdateSummoning() {
-		base.UpdateSummoning();
-		f_summoningTimer = 8.0f;
-
-		for (int i = 0; i < 4; i++) {
-			riftController.CircularEnemySpawn(transform.position, e_side);
-		}
-
-		EnterStateWander();
-	}
+	//TODO: delete dropping and summoning states, need to be discussed first
 
 	private void Wander() {
 		f_timer += Time.deltaTime;
@@ -170,4 +149,9 @@ public class NecromancerController : EnemyController {
 		riftController.ActivateRune(transform.position);
 	}
 
+	private void Summon() {
+		for (int i = 0; i < 4; i++) {
+			riftController.CircularEnemySpawn(transform.position, e_side);
+		}
+	}
 }

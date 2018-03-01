@@ -43,20 +43,6 @@ public sealed class RiftController : MonoBehaviour {
     private GameObject[] go_rightEnemySpawners;
     private GameObject[] go_leftEnemySpawners;
 
-    private Vector3[] v3_rightEnemySpawnPositions = new Vector3[] {
-        new Vector3(9f, 0.5f, 0f),
-        new Vector3(9f, 0.5f, -8f),
-        new Vector3(9f, 0.5f, 7f),
-        new Vector3(2.5f, 0.5f, 7f),
-        new Vector3(2.5f, 0.5f, -8f)
-    };
-    private Vector3[] v3_leftEnemySpawnPositions = new Vector3[] {
-        new Vector3(-9f, 0.5f, 0f),
-        new Vector3(-9f, 0.5f, -8f),
-        new Vector3(-9f, 0.5f, 7f),
-        new Vector3(-2.5f, 0.5f, 7f),
-        new Vector3(-2.5f, 0.5f, -8f)
-    };
     private float f_enemySpeed;
 
 	private int i_volatilityLevel;
@@ -148,7 +134,6 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility < 5.0f) {
 			i_volatilityLevel = 0;
             EnterNewVolatilityLevel();
-			InvokeRepeating("SpawnNecromancers", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
     }
 
@@ -160,6 +145,7 @@ public sealed class RiftController : MonoBehaviour {
                 e_currentVolatilityLevel = Constants.RiftStats.Volatility.ZERO;
                 f_volatilityMultiplier = Constants.RiftStats.C_VolatilityMultiplier_L1;     // there is no L0, L1 is already 0
                 CancelInvoke("SpawnEnemies");
+				CancelInvoke("SpawnNecromancers");
                 f_enemySpeed = Constants.EnemyStats.C_EnemyBaseSpeed;
                 break;
             case 1:
@@ -197,9 +183,20 @@ public sealed class RiftController : MonoBehaviour {
         /* Do shit with the runes once I get Jeff and Dana's shit in
         */
 
-        GameObject[] go_allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i < go_allEnemies.Length; i++) {
-            Destroy(go_allEnemies[i]);
+        //TODO: kill all enemies
+        for (int i = 0; i < go_skeletons.Length; i++) {
+			if (go_skeletons[i].activeSelf)
+				go_skeletons[i].SetActive(false);
+        }
+
+        for (int i = 0; i < go_necromancers.Length; i++) {
+			if (go_necromancers[i].activeSelf)
+				go_necromancers[i].SetActive(false);
+        }
+
+        for (int i = 0; i < go_runes.Length; i++) {
+			if (go_runes[i].activeSelf)
+				go_runes[i].SetActive(false);
         }
     }
 
@@ -224,7 +221,7 @@ public sealed class RiftController : MonoBehaviour {
 				}
 
 				cfb_this.go_trackedObject = go_skeletons[i];
-				i = go_skeletons.Length;
+				break;
 			}
         }
 	}
@@ -249,7 +246,7 @@ public sealed class RiftController : MonoBehaviour {
 				}
 
 				cfb_this.go_trackedObject = go_necromancers[i];
-				i = go_necromancers.Length;
+				break;
 			}
         }
 	}
@@ -266,7 +263,7 @@ public sealed class RiftController : MonoBehaviour {
 					go_runes[i].transform.position = position;
 					go_runes[i].SetActive(true);
 				}
-				i = go_runes.Length;
+				break;
 			}
         }
 	}
@@ -288,17 +285,17 @@ public sealed class RiftController : MonoBehaviour {
 
     // Spawns one enemy on either side of the Rift, randomly chosen position
     public void SpawnRunes() {
-        int randLeft = UnityEngine.Random.Range(0, v3_leftEnemySpawnPositions.Length);
-        int randRight = UnityEngine.Random.Range(0, v3_rightEnemySpawnPositions.Length);
+        int randLeft = UnityEngine.Random.Range(0, go_leftEnemySpawners.Length);
+        int randRight = UnityEngine.Random.Range(0, go_rightEnemySpawners.Length);
 
         if (i_leftRunes < Constants.RiftStats.C_RuneSpawnCapPerSide) {
             //GameObject leftEnemy = Instantiate(go_runePrefab, v3_leftEnemySpawnPositions[randLeft], Quaternion.identity);
-            ActivateRune(v3_leftEnemySpawnPositions[randLeft]);
+            ActivateRune(go_leftEnemySpawners[randLeft].transform.position);
 			i_leftRunes++;
         }
         if (i_rightRunes < Constants.RiftStats.C_RuneSpawnCapPerSide) {
             //GameObject rightEnemy = Instantiate(go_runePrefab, v3_rightEnemySpawnPositions[randRight], Quaternion.identity);
-            ActivateRune(v3_rightEnemySpawnPositions[randRight]);
+            ActivateRune(go_rightEnemySpawners[randRight].transform.position);
 			i_rightRunes++;
         }
     }

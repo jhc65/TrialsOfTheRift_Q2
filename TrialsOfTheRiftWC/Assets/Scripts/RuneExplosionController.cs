@@ -1,12 +1,14 @@
+/*  Rune Explosion Controller - Jeff Brown
+ * 
+ *  Desc:   Harms players that collide with this
+ * 
+ */
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class RuneExplosionController : MonoBehaviour {
-
-	public void Update() {
-		
-	}
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,7 +18,7 @@ public class RuneExplosionController : MonoBehaviour {
         }
     }
 
-	public void Start() {
+	void Start() {
 		Destroy(gameObject, 1.5f);
 	}
 } 

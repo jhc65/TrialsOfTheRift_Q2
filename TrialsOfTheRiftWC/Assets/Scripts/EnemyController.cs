@@ -1,3 +1,9 @@
+/*  Necromancer Controller - Noah Nam & Jeff Brown
+ * 
+ *  Desc:   Defines base functionality of enemy bots
+ * 
+ */
+ 
 using UnityEngine;
 using System.Linq;
 using System;
@@ -190,6 +196,7 @@ public abstract class EnemyController : MonoBehaviour {
 		riftController = RiftController.Instance;
 		rb = GetComponent<Rigidbody>();
 		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+		e_side = side;
 	}
 
 	void Start() {

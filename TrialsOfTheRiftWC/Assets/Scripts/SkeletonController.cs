@@ -1,3 +1,9 @@
+/*  Skeleton Controller - Noah Nam and Jeff Brown
+ * 
+ *  Desc:   Extends chase, attack, and wander of the enemycontroller
+ * 
+ */
+ 
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
@@ -8,7 +14,6 @@ public class SkeletonController : EnemyController {
 
 	public override void Init(Constants.Global.Side side) {
 		base.Init(side);
-		e_side = side;
 		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
 		f_health = Constants.EnemyStats.C_EnemyHealth;
 	}
