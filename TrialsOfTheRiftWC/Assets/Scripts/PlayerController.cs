@@ -143,8 +143,8 @@ public class PlayerController : MonoBehaviour{
 
 	public void TakeDamage(float damage, Constants.Global.DamageType d) {
 		if (!isWisp) {
+			maestro.PlayAnnouncmentPlayerHit(i_playerNumber,d);
 			maestro.PlayPlayerHit();
-			maestro.PlayPlayerDamage(i_playerNumber,d);
 			f_playerHealth -= damage;
             //Damage flicker goes here.
             DamageVisualOn();
