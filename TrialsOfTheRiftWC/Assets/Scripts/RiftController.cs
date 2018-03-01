@@ -78,6 +78,10 @@ public sealed class RiftController : MonoBehaviour {
         get { return go_playerReferences; }
     }
 
+	public float EnemySpeed {
+		get { return f_enemySpeed; }
+	}
+
     public GameObject[] RightEnemySpawners {
         set { go_rightEnemySpawners = value; }
     }
@@ -144,7 +148,7 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility < 5.0f) {
 			i_volatilityLevel = 0;
             EnterNewVolatilityLevel();
-			InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
+			InvokeRepeating("SpawnNecromancers", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
     }
 

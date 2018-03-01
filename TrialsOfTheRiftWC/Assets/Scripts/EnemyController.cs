@@ -153,7 +153,7 @@ public abstract class EnemyController : MonoBehaviour {
 	}
 	
 	private void UpdateSpeed(){
-		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed * f_canMove;
+		nma_agent.speed = riftController.EnemySpeed * f_canMove;
 		//nma_agent.speed = riftController.f_enemySpeed * f_canMove;
 		//nma_agent.acceleration = nma_agent.acceleration* (Constants.EnviroStats.C_EnemySpeed / 3.5f) * f_canMove;
 	}
@@ -199,7 +199,7 @@ public abstract class EnemyController : MonoBehaviour {
 		//nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		f_health = Constants.EnemyStats.C_EnemyHealth;
 		f_damage = Constants.EnemyStats.C_EnemyDamage;
-		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
+		nma_agent.speed = riftController.EnemySpeed;
 
 		//nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
 

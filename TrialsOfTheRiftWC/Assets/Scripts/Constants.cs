@@ -151,7 +151,7 @@ public static class Constants {
 
         public static float C_NecromancerBaseSpeed = 1.5f;
         public static float C_NecromancerHealth = 150.0f;
-		public static float C_NecromancerAvoidDistance = 10.0f;
+		public static float C_NecromancerAvoidDistance = 5.0f;
 		public static int C_NecromancerSpawnCapPerSide = 2;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 5.0f;
