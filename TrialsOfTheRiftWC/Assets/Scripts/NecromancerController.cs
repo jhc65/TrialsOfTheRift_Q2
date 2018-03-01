@@ -141,8 +141,8 @@ public class NecromancerController : EnemyController {
 	}
 
 	protected override void UpdateDie() {
-		base.UpdateDie();
 		riftController.DecreaseNecromancers(e_side);
+		base.UpdateDie();
 	}
 
 	private void DropRune() {

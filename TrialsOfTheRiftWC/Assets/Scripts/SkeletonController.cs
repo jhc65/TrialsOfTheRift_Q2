@@ -99,8 +99,8 @@ public class SkeletonController : EnemyController {
 	}
 
 	protected override void UpdateDie() {
-		base.UpdateDie();
 		riftController.DecreaseEnemies(e_side);
+		base.UpdateDie();
 	}
 
 	protected override void EnterStateWander() {
@@ -117,7 +117,7 @@ public class SkeletonController : EnemyController {
 
     protected override void DoAttack() {
 		base.DoAttack();
-		go_closestTarget.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_EnemyDamage);
+		go_closestTarget.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_EnemyDamage,Constants.Global.DamageType.ENEMY);
     }
 	
 	protected override void UpdateSlowed(){

@@ -15,7 +15,7 @@ public class MagicMissileController : SpellController {
         if (go_target.tag == "Player") {
             if (go_target.GetComponent<PlayerController>().GetColor() != this.e_color)
             {
-                go_target.GetComponent<PlayerController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage * f_charged);
+                go_target.GetComponent<PlayerController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage * f_charged,Constants.Global.DamageType.MAGICMISSILE);
                 go_target.GetComponent<PlayerController>().DropFlag();
             }
             else {

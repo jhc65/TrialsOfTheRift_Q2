@@ -14,7 +14,7 @@ public class RuneExplosionController : MonoBehaviour {
     {
         if(other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_RuneDamage);
+            other.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_RuneDamage,Constants.Global.DamageType.RUNE);
         }
     }
 

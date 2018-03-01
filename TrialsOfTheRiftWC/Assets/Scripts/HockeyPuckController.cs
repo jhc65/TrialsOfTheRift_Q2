@@ -91,7 +91,7 @@ public class HockeyPuckController : MonoBehaviour {
             collision.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth);
         }
         else if (collision.gameObject.CompareTag("Player")) {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage,Constants.Global.DamageType.PUCK);
         }
         else if (collision.gameObject.CompareTag("Spell")) {
             // Reset slowdown invoke

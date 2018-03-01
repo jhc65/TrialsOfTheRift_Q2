@@ -101,11 +101,11 @@ public abstract class EnemyController : MonoBehaviour {
     }
 
     protected virtual void UpdateDie() {
+		EnterStateWander();
         //riftController.DecreaseEnemies(e_side);
 		//Destroy(gameObject);
 		gameObject.SetActive(false);
     }
-	protected virtual void ChildUpdateDie(){}
 	
 	public void TakeDamage(float damage){
 		maestro.PlayEnemyHit();

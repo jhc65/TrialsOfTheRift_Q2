@@ -53,6 +53,12 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_trial_transition;
 	[SerializeField] private AudioClip[] ac_wisp_generic;
 	[SerializeField] private AudioClip[] ac_intro;
+	[SerializeField] private AudioClip[] ac_enemy_hit_player;
+	[SerializeField] private AudioClip[] ac_rift_hit_player;
+	[SerializeField] private AudioClip[] ac_wind_hit_player;
+	[SerializeField] private AudioClip[] ac_ice_hit_player;
+	[SerializeField] private AudioClip[] ac_spell_hit_player;
+	[SerializeField] private AudioClip[] ac_generic_hit_player;
 	
 	[Header("Settings")]
 	public float f_announcementDelay;		// An announcement can only play after this many seconds have elapsed.
@@ -140,6 +146,34 @@ public sealed class Maestro : MonoBehaviour {
 		as_sfxMe.PlayOneShot(ac_player_hit[r.Next(0, ac_player_hit.Length)]);
 	}
 	
+	public void PlayAnnouncmentPlayerHit(int playerNum, Constants.Global.DamageType d){
+		System.Random r = new System.Random();
+		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
+			b_announcementOk = false;
+			switch(d){
+				case(Constants.Global.DamageType.ENEMY):
+					as_voi.PlayOneShot(ac_enemy_hit_player[r.Next(0, ac_enemy_hit_player.Length)]);
+					break;
+				case(Constants.Global.DamageType.RIFT):
+					as_voi.PlayOneShot(ac_rift_hit_player[r.Next(0, ac_rift_hit_player.Length)]);
+					break;
+				case(Constants.Global.DamageType.WIND):
+					as_voi.PlayOneShot(ac_wind_hit_player[r.Next(0, ac_wind_hit_player.Length)]);
+					break;
+				case(Constants.Global.DamageType.ICE):
+					as_voi.PlayOneShot(ac_ice_hit_player[r.Next(0, ac_ice_hit_player.Length)]);
+					break;
+				case(Constants.Global.DamageType.MAGICMISSILE):
+				case(Constants.Global.DamageType.ELECTRICITY):
+					as_voi.PlayOneShot(ac_spell_hit_player[r.Next(0, ac_spell_hit_player.Length)]);
+					break;
+				default:
+					as_voi.PlayOneShot(ac_generic_hit_player[r.Next(0, ac_generic_hit_player.Length)]);
+					break;
+			}
+			Invoke("AnnouncementOk",f_announcementDelay);
+		}
+	}
 	public void PlayAnnouncementGeneric(){
 		System.Random r = new System.Random();
 		if(b_announcementOk && r.NextDouble() <= f_announcementChance){
