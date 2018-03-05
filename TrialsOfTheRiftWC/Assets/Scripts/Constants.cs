@@ -19,10 +19,20 @@ public static class Constants {
 
     // Player Stats
     public static class PlayerStats {
-        public static float C_MovementSpeed = 6.0f;
+        public static float C_MovementSpeed = 3.0f;
         public static float C_WispMovementSpeed = 1.5f;
         public static float C_RespawnTimer = 5.0f;
         public static float C_MaxHealth = 300.0f;
+
+        public static Global.Color C_p1Color = Global.Color.RED;
+        public static Global.Color C_p2Color = Global.Color.RED;
+        public static Global.Color C_p3Color = Global.Color.BLUE;
+        public static Global.Color C_p4Color = Global.Color.BLUE;
+
+        public static int C_p1Hat = 0;
+        public static int C_p2Hat = 1;
+        public static int C_p3Hat = 2;
+        public static int C_p4Hat = 3;
     }
 
     // Spell Stats
@@ -138,8 +148,8 @@ public static class Constants {
        
     // Enemy Stats
     public static class EnemyStats {
-        public static int C_EnemySpawnCapPerSide = 7;
-		public static int C_NecromancerSpawnCapPerSide = 1;
+        public static int C_EnemySpawnCapPerSide = 0;
+		public static int C_NecromancerSpawnCapPerSide = 0;
         public static float C_EnemyBaseSpeed = 1.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 75.0f;

@@ -11,6 +11,7 @@ public class PlayerHUDController : MonoBehaviour {
     [SerializeField] Image img_windbar;
     [SerializeField] Image img_icebar;
 	[SerializeField] Image img_electricbar;
+    [SerializeField] RectTransform rt_hpBar;
     [SerializeField] float f_shakeAmt;
 
     private Color col_origIceColor;
@@ -63,7 +64,7 @@ public class PlayerHUDController : MonoBehaviour {
 	}
 
     public void ShakeUI() {
-        sshk_shaker.SetShake(f_shakeAmt);
+        sshk_shaker.SetShake(f_shakeAmt, rt_hpBar);
         sshk_shaker.StartShake();
     }
 }

@@ -1,0 +1,356 @@
+fileFormatVersion: 2
+guid: 1e6de79edcc554babb09542b5aa49597
+timeCreated: 1520006485
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bottomnurbsSquare1
+    100002: Ctrl
+    100004: curve1
+    100006: //RootNode
+    100008: Handle
+    100010: Head_ctrl
+    100012: Head_jb1
+    100014: Head_jb2
+    100016: IK
+    100018: Jaw_ctrl
+    100020: Jaw_jb1
+    100022: Jaw_jb2
+    100024: leftnurbsSquare1
+    100026: Rift_Head
+    100028: Rift_Head 1
+    100030: Rift_LowerJaw
+    100032: Rift_Rig
+    100034: Rift_Spine
+    100036: Rift_Teeth
+    100038: rightnurbsSquare1
+    100040: root_ctrl
+    100042: Root_jB
+    100044: Spinal
+    100046: Spinal1
+    100048: Spinal10
+    100050: Spinal11
+    100052: Spinal12
+    100054: Spinal13
+    100056: Spinal14
+    100058: Spinal15
+    100060: Spinal16
+    100062: Spinal2
+    100064: Spinal3
+    100066: Spinal4
+    100068: Spinal5
+    100070: Spinal6
+    100072: Spinal7
+    100074: Spinal8
+    100076: Spinal9
+    100078: Spinal_1
+    100080: Spinal_10
+    100082: Spinal_11
+    100084: Spinal_12
+    100086: Spinal_13
+    100088: Spinal_14
+    100090: Spinal_15
+    100092: Spinal_16
+    100094: Spinal_17
+    100096: Spinal_18
+    100098: Spinal_2
+    100100: Spinal_3
+    100102: Spinal_4
+    100104: Spinal_5
+    100106: Spinal_6
+    100108: Spinal_7
+    100110: Spinal_8
+    100112: Spinal_9
+    100114: Spinal_Base
+    100116: Spine
+    100118: Spine_IK1
+    100120: Spine_IK2
+    100122: Spine_IK4
+    100124: Spine_IK4 1
+    100126: Spine_IK5
+    100128: Spine_IK6
+    100130: Spine_IK7
+    100132: Spine_IK_ctrl1
+    100134: Spine_IK_ctrl2
+    100136: Spine_IK_ctrl3
+    100138: Spine_IK_ctrl4
+    100140: Spine_IK_ctrl5
+    100142: Spine_IK_ctrl6
+    100144: Spine_IK_ctrl7
+    100146: Spine_IK_o
+    100148: Spine_IK_o 1
+    100150: Spine_IK_o 2
+    100152: Spine_IK_o 3
+    100154: Spine_IK_o 4
+    100156: Spine_IK_o 5
+    100158: Spine_IK_o 6
+    100160: Tooth
+    100162: Tooth1
+    100164: Tooth10
+    100166: Tooth11
+    100168: Tooth12
+    100170: Tooth13
+    100172: Tooth14
+    100174: Tooth15
+    100176: Tooth2
+    100178: Tooth3
+    100180: Tooth4
+    100182: Tooth5
+    100184: Tooth6
+    100186: Tooth7
+    100188: Tooth8
+    100190: Tooth9
+    100192: topnurbsSquare1
+    400000: bottomnurbsSquare1
+    400002: Ctrl
+    400004: curve1
+    400006: //RootNode
+    400008: Handle
+    400010: Head_ctrl
+    400012: Head_jb1
+    400014: Head_jb2
+    400016: IK
+    400018: Jaw_ctrl
+    400020: Jaw_jb1
+    400022: Jaw_jb2
+    400024: leftnurbsSquare1
+    400026: Rift_Head
+    400028: Rift_Head 1
+    400030: Rift_LowerJaw
+    400032: Rift_Rig
+    400034: Rift_Spine
+    400036: Rift_Teeth
+    400038: rightnurbsSquare1
+    400040: root_ctrl
+    400042: Root_jB
+    400044: Spinal
+    400046: Spinal1
+    400048: Spinal10
+    400050: Spinal11
+    400052: Spinal12
+    400054: Spinal13
+    400056: Spinal14
+    400058: Spinal15
+    400060: Spinal16
+    400062: Spinal2
+    400064: Spinal3
+    400066: Spinal4
+    400068: Spinal5
+    400070: Spinal6
+    400072: Spinal7
+    400074: Spinal8
+    400076: Spinal9
+    400078: Spinal_1
+    400080: Spinal_10
+    400082: Spinal_11
+    400084: Spinal_12
+    400086: Spinal_13
+    400088: Spinal_14
+    400090: Spinal_15
+    400092: Spinal_16
+    400094: Spinal_17
+    400096: Spinal_18
+    400098: Spinal_2
+    400100: Spinal_3
+    400102: Spinal_4
+    400104: Spinal_5
+    400106: Spinal_6
+    400108: Spinal_7
+    400110: Spinal_8
+    400112: Spinal_9
+    400114: Spinal_Base
+    400116: Spine
+    400118: Spine_IK1
+    400120: Spine_IK2
+    400122: Spine_IK4
+    400124: Spine_IK4 1
+    400126: Spine_IK5
+    400128: Spine_IK6
+    400130: Spine_IK7
+    400132: Spine_IK_ctrl1
+    400134: Spine_IK_ctrl2
+    400136: Spine_IK_ctrl3
+    400138: Spine_IK_ctrl4
+    400140: Spine_IK_ctrl5
+    400142: Spine_IK_ctrl6
+    400144: Spine_IK_ctrl7
+    400146: Spine_IK_o
+    400148: Spine_IK_o 1
+    400150: Spine_IK_o 2
+    400152: Spine_IK_o 3
+    400154: Spine_IK_o 4
+    400156: Spine_IK_o 5
+    400158: Spine_IK_o 6
+    400160: Tooth
+    400162: Tooth1
+    400164: Tooth10
+    400166: Tooth11
+    400168: Tooth12
+    400170: Tooth13
+    400172: Tooth14
+    400174: Tooth15
+    400176: Tooth2
+    400178: Tooth3
+    400180: Tooth4
+    400182: Tooth5
+    400184: Tooth6
+    400186: Tooth7
+    400188: Tooth8
+    400190: Tooth9
+    400192: topnurbsSquare1
+    4300000: Rift_Head
+    4300002: Rift_LowerJaw
+    4300004: Tooth
+    4300006: Tooth1
+    4300008: Tooth2
+    4300010: Tooth3
+    4300012: Tooth4
+    4300014: Tooth5
+    4300016: Tooth6
+    4300018: Tooth7
+    4300020: Tooth8
+    4300022: Tooth9
+    4300024: Tooth10
+    4300026: Tooth11
+    4300028: Tooth12
+    4300030: Tooth13
+    4300032: Tooth14
+    4300034: Tooth15
+    4300036: Spinal
+    4300038: Spinal1
+    4300040: Spinal2
+    4300042: Spinal3
+    4300044: Spinal4
+    4300046: Spinal5
+    4300048: Spinal6
+    4300050: Spinal7
+    4300052: Spinal8
+    4300054: Spinal9
+    4300056: Spinal10
+    4300058: Spinal11
+    4300060: Spinal12
+    4300062: Spinal13
+    4300064: Spinal14
+    4300066: Spinal15
+    4300068: Spinal16
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Rift_Head 1
+    13700002: Rift_LowerJaw
+    13700004: Spinal
+    13700006: Spinal1
+    13700008: Spinal10
+    13700010: Spinal11
+    13700012: Spinal12
+    13700014: Spinal13
+    13700016: Spinal14
+    13700018: Spinal15
+    13700020: Spinal16
+    13700022: Spinal2
+    13700024: Spinal3
+    13700026: Spinal4
+    13700028: Spinal5
+    13700030: Spinal6
+    13700032: Spinal7
+    13700034: Spinal8
+    13700036: Spinal9
+    13700038: Tooth
+    13700040: Tooth1
+    13700042: Tooth10
+    13700044: Tooth11
+    13700046: Tooth12
+    13700048: Tooth13
+    13700050: Tooth14
+    13700052: Tooth15
+    13700054: Tooth2
+    13700056: Tooth3
+    13700058: Tooth4
+    13700060: Tooth5
+    13700062: Tooth6
+    13700064: Tooth7
+    13700066: Tooth8
+    13700068: Tooth9
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 518358be05c396a428e9b5bd67dec6c0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: c9b6322630cff4868a05be8df2b55533
+timeCreated: 1520006541
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bottomnurbsSquare1
+    100002: Ctrl
+    100004: //RootNode
+    100006: Head_ctrl
+    100008: Head_jb1
+    100010: Head_jb2
+    100012: Jaw_ctrl
+    100014: Jaw_jb1
+    100016: Jaw_jb2
+    100018: leftnurbsSquare1
+    100020: Rift_Head
+    100022: Rift_Head 1
+    100024: Rift_LowerJaw
+    100026: Rift_Rig
+    100028: Rift_Teeth
+    100030: rightnurbsSquare1
+    100032: root_ctrl
+    100034: Root_jB
+    100036: Tooth
+    100038: Tooth1
+    100040: Tooth10
+    100042: Tooth11
+    100044: Tooth12
+    100046: Tooth13
+    100048: Tooth14
+    100050: Tooth15
+    100052: Tooth2
+    100054: Tooth3
+    100056: Tooth4
+    100058: Tooth5
+    100060: Tooth6
+    100062: Tooth7
+    100064: Tooth8
+    100066: Tooth9
+    100068: topnurbsSquare1
+    400000: bottomnurbsSquare1
+    400002: Ctrl
+    400004: //RootNode
+    400006: Head_ctrl
+    400008: Head_jb1
+    400010: Head_jb2
+    400012: Jaw_ctrl
+    400014: Jaw_jb1
+    400016: Jaw_jb2
+    400018: leftnurbsSquare1
+    400020: Rift_Head
+    400022: Rift_Head 1
+    400024: Rift_LowerJaw
+    400026: Rift_Rig
+    400028: Rift_Teeth
+    400030: rightnurbsSquare1
+    400032: root_ctrl
+    400034: Root_jB
+    400036: Tooth
+    400038: Tooth1
+    400040: Tooth10
+    400042: Tooth11
+    400044: Tooth12
+    400046: Tooth13
+    400048: Tooth14
+    400050: Tooth15
+    400052: Tooth2
+    400054: Tooth3
+    400056: Tooth4
+    400058: Tooth5
+    400060: Tooth6
+    400062: Tooth7
+    400064: Tooth8
+    400066: Tooth9
+    400068: topnurbsSquare1
+    4300000: Rift_Head
+    4300002: Rift_LowerJaw
+    4300004: Tooth
+    4300006: Tooth1
+    4300008: Tooth2
+    4300010: Tooth3
+    4300012: Tooth4
+    4300014: Tooth5
+    4300016: Tooth6
+    4300018: Tooth7
+    4300020: Tooth8
+    4300022: Tooth9
+    4300024: Tooth10
+    4300026: Tooth11
+    4300028: Tooth12
+    4300030: Tooth13
+    4300032: Tooth14
+    4300034: Tooth15
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Rift_Head 1
+    13700002: Rift_LowerJaw
+    13700004: Tooth
+    13700006: Tooth1
+    13700008: Tooth10
+    13700010: Tooth11
+    13700012: Tooth12
+    13700014: Tooth13
+    13700016: Tooth14
+    13700018: Tooth15
+    13700020: Tooth2
+    13700022: Tooth3
+    13700024: Tooth4
+    13700026: Tooth5
+    13700028: Tooth6
+    13700030: Tooth7
+    13700032: Tooth8
+    13700034: Tooth9
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 518358be05c396a428e9b5bd67dec6c0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mask_Apprentice_UpperBody
+  m_Mask: 01000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Apprentice_Model
+    m_Weight: 0
+  - m_Path: Apprentice_Model/Eyes
+    m_Weight: 0
+  - m_Path: Apprentice_Model/Eyes/Eye_Right
+    m_Weight: 0
+  - m_Path: Apprentice_Model/Eyes/Eye_Left
+    m_Weight: 0
+  - m_Path: Apprentice_Model/Clothing
+    m_Weight: 0
+  - m_Path: Apprentice_Model/Clothing/Toga
+    m_Weight: 0
+  - m_Path: Apprentice_Model/Clothing/Outfit_02
+    m_Weight: 0
+  - m_Path: Apprentice_Model/Apprentice 1
+    m_Weight: 0
+  - m_Path: Apprentice_Rig
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB/L_Knee_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB/L_Knee_jB/L_Ankle_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB/L_Knee_jB/L_Ankle_jB/L_Foot_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB/L_Knee_jB/L_Ankle_jB/L_Foot_jB/L_Toe_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB/L_flap_jB1
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB/L_flap_jB1/L_flap_jB2
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/L_Thigh_jB/L_Flap_ctrl
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB/R_Knee_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB/R_Knee_jB/R_Ankle_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB/R_Knee_jB/R_Ankle_jB/R_Foot_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB/R_Knee_jB/R_Ankle_jB/R_Foot_jB/R_Toe_jB
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB/F_Flap_jB2
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB/F_Flap_jB2/joint1
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/R_Thigh_jB/R_Flap_ctrl
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/Neck_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/Neck_jB_1/Neck_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/Neck_jB_1/Neck_jB_2/Head_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/Neck_jB_1/Neck_jB_2/Head_jB/Hat
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Pinky_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Pinky_jB_1/L_Pinky_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Pinky_jB_1/L_Pinky_jB_2/L_Pinky_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Pinky_jB_1/L_Pinky_jB_2/L_Pinky_jB_3/L_Pinky_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Ring_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Ring_jB_1/L_Ring_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Ring_jB_1/L_Ring_jB_2/L_Ring_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Ring_jB_1/L_Ring_jB_2/L_Ring_jB_3/L_Ring_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Middle_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Middle_jB_1/L_Middle_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Middle_jB_1/L_Middle_jB_2/L_Middle_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Middle_jB_1/L_Middle_jB_2/L_Middle_jB_3/L_Middle_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Index_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Index_jB_1/L_Index_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Index_jB_1/L_Index_jB_2/L_Index_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Index_jB_1/L_Index_jB_2/L_Index_jB_3/L_Index_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Thumb_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Thumb_jB_1/L_Thumb_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/L_Pec_jB/L_Shoulder_jB/L_Elbow_jB/L_Forearm_jB/L_Wrist_jB/L_Thumb_jB_1/L_Thumb_jB_2/L_Thumb_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Pinky_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Pinky_jB_1/R_Pinky_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Pinky_jB_1/R_Pinky_jB_2/R_Pinky_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Pinky_jB_1/R_Pinky_jB_2/R_Pinky_jB_3/R_Pinky_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Ring_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Ring_jB_1/R_Ring_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Ring_jB_1/R_Ring_jB_2/R_Ring_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Ring_jB_1/R_Ring_jB_2/R_Ring_jB_3/R_Ring_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Middle_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Middle_jB_1/R_Middle_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Middle_jB_1/R_Middle_jB_2/R_Middle_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Middle_jB_1/R_Middle_jB_2/R_Middle_jB_3/R_Middle_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Index_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Index_jB_1/R_Index_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Index_jB_1/R_Index_jB_2/R_Index_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Index_jB_1/R_Index_jB_2/R_Index_jB_3/R_Index_jB_4
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Thumb_jB_1
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Thumb_jB_1/R_Thumb_jB_2
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/R_Thumb_jB_1/R_Thumb_jB_2/R_Thumb_jB_3
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Spine_jB_1/Spine_jB_2/Spine_jB_3/Spine_jB_4/R_Pec_jB/R_Shoulder_jB/R_Elbow_jB/R_Forearm_jB/R_Wrist_jB/Wand
+    m_Weight: 1
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/F_Flap_jB1
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/B_Flap_jB1
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/B_Flap_jB1/B_Flap_jB2
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/B_Flap_jB1/B_Flap_jB2/joint2
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group2
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group2/F_Fla_ctrl
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group2/F_Fla_ctrl/group1
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group2/F_Fla_ctrl/group3
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group5
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group5/B_Flap_ctrl_1
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group5/B_Flap_ctrl_1/group6
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/Hip_jB/Rig_controllers/group5/B_Flap_ctrl_1/group6/B_Flap_ctrl_2
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/L_Hand_Ctrl
+    m_Weight: 0
+  - m_Path: Apprentice_Rig/Reference/R_Hand_Ctrl
+    m_Weight: 0

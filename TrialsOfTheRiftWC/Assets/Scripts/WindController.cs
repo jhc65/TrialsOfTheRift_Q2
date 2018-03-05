@@ -19,7 +19,7 @@ public class WindController : SpellController {
             go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
             go_target.GetComponent<PlayerController>().DropFlag();
             go_target.GetComponent<PlayerController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
-        }
+			go_target.GetComponent<PlayerController> ().animator.SetTrigger ("windTrigger");        }
         else if (go_target.tag == "Enemy")
         {
             Vector3 v3_direction = transform.forward.normalized;
