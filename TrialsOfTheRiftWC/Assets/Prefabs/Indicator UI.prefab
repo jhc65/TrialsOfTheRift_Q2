@@ -783,7 +783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_UI: {fileID: 224104040576199700}
 --- !u!114 &114030334522605992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -849,6 +848,7 @@ MonoBehaviour:
   img_windbar: {fileID: 114030334522605992}
   img_icebar: {fileID: 114268763722364518}
   img_electricbar: {fileID: 114583540013049524}
+  rt_hpBar: {fileID: 224532423001938228}
   f_shakeAmt: 5
 --- !u!114 &114073885251589464
 MonoBehaviour:
@@ -867,6 +867,7 @@ MonoBehaviour:
   img_windbar: {fileID: 114153254713761658}
   img_icebar: {fileID: 114556902589025690}
   img_electricbar: {fileID: 114185711514034086}
+  rt_hpBar: {fileID: 224889893268701794}
   f_shakeAmt: 5
 --- !u!114 &114117600855778154
 MonoBehaviour:
@@ -1378,6 +1379,7 @@ MonoBehaviour:
   img_windbar: {fileID: 114305773775949002}
   img_icebar: {fileID: 114117600855778154}
   img_electricbar: {fileID: 114979895958876784}
+  rt_hpBar: {fileID: 224783915372673790}
   f_shakeAmt: 5
 --- !u!114 &114416144931117392
 MonoBehaviour:
@@ -1444,7 +1446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_UI: {fileID: 224783915372673790}
 --- !u!114 &114542111337421988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1684,7 +1685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_UI: {fileID: 224889893268701794}
 --- !u!114 &114721162012085462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1696,7 +1696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go_UI: {fileID: 224532423001938228}
 --- !u!114 &114758262236773178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1884,6 +1883,7 @@ MonoBehaviour:
   img_windbar: {fileID: 114230928312719072}
   img_icebar: {fileID: 114267784963681368}
   img_electricbar: {fileID: 114416699404017706}
+  rt_hpBar: {fileID: 224104040576199700}
   f_shakeAmt: 5
 --- !u!114 &114979895958876784
 MonoBehaviour:

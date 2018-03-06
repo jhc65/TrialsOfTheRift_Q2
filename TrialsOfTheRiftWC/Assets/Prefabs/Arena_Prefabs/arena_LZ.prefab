@@ -77,6 +77,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &1046450599305230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4551752565567948}
+  m_Layer: 12
+  m_Name: Spawner_L2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1050729034212216
 GameObject:
   m_ObjectHideFlags: 1
@@ -156,7 +171,7 @@ GameObject:
   - component: {fileID: 65713109365565742}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -221,7 +236,7 @@ GameObject:
   - component: {fileID: 4326712338194752}
   m_Layer: 11
   m_Name: bookShelf_T
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -303,7 +318,7 @@ GameObject:
   - component: {fileID: 4849734767465878}
   m_Layer: 11
   m_Name: bookShelves_L
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -499,7 +514,7 @@ GameObject:
   - component: {fileID: 65731359298259952}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -538,6 +553,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &1515670833304560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4597322482258934}
+  m_Layer: 12
+  m_Name: Spawner_L1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1522065259409750
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +578,7 @@ GameObject:
   - component: {fileID: 4530489766111994}
   m_Layer: 11
   m_Name: cornerBarrelVase_L
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -616,7 +646,7 @@ GameObject:
   - component: {fileID: 65648057205845762}
   m_Layer: 11
   m_Name: alchemyTable_L
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -681,7 +711,7 @@ GameObject:
   - component: {fileID: 65888472865031608}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -808,6 +838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4388097572519828}
   - component: {fileID: 114043680157858096}
+  - component: {fileID: 114629551503787782}
   m_Layer: 0
   m_Name: arena_LZ
   m_TagString: Untagged
@@ -878,7 +909,7 @@ GameObject:
   - component: {fileID: 65834586580285328}
   m_Layer: 11
   m_Name: DA_ENV-S_Bookshelf
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1206,6 +1237,21 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!1 &1993134700512802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4877303348620846}
+  m_Layer: 12
+  m_Name: Spawner_L3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4014016982686288
 Transform:
@@ -1698,11 +1744,14 @@ Transform:
   m_LocalPosition: {x: -7.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4598876166026276}
+  - {fileID: 4597322482258934}
   - {fileID: 4279947763925062}
-  - {fileID: 4849734767465878}
+  - {fileID: 4598876166026276}
   - {fileID: 4287403259474712}
+  - {fileID: 4849734767465878}
   - {fileID: 4530489766111994}
+  - {fileID: 4551752565567948}
+  - {fileID: 4877303348620846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1830,7 +1879,20 @@ Transform:
   - {fileID: 4959131337263720}
   - {fileID: 4693078521874042}
   m_Father: {fileID: 4388097572519828}
-  m_RootOrder: 4
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4551752565567948
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1046450599305230}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -5, y: 0.5, z: -7}
+  m_LocalScale: {x: 1.8285519, y: 1, z: 1.4265609}
+  m_Children: []
+  m_Father: {fileID: 4388097572519828}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4574602951336712
 Transform:
@@ -1886,6 +1948,19 @@ Transform:
   m_Father: {fileID: 4178879410069576}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4597322482258934
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515670833304560}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 4.5, y: 0.5, z: -7}
+  m_LocalScale: {x: 1.8285552, y: 1, z: 1.4265571}
+  m_Children: []
+  m_Father: {fileID: 4388097572519828}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4598876166026276
 Transform:
   m_ObjectHideFlags: 1
@@ -1897,7 +1972,7 @@ Transform:
   m_LocalScale: {x: 1.8285533, y: 1, z: 1.4265561}
   m_Children: []
   m_Father: {fileID: 4388097572519828}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4604453904741240
 Transform:
@@ -2145,7 +2220,20 @@ Transform:
   - {fileID: 4326712338194752}
   - {fileID: 4208785016380830}
   m_Father: {fileID: 4388097572519828}
-  m_RootOrder: 2
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4877303348620846
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993134700512802}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -4, y: 0.5, z: 8}
+  m_LocalScale: {x: 1.8285519, y: 1, z: 1.4265609}
+  m_Children: []
+  m_Father: {fileID: 4388097572519828}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4935301661689802
 Transform:
@@ -3929,8 +4017,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.716342, y: 0.9790954, z: 0.716342}
-  m_Center: {x: -0.000000014901161, y: -0.029823214, z: 0.000000014901161}
+  m_Size: {x: 2.149026, y: 2.9372864, z: 2.149026}
+  m_Center: {x: -0.000000059604645, y: -0.08946961, z: 0.000000059604645}
 --- !u!65 &65098122915898876
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3941,8 +4029,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.716342, y: 0.9790954, z: 0.716342}
-  m_Center: {x: -0.000000014901161, y: -0.029823214, z: 0.000000014901161}
+  m_Size: {x: 2.149026, y: 2.9372864, z: 2.149026}
+  m_Center: {x: -0.000000059604645, y: -0.08946961, z: 0.000000059604645}
 --- !u!65 &65648057205845762
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4013,7 +4101,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.42, z: 1}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: -0.0000009536743, y: 0.5, z: -0.011598825}
 --- !u!95 &95139102888660090
 Animator:
@@ -4185,3 +4273,19 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: fdcb2da548e6de64c9eeccae79011702, type: 2}
+--- !u!114 &114629551503787782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1751059552468222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85474afc0886154eb8690857b1a7b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go_spawnerPool:
+  - {fileID: 1515670833304560}
+  - {fileID: 1046450599305230}
+  - {fileID: 1993134700512802}
+  side: -1

@@ -155,13 +155,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1361453887809848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 276887c851871f84ab3fa33673aaed2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 67c8ee83c17c5de458bffbdc86d282cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_Side: 1
+  e_side: 0
   f_health: 0
-  f_damage: 5
-  f_canMove: 1
+  f_damage: 0
 --- !u!135 &135008623372215768
 SphereCollider:
   m_ObjectHideFlags: 1

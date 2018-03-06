@@ -49,7 +49,7 @@ public class ElectricAOEController : MonoBehaviour {
         }
         else if (go_target.tag == "Enemy") {
             StartCoroutine("ApplyEnemyDamage", go_target);
-            go_target.GetComponent<EnemyController>().Slow(.5f);
+            go_target.GetComponent<EnemyController>().Slow();
         }
         else if (go_target.tag == "RiftBoss") {
             Debug.Log(go_target.tag);
@@ -119,7 +119,7 @@ public class ElectricAOEController : MonoBehaviour {
     IEnumerator ApplyPlayerDamage(GameObject go_target) {
         if (go_target)
         {  //Make sure it's not already dead.
-            go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier);
+            go_target.GetComponent<PlayerController>().TakeDamage(f_electricDamage * Constants.SpellStats.C_ElectricPlayerDamageMultiplier,Constants.Global.DamageType.ELECTRICITY);
             yield return new WaitForSeconds(0.5f);
             StartCoroutine("ApplyPlayerDamage", go_target);
         }

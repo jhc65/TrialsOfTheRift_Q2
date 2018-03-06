@@ -79,7 +79,7 @@ public class IceController : SpellController {
         if (go_target.tag == "Player")
         {
             go_target.GetComponent<PlayerController>().Freeze();
-            go_target.GetComponent<PlayerController>().TakeDamage(f_iceDamage * Constants.SpellStats.C_IcePlayerDamageMultiplier);
+            go_target.GetComponent<PlayerController>().TakeDamage(f_iceDamage * Constants.SpellStats.C_IcePlayerDamageMultiplier,Constants.Global.DamageType.ICE);
         }
         else if (go_target.tag == "Enemy")
         {

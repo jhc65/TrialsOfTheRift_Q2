@@ -1,38 +1,34 @@
+/*  Rune Controller - Noah Nam and Jeff Brown
+ * 
+ *  Desc:   Instantiate an explosin prefab on trigger
+ * 
+ */
+ 
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class RuneController : MonoBehaviour {
-	private float timer = 4.0f;
 	private bool activated = false;
-	public GameObject go_explosionPrefab;
+	[SerializeField] private GameObject go_explosionPrefab;
 
-	public void Start() {
-
-	}
-
-	public void Update() {
+	void Update() {
 
 		if (activated) {
-			timer -= Time.deltaTime;
+			Invoke("Deactivate", Constants.EnemyStats.C_RuneExplosionCountDownTime);
+			activated = false;
 		}
-
-		if (timer < 0) {
-			InvokeDestroy(); 
-		}
-
 	}
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider other)
     {
-        if(collider.gameObject.tag == "Player"  || collider.gameObject.tag == "Enemy")
-        {
+        if(other.CompareTag("Player") || other.CompareTag("Enemy")) {
             activated = true;
         }
     }
 
-	void InvokeDestroy() {
+	void Deactivate() {
 		Instantiate(go_explosionPrefab, transform.position, Quaternion.identity);
-		Destroy(gameObject);
+		gameObject.SetActive(false);
     }
-} 
+}

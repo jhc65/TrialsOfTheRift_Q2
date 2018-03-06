@@ -34,7 +34,7 @@ public class RiftBossRuneController : MonoBehaviour
     {
         if (go_target.tag == "Player")
         {
-            go_target.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_RuneDamage);
+            go_target.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_RuneDamage,Constants.Global.DamageType.RUNE);
         }
     }
 }

@@ -15,11 +15,12 @@ public static class Constants {
     public static class Global {
         public enum Color { RED, BLUE };
         public enum Side { LEFT = -1, RIGHT = 1 };
+		public enum DamageType { WIND, ICE, ELECTRICITY, MAGICMISSILE, ENEMY, RIFT, DEATHBOLT, RUNE, PUCK };
     }
 
     // Player Stats
     public static class PlayerStats {
-        public static float C_MovementSpeed = 3.0f;
+        public static float C_MovementSpeed = 6.0f;
         public static float C_WispMovementSpeed = 1.5f;
         public static float C_RespawnTimer = 5.0f;
         public static float C_MaxHealth = 300.0f;
@@ -148,8 +149,17 @@ public static class Constants {
        
     // Enemy Stats
     public static class EnemyStats {
-        public static int C_EnemySpawnCapPerSide = 0;
-		public static int C_NecromancerSpawnCapPerSide = 0;
+
+        public static float C_NecromancerBaseSpeed = 1.5f;
+        public static float C_NecromancerHealth = 150.0f;
+		public static float C_NecromancerAvoidDistance = 5.0f;
+		public static int C_NecromancerSpawnCapPerSide = 2;
+		public static float C_WanderingRadius = 10.0f;
+		public static float C_RuneExplosionCountDownTime = 5.0f;
+		public static float C_RuneTimer = 2.0f;
+		public static float C_SummonTimer = 8.0f;
+
+        public static int C_EnemySpawnCapPerSide = 7;
         public static float C_EnemyBaseSpeed = 1.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 75.0f;
@@ -173,6 +183,7 @@ public static class Constants {
         public static float C_VolatilityDeathboltLiveTimer = 12.0f;
         public static float C_VolatilityDeathboltSpeed = 10.0f;
         public static float C_VolatilityDeathboltDamage = 300.0f;
+        public static float C_RiftTeleportDelay = 0.5f;
 
         public static float C_VolatilityIncrease_RoomAdvance = 5.0f;
         public static float C_VolatilityIncrease_SpellCross = 0.5f;
@@ -202,10 +213,10 @@ public static class Constants {
 
     //Carry over for volume options from the main menu.
     public static class VolOptions {
-        public static float C_MasterVolume = 0.0f;
-        public static float C_BGMVolume = 0.0f;
-        public static float C_SFXVolume = 0.0f;
-        public static float C_VOIVolume = 0.0f;
+        public static float C_MasterVolume = 1f;
+        public static float C_BGMVolume = 1f;
+        public static float C_SFXVolume = 1f;
+        public static float C_VOIVolume = 1f;
     }
 
 	//public static GameObject[] C_Players = GameObject.FindGameObjectsWithTag("Player");

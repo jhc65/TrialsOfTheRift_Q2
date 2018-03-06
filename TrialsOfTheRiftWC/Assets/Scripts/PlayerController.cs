@@ -22,9 +22,10 @@ public class PlayerController : MonoBehaviour{
 	public GameObject go_iceShot;           // ice spell object
 	public GameObject go_electricShot;      // ice spell object
     //[SerializeField]private PlayerHUDController phc_hud;    //HUD object  
-    [SerializeField]private PauseController pauc_pause;     //For Pausing.
+    [SerializeField] private PauseController pauc_pause;     //For Pausing.
+    [SerializeField] private GameObject go_deathOrbPrefab;
 
-	public bool isWisp = false;
+    public bool isWisp = false;
 
     private Player p_player;                // rewired player for input control
     private float f_nextWind;				// time next wind spell can be cast
@@ -49,7 +50,8 @@ public class PlayerController : MonoBehaviour{
 
 	public Animator animator;
 
-
+	private bool b_stepOk;
+	private float f_stepDelay = 0.4f;
 
 	private void Move() {
         float f_inputX = p_player.GetAxis("MoveHorizontal");
@@ -77,6 +79,12 @@ public class PlayerController : MonoBehaviour{
 		}
 		else {
 			GetComponent<Rigidbody>().velocity = (v3_moveDir * Constants.PlayerStats.C_MovementSpeed) * f_canMove;
+			if(v3_moveDir.magnitude > 0 && b_stepOk){
+				b_stepOk = false;
+				maestro.PlayPlayerFootstep();
+				maestro.PlayPlayerClothing();
+			}
+			
 		}
 	}
 
@@ -120,6 +128,7 @@ public class PlayerController : MonoBehaviour{
 
     private void PlayerDeath()
     {
+		maestro.PlayAnnouncementWispGeneric();
         DropFlag();
         TurnOff();
         isWisp = true;
@@ -146,8 +155,10 @@ public class PlayerController : MonoBehaviour{
         f_nextIce = Time.time;
     }
 
-	public void TakeDamage(float damage) {
+	public void TakeDamage(float damage, Constants.Global.DamageType d) {
 		if (!isWisp) {
+			maestro.PlayAnnouncmentPlayerHit(i_playerNumber,d);
+			maestro.PlayPlayerHit();
 			f_playerHealth -= damage;
             //Damage flicker goes here.
             DamageVisualOn();
@@ -217,6 +228,8 @@ public class PlayerController : MonoBehaviour{
     //}
 
     void Start() {
+		b_stepOk = true;
+		InvokeRepeating("StepDelay",f_stepDelay,f_stepDelay);
         p_player = ReInput.players.GetPlayer(i_playerNumber);
         f_playerHealth = Constants.PlayerStats.C_MaxHealth;
         //col_originalColor = go_playerCapsule.GetComponent<MeshRenderer>().material.color;
@@ -409,17 +422,27 @@ public class PlayerController : MonoBehaviour{
     private void MoveBack() {
         go_interactCollider.SetActive(false);
         go_interactCollider.transform.localPosition = new Vector3(go_interactCollider.transform.localPosition.x, transform.position.y, go_interactCollider.transform.localPosition.z);
-        
+    }
+
+    private void TeleportPlayer() {
+        transform.position = transform.position + (int)e_Side * Constants.RiftStats.C_RiftTeleportOffset;
+        go_deathOrbPrefab.gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Rift") {
             DropFlag();
-			TakeDamage(f_playerHealth);
+			TakeDamage(f_playerHealth,Constants.Global.DamageType.RIFT);
             while (!isWisp) {
                 Debug.Log("I'm waiting for the player to be a wisp, because then they will have dropped the flag and I can move them across the rift.");
             }
-			transform.position = transform.position + (int)e_Side * Constants.RiftStats.C_RiftTeleportOffset;
+
+            //moves the death orb assigned to the position they were swallowed to indicate they are in the Rift
+            go_deathOrbPrefab.transform.position = new Vector3(0.0f, transform.position.y, transform.position.z);
+            go_deathOrbPrefab.gameObject.SetActive(true);
+            gameObject.SetActive(false);
+            Invoke("TeleportPlayer", Constants.RiftStats.C_RiftTeleportDelay);
 		}
     }
 
@@ -430,4 +453,8 @@ public class PlayerController : MonoBehaviour{
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
         }
     }
+	
+	private void StepDelay(){
+		b_stepOk = true;
+	}
 }

@@ -9,7 +9,8 @@ public class WindController : SpellController {
 
     private void OnDestroy()
     {
-        Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
+        ParticleSystem ps_particle = Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
+        ps_particle.GetComponent<ParticleSystemController>().enabled = true;
     }
 
     protected override void ApplyEffect(GameObject go_target, Collision collision) {
@@ -18,8 +19,10 @@ public class WindController : SpellController {
             Vector3 v3_direction = transform.forward.normalized;
             go_target.GetComponent<Rigidbody>().AddForce(v3_direction * Constants.SpellStats.C_WindForce * f_charged);
             go_target.GetComponent<PlayerController>().DropFlag();
-            go_target.GetComponent<PlayerController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier);
-			go_target.GetComponent<PlayerController> ().animator.SetTrigger ("windTrigger");        }
+
+            go_target.GetComponent<PlayerController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier,Constants.Global.DamageType.WIND);
+            go_target.GetComponent<PlayerController> ().animator.SetTrigger ("windTrigger");           
+        }
         else if (go_target.tag == "Enemy")
         {
             Vector3 v3_direction = transform.forward.normalized;
