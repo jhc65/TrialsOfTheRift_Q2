@@ -43,7 +43,7 @@ public class ElectricAOEController : MonoBehaviour {
             {
                 go_target.GetComponent<PlayerController>().DropFlag();
                 go_target.GetComponent<PlayerController>().f_canMove = .5f; //TODO: Constants
-				go_target.GetComponent<PlayerController>().animator.SetTrigger("gooTrigger");
+				go_target.GetComponent<PlayerController>().Animator.SetTrigger("gooTrigger");
                 StartCoroutine("ApplyPlayerDamage", go_target);
             }
         }

@@ -17,7 +17,7 @@ public class MagicMissileController : SpellController {
             {
                 go_target.GetComponent<PlayerController>().TakeDamage(Constants.SpellStats.C_MagicMissileDamage * f_charged,Constants.Global.DamageType.MAGICMISSILE);
                 go_target.GetComponent<PlayerController>().DropFlag();
-				go_target.GetComponent<PlayerController> ().animator.SetTrigger ("hitTrigger");
+				go_target.GetComponent<PlayerController> ().Animator.SetTrigger ("hitTrigger");
             }
             else {
                 go_target.GetComponent<PlayerController>().Heal(Constants.SpellStats.C_MagicMissileHeal * f_charged);

@@ -48,12 +48,17 @@ public class PlayerController : MonoBehaviour{
     //private Color col_originalColor;        // Color of capsule.
 	private Maestro maestro;				// Reference to Maestro singleton.
 
-	[SerializeField] private Animator animator;
+	[SerializeField] private Animator anim;
 
 	private bool b_stepOk;
 	private float f_stepDelay = 0.4f;
 
-	private void Move() {
+    // Getters
+    public Animator Animator {
+        get { return anim; }
+    }
+
+    private void Move() {
         float f_inputX = p_player.GetAxis("MoveHorizontal");
         float f_inputZ = p_player.GetAxis("MoveVertical");
         float f_aimInputX = p_player.GetAxis("AimHorizontal");
@@ -64,8 +69,8 @@ public class PlayerController : MonoBehaviour{
 		Vector3 v3_aimDir = new Vector3(f_aimInputX, 0, f_aimInputZ).normalized;
 		//f_lookDirection = f_inputX + f_aimInputX;
 
-		animator.SetFloat ("runSpeed", v3_moveDir.magnitude);
-		animator.SetFloat ("lookDirection", v3_aimDir.magnitude);
+		anim.SetFloat ("runSpeed", v3_moveDir.magnitude);
+		anim.SetFloat ("lookDirection", v3_aimDir.magnitude);
 
 
 		if (v3_aimDir.magnitude > 0) {
@@ -89,14 +94,14 @@ public class PlayerController : MonoBehaviour{
 	public void Freeze() {
 		f_canMove = 0;
 		DropFlag();
-		animator.SetTrigger ("freezeTrigger");
-		animator.SetBool ("freezeBool", true);
+		anim.SetTrigger ("freezeTrigger");
+		anim.SetBool ("freezeBool", true);
 		Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
 	}
 
 	private void Unfreeze() {
 		f_canMove = 1;
-		animator.SetBool ("freezeBool", false);
+		anim.SetBool ("freezeBool", false);
     }
 
 	public void Pickup(GameObject flag) {
@@ -281,7 +286,7 @@ public class PlayerController : MonoBehaviour{
                 }
                 if (p_player.GetButton("MagicMissile")) {
 					maestro.PlayMagicMissileShoot();
-					animator.SetTrigger ("attackTrigger");
+					anim.SetTrigger ("attackTrigger");
                     f_nextMagicMissile = 0;
 				    GameObject go_spell = Instantiate(go_magicMissileShot, t_spellSpawn.position, t_spellSpawn.rotation);
 				    SpellController sc_firing = go_spell.GetComponent<SpellController>();
@@ -310,12 +315,12 @@ public class PlayerController : MonoBehaviour{
             if (f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 if (p_player.GetButtonTimePressed("WindSpell") != 0) {
                     f_windCharge += p_player.GetButtonTimePressed("WindSpell");
-					animator.SetTrigger ("windChargeTrigger");
-					animator.SetFloat ("windCharge", f_windCharge);
+					anim.SetTrigger ("windChargeTrigger");
+					anim.SetFloat ("windCharge", f_windCharge);
                 }
                 if (p_player.GetButtonUp("WindSpell")) {
 					maestro.PlayWindShoot();
-					animator.SetTrigger("windSpellTrigger");
+					anim.SetTrigger("windSpellTrigger");
                     f_nextWind = 0;
 				    f_nextCast = 0;
                     for (int i = -30; i <= 30; i += 30) {
@@ -330,7 +335,7 @@ public class PlayerController : MonoBehaviour{
                         sc_firing.pc_owner = this;
                     }
                     f_windCharge = 0;
-					animator.SetFloat ("windCharge", f_windCharge);
+					anim.SetFloat ("windCharge", f_windCharge);
 				} 
                 
 			}
@@ -356,11 +361,11 @@ public class PlayerController : MonoBehaviour{
             if (f_nextElectric > Constants.SpellStats.C_ElectricCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 if (p_player.GetButtonTimePressed("ElectricitySpell") != 0) {
                     f_electricCharge += p_player.GetButtonTimePressed("ElectricitySpell");
-					animator.SetFloat ("gooCharge", f_electricCharge);
+					anim.SetFloat ("gooCharge", f_electricCharge);
                 }
                 if (p_player.GetButtonUp("ElectricitySpell")) {
 					maestro.PlayElectricShoot();
-					animator.SetTrigger ("goospellTrigger");
+					anim.SetTrigger ("goospellTrigger");
                     f_nextElectric = 0;
 				    f_nextCast = 0;
 				    GameObject go_spell = Instantiate(go_electricShot, t_spellSpawn.position, t_spellSpawn.rotation);
@@ -371,7 +376,7 @@ public class PlayerController : MonoBehaviour{
                     sc_firing.Charge(f_electricCharge);
                     f_electricCharge = 0;
                     sc_firing.pc_owner = this;
-					animator.SetFloat ("gooCharge", f_electricCharge);
+					anim.SetFloat ("gooCharge", f_electricCharge);
                 }
                 
 			}

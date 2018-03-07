@@ -82,6 +82,9 @@ public sealed class DarkMagician : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
         }
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            GetNextObjective(objv_currentRedObjective.Color, objv_currentRedObjective.NumberInList);
+        }
 
         // check for completion of objectives
         if (b_gameOver) {

@@ -21,7 +21,7 @@ public class WindController : SpellController {
             go_target.GetComponent<PlayerController>().DropFlag();
 
             go_target.GetComponent<PlayerController>().TakeDamage(f_windDamage * Constants.SpellStats.C_WindPlayerDamageMultiplier,Constants.Global.DamageType.WIND);
-            go_target.GetComponent<PlayerController> ().animator.SetTrigger ("windTrigger");           
+            go_target.GetComponent<PlayerController> ().Animator.SetTrigger ("windTrigger");           
         }
         else if (go_target.tag == "Enemy")
         {
