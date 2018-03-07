@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour{
     //private Color col_originalColor;        // Color of capsule.
 	private Maestro maestro;				// Reference to Maestro singleton.
 
-	public Animator animator;
+	[SerializeField] private Animator animator;
 
 	private bool b_stepOk;
 	private float f_stepDelay = 0.4f;
@@ -58,16 +58,14 @@ public class PlayerController : MonoBehaviour{
         float f_inputZ = p_player.GetAxis("MoveVertical");
         float f_aimInputX = p_player.GetAxis("AimHorizontal");
         float f_aimInputZ = p_player.GetAxis("AimVertical");
-		float lookDirection;
+		//float f_lookDirection;
 
         Vector3 v3_moveDir = new Vector3(f_inputX, 0, f_inputZ).normalized;
 		Vector3 v3_aimDir = new Vector3(f_aimInputX, 0, f_aimInputZ).normalized;
-		lookDirection = f_inputX + f_aimInputX;
+		//f_lookDirection = f_inputX + f_aimInputX;
 
-		animator.SetFloat ("runSpeed", f_inputZ);
-		animator.SetFloat ("runSpeed", f_inputX);
-
-		animator.SetFloat ("lookDirection", lookDirection);
+		animator.SetFloat ("runSpeed", v3_moveDir.magnitude);
+		animator.SetFloat ("lookDirection", v3_aimDir.magnitude);
 
 
 		if (v3_aimDir.magnitude > 0) {
@@ -92,13 +90,13 @@ public class PlayerController : MonoBehaviour{
 		f_canMove = 0;
 		DropFlag();
 		animator.SetTrigger ("freezeTrigger");
-		animator.SetBool ("freezeBool", false);
+		animator.SetBool ("freezeBool", true);
 		Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
 	}
 
 	private void Unfreeze() {
 		f_canMove = 1;
-		animator.SetBool ("freezeBool", true);
+		animator.SetBool ("freezeBool", false);
     }
 
 	public void Pickup(GameObject flag) {
@@ -243,8 +241,6 @@ public class PlayerController : MonoBehaviour{
         b_iceboltMode = false;
 		
 		maestro = Maestro.Instance;     // reference to Rift singleton
-
-		animator = GetComponentInChildren <Animator>();
 
 		if (transform.position.x > 0)
 			e_Side = Constants.Global.Side.RIGHT;
