@@ -377,8 +377,9 @@ public sealed class RiftController : MonoBehaviour {
         Vector3 spawnPos = RandomCircle(center, side, Constants.EnemyStats.C_SpawnRadius);
 
         // Checks to see if the spawn position is already occupied by anything with a collider
-            // If it is, find a new spawn position for the enemy
-        var hitColliders = Physics.OverlapSphere(spawnPos, 0.005f);
+        // If it is, find a new spawn position for the enemy
+        Debug.Log(spawnPos);
+        var hitColliders = Physics.OverlapSphere(spawnPos, 0.0005f);
         if (hitColliders.Length > 0) {
             CircularEnemySpawn(center, side);
         }

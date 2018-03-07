@@ -196,6 +196,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1106236127650924
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4241864406794166}
+  m_Layer: 12
+  m_Name: Spawn3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1126258633442080
 GameObject:
   m_ObjectHideFlags: 1
@@ -902,6 +917,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1510352698364322
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4625433874466382}
+  m_Layer: 12
+  m_Name: Spawn1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1510791752550306
 GameObject:
   m_ObjectHideFlags: 1
@@ -1163,13 +1193,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4120373475300948}
   - component: {fileID: 114984330547151472}
+  - component: {fileID: 114965852192774742}
   m_Layer: 0
   m_Name: Art_L1NewMapsAndScaling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1652101508591234
 GameObject:
   m_ObjectHideFlags: 1
@@ -1199,6 +1230,21 @@ GameObject:
   - component: {fileID: 23610980979447538}
   m_Layer: 0
   m_Name: LegPiece05
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1657098206674330
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4068201468193698}
+  m_Layer: 12
+  m_Name: Spawn2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1380,6 +1426,21 @@ GameObject:
   - component: {fileID: 23265327007896740}
   m_Layer: 0
   m_Name: LegPiece010
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1712154759260408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4481831721675582}
+  m_Layer: 12
+  m_Name: Spawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2148,6 +2209,19 @@ Transform:
   m_Father: {fileID: 4302288911575916}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4068201468193698
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1657098206674330}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4481831721675582}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4072401469791842
 Transform:
   m_ObjectHideFlags: 1
@@ -2241,6 +2315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4399217356372860}
+  - {fileID: 4481831721675582}
   - {fileID: 4705380771968064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2437,6 +2512,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4400466062231852}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4241864406794166
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106236127650924}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4481831721675582}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4254389166503002
 Transform:
@@ -2840,6 +2928,22 @@ Transform:
   m_Father: {fileID: 4511898027963502}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4481831721675582
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712154759260408}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1.8285543, y: 1, z: 1.4265566}
+  m_Children:
+  - {fileID: 4625433874466382}
+  - {fileID: 4068201468193698}
+  - {fileID: 4241864406794166}
+  m_Father: {fileID: 4120373475300948}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4492464724196526
 Transform:
   m_ObjectHideFlags: 1
@@ -3090,6 +3194,19 @@ Transform:
   m_Father: {fileID: 4217007544703712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4625433874466382
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1510352698364322}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4481831721675582}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4631047809902762
 Transform:
   m_ObjectHideFlags: 1
@@ -3266,7 +3383,7 @@ Transform:
   m_LocalScale: {x: 1.8285533, y: 1, z: 1.4265561}
   m_Children: []
   m_Father: {fileID: 4120373475300948}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4710278452879412
 Transform:
@@ -7246,6 +7363,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114965852192774742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651239782622096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85474afc0886154eb8690857b1a7b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go_spawnerPool:
+  - {fileID: 1510352698364322}
+  - {fileID: 1657098206674330}
+  - {fileID: 1106236127650924}
+  side: -1
 --- !u!114 &114984330547151472
 MonoBehaviour:
   m_ObjectHideFlags: 1
