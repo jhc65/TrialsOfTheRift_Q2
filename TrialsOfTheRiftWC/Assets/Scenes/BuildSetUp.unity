@@ -272,7 +272,7 @@ Prefab:
     - target: {fileID: 114201209817594814, guid: 04e1940160c89644dab3db7f77c28e42,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4324443353586388, guid: 04e1940160c89644dab3db7f77c28e42, type: 2}
       propertyPath: m_LocalPosition.x
@@ -310,17 +310,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1615280667}
     - target: {fileID: 114201209817594814, guid: 04e1940160c89644dab3db7f77c28e42,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1312961418}
     - target: {fileID: 114201209817594814, guid: 04e1940160c89644dab3db7f77c28e42,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 34448824}
     - target: {fileID: 1563210960389626, guid: 04e1940160c89644dab3db7f77c28e42, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -521,6 +521,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1530556161826358, guid: a89847ae0aa2e054fad0535c3a45d4da,
     type: 2}
   m_PrefabInternal: {fileID: 1145306162}
+--- !u!1 &34448824 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1742099262541850, guid: 000c45f295755ae43998e7c16448741a,
+    type: 2}
+  m_PrefabInternal: {fileID: 216278967}
 --- !u!1 &37571643 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1530556161826358, guid: a89847ae0aa2e054fad0535c3a45d4da,
@@ -1033,7 +1038,7 @@ Prefab:
     - target: {fileID: 114950012174937082, guid: f981430eb51e2cb44bd79bb554e56b86,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4878815122652740, guid: f981430eb51e2cb44bd79bb554e56b86, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1071,17 +1076,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1538081582}
     - target: {fileID: 114950012174937082, guid: f981430eb51e2cb44bd79bb554e56b86,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 857471892}
     - target: {fileID: 114950012174937082, guid: f981430eb51e2cb44bd79bb554e56b86,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2099098997}
     - target: {fileID: 1461462993876920, guid: f981430eb51e2cb44bd79bb554e56b86, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -1684,11 +1689,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 23188746183229886, guid: 000c45f295755ae43998e7c16448741a,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a56e623747d564091f22030a6afd93, type: 2}
     - target: {fileID: 1742099262541850, guid: 000c45f295755ae43998e7c16448741a, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -1990,14 +1990,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 23737016924844890, guid: c421bb72df22d2f459aee8369505fc32,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a56e623747d564091f22030a6afd93, type: 2}
     - target: {fileID: 1995952338719304, guid: c421bb72df22d2f459aee8369505fc32, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995952338719304, guid: c421bb72df22d2f459aee8369505fc32, type: 2}
+      propertyPath: m_Name
+      value: Art_R2NewMapsAndScaling
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c421bb72df22d2f459aee8369505fc32, type: 2}
@@ -2603,11 +2602,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 23393485517612860, guid: fd2d15736fe51d540964560d9235c74a,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a56e623747d564091f22030a6afd93, type: 2}
     - target: {fileID: 1651239782622096, guid: fd2d15736fe51d540964560d9235c74a, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -4209,7 +4203,7 @@ Prefab:
     - target: {fileID: 114171931449179728, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4228915630801702, guid: 014d2cc6e090ae34a8e7bfe5ec453da7, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4247,17 +4241,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1615280667}
     - target: {fileID: 114171931449179728, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1312961418}
     - target: {fileID: 114171931449179728, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 34448824}
     - target: {fileID: 1221571481741548, guid: 014d2cc6e090ae34a8e7bfe5ec453da7, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -4476,11 +4470,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 23902846636016020, guid: cb92aefe201330a46a53b5b909fbbdd8,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a56e623747d564091f22030a6afd93, type: 2}
     - target: {fileID: 1702281483819380, guid: cb92aefe201330a46a53b5b909fbbdd8, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -6157,7 +6146,7 @@ Prefab:
     - target: {fileID: 114980289765004476, guid: f133622674575e54c89142093b338ea6,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4391151472608460, guid: f133622674575e54c89142093b338ea6, type: 2}
       propertyPath: m_LocalPosition.x
@@ -6195,17 +6184,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1538081582}
     - target: {fileID: 114980289765004476, guid: f133622674575e54c89142093b338ea6,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 857471892}
     - target: {fileID: 114980289765004476, guid: f133622674575e54c89142093b338ea6,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2099098997}
     - target: {fileID: 1258882638583858, guid: f133622674575e54c89142093b338ea6, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -7379,24 +7368,14 @@ Prefab:
       propertyPath: go_deathOrbPrefab
       value: 
       objectReference: {fileID: 570329476}
-    - target: {fileID: 114164504089944732, guid: 42441a1f758be144e932a2a56dcba44c,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114837281980928806, guid: 42441a1f758be144e932a2a56dcba44c,
-        type: 2}
-      propertyPath: go_trackedObject
-      value: 
-      objectReference: {fileID: 62092019}
-    - target: {fileID: 114837281980928806, guid: 42441a1f758be144e932a2a56dcba44c,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42441a1f758be144e932a2a56dcba44c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &857471892 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1702281483819380, guid: cb92aefe201330a46a53b5b909fbbdd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 516132113}
 --- !u!1001 &859299167
 Prefab:
   m_ObjectHideFlags: 0
@@ -7436,11 +7415,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 23317237552965772, guid: f401315d90208d6448f513b49704c148,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a56e623747d564091f22030a6afd93, type: 2}
     - target: {fileID: 1125138090417284, guid: f401315d90208d6448f513b49704c148, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -7736,7 +7710,7 @@ Prefab:
     - target: {fileID: 114651926557978906, guid: 1f6452573653d4242b25fd7aba3f2dbf,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4806344157949340, guid: 1f6452573653d4242b25fd7aba3f2dbf, type: 2}
       propertyPath: m_LocalPosition.x
@@ -7774,17 +7748,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1615280667}
     - target: {fileID: 114651926557978906, guid: 1f6452573653d4242b25fd7aba3f2dbf,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1312961418}
     - target: {fileID: 114651926557978906, guid: 1f6452573653d4242b25fd7aba3f2dbf,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 34448824}
     - target: {fileID: 1749044300878628, guid: 1f6452573653d4242b25fd7aba3f2dbf, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -8557,7 +8531,7 @@ Prefab:
     - target: {fileID: 114251381420450200, guid: f8ba2bf30071d9446ba41e4b1984c887,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4551817699590382, guid: f8ba2bf30071d9446ba41e4b1984c887, type: 2}
       propertyPath: m_LocalPosition.x
@@ -8595,17 +8569,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1538081582}
     - target: {fileID: 114251381420450200, guid: f8ba2bf30071d9446ba41e4b1984c887,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 857471892}
     - target: {fileID: 114251381420450200, guid: f8ba2bf30071d9446ba41e4b1984c887,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2099098997}
     - target: {fileID: 1842781013794878, guid: f8ba2bf30071d9446ba41e4b1984c887, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -9742,7 +9716,7 @@ Prefab:
     - target: {fileID: 114404955938652292, guid: 4283a83d2382611408980775eb1895ec,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4504866560062754, guid: 4283a83d2382611408980775eb1895ec, type: 2}
       propertyPath: m_LocalPosition.x
@@ -9780,17 +9754,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1615280667}
     - target: {fileID: 114404955938652292, guid: 4283a83d2382611408980775eb1895ec,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1312961418}
     - target: {fileID: 114404955938652292, guid: 4283a83d2382611408980775eb1895ec,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 34448824}
     - target: {fileID: 1202617739234258, guid: 4283a83d2382611408980775eb1895ec, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -10930,7 +10904,7 @@ Prefab:
     - target: {fileID: 114048660257854474, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4570724191784448, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
       propertyPath: m_LocalPosition.x
@@ -10968,17 +10942,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1538081582}
     - target: {fileID: 114048660257854474, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 857471892}
     - target: {fileID: 114048660257854474, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2099098997}
     - target: {fileID: 1827768655482312, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -11633,7 +11607,7 @@ Prefab:
     - target: {fileID: 114041289190177280, guid: 8ce5dcaba78bbae4b9df37b219fbd280,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4422764871314592, guid: 8ce5dcaba78bbae4b9df37b219fbd280, type: 2}
       propertyPath: m_LocalPosition.x
@@ -11671,17 +11645,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1615280667}
     - target: {fileID: 114041289190177280, guid: 8ce5dcaba78bbae4b9df37b219fbd280,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1312961418}
     - target: {fileID: 114041289190177280, guid: 8ce5dcaba78bbae4b9df37b219fbd280,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 34448824}
     - target: {fileID: 1457182258269322, guid: 8ce5dcaba78bbae4b9df37b219fbd280, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -11976,6 +11950,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1361453887809848, guid: dcf428e369c5eca45aca3fd48073e9db,
     type: 2}
   m_PrefabInternal: {fileID: 1889471143}
+--- !u!1 &1312961418 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1995952338719304, guid: c421bb72df22d2f459aee8369505fc32,
+    type: 2}
+  m_PrefabInternal: {fileID: 261112504}
 --- !u!1 &1312993436 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1379909744417984, guid: 662dafb73de54c14ca0a48bf6f985eef,
@@ -12038,7 +12017,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4541464925284306, guid: e4063cc5f759b594eafdb5f7d36c0269, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.72
+      value: -6.78
       objectReference: {fileID: 0}
     - target: {fileID: 4541464925284306, guid: e4063cc5f759b594eafdb5f7d36c0269, type: 2}
       propertyPath: m_LocalPosition.y
@@ -13729,6 +13708,11 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1538081582 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1651239782622096, guid: fd2d15736fe51d540964560d9235c74a,
+    type: 2}
+  m_PrefabInternal: {fileID: 332110323}
 --- !u!1 &1539341126
 GameObject:
   m_ObjectHideFlags: 0
@@ -14517,24 +14501,14 @@ Prefab:
       propertyPath: go_deathOrbPrefab
       value: 
       objectReference: {fileID: 135651006}
-    - target: {fileID: 114998718547827962, guid: 662dafb73de54c14ca0a48bf6f985eef,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114561086288472644, guid: 662dafb73de54c14ca0a48bf6f985eef,
-        type: 2}
-      propertyPath: go_trackedObject
-      value: 
-      objectReference: {fileID: 1312993436}
-    - target: {fileID: 114561086288472644, guid: 662dafb73de54c14ca0a48bf6f985eef,
-        type: 2}
-      propertyPath: v3_offset.y
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 662dafb73de54c14ca0a48bf6f985eef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1615280667 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1931529499818074, guid: 5038ee532b5ee7e41a873c1e75813d90,
+    type: 2}
+  m_PrefabInternal: {fileID: 1733974258}
 --- !u!1001 &1618142668
 Prefab:
   m_ObjectHideFlags: 0
@@ -14737,7 +14711,7 @@ Prefab:
     - target: {fileID: 114583166485856520, guid: 434b33ba9458c2e4dbe93368126f500a,
         type: 2}
       propertyPath: go_roomPool.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4265010622216386, guid: 434b33ba9458c2e4dbe93368126f500a, type: 2}
       propertyPath: m_LocalPosition.x
@@ -14779,17 +14753,17 @@ Prefab:
         type: 2}
       propertyPath: go_roomPool.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1538081582}
     - target: {fileID: 114583166485856520, guid: 434b33ba9458c2e4dbe93368126f500a,
         type: 2}
       propertyPath: go_roomPool.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 857471892}
     - target: {fileID: 114583166485856520, guid: 434b33ba9458c2e4dbe93368126f500a,
         type: 2}
       propertyPath: go_roomPool.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2099098997}
     - target: {fileID: 4265010622216386, guid: 434b33ba9458c2e4dbe93368126f500a, type: 2}
       propertyPath: m_LocalScale.x
       value: 0.75
@@ -15099,11 +15073,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 23443036842271314, guid: 5038ee532b5ee7e41a873c1e75813d90,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a56e623747d564091f22030a6afd93, type: 2}
     - target: {fileID: 1931529499818074, guid: 5038ee532b5ee7e41a873c1e75813d90, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -18650,6 +18619,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085694508}
+--- !u!1 &2099098997 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1125138090417284, guid: f401315d90208d6448f513b49704c148,
+    type: 2}
+  m_PrefabInternal: {fileID: 859299167}
 --- !u!1001 &2144990295
 Prefab:
   m_ObjectHideFlags: 0

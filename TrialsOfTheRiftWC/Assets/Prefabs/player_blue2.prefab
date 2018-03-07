@@ -3626,7 +3626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
   go_trackedObject: {fileID: 1862860322160332}
-  v3_offset: {x: -0.25, y: 0.1, z: -0.8}
+  v3_offset: {x: -0.25, y: 3, z: -0.8}
 --- !u!114 &114193751008584124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3956,8 +3956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam_Camera: {fileID: 0}
-  go_trackedObject: {fileID: 0}
-  v3_offset: {x: 0, y: 1, z: 1.6}
+  go_trackedObject: {fileID: 1862860322160332}
+  v3_offset: {x: 0, y: 3, z: 1.6}
 --- !u!114 &114962185524172310
 MonoBehaviour:
   m_ObjectHideFlags: 1

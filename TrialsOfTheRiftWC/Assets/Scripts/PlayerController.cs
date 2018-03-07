@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour{
 	private float f_playerHealth;           // player's current health value
     public float f_projectileSize;          // size of player projectiles.
     //private Color col_originalColor;        // Color of capsule.
-	protected Maestro maestro;				// Reference to Maestro singleton.
+	private Maestro maestro;				// Reference to Maestro singleton.
 
 	public Animator animator;
 
