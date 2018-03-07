@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33990734547254460}
   - component: {fileID: 23943249145445878}
   - component: {fileID: 95194875058423818}
+  - component: {fileID: 65230010117046830}
   m_Layer: 0
   m_Name: DA_ENV-S_SideWall
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012262202485274}
   m_Mesh: {fileID: 4300000, guid: 5708d780d24ce5647bdd0c1f4812953a, type: 3}
+--- !u!65 &65230010117046830
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012262202485274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95194875058423818
 Animator:
   serializedVersion: 3

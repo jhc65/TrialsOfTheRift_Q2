@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33659103892482876}
   - component: {fileID: 23826289435610786}
   - component: {fileID: 95470045872360650}
+  - component: {fileID: 65441731700407498}
   m_Layer: 0
   m_Name: DA_ENV-S_LongWall
   m_TagString: Untagged
@@ -81,6 +82,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1995981368845428}
   m_Mesh: {fileID: 4300000, guid: 235cf0432d7e7e64baa8b80cd8e71b56, type: 3}
+--- !u!65 &65441731700407498
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995981368845428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95470045872360650
 Animator:
   serializedVersion: 3
