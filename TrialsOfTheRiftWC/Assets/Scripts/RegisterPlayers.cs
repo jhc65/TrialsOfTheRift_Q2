@@ -16,7 +16,8 @@ public class RegisterPlayers : MonoBehaviour {
     [SerializeField] private Image go_hat1, go_hat2, go_hat3, go_hat4;
     [SerializeField] private Sprite img_red, img_blue;
     [SerializeField] private Sprite[] img_hats;
-    [SerializeField] private Text txt_p1Message, txt_p2Message, txt_p3Message, txt_p4Message, txt_go;
+    [SerializeField] private Text txt_p1Message, txt_p2Message, txt_p3Message, txt_p4Message;
+    [SerializeField] private GameObject go_go;
     private Player p_player1, p_player2, p_player3, p_player4;
     private bool b_p1Connected = false, b_p2Connected = false, b_p3Connected = false, b_p4Connected = false;	// set when 4 controllers are detected
     private bool b_p1Ready = false, b_p2Ready = false, b_p3Ready = false, b_p4Ready = false;
@@ -342,7 +343,7 @@ public class RegisterPlayers : MonoBehaviour {
         // load next scene
         if (b_p1Ready && b_p2Ready && b_p3Ready && b_p4Ready)
         {
-            txt_go.text = "LET'S GO!";
+            go_go.SetActive(true);
             if (p_player1.GetButtonDown("MenuUISubmit"))
             {
                 // set constants color, hat for all 4 players
@@ -360,7 +361,7 @@ public class RegisterPlayers : MonoBehaviour {
         }
         else
         {
-            txt_go.text = "";
+            go_go.SetActive(false);
         }
     }
 }
