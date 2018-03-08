@@ -112,7 +112,8 @@ public class SkeletonController : EnemyController {
 
     protected override void EnterStateAttack() {
 		base.EnterStateAttack();
-        GetComponent<Animator>().Play("placeholder_enemy_attack");
+        GetComponent<Animator>().SetTrigger("attackTrigger");
+        //GetComponent<Animator>().Play("placeholder_enemy_attack");
     }
 
     protected override void DoAttack() {

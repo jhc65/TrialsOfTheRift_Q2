@@ -85,6 +85,7 @@ public abstract class EnemyController : MonoBehaviour {
     }
 
     protected void AttackOver() {
+        Debug.Log("attackover");
 		switch (e_previousState) {
 		case State.SLOWED:
 			UpdateSlowed();
