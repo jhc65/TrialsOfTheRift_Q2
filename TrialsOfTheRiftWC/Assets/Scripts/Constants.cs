@@ -51,7 +51,7 @@ public static class Constants {
         public static float C_MagicMissileLiveTime = 0.35f;
 		public static float C_MagicMissileSpeed = 10.0f;
         public static float C_MagicMissileDamage = 25.0f;
-        public static float C_MagicMissileCooldown = 0.34f;
+        public static float C_MagicMissileCooldown = 1.0f;
         public static float C_MagicMissileChargeTime = C_SpellChargeTime;
         public static float C_MagicMissileChargeCooldown = 0.5f;
         public static float C_MagicMissileHeal = 10.0f;
