@@ -176,6 +176,7 @@ public sealed class RiftController : MonoBehaviour {
     //----------------------------
     // Rift Effects
     private void BoardClear() {
+		maestro.PlayAnnouncementBoardClear();
         foreach (GameObject player in go_playerReferences) {
             player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth,Constants.Global.DamageType.RIFT);
         }

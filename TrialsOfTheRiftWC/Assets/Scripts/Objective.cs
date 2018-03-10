@@ -16,6 +16,7 @@ public abstract class Objective : MonoBehaviour {
     protected int i_numberInList;            // this is the i'th objective faced by this team (1-based)
     protected bool b_isComplete = false;     // set when criteria to beat the objective is met
     protected Calligrapher calligrapher;     // reference to UI singleton
+	protected Maestro maestro;
 
     // Getters
     public Constants.Global.Color Color {
@@ -36,6 +37,7 @@ public abstract class Objective : MonoBehaviour {
 
     // Activates all aspects of this objective
     public Objective Activate(int i) {
+		maestro = Maestro.Instance;
         calligrapher = Calligrapher.Instance;
         b_isComplete = false;           // initialize variables
         i_numberInList = i;

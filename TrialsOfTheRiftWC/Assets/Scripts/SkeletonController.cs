@@ -16,6 +16,7 @@ public class SkeletonController : EnemyController {
 		base.Init(side);
 		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
 		f_health = Constants.EnemyStats.C_EnemyHealth;
+		maestro.PlaySkeletonSpawn();
 	}
 
     protected override void UpdateChase() {
@@ -97,6 +98,11 @@ public class SkeletonController : EnemyController {
 			 Wander();
 		}
 	}
+	
+	protected override void EnterStateDie() {
+		base.EnterStateDie();
+		maestro.PlaySkeletonDie();
+    }
 
 	protected override void UpdateDie() {
 		riftController.DecreaseEnemies(e_side);

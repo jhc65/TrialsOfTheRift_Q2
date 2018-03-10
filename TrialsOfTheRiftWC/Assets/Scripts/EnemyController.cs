@@ -98,7 +98,6 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected virtual void EnterStateDie() {
 		e_state = State.DIE;
-		maestro.PlayEnemyDie();
     }
 
     protected virtual void UpdateDie() {
@@ -195,6 +194,7 @@ public abstract class EnemyController : MonoBehaviour {
 
 	public virtual void Init(Constants.Global.Side side) {
 		riftController = RiftController.Instance;
+		maestro = Maestro.Instance;  
 		rb = GetComponent<Rigidbody>();
 		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		e_side = side;
@@ -218,8 +218,6 @@ public abstract class EnemyController : MonoBehaviour {
 		v3_destination = transform.position;
 
 		EnterStateWander ();
-		maestro = Maestro.Instance;     // reference to Rift singleton
-		maestro.PlayEnemySpawn();			   
     }
 	
 	// Update is called once per frame
