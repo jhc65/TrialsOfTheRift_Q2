@@ -35,10 +35,7 @@ public class MagicMissileController : SpellController {
         else if (go_target.tag == "Crystal"){
 			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
 			if (crystalColor != e_color){
-				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_MagicMissileCrystalDamagePercent * f_charged);
-			}
-			else if (crystalColor == e_color) {
-				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_MagicMissileCrystalHealPercent * f_charged);
+				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_MagicMissileCrystalDamage * f_charged);
 			}
 		} else if (go_target.tag == "Wall") {
             if (i_reflect) {

@@ -59,6 +59,9 @@ public class DebugParametersController : MonoBehaviour {
     public Slider slider_wispMoveSpeed;
     public Slider slider_playerHealth;
     public Slider slider_crystalHealth;
+    public Slider slider_crystalHealthRegen;
+    public Slider slider_crystalHealthRegenRate;
+    public Slider slider_crystalHealthRegenDelay;
     public Slider slider_CTFScore;
     public Slider slider_completionTimer;
     public Slider slider_selfDestructTimer;
@@ -100,6 +103,9 @@ public class DebugParametersController : MonoBehaviour {
     public Text txt_wispMoveSpeed;
     public Text txt_playerHealth;
     public Text txt_crystalHealth;
+    public Text txt_crystalHealthRegen;
+    public Text txt_crystalHealthRegenRate;
+    public Text txt_crystalHealthRegenDelay;
     public Text txt_CTFScore;
     public Text txt_completionTimer;
     public Text txt_selfDestructTimer;
@@ -248,6 +254,27 @@ public class DebugParametersController : MonoBehaviour {
         float value = f_crystalHealthIn * 50.0f;
         txt_crystalHealth.text = value.ToString();
         Constants.ObjectiveStats.C_CrystalMaxHealth = (int)value;
+    }
+
+    public void ChangeCrystalHealthRegen(float f_crystalHealthIn)
+    {
+        float value = f_crystalHealthIn;
+        txt_crystalHealthRegen.text = value.ToString();
+        Constants.ObjectiveStats.C_CrystalRegenHeal = (int)value;
+    }
+
+    public void ChangeCrystalHealthRegenRate(float f_crystalHealthIn)
+    {
+        float value = f_crystalHealthIn;
+        txt_crystalHealthRegenRate.text = value.ToString();
+        Constants.ObjectiveStats.C_CrystalHealRate = (int)value;
+    }
+
+    public void ChangeCrystalHealthRegenDelay(float f_crystalHealthIn)
+    {
+        float value = f_crystalHealthIn;
+        txt_crystalHealthRegenDelay.text = value.ToString();
+        Constants.ObjectiveStats.C_CrystalHealDelay = (int)value;
     }
 
     public void ChangeCTFMaxScore(float f_CTFScoreIn) {
@@ -514,6 +541,18 @@ public class DebugParametersController : MonoBehaviour {
         // Crystal Health
         txt_crystalHealth.text = Constants.ObjectiveStats.C_CrystalMaxHealth.ToString();
         slider_crystalHealth.value = Constants.ObjectiveStats.C_CrystalMaxHealth / 50;
+
+        // Crystal Health Regen
+        txt_crystalHealthRegen.text = Constants.ObjectiveStats.C_CrystalRegenHeal.ToString();
+        slider_crystalHealthRegen.value = Constants.ObjectiveStats.C_CrystalRegenHeal;
+
+        // Crystal Health Regen Rate
+        txt_crystalHealthRegenRate.text = Constants.ObjectiveStats.C_CrystalHealRate.ToString();
+        slider_crystalHealthRegenRate.value = Constants.ObjectiveStats.C_CrystalHealRate;
+
+        // Crystal Health Regen Delay
+        txt_crystalHealthRegenDelay.text = Constants.ObjectiveStats.C_CrystalHealDelay.ToString();
+        slider_crystalHealthRegenDelay.value = Constants.ObjectiveStats.C_CrystalHealDelay;
 
         // Hot Potato Completion Timer 
         txt_completionTimer.text = Constants.ObjectiveStats.C_PotatoCompletionTimer.ToString();
