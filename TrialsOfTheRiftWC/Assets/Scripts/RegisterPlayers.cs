@@ -18,6 +18,10 @@ public class RegisterPlayers : MonoBehaviour {
     [SerializeField] private Sprite[] img_hats;
     [SerializeField] private Text txt_p1Message, txt_p2Message, txt_p3Message, txt_p4Message;
     [SerializeField] private GameObject go_go;
+    [SerializeField] private GameObject go_load;
+    [SerializeField] private Text txt_loadFade;
+
+
     private Player p_player1, p_player2, p_player3, p_player4;
     private bool b_p1Connected = false, b_p2Connected = false, b_p3Connected = false, b_p4Connected = false;	// set when 4 controllers are detected
     private bool b_p1Ready = false, b_p2Ready = false, b_p3Ready = false, b_p4Ready = false;
@@ -27,6 +31,10 @@ public class RegisterPlayers : MonoBehaviour {
 
 	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 		
+    void LoadTextFade() {
+        txt_loadFade.color = Color.Lerp(Color.white, Color.black, Mathf.PingPong(Time.time, 0.5f));
+    }
+
     void Awake()
     {
         p_player1 = ReInput.players.GetPlayer(0);
@@ -49,8 +57,11 @@ public class RegisterPlayers : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-            SceneManager.LoadScene("WarmUp");
+        if (Input.GetKeyDown("space")) {
+            go_load.SetActive(true);
+            InvokeRepeating("LoadTextFade", 0.01f, 0.0165f);
+            SceneManager.LoadSceneAsync("WarmUp");
+        }
 
         // test connection
         int connectedControllers = ReInput.controllers.GetControllerCount(ControllerType.Joystick);
@@ -356,7 +367,9 @@ public class RegisterPlayers : MonoBehaviour {
                 Constants.PlayerStats.C_p3Hat = i_p3Hat;
                 Constants.PlayerStats.C_p4Hat = i_p4Hat;
 
-                SceneManager.LoadScene("WarmUp");
+                go_load.SetActive(true);
+                InvokeRepeating("LoadTextFade", 0.01f, 0.0165f);
+                SceneManager.LoadSceneAsync("WarmUp");
             }
         }
         else

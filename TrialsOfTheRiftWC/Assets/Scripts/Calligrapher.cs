@@ -12,10 +12,18 @@ using UnityEngine;
 public sealed class Calligrapher : MonoBehaviour {
 
     [SerializeField] private Text txt_redScoreText, txt_blueScoreText;
+    [SerializeField] private Image img_redCTFIcon, img_blueCTFIcon;
+    [SerializeField] private Image img_redHockeyIcon, img_blueHockeyIcon;
+
     [SerializeField] private Text txt_redCrystalHealthText, txt_blueCrystalHealthText;
+    [SerializeField] private Image img_redCrystalDestructIcon, img_blueCrystalDestructIcon;
+
     [SerializeField] private Text txt_redRiftBossHealthText, txt_blueRiftBossHealthText;
+    [SerializeField] private Image img_redBossIcon, img_blueBossIcon;
+
     [SerializeField] private Text txt_redCompletionTimer, txt_blueCompletionTimer;
     [SerializeField] private Text txt_redDestructionTimer, txt_blueDestructionTimer;
+    [SerializeField] private Image img_redKeepAwayIcon, img_blueKeepAwayIcon;
 
     [SerializeField] private Text txt_redObjvTitle, txt_blueObjvTitle;
     [SerializeField] private Text txt_redObjvDescription, txt_blueObjvDescription;
@@ -92,11 +100,15 @@ public sealed class Calligrapher : MonoBehaviour {
     public void CTFInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(true);
+            img_redCTFIcon.gameObject.SetActive(true);
+
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
+            img_blueCTFIcon.gameObject.SetActive(true);
+
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_CTFTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_CTFDescription;
         }
@@ -107,11 +119,15 @@ public sealed class Calligrapher : MonoBehaviour {
     public void IceHockeyInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(true);
+            img_redHockeyIcon.gameObject.SetActive(true);
+
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(true);
+            img_blueHockeyIcon.gameObject.SetActive(true);
+
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_HockeyTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_HockeyDescription;
         }
@@ -123,12 +139,16 @@ public sealed class Calligrapher : MonoBehaviour {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCrystalHealthText.transform.parent.gameObject.SetActive(true);
+            img_redCrystalDestructIcon.gameObject.SetActive(true);
+
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
             PopupFadeIn(Constants.Global.Color.BLUE);
         }
         else {
             txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(true);
+            img_blueCrystalDestructIcon.gameObject.SetActive(true);
+
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
             PopupFadeIn(Constants.Global.Color.RED);
@@ -140,12 +160,16 @@ public sealed class Calligrapher : MonoBehaviour {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCompletionTimer.transform.parent.gameObject.SetActive(true);
             txt_redDestructionTimer.transform.parent.gameObject.SetActive(true);
+            img_redKeepAwayIcon.gameObject.SetActive(true);
+
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
         }
         else {
             txt_blueCompletionTimer.transform.parent.gameObject.SetActive(true);
             txt_blueDestructionTimer.transform.parent.gameObject.SetActive(true);
+            img_blueKeepAwayIcon.gameObject.SetActive(true);
+
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_PotatoTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_PotatoDescription;
         }
@@ -157,12 +181,16 @@ public sealed class Calligrapher : MonoBehaviour {
     public void RiftBossInit(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            img_redBossIcon.gameObject.SetActive(true);
+
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             PopupFadeIn(Constants.Global.Color.RED);
         }
         else {
             txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(true);
+            img_blueBossIcon.gameObject.SetActive(true);
+
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_BossTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_BossDescription;
             PopupFadeIn(Constants.Global.Color.BLUE);
@@ -197,18 +225,24 @@ public sealed class Calligrapher : MonoBehaviour {
     public void ScoreReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redScoreText.transform.parent.gameObject.SetActive(false);
+            img_redHockeyIcon.gameObject.SetActive(false);
+            img_redCTFIcon.gameObject.SetActive(false);
         }
         else {
             txt_blueScoreText.transform.parent.gameObject.SetActive(false);
+            img_blueHockeyIcon.gameObject.SetActive(false);
+            img_blueCTFIcon.gameObject.SetActive(false);
         }
     }
 
     public void CrystalDestructionReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCrystalHealthText.transform.parent.gameObject.SetActive(false);
+            img_redCrystalDestructIcon.gameObject.SetActive(false);
         }
         else {
             txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(false);
+            img_blueCrystalDestructIcon.gameObject.SetActive(false);
         }
     }
 
@@ -216,19 +250,23 @@ public sealed class Calligrapher : MonoBehaviour {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCompletionTimer.transform.parent.gameObject.SetActive(false);
             txt_redDestructionTimer.transform.parent.gameObject.SetActive(false);
+            img_redKeepAwayIcon.gameObject.SetActive(false);
         }
         else {
             txt_blueCompletionTimer.transform.parent.gameObject.SetActive(false);
             txt_blueDestructionTimer.transform.parent.gameObject.SetActive(false);
+            img_blueKeepAwayIcon.gameObject.SetActive(false);
         }
     }
 
     public void RiftBossReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
-            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(false); //TODO: new ui txt objects
+            txt_redRiftBossHealthText.transform.parent.gameObject.SetActive(false);
+            img_redBossIcon.gameObject.SetActive(false);
         }
         else {
             txt_blueRiftBossHealthText.transform.parent.gameObject.SetActive(false);
+            img_blueBossIcon.gameObject.SetActive(false);
         }
     }
 
