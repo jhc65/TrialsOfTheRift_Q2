@@ -40,7 +40,6 @@ public abstract class Objective : MonoBehaviour {
         b_isComplete = false;           // initialize variables
         i_numberInList = i;
         SetUI();                        // set UI
-        RiftController.Instance.IncrementObjectiveCount(e_color);
         calligrapher.RoomUpdate(e_color, i_numberInList);
         calligrapher.Flash(e_color);
         go_activeRoom = SelectRoom();   // set room
@@ -51,6 +50,9 @@ public abstract class Objective : MonoBehaviour {
 
     // Destroy this objective once it is complete
     public void Complete() {
+        Maestro.Instance.PlayAnnouncementTrialTransition();
+        RiftController.Instance.IncrementObjectiveCount(e_color);
+        RiftController.Instance.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_RoomAdvance);
         ResetUI();                      // turn off UI
         go_activeRoom.SetActive(false); // turn off room
         Destroy(gameObject);

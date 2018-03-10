@@ -45,8 +45,6 @@ public sealed class DarkMagician : MonoBehaviour {
 			txt_winMsg.text = c + " team won!";
 			return;
 		}
-		maestro.PlayAnnouncementTrialTransition();
-        riftController.IncreaseVolatility(Constants.RiftStats.C_VolatilityIncrease_RoomAdvance);
         objectiveNumber++;
 
         if (c == Constants.Global.Color.RED) {
@@ -55,9 +53,9 @@ public sealed class DarkMagician : MonoBehaviour {
         }
         else if (c == Constants.Global.Color.BLUE) {
             objv_currentBlueObjective.Complete();
-            objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);	// objectiveNumber starts with 1 but array is 0-based
-		}
-	}
+            objv_currentBlueObjective = objv_blueObjectiveList[objectiveNumber - 1].Activate(objectiveNumber);  // objectiveNumber starts with 1 but array is 0-based
+        }
+    }
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 

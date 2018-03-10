@@ -134,8 +134,6 @@ public sealed class RiftController : MonoBehaviour {
 			i_volatilityLevel = 1;
             EnterNewVolatilityLevel();
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
-            Constants.Global.Color colorToAttack = DetermineWinningTeam();
-            FireDeathBolts(colorToAttack);
         }
         else if (f_volatility < 5.0f) {
 			i_volatilityLevel = 0;
@@ -478,8 +476,19 @@ public sealed class RiftController : MonoBehaviour {
         if (i_blueObjectivesComplete > i_redObjectivesComplete) {
             return Constants.Global.Color.BLUE;
         }
-        else {
+        else if (i_redObjectivesComplete > i_blueObjectivesComplete) {
             return Constants.Global.Color.RED;
+        }
+        else {
+            System.Random rand = new System.Random();
+            int team = Convert.ToInt32(rand.Next(1, 2));
+
+            if (team == 1) {
+                return Constants.Global.Color.BLUE;
+            }
+            else {
+                return Constants.Global.Color.RED;
+            }
         }
     }
 
