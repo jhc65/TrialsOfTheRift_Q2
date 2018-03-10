@@ -40,6 +40,7 @@ public abstract class Objective : MonoBehaviour {
         b_isComplete = false;           // initialize variables
         i_numberInList = i;
         SetUI();                        // set UI
+        RiftController.Instance.IncrementObjectiveCount(e_color);
         calligrapher.RoomUpdate(e_color, i_numberInList);
         calligrapher.Flash(e_color);
         go_activeRoom = SelectRoom();   // set room

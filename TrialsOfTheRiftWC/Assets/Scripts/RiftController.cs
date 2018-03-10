@@ -40,6 +40,9 @@ public sealed class RiftController : MonoBehaviour {
     private int i_leftEnemies = 0;
     private int i_rightEnemies = 0;
 
+    private int i_redObjectivesComplete = 0;
+    private int i_blueObjectivesComplete = 0;
+
     private GameObject[] go_rightEnemySpawners;
     private GameObject[] go_leftEnemySpawners;
 
@@ -122,14 +125,17 @@ public sealed class RiftController : MonoBehaviour {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
 			i_volatilityLevel = 2;
             EnterNewVolatilityLevel();
-            FireDeathBolts(Constants.Global.Color.RED);
-            FireDeathBolts(Constants.Global.Color.BLUE);
+            Constants.Global.Color colorToAttack = DetermineWinningTeam();
+            FireDeathBolts(colorToAttack);
+            //FireDeathBolts(Constants.Global.Color.BLUE);
         }
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
 			i_volatilityLevel = 1;
             EnterNewVolatilityLevel();
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
+            Constants.Global.Color colorToAttack = DetermineWinningTeam();
+            FireDeathBolts(colorToAttack);
         }
         else if (f_volatility < 5.0f) {
 			i_volatilityLevel = 0;
@@ -445,13 +451,35 @@ public sealed class RiftController : MonoBehaviour {
 
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
         List<GameObject> go_riftSpells = new List<GameObject>();
+        
+        var array = new int[] { 0, 1, 2, 3 };
+        new System.Random().Shuffle(array);
 
         for (int i = 0; i < 4; i++) {
-            if (go_playerReferences[i].GetComponent<PlayerController>().GetColor() == c) {
+            if (go_playerReferences[/*i*/array[i]].GetComponent<PlayerController>().GetColor() == c) {
                 GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
-                go_spell.GetComponent<Rigidbody>().velocity = go_playerReferences[i].transform.position.normalized * Constants.RiftStats.C_VolatilityDeathboltSpeed;
+                go_spell.GetComponent<Rigidbody>().velocity = go_playerReferences[array[i]/*i*/].transform.position.normalized * Constants.RiftStats.C_VolatilityDeathboltSpeed;
+                break;
             }
+        }
+    }
+
+    public void IncrementObjectiveCount(Constants.Global.Color e_colorIn) {
+        if (e_colorIn == Constants.Global.Color.BLUE) {
+            i_blueObjectivesComplete++;
+        }
+        else if (e_colorIn == Constants.Global.Color.RED) {
+            i_redObjectivesComplete++;
+        }
+    }
+
+    private Constants.Global.Color DetermineWinningTeam() {
+        if (i_blueObjectivesComplete > i_redObjectivesComplete) {
+            return Constants.Global.Color.BLUE;
+        }
+        else {
+            return Constants.Global.Color.RED;
         }
     }
 
@@ -495,5 +523,6 @@ public sealed class RiftController : MonoBehaviour {
 		maestro = Maestro.Instance;
         ResetVolatility();
 		Invoke("PlayNoise", r_random.Next(0,10));
+
     }
 }
