@@ -81,11 +81,9 @@ public class ElectricAOEController : MonoBehaviour {
 		if (go_target) {
 			Constants.Global.Color crystalColor = go_target.GetComponent<CrystalController>().Color;
 			if (crystalColor != e_color) {
-				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_SpellCrystalDamagePercent / 5);
+				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_SpellCrystalDamageElementSpells / 5);
 			}
-			else if (crystalColor == e_color) {
-				go_target.GetComponent<CrystalController>().UpdateCrystalHealth(Constants.SpellStats.C_SpellCrystalHealPercent / 5);
-			}
+
 			yield return new WaitForSeconds(0.5f);
 			StartCoroutine("ApplyCrystalDamage", go_target);
 		}

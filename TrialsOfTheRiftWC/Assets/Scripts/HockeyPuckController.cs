@@ -11,6 +11,10 @@ using UnityEngine;
 public class HockeyPuckController : MonoBehaviour {
 
     public IceHockeyObjective iho_owner;    // identifies objective puck is a part of
+    public GameObject go_riftShield1;
+    public GameObject go_riftShield2;
+    public GameObject go_riftBossRed;
+    public GameObject go_riftBossBlue;
     [SerializeField] private Constants.Global.Color e_color;  // identifies owning team
     [SerializeField] private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
     private float f_speed;
@@ -62,6 +66,10 @@ public class HockeyPuckController : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody>();
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;     // cannot read from Constants.cs in initialization at top
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftShield1.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftShield2.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftBossRed.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftBossBlue.GetComponent<Collider>());
     }
 
     void Update() {
@@ -75,6 +83,11 @@ public class HockeyPuckController : MonoBehaviour {
         //    Debug.Log("We're stuck in Portal potentially.");
         //    isPuckStuck = true;
         //}
+
+        //resets speed if it goes over threshold
+        if (f_speed > Constants.ObjectiveStats.C_PuckMaxSpeed) {
+            f_speed = Constants.ObjectiveStats.C_PuckMaxSpeed;
+        }
 
         // Set speed to base if it gets too low
         if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed) {
@@ -91,7 +104,7 @@ public class HockeyPuckController : MonoBehaviour {
             collision.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth);
         }
         else if (collision.gameObject.CompareTag("Player")) {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage,Constants.Global.DamageType.PUCK);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, Constants.Global.DamageType.PUCK);
         }
         else if (collision.gameObject.CompareTag("Spell")) {
             // Reset slowdown invoke
@@ -100,7 +113,7 @@ public class HockeyPuckController : MonoBehaviour {
         }
         else if (!collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Rift")) {
             // Reflect puck on collision
-                // https://youtube.com/watch?v=u_p50wENBY
+            // https://youtube.com/watch?v=u_p50wENBY
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
             float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, rot, 0);
@@ -122,8 +135,6 @@ public class HockeyPuckController : MonoBehaviour {
             CancelInvoke();
             InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
-            // Deflect and move in direction player is facing
-            f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
             Vector3 facingDirection = other.gameObject.transform.root.forward.normalized;
             transform.rotation = Quaternion.LookRotation(other.gameObject.transform.root.forward);
             rb.velocity = facingDirection * f_speed;
