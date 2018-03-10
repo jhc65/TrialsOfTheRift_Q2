@@ -25,17 +25,31 @@ public class CrystalController : MonoBehaviour {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    public void UpdateCrystalHealth(float percentage) { //TODO: rename this in_variable when we decide percentage or no
-        f_health += percentage * Constants.ObjectiveStats.C_CrystalMaxHealth;
-        if(f_health > Constants.ObjectiveStats.C_CrystalMaxHealth) {
-            f_health = Constants.ObjectiveStats.C_CrystalMaxHealth;
-        }
-        cdo_owner.UpdateCrystalHealth(f_health);
+    //repsonsible for reseting the regen timer everytime it gets hit
+    public void UpdateCrystalHealth(float f_variable) { //TODO: rename this in_variable when we decide percentage or no
+        CancelInvoke();
+        AdjustHealth(f_variable);
+
+        InvokeRepeating("HealthRegen", Constants.ObjectiveStats.C_CrystalHealDelay, Constants.ObjectiveStats.C_CrystalHealRate);
     }
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
     void Start() {
         f_health = Constants.ObjectiveStats.C_CrystalMaxHealth;     // cannot read from Constants.cs in initialization at top
+    }
+
+    private void AdjustHealth(float f_variable) {
+        f_health += f_variable;
+        if (f_health > Constants.ObjectiveStats.C_CrystalMaxHealth)
+        {
+            f_health = Constants.ObjectiveStats.C_CrystalMaxHealth;
+        }
+        cdo_owner.UpdateCrystalHealth(f_health);
+    }
+
+    //Is called repeatedly by InvokeRepeating to regen the health of the crystal
+    private void HealthRegen() {
+        AdjustHealth(Constants.ObjectiveStats.C_CrystalRegenHeal);
     }
 }

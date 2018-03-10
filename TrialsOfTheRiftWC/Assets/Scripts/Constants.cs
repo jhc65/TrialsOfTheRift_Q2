@@ -64,7 +64,7 @@ public static class Constants {
         public static float C_WindChargeTime = C_SpellChargeTime;
         public static float C_WindRiftDamageMultiplier = C_RiftDamageMultiplier;
         public static float C_WindPlayerDamageMultiplier = 0.5f;
-        public static float C_WindForce = 6000.0f; // 4m worth of distance - we need to do our own 
+        public static float C_WindForce = 1000.0f; // 4m worth of distance - we need to do our own 
 
         // Ice Stats
         // TODO: UHHHHH....? (live time vs. charge time... FIGHT)
@@ -91,10 +91,8 @@ public static class Constants {
 
         // Crystal based percentages Stats
         // TODO: uhh... why is it percent for this? make it real damage instead
-        public static float C_SpellCrystalDamagePercent = -0.1f;
-        public static float C_SpellCrystalHealPercent = 0.05f;
-        public static float C_MagicMissileCrystalDamagePercent = -0.01f;
-        public static float C_MagicMissileCrystalHealPercent = 0.005f;
+        public static float C_SpellCrystalDamageElementSpells = -25.0f;
+        public static float C_MagicMissileCrystalDamage = -5.0f;
     }
 
     // Objective Stats
@@ -106,11 +104,11 @@ public static class Constants {
         //public static Vector3 C_GenericBlueObjectiveGoalSpawn = new Vector3(4.5f, .01f, 0f);
 
         // Potato Stats
-        public static Vector3 C_RedPotatoSpawn = new Vector3(-3.5f, 0.5f, 0f);
-        public static Vector3 C_BluePotatoSpawn = new Vector3(3.5f, 0.5f, 0f);
+        public static Vector3 C_RedPotatoSpawn = new Vector3(-7.5f, 0.5f, 0f);
+        public static Vector3 C_BluePotatoSpawn = new Vector3(7.5f, 0.5f, 0f);
         public static int C_PotatoCompletionTimer = 30;
         public static int C_PotatoSelfDestructTimer = 15;
-        public static int C_EnemySpawnAmount = 3;
+        public static int C_EnemySpawnAmount = 2;
 
         // CTF Stats
         public static Vector3 C_RedFlagSpawn = new Vector3(-16.0f, 0.5f, 0f);
@@ -123,6 +121,10 @@ public static class Constants {
         //public static Vector3 C_RedCrystalSpawn = C_GenericBlueObjectiveTargetSpawn;
         //public static Vector3 C_BlueCrystalSpawn = C_GenericRedObjectiveTargetSpawn;
         public static float C_CrystalMaxHealth = 500.0f;
+        public static float C_CrystalRegenHeal = 5.0f;
+        public static float C_CrystalHealRate = 1.0f;
+        public static float C_CrystalHealDelay = 3.0f;
+
 
         // Ice Hockey Stats
         public static Vector3 C_RedPuckSpawn = new Vector3(-5.0f, 0.5f, 0f);

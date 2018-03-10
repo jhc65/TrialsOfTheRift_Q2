@@ -11,6 +11,10 @@ using UnityEngine;
 public class HockeyPuckController : MonoBehaviour {
 
     public IceHockeyObjective iho_owner;    // identifies objective puck is a part of
+    public GameObject go_riftShield1;
+    public GameObject go_riftShield2;
+    public GameObject go_riftBossRed;
+    public GameObject go_riftBossBlue;
     [SerializeField] private Constants.Global.Color e_color;  // identifies owning team
     [SerializeField] private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
     private float f_speed;
@@ -62,6 +66,10 @@ public class HockeyPuckController : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody>();
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;     // cannot read from Constants.cs in initialization at top
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftShield1.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftShield2.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftBossRed.GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), go_riftBossBlue.GetComponent<Collider>());
     }
 
     void Update() {
@@ -91,7 +99,7 @@ public class HockeyPuckController : MonoBehaviour {
             collision.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth);
         }
         else if (collision.gameObject.CompareTag("Player")) {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage,Constants.Global.DamageType.PUCK);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, Constants.Global.DamageType.PUCK);
         }
         else if (collision.gameObject.CompareTag("Spell")) {
             // Reset slowdown invoke
@@ -100,7 +108,7 @@ public class HockeyPuckController : MonoBehaviour {
         }
         else if (!collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Rift")) {
             // Reflect puck on collision
-                // https://youtube.com/watch?v=u_p50wENBY
+            // https://youtube.com/watch?v=u_p50wENBY
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
             float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, rot, 0);
