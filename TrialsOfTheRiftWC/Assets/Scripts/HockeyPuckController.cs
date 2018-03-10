@@ -84,6 +84,11 @@ public class HockeyPuckController : MonoBehaviour {
         //    isPuckStuck = true;
         //}
 
+        //resets speed if it goes over threshold
+        if (f_speed > Constants.ObjectiveStats.C_PuckMaxSpeed) {
+            f_speed = Constants.ObjectiveStats.C_PuckMaxSpeed;
+        }
+
         // Set speed to base if it gets too low
         if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed) {
             CancelInvoke("DecreaseSpeed");
@@ -130,8 +135,6 @@ public class HockeyPuckController : MonoBehaviour {
             CancelInvoke();
             InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
-            // Deflect and move in direction player is facing
-            f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
             Vector3 facingDirection = other.gameObject.transform.root.forward.normalized;
             transform.rotation = Quaternion.LookRotation(other.gameObject.transform.root.forward);
             rb.velocity = facingDirection * f_speed;
