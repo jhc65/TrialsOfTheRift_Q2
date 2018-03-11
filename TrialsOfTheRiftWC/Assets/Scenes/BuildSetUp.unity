@@ -3698,7 +3698,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1651239782622096, guid: fd2d15736fe51d540964560d9235c74a, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd2d15736fe51d540964560d9235c74a, type: 2}
@@ -10498,22 +10498,22 @@ Prefab:
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1310483290}
     - target: {fileID: 114045084894325774, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1310483290}
     - target: {fileID: 114021869970042284, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1310483290}
     - target: {fileID: 114380760117014980, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1310483290}
     - target: {fileID: 114905443394845144, guid: 2649406267963a0478df979fb3e06ff4,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -14886,6 +14886,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1530556161826358, guid: a89847ae0aa2e054fad0535c3a45d4da,
     type: 2}
   m_PrefabInternal: {fileID: 1304039668}
+--- !u!114 &1310483290 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114782310830768146, guid: 4d5eab1d1e592704384272f107583592,
+    type: 2}
+  m_PrefabInternal: {fileID: 1476520132}
+  m_Script: {fileID: 11500000, guid: c9d5f472124aa2542a69c86122e86ee4, type: 3}
 --- !u!1 &1312961418 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1995952338719304, guid: c421bb72df22d2f459aee8369505fc32,

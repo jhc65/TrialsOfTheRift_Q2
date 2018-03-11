@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public sealed class Maestro : MonoBehaviour {
     public AudioMixer am_masterMix;
@@ -72,6 +73,7 @@ public sealed class Maestro : MonoBehaviour {
 	public AudioClip ac_begin_crystal_destruction;
 	public AudioClip ac_begin_rift_boss;
 	public AudioClip ac_begin_potato;
+	public AudioClip ac_tutorial;
 	
 	[Header("UI")]
 	[SerializeField] private AudioClip[] ac_page_turn;
@@ -145,7 +147,7 @@ public sealed class Maestro : MonoBehaviour {
 				as_voi.clip = c;
 				as_voi.Play();
 				Invoke("AnnouncementOk",f_announcementDelay);
-			}
+		}
 	}
 	private void PlayRandomAnnouncement(AudioClip[] c){
 		System.Random r = new System.Random();
@@ -154,7 +156,7 @@ public sealed class Maestro : MonoBehaviour {
 				as_voi.clip = c[r.Next(0, c.Length)];
 				as_voi.Play();
 				Invoke("AnnouncementOk",f_announcementDelay);
-			}
+		}
 	}
 	
 	public void PlayWindShoot(){
@@ -272,8 +274,26 @@ public sealed class Maestro : MonoBehaviour {
 	public void PlayAnnouncementWispGeneric(){
 		PlayRandomAnnouncement(ac_wisp_generic);
 	}
+	public void PlayAnnouncementTutorial(){
+		if(!as_voi.isPlaying){
+			b_announcementOk = false;
+			as_voi.clip = ac_tutorial;
+			as_voi.Play();
+			Invoke("AnnouncementOk",f_announcementDelay);
+		}
+		else
+			Invoke("PlayAnnouncementTutorial",1);
+	}
 	public void PlayAnnouncementIntro(){
-		PlayRandomAnnouncement(ac_intro);
+		System.Random r = new System.Random();
+		if(!as_voi.isPlaying){
+			b_announcementOk = false;
+			as_voi.clip = ac_intro[r.Next(0, ac_intro.Length)];
+			as_voi.Play();
+			Invoke("AnnouncementOk",f_announcementDelay);
+		}
+		else
+			Invoke("PlayAnnouncementIntro",1);
 	}
 	public void PlayAnnouncementBoardClear(){
 		PlayRandomAnnouncement(ac_board_clear);
@@ -341,9 +361,10 @@ public sealed class Maestro : MonoBehaviour {
 	void Start () {
 		b_announcementOk = true;
 		InvokeRepeating("GenericOk",f_genericAnnouncementDelay,f_genericAnnouncementDelay);
-		PlayAnnouncementIntro();
-		//as_bgmA.clip = ac_bgm0;
-		//as_bgmA.Play();
+		if(SceneManager.GetActiveScene().name == "WarmUp")
+			PlayAnnouncementTutorial();
+		/* if(SceneManager.GetActiveScene().name == "BuildSetUp")
+			PlayAnnouncementIntro(); */
         am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
         am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
         am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
