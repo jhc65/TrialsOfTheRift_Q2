@@ -68,6 +68,9 @@ public sealed class Calligrapher : MonoBehaviour {
     // update health (Rift Boss)
 	public void UpdateRiftBossHealthUI(Constants.Global.Color colorIn, float healthIn) {
         if (colorIn == Constants.Global.Color.RED) {
+            if (healthIn <= 0) {
+                healthIn = 0;
+            }
             txt_redRiftBossHealthText.text = Mathf.CeilToInt(healthIn).ToString();  //TODO: new ui txt objects
         }
         else if (colorIn == Constants.Global.Color.BLUE) {
