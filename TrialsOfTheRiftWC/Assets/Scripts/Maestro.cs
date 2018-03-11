@@ -90,6 +90,7 @@ public sealed class Maestro : MonoBehaviour {
 	private bool b_destroyExplained = false;
 	private bool b_bossExplained = false;
 	private bool b_bgmAIsOn = true;	// BGM switches between Sources A and B for crossfade. Which one is the current source we're hearing from?
+	private bool b_alreadyFading = false;
 	
     // Singleton
     private static Maestro instance;
@@ -361,22 +362,35 @@ public sealed class Maestro : MonoBehaviour {
 			to = as_bgmA;
 		}
 		
-		to.clip = ac_bgm[i];
-		to.timeSamples = from.timeSamples;
-		to.volume = 0;
-		from.volume = 1;
-		to.Play();
-		StartCoroutine(Crossfade(from,to));
-		b_bgmAIsOn = !b_bgmAIsOn;
+		
+		if(!b_alreadyFading){
+			to.clip = ac_bgm[i];
+			to.timeSamples = from.timeSamples;
+			to.volume = 0;
+			from.volume = 1;
+			to.Play();
+			StartCoroutine(Crossfade(from,to));
+			b_bgmAIsOn = !b_bgmAIsOn;
+		}
+		else{
+			StartCoroutine("Wait",i);
+		}
 	}
 	
 	IEnumerator Crossfade(AudioSource from, AudioSource to){
+		b_alreadyFading = true;
 		while(to.volume < 1f){
-			from.volume -= 0.05f;
-			to.volume += 0.05f;
+			from.volume -= 0.1f;
+			to.volume += 0.1f;
 			yield return new WaitForSeconds(.02f);
 		}
 		from.Stop();
+		b_alreadyFading = false;
+	}
+	
+	IEnumerator Wait(int i){
+		yield return new WaitForSeconds(1f);
+		ChangeBGM(i);
 	}
 	
 	private void AnnouncementOk(){
