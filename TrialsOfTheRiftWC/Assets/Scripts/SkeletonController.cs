@@ -123,8 +123,17 @@ public class SkeletonController : EnemyController {
 	
 	protected override void UpdateSlowed(){
 		base.UpdateSlowed();
-		if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnemyStats.C_EnemyAttackRange)
+		if (go_closestTarget) {
+			if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnemyStats.C_EnemyAttackRange) {
 				EnterStateAttack();
+			}
+			else {
+				EnterStateChase();
+			}
+		}
+		else {
+			EnterStateWander();
+		}
 	}
 
 }

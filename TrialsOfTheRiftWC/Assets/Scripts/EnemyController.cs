@@ -102,9 +102,6 @@ public abstract class EnemyController : MonoBehaviour {
     }
 
     protected virtual void UpdateDie() {
-        //riftController.DecreaseEnemies(e_side);
-		//Destroy(gameObject);
-		this.GetComponent<CapsuleCollider>().enabled = false;
 		gameObject.SetActive(false);
     }
 	
@@ -196,7 +193,6 @@ public abstract class EnemyController : MonoBehaviour {
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
-		this.GetComponent<CapsuleCollider>().enabled = true;
 		EnterStateWander();
 		riftController = RiftController.Instance;
 		rb = GetComponent<Rigidbody>();
