@@ -139,6 +139,7 @@ public sealed class RiftController : MonoBehaviour {
 
     private void EnterNewVolatilityLevel() {
         maestro.PlayVolatilityAmbience(i_volatilityLevel);
+        maestro.ChangeBGM(i_volatilityLevel);
         switch (i_volatilityLevel) {
             case 0:
                 // Change rift visual to L0
@@ -485,7 +486,7 @@ public sealed class RiftController : MonoBehaviour {
 	
 	void PlayNoise(){
 		maestro.PlayVolatilityNoise(i_volatilityLevel);
-		Invoke("PlayNoise", r_random.Next(0,10));
+		Invoke("PlayNoise", r_random.Next(5,10));
 	}
 
     void Awake() {

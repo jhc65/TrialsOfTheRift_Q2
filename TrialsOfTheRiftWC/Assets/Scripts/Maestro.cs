@@ -13,7 +13,8 @@ public sealed class Maestro : MonoBehaviour {
     public AudioMixer am_masterMix;
 
 	[Header("Audio Sources")]
-	public AudioSource as_bgm;			// background music audio source
+	public AudioSource as_bgmA;			// background music audio source
+	public AudioSource as_bgmB;			// background music audio source
 	public AudioSource as_volatility;	// volatility ambience audio source
 	public AudioSource as_sfxHi;		// high priority sound effect audio source
 	public AudioSource as_sfxMe;		// medium priority sound effect audio source
@@ -21,8 +22,6 @@ public sealed class Maestro : MonoBehaviour {
 	public AudioSource as_voi;			// voice audio source
 	
 	[Header("Audio Clips")]
-	public AudioClip ac_bgm0;
-	
 	public AudioClip ac_windShoot;
 	public AudioClip ac_iceShoot;
 	public AudioClip ac_electricShoot;
@@ -90,6 +89,7 @@ public sealed class Maestro : MonoBehaviour {
 	private bool b_potatoExplained = false;
 	private bool b_destroyExplained = false;
 	private bool b_bossExplained = false;
+	private bool b_bgmAIsOn = true;	// BGM switches between Sources A and B for crossfade. Which one is the current source we're hearing from?
 	
     // Singleton
     private static Maestro instance;
@@ -111,19 +111,19 @@ public sealed class Maestro : MonoBehaviour {
 		System.Random r = new System.Random();
 		switch(i){
 			case(0):
-				as_sfxMe.PlayOneShot(ac_volatility_noise_0[r.Next(0, ac_volatility_noise_0.Length)]);
+				as_sfxMe.PlayOneShot(ac_volatility_noise_0[r.Next(0, ac_volatility_noise_0.Length)],0.5f);
 				break;
 			case(1):
-				as_sfxMe.PlayOneShot(ac_volatility_noise_1[r.Next(0, ac_volatility_noise_1.Length)]);
+				as_sfxMe.PlayOneShot(ac_volatility_noise_1[r.Next(0, ac_volatility_noise_1.Length)],0.5f);
 				break;
 			case(2):
-				as_sfxMe.PlayOneShot(ac_volatility_noise_2[r.Next(0, ac_volatility_noise_2.Length)]);
+				as_sfxMe.PlayOneShot(ac_volatility_noise_2[r.Next(0, ac_volatility_noise_2.Length)],0.5f);
 				break;
 			case(3):
-				as_sfxMe.PlayOneShot(ac_volatility_noise_3[r.Next(0, ac_volatility_noise_3.Length)]);
+				as_sfxMe.PlayOneShot(ac_volatility_noise_3[r.Next(0, ac_volatility_noise_3.Length)],0.5f);
 				break;
 			case(4):
-				as_sfxMe.PlayOneShot(ac_volatility_noise_4[r.Next(0, ac_volatility_noise_4.Length)]);
+				as_sfxMe.PlayOneShot(ac_volatility_noise_4[r.Next(0, ac_volatility_noise_4.Length)],0.5f);
 				break;
 		}
     }
@@ -172,10 +172,11 @@ public sealed class Maestro : MonoBehaviour {
 		PlaySingle(as_sfxHi,ac_contact_generic);
 	}
 	public void PlaySpellCharge(){
-		PlaySingle(as_sfxHi,ac_spell_charge);
+		//PlaySingle(as_sfxHi,ac_spell_charge);
 	}
 	public void PlayEnemyHit(){
-		PlaySingle(as_sfxLo,ac_enemyHit);
+		//PlaySingle(as_sfxLo,ac_enemyHit);
+		as_sfxLo.PlayOneShot(ac_enemyHit,0.5f);
 	}
 	public void PlaySkeletonDie(){
 		PlayRandom(as_sfxLo,ac_skeleton_die);
@@ -187,7 +188,8 @@ public sealed class Maestro : MonoBehaviour {
 		PlayRandom(as_sfxHi,ac_necromancer_die);
 	}
 	public void PlayNecromancerSpawn(){
-		PlaySingle(as_sfxHi,ac_necromancer_spawn);
+		//PlaySingle(as_sfxHi,ac_necromancer_spawn);
+		as_sfxHi.PlayOneShot(ac_necromancer_spawn,1.5f);
 	}
 	public void PlaySkeletonSpawn(){
 		PlayRandom(as_sfxMe,ac_skeleton_spawn);
@@ -196,22 +198,29 @@ public sealed class Maestro : MonoBehaviour {
 		PlayRandom(as_sfxLo,ac_heavy_skeleton_footstep);
 	}
 	public void PlayPlayerSpawn(){
-		PlaySingle(as_sfxHi,ac_playerSpawn);
+		//PlaySingle(as_sfxHi,ac_playerSpawn);
+		as_sfxHi.PlayOneShot(ac_playerSpawn,1.5f);
 	}
 	public void PlayPlayerDie(){
-		PlaySingle(as_sfxHi,ac_playerDie);
+		//PlaySingle(as_sfxHi,ac_playerDie);
+		as_sfxHi.PlayOneShot(ac_playerDie,1.5f);
 	}
 	public void PlayPortal(){
 		PlaySingle(as_sfxHi,ac_portal);
 	}
 	public void PlayPlayerFootstep(){
-		PlayRandom(as_sfxMe,ac_player_footstep);
+		//PlayRandom(as_sfxMe,ac_player_footstep);
 	}
 	public void PlayPlayerClothing(){
-		PlayRandom(as_sfxLo,ac_player_clothing);
+		//PlayRandom(as_sfxLo,ac_player_clothing);
 	}
 	public void PlayPlayerHit(){
-		PlayRandom(as_sfxMe,ac_player_hit);
+		System.Random r = new System.Random();
+		if(r.NextDouble() <= .2f){
+				//PlayRandom(as_sfxMe,ac_player_hit);
+				as_sfxMe.PlayOneShot(ac_player_hit[r.Next(0, ac_player_hit.Length)],0.4f);
+			}
+		//PlayRandom(as_sfxMe,ac_player_hit);
 	}
 	
 	public void PlayAnnouncmentPlayerHit(int playerNum, Constants.Global.DamageType d){
@@ -220,8 +229,10 @@ public sealed class Maestro : MonoBehaviour {
 			b_announcementOk = false;
 			switch(d){
 				case(Constants.Global.DamageType.ENEMY):
-					as_voi.clip = ac_enemy_hit_player[r.Next(0, ac_enemy_hit_player.Length)];
-					as_voi.Play();
+					if(r.NextDouble() <= .2f){
+						as_voi.clip = ac_enemy_hit_player[r.Next(0, ac_enemy_hit_player.Length)];
+						as_voi.Play();
+					}
 					break;
 				case(Constants.Global.DamageType.RIFT):
 					as_voi.clip = ac_rift_hit_player[r.Next(0, ac_rift_hit_player.Length)];
@@ -330,17 +341,42 @@ public sealed class Maestro : MonoBehaviour {
 		b_announcementOk = true;
 		InvokeRepeating("GenericOk",f_genericAnnouncementDelay,f_genericAnnouncementDelay);
 		PlayAnnouncementIntro();
-		as_bgm.clip = ac_bgm0;
-		as_bgm.Play();
+		//as_bgmA.clip = ac_bgm0;
+		//as_bgmA.Play();
         am_masterMix.SetFloat("VolumeMaster",Constants.VolOptions.C_MasterVolume);
         am_masterMix.SetFloat("VolumeVOI",Constants.VolOptions.C_VOIVolume);
         am_masterMix.SetFloat("VolumeBGM",Constants.VolOptions.C_BGMVolume);
         am_masterMix.SetFloat("VolumeSFX",Constants.VolOptions.C_SFXVolume);
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	// Takes volatility level as a parameter.
+	public void ChangeBGM(int i){
+		AudioSource from, to;
+		if(b_bgmAIsOn){
+			from = as_bgmA;
+			to = as_bgmB;;
+		}
+		else{
+			from = as_bgmB;
+			to = as_bgmA;
+		}
 		
+		to.clip = ac_bgm[i];
+		to.timeSamples = from.timeSamples;
+		to.volume = 0;
+		from.volume = 1;
+		to.Play();
+		StartCoroutine(Crossfade(from,to));
+		b_bgmAIsOn = !b_bgmAIsOn;
+	}
+	
+	IEnumerator Crossfade(AudioSource from, AudioSource to){
+		while(to.volume < 1f){
+			from.volume -= 0.05f;
+			to.volume += 0.05f;
+			yield return new WaitForSeconds(.02f);
+		}
+		from.Stop();
 	}
 	
 	private void AnnouncementOk(){
