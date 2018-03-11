@@ -106,6 +106,9 @@ public abstract class EnemyController : MonoBehaviour {
     }
 	
 	public void TakeDamage(float damage){
+
+		//If for some reason this enemy is dead but it's still taking damage
+		//This if statement will prevent it
 		if (this.gameObject.activeSelf) {
 			maestro.PlayEnemyHit();
 			f_health -= damage;

@@ -123,6 +123,8 @@ public class SkeletonController : EnemyController {
 	
 	protected override void UpdateSlowed(){
 		base.UpdateSlowed();
+
+		//There are some instances where go_closestTarget is null, this check prevents a null reference exception
 		if (go_closestTarget) {
 			if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnemyStats.C_EnemyAttackRange) {
 				EnterStateAttack();
