@@ -102,19 +102,21 @@ public abstract class EnemyController : MonoBehaviour {
     }
 
     protected virtual void UpdateDie() {
-		EnterStateWander();
         //riftController.DecreaseEnemies(e_side);
 		//Destroy(gameObject);
+		this.GetComponent<CapsuleCollider>().enabled = false;
 		gameObject.SetActive(false);
     }
 	
 	public void TakeDamage(float damage){
-		maestro.PlayEnemyHit();
-		f_health -= damage;
-		//Debug.Log(i_health);
-		if(f_health <= 0f){
-			Debug.Log("death");
-			EnterStateDie();
+		if (this.gameObject.activeSelf) {
+			maestro.PlayEnemyHit();
+			f_health -= damage;
+			//Debug.Log(i_health);
+			if(f_health <= 0f){
+				Debug.Log("death");
+				EnterStateDie();
+			}
 		}
 	}
 	
@@ -194,6 +196,8 @@ public abstract class EnemyController : MonoBehaviour {
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
+		this.GetComponent<CapsuleCollider>().enabled = true;
+		EnterStateWander();
 		riftController = RiftController.Instance;
 		rb = GetComponent<Rigidbody>();
 		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
