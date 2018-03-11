@@ -281,6 +281,8 @@ public class PlayerController : MonoBehaviour{
 		if (!go_flagObj && !isWisp) {
             // Magic Missile (Auto-fire)
             if (f_nextMagicMissile > Constants.SpellStats.C_MagicMissileCooldown) {   // checks for fire button and if time delay has passed
+				if (p_player.GetButtonDown("MagicMissile"))
+					maestro.PlaySpellCharge();
                 if (p_player.GetButtonTimePressed("MagicMissile") != 0) {
                     f_mmCharge += p_player.GetButtonTimePressed("MagicMissile");
                 }
@@ -313,6 +315,8 @@ public class PlayerController : MonoBehaviour{
             }
             // Wind Spell
             if (f_nextWind > Constants.SpellStats.C_WindCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+				if (p_player.GetButtonDown("WindSpell"))
+					maestro.PlaySpellCharge();
                 if (p_player.GetButtonTimePressed("WindSpell") != 0) {
                     f_windCharge += p_player.GetButtonTimePressed("WindSpell");
 					anim.SetTrigger ("windChargeTrigger");
@@ -342,6 +346,7 @@ public class PlayerController : MonoBehaviour{
             // Ice Spell
             if (f_nextIce > Constants.SpellStats.C_IceCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
                 if (p_player.GetButtonDown("IceSpell")) {
+					maestro.PlaySpellCharge();
 					maestro.PlayIceShoot();
                     b_iceboltMode = true;
                     f_nextIce = 0;
@@ -359,6 +364,8 @@ public class PlayerController : MonoBehaviour{
 			}
             // Electric Spell
             if (f_nextElectric > Constants.SpellStats.C_ElectricCooldown && f_nextCast > Constants.SpellStats.C_NextSpellDelay) {   // checks for fire button and if time delay has passed
+				if (p_player.GetButtonDown("ElectricitySpell"))
+					maestro.PlaySpellCharge();
                 if (p_player.GetButtonTimePressed("ElectricitySpell") != 0) {
                     f_electricCharge += p_player.GetButtonTimePressed("ElectricitySpell");
 					anim.SetFloat ("gooCharge", f_electricCharge);

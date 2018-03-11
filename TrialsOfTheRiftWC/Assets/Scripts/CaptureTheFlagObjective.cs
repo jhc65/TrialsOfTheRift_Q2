@@ -37,5 +37,9 @@ public class CaptureTheFlagObjective : Objective {
         calligrapher.UpdateScoreUI(e_color, i_score);
         fc_activeFlag.ResetFlagPosition();
     }
+	
+	void OnEnable() {
+        maestro.PlayBeginCTF();
+    }
 
 }

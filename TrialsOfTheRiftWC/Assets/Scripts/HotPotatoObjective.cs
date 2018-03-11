@@ -45,4 +45,8 @@ public class HotPotatoObjective : Objective {
         hpc_activePotato.UpdateCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
         hpc_activePotato.UpdateDestructionTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
     }
+	
+	void OnEnable() {
+        maestro.PlayBeginPotato();
+    }
 }

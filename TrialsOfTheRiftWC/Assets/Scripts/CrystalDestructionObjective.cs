@@ -35,4 +35,7 @@ public class CrystalDestructionObjective : Objective {
         calligrapher.UpdateCrystalHealthUI(cc_activeCrystal.Color, Constants.ObjectiveStats.C_CrystalMaxHealth);
     }
 
+	void OnEnable() {
+        maestro.PlayBeginCrystalDestruction();
+    }
 }

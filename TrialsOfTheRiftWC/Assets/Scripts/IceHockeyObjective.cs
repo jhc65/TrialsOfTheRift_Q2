@@ -37,4 +37,8 @@ public class IceHockeyObjective : Objective {
         calligrapher.UpdateScoreUI(e_color, i_score);
         hpc_activePuck.ResetPuckPosition();
     }
+	
+	void OnEnable() {
+        maestro.PlayBeginHockey();
+    }
 }

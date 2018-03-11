@@ -34,5 +34,9 @@ public class RiftBossObjective : Objective {
         cc_activeBoss.Health = Constants.ObjectiveStats.C_RiftBossMaxHealth;
         calligrapher.UpdateRiftBossHealthUI(cc_activeBoss.Color, Constants.ObjectiveStats.C_RiftBossMaxHealth);
     }
+	
+	void OnEnable() {
+        maestro.PlayBeginRiftBoss();
+    }
 
 }

@@ -537,6 +537,7 @@ namespace Rewired.Integration.UnityUI {
                 if(usePlayingPlayersOnly && !player.isPlaying) continue;
 
                 if(player.GetButtonDown(m_SubmitButton)) {
+					Maestro.Instance.PlayUISubmit();
                     ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, data, ExecuteEvents.submitHandler);
                     break;
                 }
