@@ -180,7 +180,7 @@ public static class Constants {
         public static Vector3 C_RiftTeleportOffset = new Vector3(-2, 0, 0);
         public static float C_PortalTeleportOffset = 0.75f;
 
-        public static float C_VolatilityResetTime = 5.0f;
+        public static float C_VolatilityResetTime = 0.0f;
         //public static float C_Volatility_CameraFlipTime = 5.0f;
         public static float C_VolatilityEnemySpawnTimer = 7.0f;
         public static float C_VolatilityDeathboltLiveTimer = 12.0f;
