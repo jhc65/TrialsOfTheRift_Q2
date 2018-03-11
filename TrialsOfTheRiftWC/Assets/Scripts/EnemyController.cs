@@ -101,19 +101,23 @@ public abstract class EnemyController : MonoBehaviour {
     }
 
     protected virtual void UpdateDie() {
-		EnterStateWander();
         //riftController.DecreaseEnemies(e_side);
 		//Destroy(gameObject);
 		gameObject.SetActive(false);
     }
 	
 	public void TakeDamage(float damage){
-		maestro.PlayEnemyHit();
-		f_health -= damage;
-		//Debug.Log(i_health);
-		if(f_health <= 0f){
-			Debug.Log("death");
-			EnterStateDie();
+
+		//If for some reason this enemy is dead but it's still taking damage
+		//This if statement will prevent it
+		if (this.gameObject.activeSelf) {
+			maestro.PlayEnemyHit();
+			f_health -= damage;
+			//Debug.Log(i_health);
+			if(f_health <= 0f){
+				Debug.Log("death");
+				EnterStateDie();
+			}
 		}
 	}
 	
@@ -193,6 +197,7 @@ public abstract class EnemyController : MonoBehaviour {
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
+		EnterStateWander();			 
 		riftController = RiftController.Instance;
 		maestro = Maestro.Instance;  
 		rb = GetComponent<Rigidbody>();

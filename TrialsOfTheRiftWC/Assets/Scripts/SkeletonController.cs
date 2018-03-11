@@ -127,10 +127,21 @@ public class SkeletonController : EnemyController {
 		go_closestTarget.GetComponent<PlayerController>().TakeDamage(Constants.EnemyStats.C_EnemyDamage,Constants.Global.DamageType.ENEMY);
     }
 	
-	protected override void UpdateSlowed(){
+	protected override void UpdateSlowed() {
 		base.UpdateSlowed();
-		if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnemyStats.C_EnemyAttackRange)
+
+		//There are some instances where go_closestTarget is null, this check prevents a null reference exception
+		if (go_closestTarget) {
+			if(Vector3.Distance(transform.position,go_closestTarget.transform.position) < Constants.EnemyStats.C_EnemyAttackRange) {
 				EnterStateAttack();
+			}
+			else {
+				EnterStateChase();
+			}
+		}
+		else {
+			EnterStateWander();
+		}
 	}
 
 }

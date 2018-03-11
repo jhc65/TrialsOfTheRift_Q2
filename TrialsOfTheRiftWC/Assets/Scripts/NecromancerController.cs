@@ -147,6 +147,7 @@ public class NecromancerController : EnemyController {
     }
 
 	protected override void UpdateDie() {
+		CancelInvoke();		 
 		riftController.DecreaseNecromancers(e_side);
 		base.UpdateDie();
 	}

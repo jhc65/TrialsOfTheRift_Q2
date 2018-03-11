@@ -36,6 +36,8 @@ public sealed class RiftController : MonoBehaviour {
     private int i_redObjectivesComplete = 0;
     private int i_blueObjectivesComplete = 0;
 
+	private int i_nextEnemySpawnIndex = 0;
+	private int i_nextNecromancerSpawnIndex = 0;
     private GameObject[] go_rightEnemySpawners;
     private GameObject[] go_leftEnemySpawners;
 
@@ -194,53 +196,41 @@ public sealed class RiftController : MonoBehaviour {
 
     //TODO: revisit enemy spawn with pooling
 	public void ActivateEnemy(Vector3 position) {
-	    for (int i = 0; i < go_skeletons.Length; i++) {
-			if (!(go_skeletons[i].activeSelf)) {
+		GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+		CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+		cfb_this.cam_Camera = cam_camera;
+		GameObject go_skelly = go_skeletons[i_nextEnemySpawnIndex];
 
-				GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-				CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-				cfb_this.cam_Camera = cam_camera;
+		if (position.x < 0f) {
+			go_skelly.GetComponent<SkeletonController>().Init(Constants.Global.Side.LEFT);
+		}
+		else {
+			go_skelly.GetComponent<SkeletonController>().Init(Constants.Global.Side.RIGHT);
+		}
 
-				if (position.x < 0f) {
-					go_skeletons[i].transform.position = position;
-					go_skeletons[i].GetComponent<SkeletonController>().Init(Constants.Global.Side.LEFT);
-					go_skeletons[i].SetActive(true);
-				}
-				else {
-					go_skeletons[i].transform.position = position;
-					go_skeletons[i].GetComponent<SkeletonController>().Init(Constants.Global.Side.RIGHT);
-					go_skeletons[i].SetActive(true);
-				}
-
-				cfb_this.go_trackedObject = go_skeletons[i];
-				break;
-			}
-        }
+		go_skelly.transform.position = position;
+		go_skelly.SetActive(true);
+		cfb_this.go_trackedObject = go_skelly;
+		i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
 	}
 
 	public void ActivateNecromancer(Vector3 position) {
-	    for (int i = 0; i < go_necromancers.Length; i++) {
-			if (!(go_necromancers[i].activeSelf)) {
+		GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+		CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+		cfb_this.cam_Camera = cam_camera;
+		GameObject go_necro = go_necromancers[i_nextNecromancerSpawnIndex];
 
-				GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-				CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-				cfb_this.cam_Camera = cam_camera;
+		if (position.x < 0f) {
+			go_necro.GetComponent<NecromancerController>().Init(Constants.Global.Side.LEFT);
+		}
+		else {
+			go_necro.GetComponent<NecromancerController>().Init(Constants.Global.Side.RIGHT);
+		}
 
-				if (position.x < 0f) {
-					go_necromancers[i].transform.position = position;
-					go_necromancers[i].GetComponent<NecromancerController>().Init(Constants.Global.Side.LEFT);
-					go_necromancers[i].SetActive(true);
-				}
-				else {
-					go_necromancers[i].transform.position = position;
-					go_necromancers[i].GetComponent<NecromancerController>().Init(Constants.Global.Side.RIGHT);
-					go_necromancers[i].SetActive(true);
-				}
-
-				cfb_this.go_trackedObject = go_necromancers[i];
-				break;
-			}
-        }
+		go_necro.transform.position = position;
+		go_necro.SetActive(true);
+		cfb_this.go_trackedObject = go_necro;
+		i_nextNecromancerSpawnIndex = (i_nextNecromancerSpawnIndex+1)%go_necromancers.Length;
 	}
 
 	public void ActivateRune(Vector3 position) {
