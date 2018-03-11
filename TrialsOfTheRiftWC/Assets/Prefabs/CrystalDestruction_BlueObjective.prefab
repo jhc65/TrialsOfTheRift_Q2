@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1720706103326748
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,8 +54,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720706103326748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.2, y: 0.5, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_LocalPosition: {x: -10, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4324443353586388}
   m_RootOrder: 0
@@ -66,9 +66,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1563210960389626}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 4250590693803498}
   m_Father: {fileID: 0}
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cdo_owner: {fileID: 114201209817594814}
   e_color: 0
-  f_health: 0
 --- !u!114 &114201209817594814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,9 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06456f592cf397a40b0f23a2095b233e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_color: 1
   go_roomPool:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  e_color: 1
   cc_activeCrystal: {fileID: 114099615419858098}

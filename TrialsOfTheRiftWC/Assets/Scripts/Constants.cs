@@ -168,7 +168,7 @@ public static class Constants {
         public static float C_EnemyHealth = 75.0f;
         public static float C_EnemyDamage = 15.0f;
 		public static float C_RuneDamage = 75.0f;
-        public static float C_SpawnRadius = 1.5f;
+        public static float C_SpawnRadius = 2.5f;
         public static float C_MapBoundryXAxis = 14.5f;
         public static float C_MapBoundryZAxis = 9.5f;
     }
@@ -202,14 +202,14 @@ public static class Constants {
 
     //Text descriptions for Objectives.
     public static class ObjectiveText {
-        public static string C_CTFTitle = "Capture The Flag";
-        public static string C_CTFDescription = "Pick up the opponent's flag with [Interact] and drag it back to your goal!";
+        public static string C_CTFTitle = "Capture The Gem";
+        public static string C_CTFDescription = "Pick up the opponent's gem with [Interact] and drag it back to your goal!";
         public static string C_CrystalDestructTitle = "Crystal Destruction";
         public static string C_CrystalDestructDescription = "Cast spells at the enemy team's crystal to destroy it! Heal your own crystal with your own spells!";
         public static string C_HockeyTitle = "Hockey";
         public static string C_HockeyDescription = "Shoot and parry your puck into the enemy's goal! Careful, you can't score from behind!";
         public static string C_PotatoTitle = "Keep Away";
-        public static string C_PotatoDescription = "Shove your flag onto the opponent's side and keep it there. Be careful, if you leave yours on your side for too long, bad things will happen!";
+        public static string C_PotatoDescription = "Shove your object onto the opponent's side and keep it there. Be careful! If you leave yours on your side for too long, bad things will happen!";
         public static string C_BossTitle = "The Final Trial";
         public static string C_BossDescription = "Use all your prowess and spells to defeat the Rift!";
     }

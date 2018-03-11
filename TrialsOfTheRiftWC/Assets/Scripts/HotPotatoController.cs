@@ -84,6 +84,7 @@ public class HotPotatoController : MonoBehaviour {
     public void SelfDestruct() {
         // Spawn enemies at current location
         for (int i = 0; i < Constants.ObjectiveStats.C_EnemySpawnAmount; i++) {
+            Debug.Log("Help.");
             riftController.CircularEnemySpawn(transform.position, e_startSide);
         }
 

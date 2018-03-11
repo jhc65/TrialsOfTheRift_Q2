@@ -139,7 +139,7 @@ public sealed class Calligrapher : MonoBehaviour {
         // colorIn will be crystal color, not objective/team color
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCrystalHealthText.transform.parent.gameObject.SetActive(true);
-            img_redCrystalDestructIcon.gameObject.SetActive(true);
+            img_blueCrystalDestructIcon.gameObject.SetActive(true);
 
             txt_blueObjvTitle.text = txt_bluePauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
             txt_blueObjvDescription.text = txt_bluePauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
@@ -147,7 +147,7 @@ public sealed class Calligrapher : MonoBehaviour {
         }
         else {
             txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(true);
-            img_blueCrystalDestructIcon.gameObject.SetActive(true);
+            img_redCrystalDestructIcon.gameObject.SetActive(true);
 
             txt_redObjvTitle.text = txt_redPauseObjvTitle.text = Constants.ObjectiveText.C_CrystalDestructTitle;
             txt_redObjvDescription.text = txt_redPauseObjvDescription.text = Constants.ObjectiveText.C_CrystalDestructDescription;
@@ -238,11 +238,11 @@ public sealed class Calligrapher : MonoBehaviour {
     public void CrystalDestructionReset(Constants.Global.Color colorIn) {
         if (colorIn == Constants.Global.Color.RED) {
             txt_redCrystalHealthText.transform.parent.gameObject.SetActive(false);
-            img_redCrystalDestructIcon.gameObject.SetActive(false);
+            img_blueCrystalDestructIcon.gameObject.SetActive(false);
         }
         else {
-            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(false);
-            img_blueCrystalDestructIcon.gameObject.SetActive(false);
+            txt_blueCrystalHealthText.transform.parent.gameObject.SetActive(false);            
+            img_redCrystalDestructIcon.gameObject.SetActive(false);
         }
     }
 
