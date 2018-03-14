@@ -7,14 +7,13 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: RiftBossForceField
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 9adfaf9f6cbda420ab515a1a09487390, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -60,6 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Brightness: 1.49
     - _BumpScale: 1
     - _ColorMask: 15
     - _Cutoff: 0.5
@@ -72,6 +72,7 @@ Material:
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RimPower: 1.18
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
@@ -86,5 +87,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.7411765, g: 0, b: 0.85882354, a: 0.066}
     - _EmissionColor: {r: 0.2710595, g: 0.0021085658, b: 0.28676468, a: 1}
+    - _RimColor: {r: 0.46, g: 0, b: 1, a: 0}
     - _SpecColor: {r: 0.5444336, g: 0.055687726, b: 0.75735295, a: 1}
     - _Specular: {r: 0, g: 0, b: 0, a: 0}

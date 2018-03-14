@@ -48,6 +48,7 @@ public sealed class RiftController : MonoBehaviour {
     private float f_volatilityMultiplier;
     private Constants.RiftStats.Volatility e_currentVolatilityLevel;
     private Maestro maestro;     // reference to audio singleton
+    private Animator animator;
 	
 	private System.Random r_random = new System.Random();
 
@@ -86,6 +87,7 @@ public sealed class RiftController : MonoBehaviour {
         if (f_volatility >= 100.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.ONEHUNDRED) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.ONEHUNDRED;
             Invoke("ResetVolatility", Constants.RiftStats.C_VolatilityResetTime);
+            animator.SetTrigger("rawrTrigger");
             BoardClear();
         }
         else if (f_volatility >= 75.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SEVENTYFIVE) {
@@ -93,10 +95,13 @@ public sealed class RiftController : MonoBehaviour {
 			i_volatilityLevel = 4;
             EnterNewVolatilityLevel();
 			InvokeRepeating("SpawnNecromancers", 0.0f, Constants.RiftStats.C_VolatilityNecromancerSpawnTimer);
+            animator.SetTrigger("rawrTrigger");
+            animator.SetInteger("volatility", 4);
         }
         else if (f_volatility >= 65.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SIXTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.SIXTYFIVE;
 			i_volatilityLevel = 3;
+            animator.SetTrigger("rawrTrigger");
             EnterNewVolatilityLevel();
             for (int i = 0; i < 5; i++) {
                 SpawnEnemies();
@@ -105,17 +110,22 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility >= 50.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIFTY) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIFTY;
 			i_volatilityLevel = 3;
+            animator.SetTrigger("rawrTrigger");
+            animator.SetInteger("volatility", 3);
             EnterNewVolatilityLevel();
         }
         else if (f_volatility >= 35.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.THIRTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.THIRTYFIVE;
 			i_volatilityLevel = 2;
+            animator.SetTrigger("rawrTrigger");
             EnterNewVolatilityLevel();
             f_enemySpeed += 1.0f;
         }
         else if (f_volatility >= 25.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
 			i_volatilityLevel = 2;
+            animator.SetTrigger("rawrTrigger");
+            animator.SetInteger("volatility", 2);
             EnterNewVolatilityLevel();
             Constants.Global.Color colorToAttack = DetermineWinningTeam();
             FireDeathBolts(colorToAttack);
@@ -123,6 +133,8 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
 			i_volatilityLevel = 1;
+            animator.SetTrigger("rawrTrigger");
+            animator.SetInteger("volatility", 1);
             EnterNewVolatilityLevel();
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
@@ -435,6 +447,7 @@ public sealed class RiftController : MonoBehaviour {
 		maestro = Maestro.Instance;
         ResetVolatility();
 		Invoke("PlayNoise", r_random.Next(0,10));
+        animator = GetComponentInChildren <Animator> ();
 
     }
 #endregion

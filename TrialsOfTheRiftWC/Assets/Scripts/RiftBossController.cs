@@ -26,6 +26,7 @@ public class RiftBossController : MonoBehaviour {
         get { return f_health; }
         set { f_health = value; }
     }
+    private Animator animator;
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -46,6 +47,7 @@ public class RiftBossController : MonoBehaviour {
             Constants.ObjectiveStats.C_DeathBoltCooldown + Constants.ObjectiveStats.C_ForceFieldCooldown);
 
         InvokeRepeating("SpawnRunes", Constants.ObjectiveStats.C_RuneSpawnInterval, Constants.ObjectiveStats.C_RuneSpawnInterval);
+        animator = GetComponentInChildren <Animator> ();
     }
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -60,15 +62,18 @@ public class RiftBossController : MonoBehaviour {
                 runes.SetActive(false);
             }
         }
+        animator.SetTrigger ("runeTrigger");
     }
 
     private void FireDeathBolts() {
         rc_riftController.FireDeathBolts(e_color);
         go_ForceField.SetActive(false);
         Invoke("TurnOnForceField", Constants.ObjectiveStats.C_ForceFieldCooldown);
+        animator.SetTrigger ("deathboltTrigger");
     }
 
     private void TurnOnForceField() {
         go_ForceField.SetActive(true);
     }
+    
 }
