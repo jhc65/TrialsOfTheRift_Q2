@@ -21,7 +21,8 @@ public abstract class EnemyController : MonoBehaviour {
 	protected State e_state;
 	protected State e_previousState; //Used for returning to the state previous to entering the AttackState.
 	protected State[] e_statusPriorityList = new State[] {State.FROZEN,State.SLOWED};
-	protected Rigidbody rb;
+    [SerializeField] protected Rigidbody rb;
+    [SerializeField] protected Animator anim;
 	protected UnityEngine.AI.NavMeshAgent nma_agent;
 	protected float f_canMove = 1f;
     protected RiftController riftController;
@@ -200,7 +201,7 @@ public abstract class EnemyController : MonoBehaviour {
 		EnterStateWander();			 
 		riftController = RiftController.Instance;
 		maestro = Maestro.Instance;  
-		rb = GetComponent<Rigidbody>();
+		//rb = GetComponent<Rigidbody>();
 		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		e_side = side;
 	}

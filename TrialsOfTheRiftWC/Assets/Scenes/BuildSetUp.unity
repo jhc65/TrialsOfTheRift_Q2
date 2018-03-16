@@ -4594,9 +4594,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 485282551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!23 &485282554
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6585,9 +6587,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 681349808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!23 &681349811
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6763,9 +6767,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 687148421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!23 &687148424
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13086,6 +13092,7 @@ MonoBehaviour:
   go_enemyIndiPrefab: {fileID: 1023037031901888, guid: 0d30b51bd6841fa4e878262c4315899c,
     type: 2}
   cam_camera: {fileID: 1859528229}
+  anim: {fileID: 1964842799}
 --- !u!65 &1167851941
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15698,9 +15705,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1367267186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!23 &1367267189
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17364,10 +17373,11 @@ MonoBehaviour:
   rbo_owner: {fileID: 97190523}
   go_ForceField: {fileID: 1249717086}
   go_runes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 687148421}
+  - {fileID: 2080708755}
+  - {fileID: 2073919114}
   e_color: 0
+  anim: {fileID: 2069233194}
 --- !u!23 &1458449755
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19749,10 +19759,11 @@ MonoBehaviour:
   rbo_owner: {fileID: 1068293295}
   go_ForceField: {fileID: 1437036362}
   go_runes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 485282551}
+  - {fileID: 1367267186}
+  - {fileID: 681349808}
   e_color: 1
+  anim: {fileID: 769392764}
 --- !u!23 &1783678827
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21306,6 +21317,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1530556161826358, guid: a89847ae0aa2e054fad0535c3a45d4da,
     type: 2}
   m_PrefabInternal: {fileID: 1948797331}
+--- !u!95 &1964842799 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 0eb3e290eaec94dd49a89140c632b53d,
+    type: 3}
+  m_PrefabInternal: {fileID: 251716145}
 --- !u!1001 &1965174008
 Prefab:
   m_ObjectHideFlags: 0
@@ -22493,9 +22509,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2073919114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!23 &2073919117
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22625,9 +22643,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2080708755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!23 &2080708758
 MeshRenderer:
   m_ObjectHideFlags: 0
