@@ -1,0 +1,218 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mask_RiftHead
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Rift
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Head 1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_LowerJaw
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth2
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth3
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth4
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth5
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth6
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth7
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth8
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth9
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth10
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth11
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth12
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth13
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth14
+    m_Weight: 0
+  - m_Path: Rift/Rift_Head/Rift_Teeth/Tooth15
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl/Head_ctrl
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl/Jaw_ctrl
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl/root_ctrl
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl/root_ctrl/bottomnurbsSquare1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl/root_ctrl/leftnurbsSquare1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl/root_ctrl/rightnurbsSquare1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Ctrl/root_ctrl/topnurbsSquare1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/curve1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Handle
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_ctrl1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_ctrl1/Spine_IK1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_ctrl2
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_ctrl2/Spine_IK2
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_ctrl3
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_ctrl3/Spine_IK4
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_ctrl4
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_ctrl4/Spine_IK4
+      1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_ctrl5
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_ctrl5/Spine_IK5
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_o 5
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_o 5/Spine_IK_ctrl6
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_o 5/Spine_IK_ctrl6/Spine_IK6
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_o 5/Spine_IK_o 6
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_o 5/Spine_IK_o 6/Spine_IK_ctrl7
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/IK/Spine_IK_o/Spine_IK_o 1/Spine_IK_o 2/Spine_IK_o 3/Spine_IK_o
+      4/Spine_IK_o 5/Spine_IK_o 6/Spine_IK_ctrl7/Spine_IK7
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Head_jb1
+    m_Weight: 1
+  - m_Path: Rift/Rift_Rig/Root_jB/Head_jb1/Head_jb2
+    m_Weight: 1
+  - m_Path: Rift/Rift_Rig/Root_jB/Jaw_jb1
+    m_Weight: 1
+  - m_Path: Rift/Rift_Rig/Root_jB/Jaw_jb1/Jaw_jb2
+    m_Weight: 1
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11/Spinal_12
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11/Spinal_12/Spinal_13
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11/Spinal_12/Spinal_13/Spinal_14
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11/Spinal_12/Spinal_13/Spinal_14/Spinal_15
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11/Spinal_12/Spinal_13/Spinal_14/Spinal_15/Spinal_16
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11/Spinal_12/Spinal_13/Spinal_14/Spinal_15/Spinal_16/Spinal_17
+    m_Weight: 0
+  - m_Path: Rift/Rift_Rig/Root_jB/Spinal_Base/Spinal_1/Spinal_2/Spinal_3/Spinal_4/Spinal_5/Spinal_6/Spinal_7/Spinal_8/Spinal_9/Spinal_10/Spinal_11/Spinal_12/Spinal_13/Spinal_14/Spinal_15/Spinal_16/Spinal_17/Spinal_18
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal1
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal2
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal3
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal4
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal5
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal6
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal7
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal8
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal9
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal10
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal11
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal12
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal13
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal14
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal15
+    m_Weight: 0
+  - m_Path: Rift/Rift_Spine/Spine/Spinal16
+    m_Weight: 0
+  - m_Path: right1
+    m_Weight: 0

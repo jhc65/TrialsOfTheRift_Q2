@@ -12,9 +12,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public sealed class RiftController : MonoBehaviour {
-    #region Variables and Declarations
+#region Variables and Declarations
     [SerializeField] private GameObject go_riftDeathBolt;
-    public GameObject[] go_playerReferences;
+    public GameObject[] go_playerReferences;    // TODO: write a getter for this
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
@@ -23,23 +23,23 @@ public sealed class RiftController : MonoBehaviour {
     
     [SerializeField] private GameObject go_enemyIndiPrefab;
     [SerializeField] private Camera cam_camera;
+    [SerializeField] private Animator anim;
 
-	private int i_leftRunes = 0;
-	private int i_rightRunes = 0;
-
-	private int i_leftNecromancers = 0;
-	private int i_rightNecromancers = 0;
 
     private int i_leftEnemies = 0;
     private int i_rightEnemies = 0;
+    private int i_leftNecromancers = 0;
+    private int i_rightNecromancers = 0;
+    private int i_leftRunes = 0;
+    private int i_rightRunes = 0;
+    private int i_nextEnemySpawnIndex = 0;
+    private int i_nextNecromancerSpawnIndex = 0;
+    private GameObject[] go_rightEnemySpawners;
+    private GameObject[] go_leftEnemySpawners;
+
 
     private int i_redObjectivesComplete = 0;
     private int i_blueObjectivesComplete = 0;
-
-	private int i_nextEnemySpawnIndex = 0;
-	private int i_nextNecromancerSpawnIndex = 0;
-    private GameObject[] go_rightEnemySpawners;
-    private GameObject[] go_leftEnemySpawners;
 
     private float f_enemySpeed;
 
@@ -48,6 +48,7 @@ public sealed class RiftController : MonoBehaviour {
     private float f_volatilityMultiplier;
     private Constants.RiftStats.Volatility e_currentVolatilityLevel;
     private Maestro maestro;     // reference to audio singleton
+
 	
 	private System.Random r_random = new System.Random();
 
@@ -57,7 +58,7 @@ public sealed class RiftController : MonoBehaviour {
         get { return instance; }
     }
 
-    // Getters
+    #region Getters and Setters
     public GameObject[] PlayerReferences {
         get { return go_playerReferences; }
     }
@@ -74,8 +75,9 @@ public sealed class RiftController : MonoBehaviour {
         set { go_leftEnemySpawners = value; }
     }
     #endregion
+#endregion
 
-    #region RiftController Functions
+#region RiftController Functions
     #region Volatility
     public void IncreaseVolatility(float volatilityUp) {
         Debug.Log("Volatility increased!");
@@ -86,6 +88,7 @@ public sealed class RiftController : MonoBehaviour {
         if (f_volatility >= 100.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.ONEHUNDRED) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.ONEHUNDRED;
             Invoke("ResetVolatility", Constants.RiftStats.C_VolatilityResetTime);
+            anim.SetTrigger("rawrTrigger");
             BoardClear();
         }
         else if (f_volatility >= 75.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SEVENTYFIVE) {
@@ -93,10 +96,13 @@ public sealed class RiftController : MonoBehaviour {
 			i_volatilityLevel = 4;
             EnterNewVolatilityLevel();
 			InvokeRepeating("SpawnNecromancers", 0.0f, Constants.RiftStats.C_VolatilityNecromancerSpawnTimer);
+            anim.SetTrigger("rawrTrigger");
+            anim.SetInteger("volatility", 4);
         }
         else if (f_volatility >= 65.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.SIXTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.SIXTYFIVE;
 			i_volatilityLevel = 3;
+            anim.SetTrigger("rawrTrigger");
             EnterNewVolatilityLevel();
             for (int i = 0; i < 5; i++) {
                 SpawnEnemies();
@@ -105,17 +111,22 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility >= 50.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIFTY) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIFTY;
 			i_volatilityLevel = 3;
+            anim.SetTrigger("rawrTrigger");
+            anim.SetInteger("volatility", 3);
             EnterNewVolatilityLevel();
         }
         else if (f_volatility >= 35.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.THIRTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.THIRTYFIVE;
 			i_volatilityLevel = 2;
+            anim.SetTrigger("rawrTrigger");
             EnterNewVolatilityLevel();
             f_enemySpeed += 1.0f;
         }
         else if (f_volatility >= 25.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.TWENTYFIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.TWENTYFIVE;
 			i_volatilityLevel = 2;
+            anim.SetTrigger("rawrTrigger");
+            anim.SetInteger("volatility", 2);
             EnterNewVolatilityLevel();
             Constants.Global.Color colorToAttack = DetermineWinningTeam();
             FireDeathBolts(colorToAttack);
@@ -123,6 +134,8 @@ public sealed class RiftController : MonoBehaviour {
         else if (f_volatility >= 5.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.FIVE) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.FIVE;
 			i_volatilityLevel = 1;
+            anim.SetTrigger("rawrTrigger");
+            anim.SetInteger("volatility", 1);
             EnterNewVolatilityLevel();
             InvokeRepeating("SpawnEnemies", 0.0f, Constants.RiftStats.C_VolatilityEnemySpawnTimer);
         }
@@ -177,7 +190,6 @@ public sealed class RiftController : MonoBehaviour {
             player.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth,Constants.Global.DamageType.RIFT);
         }
 
-        //TODO: kill all enemies
         for (int i = 0; i < go_skeletons.Length; i++) {
 			if (go_skeletons[i].activeSelf)
 				go_skeletons[i].SetActive(false);
@@ -194,7 +206,6 @@ public sealed class RiftController : MonoBehaviour {
         }
     }
 
-    //TODO: revisit enemy spawn with pooling
 	public void ActivateEnemy(Vector3 position) {
 		GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
 		CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
@@ -418,15 +429,15 @@ public sealed class RiftController : MonoBehaviour {
             }
         }
     }
-#endregion
+    #endregion
 
     void PlayNoise() {
 		maestro.PlayVolatilityNoise(i_volatilityLevel);
 		Invoke("PlayNoise", r_random.Next(5,10));
 	}
-    #endregion
+#endregion
 
-    #region Unity Function Overrides
+#region Unity Function Overrides
     void Awake() {
         instance = this;
     }
@@ -435,7 +446,6 @@ public sealed class RiftController : MonoBehaviour {
 		maestro = Maestro.Instance;
         ResetVolatility();
 		Invoke("PlayNoise", r_random.Next(0,10));
-
     }
 #endregion
 }

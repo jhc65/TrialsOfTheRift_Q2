@@ -16,7 +16,7 @@ public class RiftBossController : MonoBehaviour {
     [SerializeField]
     private Constants.Global.Color e_color;     // identifies owning team
     private float f_health;    // indicates how much health the boss has
-    private RiftController rc_riftController;
+    private RiftController riftController;
 
     // Getters
     public Constants.Global.Color Color {
@@ -26,6 +26,7 @@ public class RiftBossController : MonoBehaviour {
         get { return f_health; }
         set { f_health = value; }
     }
+    [SerializeField] private Animator anim;
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -40,7 +41,7 @@ public class RiftBossController : MonoBehaviour {
 
     void Start() {
         f_health = Constants.ObjectiveStats.C_RiftBossMaxHealth;     // cannot read from Constants.cs in initialization at top
-        rc_riftController = RiftController.Instance;
+        riftController = RiftController.Instance;
 
         InvokeRepeating("FireDeathBolts", Constants.ObjectiveStats.C_DeathBoltCooldown, 
             Constants.ObjectiveStats.C_DeathBoltCooldown + Constants.ObjectiveStats.C_ForceFieldCooldown);
@@ -60,15 +61,18 @@ public class RiftBossController : MonoBehaviour {
                 runes.SetActive(false);
             }
         }
+        anim.SetTrigger("runeTrigger");
     }
 
     private void FireDeathBolts() {
-        rc_riftController.FireDeathBolts(e_color);
+        riftController.FireDeathBolts(e_color);
         go_ForceField.SetActive(false);
         Invoke("TurnOnForceField", Constants.ObjectiveStats.C_ForceFieldCooldown);
+        anim.SetTrigger("deathboltTrigger");
     }
 
     private void TurnOnForceField() {
         go_ForceField.SetActive(true);
     }
+    
 }

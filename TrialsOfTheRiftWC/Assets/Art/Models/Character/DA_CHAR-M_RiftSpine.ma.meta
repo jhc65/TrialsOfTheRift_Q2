@@ -1,0 +1,534 @@
+fileFormatVersion: 2
+guid: 0eb3e290eaec94dd49a89140c632b53d
+timeCreated: 1520573857
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bottomnurbsSquare1
+    100002: Ctrl
+    100004: curve1
+    100006: Handle
+    100008: Head_ctrl
+    100010: Head_jb1
+    100012: Head_jb2
+    100014: IK
+    100016: Jaw_ctrl
+    100018: Jaw_jb1
+    100020: Jaw_jb2
+    100022: leftnurbsSquare1
+    100024: Rift
+    100026: Rift_Head
+    100028: Rift_Head 1
+    100030: Rift_LowerJaw
+    100032: Rift_Rig
+    100034: Rift_Spine
+    100036: Rift_Teeth
+    100038: //RootNode
+    100040: right1
+    100042: rightnurbsSquare1
+    100044: root_ctrl
+    100046: Root_jB
+    100048: Spinal
+    100050: Spinal1
+    100052: Spinal10
+    100054: Spinal11
+    100056: Spinal12
+    100058: Spinal13
+    100060: Spinal14
+    100062: Spinal15
+    100064: Spinal16
+    100066: Spinal2
+    100068: Spinal3
+    100070: Spinal4
+    100072: Spinal5
+    100074: Spinal6
+    100076: Spinal7
+    100078: Spinal8
+    100080: Spinal9
+    100082: Spinal_1
+    100084: Spinal_10
+    100086: Spinal_11
+    100088: Spinal_12
+    100090: Spinal_13
+    100092: Spinal_14
+    100094: Spinal_15
+    100096: Spinal_16
+    100098: Spinal_17
+    100100: Spinal_18
+    100102: Spinal_2
+    100104: Spinal_3
+    100106: Spinal_4
+    100108: Spinal_5
+    100110: Spinal_6
+    100112: Spinal_7
+    100114: Spinal_8
+    100116: Spinal_9
+    100118: Spinal_Base
+    100120: Spine
+    100122: Spine_IK1
+    100124: Spine_IK2
+    100126: Spine_IK4
+    100128: Spine_IK4 1
+    100130: Spine_IK5
+    100132: Spine_IK6
+    100134: Spine_IK7
+    100136: Spine_IK_ctrl1
+    100138: Spine_IK_ctrl2
+    100140: Spine_IK_ctrl3
+    100142: Spine_IK_ctrl4
+    100144: Spine_IK_ctrl5
+    100146: Spine_IK_ctrl6
+    100148: Spine_IK_ctrl7
+    100150: Spine_IK_o
+    100152: Spine_IK_o 1
+    100154: Spine_IK_o 2
+    100156: Spine_IK_o 3
+    100158: Spine_IK_o 4
+    100160: Spine_IK_o 5
+    100162: Spine_IK_o 6
+    100164: Tooth
+    100166: Tooth1
+    100168: Tooth10
+    100170: Tooth11
+    100172: Tooth12
+    100174: Tooth13
+    100176: Tooth14
+    100178: Tooth15
+    100180: Tooth2
+    100182: Tooth3
+    100184: Tooth4
+    100186: Tooth5
+    100188: Tooth6
+    100190: Tooth7
+    100192: Tooth8
+    100194: Tooth9
+    100196: topnurbsSquare1
+    400000: bottomnurbsSquare1
+    400002: Ctrl
+    400004: curve1
+    400006: Handle
+    400008: Head_ctrl
+    400010: Head_jb1
+    400012: Head_jb2
+    400014: IK
+    400016: Jaw_ctrl
+    400018: Jaw_jb1
+    400020: Jaw_jb2
+    400022: leftnurbsSquare1
+    400024: Rift
+    400026: Rift_Head
+    400028: Rift_Head 1
+    400030: Rift_LowerJaw
+    400032: Rift_Rig
+    400034: Rift_Spine
+    400036: Rift_Teeth
+    400038: //RootNode
+    400040: right1
+    400042: rightnurbsSquare1
+    400044: root_ctrl
+    400046: Root_jB
+    400048: Spinal
+    400050: Spinal1
+    400052: Spinal10
+    400054: Spinal11
+    400056: Spinal12
+    400058: Spinal13
+    400060: Spinal14
+    400062: Spinal15
+    400064: Spinal16
+    400066: Spinal2
+    400068: Spinal3
+    400070: Spinal4
+    400072: Spinal5
+    400074: Spinal6
+    400076: Spinal7
+    400078: Spinal8
+    400080: Spinal9
+    400082: Spinal_1
+    400084: Spinal_10
+    400086: Spinal_11
+    400088: Spinal_12
+    400090: Spinal_13
+    400092: Spinal_14
+    400094: Spinal_15
+    400096: Spinal_16
+    400098: Spinal_17
+    400100: Spinal_18
+    400102: Spinal_2
+    400104: Spinal_3
+    400106: Spinal_4
+    400108: Spinal_5
+    400110: Spinal_6
+    400112: Spinal_7
+    400114: Spinal_8
+    400116: Spinal_9
+    400118: Spinal_Base
+    400120: Spine
+    400122: Spine_IK1
+    400124: Spine_IK2
+    400126: Spine_IK4
+    400128: Spine_IK4 1
+    400130: Spine_IK5
+    400132: Spine_IK6
+    400134: Spine_IK7
+    400136: Spine_IK_ctrl1
+    400138: Spine_IK_ctrl2
+    400140: Spine_IK_ctrl3
+    400142: Spine_IK_ctrl4
+    400144: Spine_IK_ctrl5
+    400146: Spine_IK_ctrl6
+    400148: Spine_IK_ctrl7
+    400150: Spine_IK_o
+    400152: Spine_IK_o 1
+    400154: Spine_IK_o 2
+    400156: Spine_IK_o 3
+    400158: Spine_IK_o 4
+    400160: Spine_IK_o 5
+    400162: Spine_IK_o 6
+    400164: Tooth
+    400166: Tooth1
+    400168: Tooth10
+    400170: Tooth11
+    400172: Tooth12
+    400174: Tooth13
+    400176: Tooth14
+    400178: Tooth15
+    400180: Tooth2
+    400182: Tooth3
+    400184: Tooth4
+    400186: Tooth5
+    400188: Tooth6
+    400190: Tooth7
+    400192: Tooth8
+    400194: Tooth9
+    400196: topnurbsSquare1
+    2000000: right1
+    4300000: Rift_Head
+    4300002: Rift_LowerJaw
+    4300004: Tooth
+    4300006: Tooth1
+    4300008: Tooth2
+    4300010: Tooth3
+    4300012: Tooth4
+    4300014: Tooth5
+    4300016: Tooth6
+    4300018: Tooth7
+    4300020: Tooth8
+    4300022: Tooth9
+    4300024: Tooth10
+    4300026: Tooth11
+    4300028: Tooth12
+    4300030: Tooth13
+    4300032: Tooth14
+    4300034: Tooth15
+    4300036: Spinal
+    4300038: Spinal1
+    4300040: Spinal2
+    4300042: Spinal3
+    4300044: Spinal4
+    4300046: Spinal5
+    4300048: Spinal6
+    4300050: Spinal7
+    4300052: Spinal8
+    4300054: Spinal9
+    4300056: Spinal10
+    4300058: Spinal11
+    4300060: Spinal12
+    4300062: Spinal13
+    4300064: Spinal14
+    4300066: Spinal15
+    4300068: Spinal16
+    7400000: Idle
+    7400002: Volatility_1
+    7400004: Volatility_2
+    7400006: Volatility_3
+    7400008: Volatility_4
+    7400010: Rawr
+    9500000: //RootNode
+    13700000: Rift_Head 1
+    13700002: Rift_LowerJaw
+    13700004: Spinal
+    13700006: Spinal1
+    13700008: Spinal10
+    13700010: Spinal11
+    13700012: Spinal12
+    13700014: Spinal13
+    13700016: Spinal14
+    13700018: Spinal15
+    13700020: Spinal16
+    13700022: Spinal2
+    13700024: Spinal3
+    13700026: Spinal4
+    13700028: Spinal5
+    13700030: Spinal6
+    13700032: Spinal7
+    13700034: Spinal8
+    13700036: Spinal9
+    13700038: Tooth
+    13700040: Tooth1
+    13700042: Tooth10
+    13700044: Tooth11
+    13700046: Tooth12
+    13700048: Tooth13
+    13700050: Tooth14
+    13700052: Tooth15
+    13700054: Tooth2
+    13700056: Tooth3
+    13700058: Tooth4
+    13700060: Tooth5
+    13700062: Tooth6
+    13700064: Tooth7
+    13700066: Tooth8
+    13700068: Tooth9
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 518358be05c396a428e9b5bd67dec6c0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 400
+      lastFrame: 549
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Volatility_1
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Volatility_2
+      takeName: Take 001
+      firstFrame: 101
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Volatility_3
+      takeName: Take 001
+      firstFrame: 201
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Volatility_4
+      takeName: Take 001
+      firstFrame: 301
+      lastFrame: 380
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Rawr
+      takeName: Take 001
+      firstFrame: 600
+      lastFrame: 700
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

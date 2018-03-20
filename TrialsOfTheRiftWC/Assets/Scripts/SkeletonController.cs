@@ -12,6 +12,7 @@ public class SkeletonController : EnemyController {
 	
 	private GameObject go_closestTarget;
 
+
 	public override void Init(Constants.Global.Side side) {
 		base.Init(side);
 		nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
@@ -93,9 +94,12 @@ public class SkeletonController : EnemyController {
 
 		if (b_playersAvailable) {
 			EnterStateChase();
+			GetComponent<Animator>().SetBool("isRunning", true);
+
 		}
 		else {
 			 Wander();
+			GetComponent<Animator>().SetBool("isRunning", false);
 		}
 	}
 	
@@ -118,7 +122,7 @@ public class SkeletonController : EnemyController {
 
     protected override void EnterStateAttack() {
 		base.EnterStateAttack();
-        GetComponent<Animator>().SetTrigger("attackTrigger");
+        GetComponentInChildren<Animator>().SetTrigger("attackTrigger");
         //GetComponent<Animator>().Play("placeholder_enemy_attack");
     }
 

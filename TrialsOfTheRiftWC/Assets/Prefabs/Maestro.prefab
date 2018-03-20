@@ -555,43 +555,43 @@ MonoBehaviour:
   ac_iceShoot: {fileID: 8300000, guid: 297ae035c2f736f4d8d75997dbae1dc2, type: 3}
   ac_electricShoot: {fileID: 8300000, guid: f5f1d7995fd51b2458b35afd99c619a5, type: 3}
   ac_magicMissileShoot:
-  - {fileID: 8300000, guid: 844225ba7356e034b9b7b8226beafa27, type: 3}
-  - {fileID: 8300000, guid: ff469747a9d1d2046af4582460fecb97, type: 3}
-  - {fileID: 8300000, guid: 2d5b0e39ca673c047a0f4d63f93079ab, type: 3}
-  - {fileID: 8300000, guid: ce3e4541763b0c840a06abf4e7487406, type: 3}
-  - {fileID: 8300000, guid: d1eb56516dec9e2488395151c8142f21, type: 3}
-  - {fileID: 8300000, guid: e47e713465ad98d46a6de31e294b49bc, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_contact_generic: {fileID: 8300000, guid: 1737d8d48fab40e4c94ba6d71c8c9023, type: 3}
   ac_spell_charge: {fileID: 8300000, guid: ae120e45a19af8f44b4e6214dae913c7, type: 3}
   ac_enemyHit: {fileID: 8300000, guid: afc15df9a0fa0e84baad73c6d9d0f8f3, type: 3}
   ac_skeleton_die:
   - {fileID: 8300000, guid: 7011b10a80ca1854d8de6609609f8917, type: 3}
-  - {fileID: 8300000, guid: 3805c97aacde7a94b8a078c5f90048bf, type: 3}
+  - {fileID: 0}
   ac_heavy_skeleton_die:
-  - {fileID: 8300000, guid: da95e358b7913fb459395ac42827fa63, type: 3}
-  - {fileID: 8300000, guid: 03aa881e3f2bf424182a794ae1507e8e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_necromancer_die:
-  - {fileID: 8300000, guid: e15c230669e0f624f8c88f256355a071, type: 3}
+  - {fileID: 0}
   ac_skeleton_spawn:
-  - {fileID: 8300000, guid: 7f1621eb83ba5cf4fbd945f6ecfa9396, type: 3}
-  - {fileID: 8300000, guid: a6d63c5248f67304c9087a0f52f76bd3, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_necromancer_spawn: {fileID: 8300000, guid: c6d9dc244284c9244b881347db691b68,
     type: 3}
   ac_heavy_skeleton_footstep:
-  - {fileID: 8300000, guid: 08b59131094447c41b23d2dec35b9297, type: 3}
-  - {fileID: 8300000, guid: 367471e584778e74a968b8fee4b6dcd1, type: 3}
-  - {fileID: 8300000, guid: c948ed2d7c33c4c47be96d9bd859be06, type: 3}
-  - {fileID: 8300000, guid: dab58409ac0eda64d8f16796dad9fbbc, type: 3}
-  - {fileID: 8300000, guid: 90817d3392fa42444bce5eb51a715f1e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_playerSpawn: {fileID: 8300000, guid: 3d956fdcdab006042acb7e159490c8e2, type: 3}
   ac_playerDie: {fileID: 8300000, guid: 8f2a2c08a9e048049af5eb939b4bc8d9, type: 3}
   ac_portal: {fileID: 8300000, guid: e4cfda1777a13de43acc553349f19172, type: 3}
   ac_bgm:
-  - {fileID: 8300000, guid: 47e186769e328864eb374d5205e1e732, type: 3}
-  - {fileID: 8300000, guid: a519ba7522ac5ed45ae2228bce33ea1a, type: 3}
-  - {fileID: 8300000, guid: a519ba7522ac5ed45ae2228bce33ea1a, type: 3}
-  - {fileID: 8300000, guid: fc2ca8e5eb16d6e4ca3f007cbf1c4087, type: 3}
-  - {fileID: 8300000, guid: fc2ca8e5eb16d6e4ca3f007cbf1c4087, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_volatility_ambience:
   - {fileID: 8300000, guid: 8c2866d8ec7512c47880db8d720818c2, type: 3}
   - {fileID: 8300000, guid: f0a3a010bad0c684fa491adbc83f1806, type: 3}
@@ -602,27 +602,27 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0956b964108ec18448894800c4c411ed, type: 3}
   ac_volatility_noise_1:
   - {fileID: 8300000, guid: 9177fd83e99940b44b8fddddea79b48c, type: 3}
-  - {fileID: 8300000, guid: 4584093371939924181e9f4c74be28a0, type: 3}
-  - {fileID: 8300000, guid: f2e823baa322a94479b78bf02bfcfc1d, type: 3}
-  - {fileID: 8300000, guid: 2f3795d44921a9e4a820202063841bf5, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_volatility_noise_2:
   - {fileID: 8300000, guid: 794cf7cb612eaf54a956de60d66fb25c, type: 3}
-  - {fileID: 8300000, guid: 87f7068b84e54184ebf6a41ad7600314, type: 3}
+  - {fileID: 0}
   - {fileID: 8300000, guid: 9177fd83e99940b44b8fddddea79b48c, type: 3}
-  - {fileID: 8300000, guid: 4584093371939924181e9f4c74be28a0, type: 3}
-  - {fileID: 8300000, guid: f2e823baa322a94479b78bf02bfcfc1d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_volatility_noise_3:
   - {fileID: 8300000, guid: 9177fd83e99940b44b8fddddea79b48c, type: 3}
-  - {fileID: 8300000, guid: 5083c149ea08c8d40903a54d5185b411, type: 3}
-  - {fileID: 8300000, guid: 06b824937742a7745acababe5de6e6a7, type: 3}
-  - {fileID: 8300000, guid: 99fe96e0f2ffd904a8a1ab6d73221512, type: 3}
-  - {fileID: 8300000, guid: 4584093371939924181e9f4c74be28a0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_volatility_noise_4:
   - {fileID: 8300000, guid: ca092ff594b3ce34cb177ba4caf901ea, type: 3}
-  - {fileID: 8300000, guid: 2f3795d44921a9e4a820202063841bf5, type: 3}
-  - {fileID: 8300000, guid: cb4b62437215de043b324e01e7c471dd, type: 3}
-  - {fileID: 8300000, guid: 5f00bf4eea0994c4886705cb8d855496, type: 3}
-  - {fileID: 8300000, guid: 4584093371939924181e9f4c74be28a0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_player_footstep:
   - {fileID: 8300000, guid: a7476658c652956419079ea7dceb8acb, type: 3}
   - {fileID: 8300000, guid: 2addb5f50e8009a4aa3c6d8c48b7b06b, type: 3}
@@ -631,18 +631,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f26bb2537143d349b2bb807e8a0ad90, type: 3}
   - {fileID: 8300000, guid: ff6d26f815ccc9f40982759cdda38a2c, type: 3}
   ac_player_hit:
-  - {fileID: 8300000, guid: 2941c2d48eff5004c866f7c2cb736b88, type: 3}
-  - {fileID: 8300000, guid: 12fc8acb855afff47916692c111ba17c, type: 3}
-  - {fileID: 8300000, guid: 371e85c8bdef3f44bae8fc4e1d018b93, type: 3}
-  - {fileID: 8300000, guid: 01ccf365b35f4fb4a9759a8add5b7119, type: 3}
-  - {fileID: 8300000, guid: 5c1e875a57cd36247b550c5cacff7a6d, type: 3}
-  - {fileID: 8300000, guid: b438a4ab8dd91d34a8b83ca1eabba43a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_player_clothing:
-  - {fileID: 8300000, guid: 79fcc262f12ab784f967b6a9bd34368f, type: 3}
-  - {fileID: 8300000, guid: d20699e9eba1d444a924cf70cb92e171, type: 3}
-  - {fileID: 8300000, guid: 6b0415db88ede57438fdd053978dd081, type: 3}
-  - {fileID: 8300000, guid: 32c2d2cd08cd2b94fa4600914d2c89b1, type: 3}
-  - {fileID: 8300000, guid: 1c68b9351b853b041beb38fc29f6f07e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_generic:
   - {fileID: 8300000, guid: b31e4fc6baca01c4ebb988d904270346, type: 3}
   - {fileID: 8300000, guid: f34ba4f96174a8f419f31cc0345c4000, type: 3}
@@ -833,20 +833,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3dc8e9241f354447a6d7e9e3f13a8c5, type: 3}
   - {fileID: 8300000, guid: 0a5787935cea70443b7a0791d506009d, type: 3}
   ac_board_clear:
-  - {fileID: 8300000, guid: af25cd292b103ff47a0291721b7f7e73, type: 3}
-  - {fileID: 8300000, guid: 712b9b7f089acec4998c42d69db5d65e, type: 3}
-  - {fileID: 8300000, guid: 15c69aed8f5c47943b832cdd733c1e50, type: 3}
-  - {fileID: 8300000, guid: 5b6b89c737652084ca72f5c79884ef1b, type: 3}
-  - {fileID: 8300000, guid: d0c417f690780794e9171407d0680752, type: 3}
-  - {fileID: 8300000, guid: 11617b3cab6c0004581701ae2e5b53c4, type: 3}
-  - {fileID: 8300000, guid: 1320b5d1569403b42be403960b41bec7, type: 3}
-  - {fileID: 8300000, guid: 897efd5bc17a8a64fa64d22e684041ac, type: 3}
-  - {fileID: 8300000, guid: 19c157ace6728854cb793ac642e8bbd0, type: 3}
-  - {fileID: 8300000, guid: 12041b65ec4f38d40a3c5e832f3b8ce5, type: 3}
-  - {fileID: 8300000, guid: e8b10f7126d97114bb2b998ff5d439fd, type: 3}
-  - {fileID: 8300000, guid: 888be2b8c1d8a694aa96062ecd6ded0b, type: 3}
-  - {fileID: 8300000, guid: 45fffb4e4f16dfe478f9bd449ce58111, type: 3}
-  - {fileID: 8300000, guid: 29dea8414a721d946a40fdf6319240ce, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_begin_ctf: {fileID: 8300000, guid: 50a6bc59cf96d3943a29663a63d7cd2c, type: 3}
   ac_begin_hockey: {fileID: 8300000, guid: 9809e43e235f47e46be2ee2e30db9976, type: 3}
   ac_begin_crystal_destruction: {fileID: 8300000, guid: c7b9844b8f2b8414e942deea986317c0,
@@ -855,28 +855,28 @@ MonoBehaviour:
   ac_begin_potato: {fileID: 8300000, guid: 0c3e48d5d3d0b3e49a4e80aeb5147838, type: 3}
   ac_tutorial: {fileID: 8300000, guid: 7eded562fffe89f46aa1977d5d579d20, type: 3}
   ac_page_turn:
-  - {fileID: 8300000, guid: 7e72e889f074a414aaddb619c5b89b5c, type: 3}
-  - {fileID: 8300000, guid: f11e317ace83910448dddc355626c749, type: 3}
-  - {fileID: 8300000, guid: 9192e48fb93fcc74fa97bba6298d34d0, type: 3}
-  - {fileID: 8300000, guid: a260eeb4d45012c479376591c118b9d0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_tap:
-  - {fileID: 8300000, guid: ca97dfc0c45416d499d82ffdf7bd5452, type: 3}
-  - {fileID: 8300000, guid: b69a75454c96971498c7df80c2bc6dba, type: 3}
-  - {fileID: 8300000, guid: 31d73388b21a5c24fb7ef3ba82a03b5b, type: 3}
-  - {fileID: 8300000, guid: f32246b577423d5458338c106c560911, type: 3}
-  - {fileID: 8300000, guid: 7e7a452e3e2eb1643846a8089068fd62, type: 3}
-  - {fileID: 8300000, guid: d5d8edd485b052448a2a3bac06dcffcc, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_click:
-  - {fileID: 8300000, guid: 3760b5b78acad9a4ebf13b36876e9511, type: 3}
-  - {fileID: 8300000, guid: dbf6f592b596f8841b55e6f94ea833af, type: 3}
-  - {fileID: 8300000, guid: c0d91595e36b95241b63a02c46e86c90, type: 3}
-  - {fileID: 8300000, guid: 9b1b84a833c10184889bfcfa8ebe7e45, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ac_buzz:
-  - {fileID: 8300000, guid: 9888f32dc595ac84e8d10bc6f78803fc, type: 3}
-  - {fileID: 8300000, guid: a1456b959101102428e9e82431e1c152, type: 3}
-  - {fileID: 8300000, guid: 6d210aae16e3c084e8a283fa29d3c638, type: 3}
-  - {fileID: 8300000, guid: c07880a55e3ac6349b3c10c67e75d848, type: 3}
-  - {fileID: 8300000, guid: 30fff87f90cf5f04a99724d0364ddcc2, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   f_announcementDelay: 10
   f_genericAnnouncementDelay: 60
   f_announcementChance: 0.33

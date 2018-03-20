@@ -12,6 +12,7 @@ public class NecromancerController : EnemyController {
 
 	//[SerializeField] private GameObject go_enemyPrefab;
 	//[SerializeField] private GameObject go_runePrefab;
+	//private Animator anim;
 
 	public override void Init(Constants.Global.Side side) {
 		base.Init(side);
