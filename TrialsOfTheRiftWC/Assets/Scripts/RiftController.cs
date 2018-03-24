@@ -77,7 +77,7 @@ public sealed class RiftController : MonoBehaviour {
     #endregion
 #endregion
 
-#region RiftController Functions
+#region RiftController Methods
     #region Volatility
     public void IncreaseVolatility(float volatilityUp) {
         Debug.Log("Volatility increased!");
@@ -437,7 +437,7 @@ public sealed class RiftController : MonoBehaviour {
 	}
 #endregion
 
-#region Unity Function Overrides
+#region Unity Overrides
     void Awake() {
         instance = this;
     }

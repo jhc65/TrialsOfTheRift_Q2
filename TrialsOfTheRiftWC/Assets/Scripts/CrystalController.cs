@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalController : MonoBehaviour {
+public class CrystalController : Entity {
 
     public CrystalDestructionObjective cdo_owner;  // identifies objective crystal is a part of
     [SerializeField] private Constants.Global.Color e_color;     // identifies owning team

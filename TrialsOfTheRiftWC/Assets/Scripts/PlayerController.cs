@@ -4,7 +4,7 @@ using UnityEngine;
 using Rewired;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour{
+public class PlayerController : Entity {
 
     public GameObject go_playerCapsule;      // player main body
 	public GameObject go_playerWisp;         // player wisp body

@@ -4,17 +4,8 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class IceHockeyObjective : Objective {
-
-    public HockeyPuckController hpc_activePuck;
-	private int i_score = 0;    // current progress towards i_maxScore
-
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+#region IceHockeyObjective Methods
     override protected void SetUI() {
         calligrapher.IceHockeyInit(e_color);
     }
@@ -23,6 +14,7 @@ public class IceHockeyObjective : Objective {
         calligrapher.ScoreReset(e_color);
     }
 
+    // Update UI and check for completion
     public void UpdatePuckScore() {
         i_score++;
         calligrapher.UpdateScoreUI(e_color, i_score);
@@ -30,15 +22,11 @@ public class IceHockeyObjective : Objective {
             b_isComplete = true;
         }
     }
+#endregion
 
-    // [Param Fix] - Used in Parameters Screen. TODO: remove for release.
-    public override void ParamReset() {
-        i_score = 0;
-        calligrapher.UpdateScoreUI(e_color, i_score);
-        hpc_activePuck.ResetPuckPosition();
-    }
-	
-	void OnEnable() {
+#region Unity Overrides
+    void OnEnable() {
         maestro.PlayBeginHockey();
     }
+#endregion
 }

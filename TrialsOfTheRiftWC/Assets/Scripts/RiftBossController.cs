@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RiftBossController : MonoBehaviour {
+public class RiftBossController : Entity {
 
     public RiftBossObjective rbo_owner;  // identifies objective crystal is a part of
     public GameObject go_ForceField;

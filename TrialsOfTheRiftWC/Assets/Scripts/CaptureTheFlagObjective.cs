@@ -4,17 +4,8 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class CaptureTheFlagObjective : Objective {
-
-    public FlagController fc_activeFlag; // TODO: see note on ParamReset
-	private int i_score = 0;     // current progress towards i_maxScore
-
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+#region CaptureTheFlagObjective Methods
     override protected void SetUI() {
         calligrapher.CTFInit(e_color);
     }
@@ -23,6 +14,7 @@ public class CaptureTheFlagObjective : Objective {
         calligrapher.ScoreReset(e_color);
     }
 
+    // Update UI and check for completion
     public void UpdateFlagScore() {
         i_score++;
         calligrapher.UpdateScoreUI(e_color, i_score);
@@ -30,16 +22,11 @@ public class CaptureTheFlagObjective : Objective {
             b_isComplete = true;
         }
     }
+#endregion
 
-    // [Param Fix] - Used in Parameters Screen. TODO: remove for release.
-    public override void ParamReset() {
-        i_score = 0;
-        calligrapher.UpdateScoreUI(e_color, i_score);
-        fc_activeFlag.ResetFlagPosition();
-    }
-	
-	void OnEnable() {
+#region Unity Overrides	
+    void OnEnable() {
         maestro.PlayBeginCTF();
     }
-
+#endregion
 }

@@ -11,7 +11,7 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 
-public abstract class EnemyController : MonoBehaviour {
+public abstract class EnemyController : Entity {
 
 	//Added WANDER and FLEE states
     protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE, WANDER, FLEE, SUMMONING, DROPPING};

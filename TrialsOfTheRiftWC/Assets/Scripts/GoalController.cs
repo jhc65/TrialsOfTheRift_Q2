@@ -4,16 +4,16 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GoalController : MonoBehaviour {
-
+#region Variables and Declarations
     [SerializeField] private Constants.Global.Color e_color; // identifies owning team
+#endregion
 
-    // Getters
+#region Getters and Setters
     public Constants.Global.Color Color {
         get { return e_color; }
     }
+#endregion
 }

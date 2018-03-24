@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class HockeyPuckController : MonoBehaviour {
 
-    public IceHockeyObjective iho_owner;    // identifies objective puck is a part of
+    [SerializeField] private IceHockeyObjective iho_owner;    // identifies objective puck is a part of
     public GameObject go_riftShield1;
     public GameObject go_riftShield2;
     public GameObject go_riftBossRed;

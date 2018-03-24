@@ -4,39 +4,30 @@
  * 
  */
  
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class RiftBossObjective : Objective {
 
-	public RiftBossController cc_activeBoss;    // active Boss Head specific to this objective instance
-
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+#region RiftBossObjective Methods
     override protected void SetUI() {
-        calligrapher.RiftBossInit(cc_activeBoss.Color);
+        calligrapher.RiftBossInit(e_color);
     }
 
     override protected void ResetUI() {
-        calligrapher.RiftBossReset(cc_activeBoss.Color);
+        calligrapher.RiftBossReset(e_color);
     }
 
+    // Update UI and check for completion
     public void UpdateRiftBossHealth(float f) {
-        calligrapher.UpdateRiftBossHealthUI(cc_activeBoss.Color, f);
-        if (cc_activeBoss.Health <= 0) {
+        calligrapher.UpdateRiftBossHealthUI(e_color, f);
+        if (f <= 0) {
             b_isComplete = true;
         }
     }
+#endregion
 
-    // [Param Fix] - Used in Parameters Screen. TODO: remove for release.
-    public override void ParamReset() {
-        cc_activeBoss.Health = Constants.ObjectiveStats.C_RiftBossMaxHealth;
-        calligrapher.UpdateRiftBossHealthUI(cc_activeBoss.Color, Constants.ObjectiveStats.C_RiftBossMaxHealth);
-    }
-	
-	void OnEnable() {
+#region Unity Overrides
+    void OnEnable() {
         maestro.PlayBeginRiftBoss();
     }
+#endregion
 
 }

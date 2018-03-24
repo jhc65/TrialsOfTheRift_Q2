@@ -4,16 +4,12 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class HotPotatoObjective : Objective {
-
+#region Variables and Declarations
     public HotPotatoController hpc_activePotato;    // active potato specific to this objective instance
+#endregion
 
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+#region HotPotatoObjective Methods
     override protected void SetUI() {
         calligrapher.HotPotatoInit(e_color);
     }
@@ -38,15 +34,11 @@ public class HotPotatoObjective : Objective {
             hpc_activePotato.SelfDestruct();
         }
     }
+#endregion
 
-    // [Param Fix] - Used in Parameters Screen. TODO: remove for release.
-    public override void ParamReset() {
-        hpc_activePotato.ResetPotatoPosition();
-        hpc_activePotato.UpdateCompletionTimer(Constants.ObjectiveStats.C_PotatoCompletionTimer);
-        hpc_activePotato.UpdateDestructionTimer(Constants.ObjectiveStats.C_PotatoSelfDestructTimer);
-    }
-	
-	void OnEnable() {
+#region Unity Overrides
+    void OnEnable() {
         maestro.PlayBeginPotato();
     }
+#endregion
 }

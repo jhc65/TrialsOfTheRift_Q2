@@ -4,20 +4,18 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlagController : MonoBehaviour {
+#region Variables and Declarations
+    [SerializeField] private CaptureTheFlagObjective ctfo_owner;    // identifies Objective flag is a part of
+    [SerializeField] private Constants.Global.Color e_color;        // identifies owning team
+#endregion
 
-    [SerializeField] private CaptureTheFlagObjective ctfo_owner;  // identifies objective flag is a part of
-    [SerializeField] private Constants.Global.Color e_color; // identifies owning team - MUST BE SET IN INSPECTOR!
-
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+#region FlagController Methods
     public void DropFlag() {
-        transform.SetParent(ctfo_owner.gameObject.transform);
-        transform.localPosition = new Vector3(transform.localPosition.x, 0.5f, transform.localPosition.z);
+        transform.SetParent(ctfo_owner.gameObject.transform);   // resets flag parent so Objective can be deactivated correctly
+        transform.localPosition = new Vector3(transform.localPosition.x, Constants.ObjectiveStats.C_RedFlagSpawn.y, transform.localPosition.z);
     }
 
     public void ResetFlagPosition() {
@@ -28,36 +26,23 @@ public class FlagController : MonoBehaviour {
             transform.localPosition = Constants.ObjectiveStats.C_BlueFlagSpawn;
         }
     }
+#endregion
 
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
-	void OnTriggerEnter(Collider other) {
+#region Unity Overrides
+    void OnTriggerEnter(Collider other) {
         // Player trying to pick up flag (and flag not already picked up)
         if (other.CompareTag("InteractCollider") && other.transform.root.gameObject.CompareTag("Player")) {
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
 			other.gameObject.SetActive(false);
 		}
-		if (other.CompareTag("Goal")) {   // player scoring with flag
-			if (other.GetComponent<GoalController>().Color != e_color) {   // check for correct color of flag/goal
-                ctfo_owner.UpdateFlagScore();         // increase score and update UI      
+        // Player scoring with flag
+		if (other.CompareTag("Goal")) {
+			if (other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of flag/goal
+                ctfo_owner.UpdateFlagScore();                                   // increase score and update UI      
 				transform.root.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
                 ResetFlagPosition();   // reset flag to original spawn position
             }
 		}
 	}
-
-    // TODO: Reinvestigate with Assets.
-    //if the flag happens to drop in the zone but not capture as part of a bug
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.tag == "Goal")
-    //    {   // player scoring with flag
-    //        if (other.GetComponent<GoalController>().Color != e_color)
-    //        {
-    //            b_scored = true;
-    //            transform.root.GetComponent<PlayerController>().Drop();
-    //            transform.position = v3_home;
-    //        }
-    //    }
-    //}
+#endregion
 }

@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HotPotatoController : MonoBehaviour {
+public class HotPotatoController : Entity {
 
     public HotPotatoObjective hpo_owner;  // identifies objective potato is a part of
     [SerializeField] private Constants.Global.Color e_color;     // identifies owning team - MUST BE SET IN EDITOR!
