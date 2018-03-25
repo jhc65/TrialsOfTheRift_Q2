@@ -203,16 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f010777a9925a64799d2bfe290174c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_color: 0
-  f_damage: 50
-  f_charged: 0
-  pc_owner: {fileID: 0}
-  s_spellTargetTags:
-  - Player
-  - Enemy
-  - Crystal
-  - Potato
-  - RiftBoss
+  e_spellType: 1
+  rb: {fileID: 54195232044357338}
   ps_onDestroyParticles: {fileID: 198298397519555048}
 --- !u!114 &114609004854583238
 MonoBehaviour:

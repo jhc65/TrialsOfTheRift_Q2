@@ -4,27 +4,31 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HotPotatoController : Entity {
-
-    public HotPotatoObjective hpo_owner;  // identifies objective potato is a part of
-    [SerializeField] private Constants.Global.Color e_color;     // identifies owning team - MUST BE SET IN EDITOR!
-    [SerializeField] private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
+public class HotPotatoController : SpellTarget {
+#region Variables and Declarations
+    [SerializeField] private HotPotatoObjective hpo_owner;  // identifies objective potato is a part of
     private Constants.Global.Side e_currentSide;
     private int i_completionTimer;      // tracks time of potato being on opposite side
     private int i_destructionTimer;     // tracks time of potato being on team's side
-    private Rigidbody rb;
-    private RiftController riftController;     // reference to Rift singleton
+#endregion
 
-    // Getters
-    public Constants.Global.Side Side {
-        get { return e_currentSide; }
+#region HotPotatoController Methods
+    override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
+        Debug.Log("here1");
+        if (spell == Constants.SpellStats.SpellType.WIND) {
+            Debug.Log("here2");
+            rb.isKinematic = false;
+            rb.AddForce(direction * Constants.SpellStats.C_WindForce * 3.0f);
+            Invoke("TurnKinematicOn", 0.05f);
+        }
     }
 
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    // Makes the potato kinematic again
+    private void TurnKinematicOn() {
+        rb.isKinematic = true;
+    }
 
     public void UpdateCompletionTimer(int time) {
         i_completionTimer = time;
@@ -34,15 +38,6 @@ public class HotPotatoController : Entity {
     public void UpdateDestructionTimer(int time) {
         i_destructionTimer = time;
         hpo_owner.UpdateDestructionTimer(i_destructionTimer);
-    }
-
-    public void ResetPotatoPosition() {
-        if (e_color == Constants.Global.Color.RED) {
-            transform.localPosition = Constants.ObjectiveStats.C_RedPotatoSpawn;
-        }
-        else {
-            transform.localPosition = Constants.ObjectiveStats.C_BluePotatoSpawn;
-        }
     }
 
     // Counts down to 0 while the potato is not on its original spawn side
@@ -80,11 +75,10 @@ public class HotPotatoController : Entity {
         hpo_owner.UpdateDestructionTimer(i_destructionTimer);
     }
 
-    // Potato destroys itself, spawns enemies, and resets to original spawn position
+    // Potato spawns enemies at its current position
     public void SelfDestruct() {
         // Spawn enemies at current location
         for (int i = 0; i < Constants.ObjectiveStats.C_EnemySpawnAmount; i++) {
-            Debug.Log("Help.");
             riftController.CircularEnemySpawn(transform.position, e_startSide);
         }
 
@@ -100,27 +94,16 @@ public class HotPotatoController : Entity {
             e_currentSide = Constants.Global.Side.LEFT;
         }
     }
+#endregion
 
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+#region Unity Overrides
     void Start () {
         i_completionTimer = Constants.ObjectiveStats.C_PotatoCompletionTimer;     // cannot read from Constants.cs in initialization at top
         i_destructionTimer = Constants.ObjectiveStats.C_PotatoSelfDestructTimer;
         e_currentSide = e_startSide;
         Invoke("DestructionTimerTick", 1);
-        rb = GetComponent<Rigidbody>();
         riftController = RiftController.Instance;
     }
-	
-	//// Check to see if the potato has changed sides
-	//void Update () {
- //       if (transform.position.x < 0) {
- //           e_currentSide = Constants.Global.Side.LEFT;
- //       }
- //       else {
- //           e_currentSide = Constants.Global.Side.RIGHT;
- //       }
- //   }
 
     // Forces the potato over the Rift
     void OnTriggerEnter(Collider other) {
@@ -138,9 +121,6 @@ public class HotPotatoController : Entity {
         if (other.CompareTag("InteractCollider")) {
             rb.isKinematic = false;
         }
-        //else if (other.CompareTag("Rift")) {
-        //    transform.position = transform.position + (int)e_currentSide * new Vector3(-3, 0, 0);
-        //}
     }
 
     // Makes the potato unmovable when Interact button is released
@@ -149,4 +129,5 @@ public class HotPotatoController : Entity {
             rb.isKinematic = true;
         }
     }
+#endregion
 }

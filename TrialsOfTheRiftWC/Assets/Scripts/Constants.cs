@@ -24,6 +24,7 @@ public static class Constants {
         public static float C_WispMovementSpeed = 1.5f;
         public static float C_RespawnTimer = 5.0f;
         public static float C_MaxHealth = 300.0f;
+        public static float C_StepSoundDelay = 0.4f;
 
         public static Global.Color C_p1Color = Global.Color.RED;
         public static Global.Color C_p2Color = Global.Color.RED;
@@ -40,12 +41,14 @@ public static class Constants {
     // TODO: Damage players?
     public static class SpellStats {
         // Common Spell Stats
+        public enum SpellType { MAGICMISSILE, WIND, ICE, ELECTRICITY, ELECTRICITYAOE };
         public static float C_RiftDamageMultiplier = 2.0f;
         public static float C_SpellLiveTime = 2.0f;
         public static float C_SpellChargeTime = 3.0f;
         public static float C_NextSpellDelay = 0.5f;
         public static float C_PlayerProjectileSize = 0.5f;
         public static float C_SpellScaleMultiplier = 1.15f;
+        public static float C_SpellParticlesLiveTime = 2.0f;
 
         // Magic Missile Stats
         public static float C_MagicMissileLiveTime = 0.35f;
@@ -76,10 +79,11 @@ public static class Constants {
         public static float C_IceRiftDamageMultiplier = C_RiftDamageMultiplier;
         public static float C_IcePlayerDamageMultiplier = 0.5f;
         public static float C_IceFreezeTime = 3.0f;
+        public static float C_IceWallLiveTime = 5.0f;
 
         // it's ELECTRIC! (boogie woogie woogie) Stats
         // TODO: make charge time and Live time tied
-        public static float C_ElectricLiveTime = 0.3f;
+        //public static float C_ElectricLiveTime = 0.3f;
         public static float C_ElectricSpeed = 15.0f;
 		public static float C_ElectricDamage = 40.0f;
 		public static float C_ElectricCooldown = 8.0f;
@@ -88,11 +92,7 @@ public static class Constants {
         public static float C_ElectricPlayerDamageMultiplier = 0.5f;
         public static float C_ElectricAOESlowDownMultiplier = 0.5f;
         public static float C_ElectricAOELiveTime = 5.0f;
-
-        // Crystal based percentages Stats
-        // TODO: uhh... why is it percent for this? make it real damage instead
-        public static float C_SpellCrystalDamageElementSpells = -25.0f;
-        public static float C_MagicMissileCrystalDamage = -5.0f;
+        public static float C_ElectricAOEDamageRate = 0.5f;
     }
 
     // Objective Stats
@@ -104,8 +104,8 @@ public static class Constants {
         //public static Vector3 C_GenericBlueObjectiveGoalSpawn = new Vector3(4.5f, .01f, 0f);
 
         // Potato Stats
-        public static Vector3 C_RedPotatoSpawn = new Vector3(-7.5f, 0.5f, 0f);
-        public static Vector3 C_BluePotatoSpawn = new Vector3(7.5f, 0.5f, 0f);
+        //public static Vector3 C_RedPotatoSpawn = new Vector3(-7.5f, 0.5f, 0f);
+        //public static Vector3 C_BluePotatoSpawn = new Vector3(7.5f, 0.5f, 0f);
         public static int C_PotatoCompletionTimer = 30;
         public static int C_PotatoSelfDestructTimer = 15;
         public static int C_EnemySpawnAmount = 2;
@@ -124,7 +124,8 @@ public static class Constants {
         public static float C_CrystalRegenHeal = 5.0f;
         public static float C_CrystalHealRate = 1.0f;
         public static float C_CrystalHealDelay = 3.0f;
-
+        //public static float C_CrystalSpellDamage = -25.0f;
+        //public static float C_CrystalMagicMissileDamage = -5.0f;
 
         // Ice Hockey Stats
         public static Vector3 C_RedPuckSpawn = new Vector3(-5.0f, 0.5f, 0f);
@@ -159,7 +160,8 @@ public static class Constants {
 		public static int C_NecromancerSpawnCapPerSide = 2;
 		public static float C_WanderingRadius = 10.0f;
 		public static float C_RuneExplosionCountDownTime = 5.0f;
-		public static float C_RuneTimer = 2.0f;
+        public static float C_RuneExplosionLiveTime = 1.5f;
+        public static float C_RuneTimer = 2.0f;
 		public static float C_SummonTimer = 8.0f;
 
         public static int C_EnemySpawnCapPerSide = 7;
@@ -200,7 +202,7 @@ public static class Constants {
         public enum Volatility { ZERO, FIVE, TWENTYFIVE, THIRTYFIVE, FIFTY, SIXTYFIVE, SEVENTYFIVE, ONEHUNDRED };
     }
 
-    //Text descriptions for Objectives.
+    // Text descriptions for Objectives
     public static class ObjectiveText {
         public static string C_CTFTitle = "Capture The Gem";
         public static string C_CTFDescription = "Pick up the opponent's gem with [Interact] and drag it back to your goal!";
@@ -214,7 +216,7 @@ public static class Constants {
         public static string C_BossDescription = "Use all your prowess and spells to defeat the Rift!";
     }
 
-    //Carry over for volume options from the main menu.
+    // Carry over for volume options from the main menu
     public static class VolOptions {
         public static float C_MasterVolume = 1f;
         public static float C_BGMVolume = 1f;

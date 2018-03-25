@@ -4,29 +4,24 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HockeyPuckController : MonoBehaviour {
-
+public class HockeyPuckController : SpellTarget {
+#region Variables and Declarations
     [SerializeField] private IceHockeyObjective iho_owner;    // identifies objective puck is a part of
     public GameObject go_riftShield1;
     public GameObject go_riftShield2;
     public GameObject go_riftBossRed;
     public GameObject go_riftBossBlue;
-    [SerializeField] private Constants.Global.Color e_color;  // identifies owning team
-    [SerializeField] private Constants.Global.Side e_startSide;   // MUST BE SET IN EDITOR!
-    private float f_speed;
-    private Rigidbody rb;
+#endregion
 
-    // Getters
-   public float Speed {
-        get { return f_speed; }
-        set { f_speed = value; }
+#region HockeyPuckController Methods
+    override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
+        CancelInvoke();     // reset slowdown invoke
+        InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
+        f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
+        rb.velocity = direction * f_speed;
     }
-
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
     public void ResetPuckPosition() {
         if (e_color == Constants.Global.Color.RED) {
@@ -61,10 +56,10 @@ public class HockeyPuckController : MonoBehaviour {
     //    isPuckStuck = false;
     //}
 
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+#endregion
 
+#region Unity Overrides
     void Start() {
-        rb = GetComponent<Rigidbody>();
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;     // cannot read from Constants.cs in initialization at top
         Physics.IgnoreCollision(GetComponent<Collider>(), go_riftShield1.GetComponent<Collider>());
         Physics.IgnoreCollision(GetComponent<Collider>(), go_riftShield2.GetComponent<Collider>());
@@ -84,7 +79,7 @@ public class HockeyPuckController : MonoBehaviour {
         //    isPuckStuck = true;
         //}
 
-        //resets speed if it goes over threshold
+        // resets speed if it goes over threshold
         if (f_speed > Constants.ObjectiveStats.C_PuckMaxSpeed) {
             f_speed = Constants.ObjectiveStats.C_PuckMaxSpeed;
         }
@@ -105,11 +100,6 @@ public class HockeyPuckController : MonoBehaviour {
         }
         else if (collision.gameObject.CompareTag("Player")) {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, Constants.Global.DamageType.PUCK);
-        }
-        else if (collision.gameObject.CompareTag("Spell")) {
-            // Reset slowdown invoke
-            CancelInvoke();
-            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
         }
         else if (!collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Rift")) {
             // Reflect puck on collision
@@ -140,4 +130,5 @@ public class HockeyPuckController : MonoBehaviour {
             rb.velocity = facingDirection * f_speed;
         }
     }
+#endregion
 }

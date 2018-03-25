@@ -1,4 +1,4 @@
-/*  Necromancer Controller - Noah Nam & Jeff Brown
+/*  Enemy Controller - Noah Nam & Jeff Brown
  * 
  *  Desc:   Defines base functionality of enemy bots
  * 
@@ -7,26 +7,20 @@
 using UnityEngine;
 using System.Linq;
 using System;
-using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 
-public abstract class EnemyController : Entity {
+public abstract class EnemyController : SpellTarget {
 
-	//Added WANDER and FLEE states
+    [SerializeField] protected UnityEngine.AI.NavMeshAgent nma_agent;
+
+    //Added WANDER and FLEE states
     protected enum State {CHASE, ATTACK, FROZEN, SLOWED, DIE, WANDER, FLEE, SUMMONING, DROPPING};
-	[SerializeField] public Constants.Global.Side e_side;
-	[SerializeField] protected float f_health;
-	[SerializeField] protected float f_damage;
+	protected float f_damage;
 	protected State e_state;
 	protected State e_previousState; //Used for returning to the state previous to entering the AttackState.
 	protected State[] e_statusPriorityList = new State[] {State.FROZEN,State.SLOWED};
-    [SerializeField] protected Rigidbody rb;
-    [SerializeField] protected Animator anim;
-	protected UnityEngine.AI.NavMeshAgent nma_agent;
 	protected float f_canMove = 1f;
-    protected RiftController riftController;
-	protected Maestro maestro;
 
 	//The random destination the bot chooses when wandering
 	protected Vector3 v3_destination;
@@ -39,6 +33,29 @@ public abstract class EnemyController : Entity {
 
 	//The time limit for the bot to wander
 	protected float f_timeLimit = 4.0f;
+
+
+    override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
+        switch(spell) {
+            case Constants.SpellStats.SpellType.WIND:
+                rb.AddForce(direction * Constants.SpellStats.C_WindForce);
+                break;
+            case Constants.SpellStats.SpellType.ICE:
+                Freeze();
+                break;
+            case Constants.SpellStats.SpellType.ELECTRICITYAOE:
+                Slow();
+                break;
+        }
+        TakeDamage(damage);
+    }
+
+    override public void NegateSpellEffect(Constants.SpellStats.SpellType spell) {
+        if (spell == Constants.SpellStats.SpellType.ELECTRICITYAOE) {
+            StopCoroutine(cor_AOECoroutine);
+            Unslow();
+        }
+    }
 
 	protected virtual void EnterStateChase() {
 		e_state = State.CHASE;
@@ -108,10 +125,9 @@ public abstract class EnemyController : Entity {
     }
 	
 	public void TakeDamage(float damage){
-
 		//If for some reason this enemy is dead but it's still taking damage
 		//This if statement will prevent it
-		if (this.gameObject.activeSelf) {
+		if (gameObject.activeSelf) {
 			maestro.PlayEnemyHit();
 			f_health -= damage;
 			//Debug.Log(i_health);
@@ -122,9 +138,9 @@ public abstract class EnemyController : Entity {
 		}
 	}
 	
-	protected virtual void EnterStateFrozen(float f) {
+	protected virtual void EnterStateFrozen() {
 		e_state = State.FROZEN;
-		f_canMove = f;
+		f_canMove = 0;
 		UpdateSpeed();
 		//nma_agent.isStopped = true;
 		Invoke("Unfreeze", Constants.SpellStats.C_IceFreezeTime);
@@ -132,8 +148,8 @@ public abstract class EnemyController : Entity {
 
     protected virtual void UpdateFrozen() {}
 	
-	public void Freeze(float f){
-		EnterStateFrozen(f);
+	public void Freeze(){
+		EnterStateFrozen();
 	}
 
 	private void Unfreeze(){
@@ -142,11 +158,11 @@ public abstract class EnemyController : Entity {
 		EnterStateChase();
 	}
 	
-	protected virtual void EnterStateSlowed(float f) {
+	protected virtual void EnterStateSlowed() {
 		if(e_statusPriorityList.Contains(e_state) && Array.IndexOf(e_statusPriorityList,State.SLOWED) > Array.IndexOf(e_statusPriorityList,e_state))
 			return;
 		e_state = State.SLOWED;
-		f_canMove = f;
+		f_canMove = Constants.SpellStats.C_ElectricAOESlowDownMultiplier;
 		UpdateSpeed();
     }
 
@@ -154,7 +170,7 @@ public abstract class EnemyController : Entity {
     }
 	
 	public void Slow(){
-		EnterStateSlowed(Constants.SpellStats.C_ElectricAOESlowDownMultiplier);
+		EnterStateSlowed();
 	}
 
 	public void Unslow(){
@@ -172,7 +188,7 @@ public abstract class EnemyController : Entity {
 	//If the bot tries to move to a destination that's out of bounds
 	//This will reset the destination with in bounds
 	protected void CheckOutOfBounds() {
-		if (e_side == Constants.Global.Side.LEFT) {
+		if (e_startSide == Constants.Global.Side.LEFT) {
 			if (v3_destination.x < -1*Constants.EnemyStats.C_MapBoundryXAxis) {
 				v3_destination.x = -1*Constants.EnemyStats.C_MapBoundryXAxis;
 			}
@@ -198,22 +214,14 @@ public abstract class EnemyController : Entity {
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
-		EnterStateWander();			 
-		riftController = RiftController.Instance;
-		maestro = Maestro.Instance;  
-		//rb = GetComponent<Rigidbody>();
-		nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-		e_side = side;
+        riftController = RiftController.Instance;   // Init() is called before Start(), these must be set here (repeatedly...)
+        maestro = Maestro.Instance;
+        EnterStateWander();
+		e_startSide = side;
 	}
 
 	void Start() {
-
-		//riftController = RiftController.Instance;     // reference to Rift singleton
-		//rb = GetComponent<Rigidbody>();
-		//nma_agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-		f_health = Constants.EnemyStats.C_EnemyHealth;
 		f_damage = Constants.EnemyStats.C_EnemyDamage;
-		nma_agent.speed = riftController.EnemySpeed;
 
 		//nma_agent.speed = Constants.EnemyStats.C_EnemyBaseSpeed;
 

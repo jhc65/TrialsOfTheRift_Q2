@@ -689,7 +689,7 @@ Transform:
   m_GameObject: {fileID: 1235516602731886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.34}
-  m_LocalScale: {x: 0.1, y: 0.01, z: 0.04}
+  m_LocalScale: {x: 0.1, y: 0.01, z: 0.05}
   m_Children: []
   m_Father: {fileID: 4893009393220854}
   m_RootOrder: 0
@@ -718,7 +718,7 @@ Transform:
   m_GameObject: {fileID: 1663448452159424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.5356226, y: 3, z: 1.625032}
+  m_LocalScale: {x: 3.5, y: 10, z: 1.5}
   m_Children: []
   m_Father: {fileID: 4893009393220854}
   m_RootOrder: 1
@@ -851,7 +851,7 @@ Transform:
   m_GameObject: {fileID: 1782660351524770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.28}
-  m_LocalScale: {x: 0.1, y: 0.01, z: 0.04}
+  m_LocalScale: {x: 0.1, y: 0.01, z: 0.05}
   m_Children: []
   m_Father: {fileID: 4893009393220854}
   m_RootOrder: 2
@@ -891,7 +891,7 @@ Transform:
   m_GameObject: {fileID: 1174346851591598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.01, z: 0.04}
+  m_LocalScale: {x: 0.1, y: 0.01, z: 0.05}
   m_Children: []
   m_Father: {fileID: 4893009393220854}
   m_RootOrder: 3
@@ -1571,12 +1571,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1235516602731886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a08ff941e60d33e4385d86627ac2d3f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_runeTargetTags:
-  - Player
-  - Enemy
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!114 &114794456340358716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1588,13 +1587,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d3d3a58ea6f9648a2cc616b0b67145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  e_color: 0
+  e_startSide: -1
+  rb: {fileID: 54617250135573664}
   rbo_owner: {fileID: 114950012174937082}
   go_ForceField: {fileID: 1663448452159424}
   go_runes:
   - {fileID: 1235516602731886}
   - {fileID: 1782660351524770}
   - {fileID: 1174346851591598}
-  e_color: 0
+  anim: {fileID: 95915551485473574}
 --- !u!114 &114923381619421002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1603,12 +1605,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1174346851591598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a08ff941e60d33e4385d86627ac2d3f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_runeTargetTags:
-  - Player
-  - Enemy
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!114 &114950012174937082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1620,12 +1621,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8475a7cd6ad964288c64dd1ea978fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  e_color: 0
   go_roomPool:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  e_color: 0
-  cc_activeBoss: {fileID: 114794456340358716}
 --- !u!114 &114957653127857078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1634,12 +1634,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782660351524770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a08ff941e60d33e4385d86627ac2d3f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 952d08a0a8c956e47a37052c0bbd77c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_runeTargetTags:
-  - Player
-  - Enemy
+  go_explosionPrefab: {fileID: 1544964601268764, guid: 0027aeaa59cdbb947b3f8d5c17595c81,
+    type: 2}
 --- !u!137 &137105824277737148
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

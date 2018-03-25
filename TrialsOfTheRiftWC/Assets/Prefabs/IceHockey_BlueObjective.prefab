@@ -236,13 +236,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71352b065b2741746ab99e50586d0dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  e_color: 1
+  e_startSide: 1
+  rb: {fileID: 54363629042281820}
   iho_owner: {fileID: 114171931449179728}
   go_riftShield1: {fileID: 0}
   go_riftShield2: {fileID: 0}
   go_riftBossRed: {fileID: 0}
   go_riftBossBlue: {fileID: 0}
-  e_color: 1
-  e_startSide: 1
 --- !u!114 &114171931449179728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,12 +255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560c84fb56c148342a3fc1881701d2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  e_color: 1
   go_roomPool:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  e_color: 1
-  hpc_activePuck: {fileID: 114143427374218614}
 --- !u!136 &136714333640145824
 CapsuleCollider:
   m_ObjectHideFlags: 1

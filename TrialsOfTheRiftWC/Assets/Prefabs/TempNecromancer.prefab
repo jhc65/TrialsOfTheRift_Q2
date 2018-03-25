@@ -4826,11 +4826,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76243c1b51cd65f42846e9f7c5d89f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_side: -1
-  f_health: 0
-  f_damage: 0
+  e_color: 0
+  e_startSide: 0
   rb: {fileID: 54577703797869728}
   anim: {fileID: 95341786576828616}
+  nma_agent: {fileID: 195187955071028296}
 --- !u!135 &135008623372215768
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -1,30 +1,25 @@
 ﻿/*  RoomInitializer - Dana Thompson
  * 
- *  Desc:   Determines what happens when a Room is set to be active
+ *  Desc:   Updates enemy spawn points when a new room is set active
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomInitializer : MonoBehaviour
-{
+public class RoomInitializer : MonoBehaviour {
+#region Variables and Declarations
+    [SerializeField] private Constants.Global.Side e_side;
+    [SerializeField] private GameObject[] go_enemySpawnPool;// rooms allowed for this objective to be played in
+#endregion
 
-    [SerializeField] private GameObject[] go_spawnerPool;         // rooms allowed for this objective to be played in
-    [SerializeField] private Constants.Global.Side side;
-    private RiftController riftController;
-
-    void Awake() {
-        riftController = RiftController.Instance;
-    }
-
-    void OnEnable() {
-        if (side == Constants.Global.Side.RIGHT) {
-            riftController.RightEnemySpawners = go_spawnerPool;
+#region Unity Overrides
+    void OnEnable() {   // OnEnable() called before Start(), so we can't set the RiftController instance there
+        if (e_side == Constants.Global.Side.RIGHT) {
+            RiftController.Instance.RightEnemySpawners = go_enemySpawnPool;
         }
         else {
-            riftController.LeftEnemySpawners = go_spawnerPool;
+            RiftController.Instance.LeftEnemySpawners = go_enemySpawnPool;
         }
     }
+#endregion
 }

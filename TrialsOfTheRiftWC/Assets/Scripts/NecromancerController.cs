@@ -10,10 +10,6 @@ using UnityEngine.AI;
 
 public class NecromancerController : EnemyController {
 
-	//[SerializeField] private GameObject go_enemyPrefab;
-	//[SerializeField] private GameObject go_runePrefab;
-	//private Animator anim;
-
 	public override void Init(Constants.Global.Side side) {
 		base.Init(side);
 		nma_agent.speed = Constants.EnemyStats.C_NecromancerBaseSpeed;
@@ -31,7 +27,7 @@ public class NecromancerController : EnemyController {
 		base.UpdateWander();
 		bool b_playersAvailable = false;
 		for(int i = 0; i < riftController.go_playerReferences.Length; i++){	
-			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().e_Side == e_side && riftController.go_playerReferences[i].GetComponent<PlayerController>().isWisp == false){
+			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().Side == e_startSide && riftController.go_playerReferences[i].GetComponent<PlayerController>().Wisp == false){
 				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < Constants.EnemyStats.C_NecromancerAvoidDistance) {
 					b_playersAvailable = true;
 					break;
@@ -96,7 +92,7 @@ public class NecromancerController : EnemyController {
 
 		for(int i = 0; i < riftController.go_playerReferences.Length; i++){
 
-			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().e_Side == e_side && riftController.go_playerReferences[i].GetComponent<PlayerController>().isWisp == false) {
+			if(riftController.go_playerReferences[i].GetComponent<PlayerController>().Side == e_startSide && riftController.go_playerReferences[i].GetComponent<PlayerController>().Wisp == false) {
 
 				if (Vector3.Distance(riftController.go_playerReferences[i].transform.position, transform.position) < Constants.EnemyStats.C_NecromancerAvoidDistance) {
 
@@ -149,7 +145,7 @@ public class NecromancerController : EnemyController {
 
 	protected override void UpdateDie() {
 		CancelInvoke();		 
-		riftController.DecreaseNecromancers(e_side);
+		riftController.DecreaseNecromancers(e_startSide);
 		base.UpdateDie();
 	}
 
@@ -159,7 +155,7 @@ public class NecromancerController : EnemyController {
 
 	private void Summon() {
 		for (int i = 0; i < 4; i++) {
-			riftController.CircularEnemySpawn(transform.position, e_side);
+			riftController.CircularEnemySpawn(transform.position, e_startSide);
 		}
 	}
 }

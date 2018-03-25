@@ -1,11 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*  Particle System Controller - Joe Chew
+ * 
+ *  Desc:   Destroys spell particles a set time after creation
+ * 
+ */
+
 using UnityEngine;
 
 public class ParticleSystemController : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-        Destroy(gameObject, 2);
-	}
+#region Unity Overrides
+    void Start() {
+        Destroy(gameObject, Constants.SpellStats.C_SpellParticlesLiveTime);
+    }
+#endregion
 }

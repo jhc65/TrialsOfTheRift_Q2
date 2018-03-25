@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Rewired;
 
-public class RegisterPlayers : MonoBehaviour {
+public class RegisterPlayers : SceneLoader {
 
     [SerializeField] private Image go_backing1, go_backing2, go_backing3, go_backing4;
     [SerializeField] private Image go_hat1, go_hat2, go_hat3, go_hat4;
@@ -18,8 +18,6 @@ public class RegisterPlayers : MonoBehaviour {
     [SerializeField] private Sprite[] img_hats;
     [SerializeField] private Text txt_p1Message, txt_p2Message, txt_p3Message, txt_p4Message;
     [SerializeField] private GameObject go_go;
-    [SerializeField] private GameObject go_load;
-    [SerializeField] private Text txt_loadFade;
 
 
     private Player p_player1, p_player2, p_player3, p_player4;
@@ -30,10 +28,6 @@ public class RegisterPlayers : MonoBehaviour {
     private int i_p1Hat, i_p2Hat, i_p3Hat, i_p4Hat;
 
 	/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-		
-    void LoadTextFade() {
-        txt_loadFade.color = Color.Lerp(Color.white, Color.black, Mathf.PingPong(Time.time, 0.5f));
-    }
 
     void Awake()
     {
@@ -58,9 +52,7 @@ public class RegisterPlayers : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyDown("space")) {
-            go_load.SetActive(true);
-            InvokeRepeating("LoadTextFade", 0.01f, 0.0165f);
-            SceneManager.LoadSceneAsync("WarmUp");
+            LoadNextScene("WarmUp");
         }
 
         // test connection
@@ -367,9 +359,7 @@ public class RegisterPlayers : MonoBehaviour {
                 Constants.PlayerStats.C_p3Hat = i_p3Hat;
                 Constants.PlayerStats.C_p4Hat = i_p4Hat;
 
-                go_load.SetActive(true);
-                InvokeRepeating("LoadTextFade", 0.01f, 0.0165f);
-                SceneManager.LoadSceneAsync("WarmUp");
+                LoadNextScene("WarmUp");
             }
         }
         else

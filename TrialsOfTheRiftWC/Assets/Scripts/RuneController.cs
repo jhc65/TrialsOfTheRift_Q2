@@ -1,34 +1,29 @@
 /*  Rune Controller - Noah Nam and Jeff Brown
  * 
- *  Desc:   Instantiate an explosin prefab on trigger
+ *  Desc:   Instantiates a delayed explosion prefab after triggered
  * 
  */
  
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class RuneController : MonoBehaviour {
-	private bool activated = false;
-	[SerializeField] private GameObject go_explosionPrefab;
-
-	void Update() {
-
-		if (activated) {
-			Invoke("Deactivate", Constants.EnemyStats.C_RuneExplosionCountDownTime);
-			activated = false;
-		}
-	}
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player") || other.CompareTag("Enemy")) {
+#region Variables and Declarations
+    [SerializeField] private GameObject go_explosionPrefab;
+    private bool activated = false;
+#endregion
+#region RuneController Methods
+    void Explode() {
+        Instantiate(go_explosionPrefab, transform.position, Quaternion.identity);
+        activated = false;
+        gameObject.SetActive(false);
+    }
+#endregion
+#region Unity Overrides
+    void OnTriggerEnter(Collider other) {
+        if ((other.CompareTag("Player") || other.CompareTag("Enemy")) && !activated) {
             activated = true;
+            Invoke("Explode", Constants.EnemyStats.C_RuneExplosionCountDownTime);
         }
     }
-
-	void Deactivate() {
-		Instantiate(go_explosionPrefab, transform.position, Quaternion.identity);
-		gameObject.SetActive(false);
-    }
+#endregion
 }

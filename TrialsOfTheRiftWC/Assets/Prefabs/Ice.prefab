@@ -138,15 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a712e09782ed9b5428eafe1185108178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_color: 0
-  f_damage: 20
-  f_charged: 1
-  pc_owner: {fileID: 0}
-  s_spellTargetTags:
-  - Player
-  - Enemy
-  - Crystal
-  - RiftBoss
+  e_spellType: 2
+  rb: {fileID: 54791575308855370}
   ps_onDestroyParticles: {fileID: 0}
   go_iceWall: {fileID: 1712210035712102, guid: d798902f07a43ae4bbbd91e0ff48cfda, type: 2}
   go_WallSpawn: {fileID: 1341939064080336}

@@ -183,11 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e600158ef5e7184fa68b496b18bd8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_color: 0
-  f_damage: 0
-  f_charged: 1
-  pc_owner: {fileID: 0}
-  s_spellTargetTags: []
+  e_spellType: 3
+  rb: {fileID: 54582027321386234}
   ps_onDestroyParticles: {fileID: 198714420750121186}
   go_aoe: {fileID: 1235026331302630, guid: 3d6aaed476792de42a753c0597095a31, type: 2}
 --- !u!135 &135785447004491044

@@ -1,8 +1,8 @@
-﻿
-/* PauseController.cs - Sam C
+﻿/*  Debug Parameters Controller - Sam Caulker
  * 
- * Desc: Facilitates pausing the game and limiting it to only one user.
- */
+ *  Desc:   Facilitates pausing the game and limiting it to only one user
+ * 
+*/
 
 using System.Collections;
 using System.Collections.Generic;
@@ -31,10 +31,10 @@ public class PauseController : MonoBehaviour {
     public void Pause(PlayerController pc_in) {
         if (pc_owner == null) {
             pc_owner = pc_in;
-            txt_pauseIndicator.text = "P" + (pc_owner.i_playerNumber + 1) + " Pause.";
+            txt_pauseIndicator.text = "P" + (pc_owner.Num + 1) + " Pause.";
             img_pauseBacking.SetActive(true);
 
-            rsim.RewiredPlayerIds = new int[] { pc_owner.i_playerNumber };
+            rsim.RewiredPlayerIds = new int[] { pc_owner.Num };
 
             //Properly highlight the button.
             butt_select.Select();

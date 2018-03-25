@@ -1,20 +1,18 @@
 ﻿/*  Rift Controller - Joe Chew
  * 
- *  Desc:   Facilitates Rift volatility and enemy spawn.
+ *  Desc:   Facilitates Rift volatility and enemy spawn
  * 
  */
 
-
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public sealed class RiftController : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] private GameObject go_riftDeathBolt;
     public GameObject[] go_playerReferences;    // TODO: write a getter for this
+    [SerializeField] private GameObject[] go_deathOrbs;
 
     // enemies
 	[SerializeField] private GameObject[] go_skeletons;
@@ -30,8 +28,6 @@ public sealed class RiftController : MonoBehaviour {
     private int i_rightEnemies = 0;
     private int i_leftNecromancers = 0;
     private int i_rightNecromancers = 0;
-    private int i_leftRunes = 0;
-    private int i_rightRunes = 0;
     private int i_nextEnemySpawnIndex = 0;
     private int i_nextNecromancerSpawnIndex = 0;
     private GameObject[] go_rightEnemySpawners;
@@ -47,10 +43,9 @@ public sealed class RiftController : MonoBehaviour {
     private float f_volatility;
     private float f_volatilityMultiplier;
     private Constants.RiftStats.Volatility e_currentVolatilityLevel;
-    private Maestro maestro;     // reference to audio singleton
+    private Maestro maestro;     // reference to audio controller singleton
 
-	
-	private System.Random r_random = new System.Random();
+    private System.Random r_random = new System.Random();
 
     // Singleton
     private static RiftController instance;
@@ -207,9 +202,6 @@ public sealed class RiftController : MonoBehaviour {
     }
 
 	public void ActivateEnemy(Vector3 position) {
-		GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-		CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-		cfb_this.cam_Camera = cam_camera;
 		GameObject go_skelly = go_skeletons[i_nextEnemySpawnIndex];
 
 		if (position.x < 0f) {
@@ -220,15 +212,14 @@ public sealed class RiftController : MonoBehaviour {
 		}
 
 		go_skelly.transform.position = position;
-		go_skelly.SetActive(true);
-		cfb_this.go_trackedObject = go_skelly;
-		i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
+        GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+        CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+        cfb_this.Init(cam_camera, go_skelly);
+        go_skelly.SetActive(true);
+        i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
 	}
 
 	public void ActivateNecromancer(Vector3 position) {
-		GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-		CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-		cfb_this.cam_Camera = cam_camera;
 		GameObject go_necro = go_necromancers[i_nextNecromancerSpawnIndex];
 
 		if (position.x < 0f) {
@@ -239,9 +230,11 @@ public sealed class RiftController : MonoBehaviour {
 		}
 
 		go_necro.transform.position = position;
-		go_necro.SetActive(true);
-		cfb_this.go_trackedObject = go_necro;
-		i_nextNecromancerSpawnIndex = (i_nextNecromancerSpawnIndex+1)%go_necromancers.Length;
+        GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+        CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+        cfb_this.Init(cam_camera, go_necro);
+        go_necro.SetActive(true);
+        i_nextNecromancerSpawnIndex = (i_nextNecromancerSpawnIndex+1)%go_necromancers.Length;
 	}
 
 	public void ActivateRune(Vector3 position) {
@@ -384,13 +377,12 @@ public sealed class RiftController : MonoBehaviour {
      // Only shoot at players of Color c, and don't collide with anything EXCEPT players (layer matrix, probably)
 
         float f_projectileSize = Constants.SpellStats.C_PlayerProjectileSize;
-        List<GameObject> go_riftSpells = new List<GameObject>();
         
         var array = new int[] { 0, 1, 2, 3 };
         new System.Random().Shuffle(array);
 
         for (int i = 0; i < 4; i++) {
-            if (go_playerReferences[array[i]].GetComponent<PlayerController>().GetColor() == c) {
+            if (go_playerReferences[array[i]].GetComponent<PlayerController>().Color == c) {
                 GameObject go_spell = Instantiate(go_riftDeathBolt, gameObject.transform.position, gameObject.transform.rotation);
                 go_spell.transform.localScale = new Vector3(f_projectileSize, f_projectileSize, f_projectileSize);
                 go_spell.GetComponent<Rigidbody>().velocity = go_playerReferences[array[i]].transform.position.normalized * Constants.RiftStats.C_VolatilityDeathboltSpeed;
@@ -435,6 +427,13 @@ public sealed class RiftController : MonoBehaviour {
 		maestro.PlayVolatilityNoise(i_volatilityLevel);
 		Invoke("PlayNoise", r_random.Next(5,10));
 	}
+
+    IEnumerator TurnOffDeathOrb(GameObject go_deathOrb, GameObject go_player) {
+        yield return new WaitForSeconds(Constants.RiftStats.C_RiftTeleportDelay);
+        go_player.transform.position = go_player.transform.position + (int)go_player.GetComponent<PlayerController>().Side * Constants.RiftStats.C_RiftTeleportOffset;
+        go_player.SetActive(true);
+        go_deathOrb.SetActive(false);
+    }
 #endregion
 
 #region Unity Overrides
@@ -447,5 +446,25 @@ public sealed class RiftController : MonoBehaviour {
         ResetVolatility();
 		Invoke("PlayNoise", r_random.Next(0,10));
     }
-#endregion
+
+    void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Player")) {
+            other.GetComponent<PlayerController>().TakeDamage(Constants.PlayerStats.C_MaxHealth, Constants.Global.DamageType.RIFT);
+            //while (!isWisp)
+            //{
+            //    Debug.Log("I'm waiting for the player to be a wisp, because then they will have dropped the flag and I can move them across the rift.");
+            //}
+
+            for(int i =0; i<go_deathOrbs.Length; i++) {
+                if (!go_deathOrbs[i].activeSelf) {
+                    go_deathOrbs[i].transform.position = new Vector3(0.0f, other.gameObject.transform.position.y, other.gameObject.transform.position.z);
+                    go_deathOrbs[i].SetActive(true);
+                    other.gameObject.SetActive(false);
+                    StartCoroutine(TurnOffDeathOrb(go_deathOrbs[i], other.gameObject));
+                    break;
+                }
+            }
+        }
+    }
+    #endregion
 }

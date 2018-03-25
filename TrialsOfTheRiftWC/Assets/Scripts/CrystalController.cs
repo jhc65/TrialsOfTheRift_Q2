@@ -4,52 +4,41 @@
  * 
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalController : Entity {
+public class CrystalController : SpellTarget {
+#region Variables and Declarations
+    [SerializeField] private CrystalDestructionObjective cdo_owner;     // identifies objective crystal is a part of
+#endregion
 
-    public CrystalDestructionObjective cdo_owner;  // identifies objective crystal is a part of
-    [SerializeField] private Constants.Global.Color e_color;     // identifies owning team
-    private float f_health;    // indicates how much health the crystal has
-
-    // Getters
-    public Constants.Global.Color Color {
-        get { return e_color; }
-    }
-    public float Health {
-        get { return f_health; }
-        set { f_health = value; }
-    }
-
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
-    //repsonsible for reseting the regen timer everytime it gets hit
-    public void UpdateCrystalHealth(float f_variable) { //TODO: rename this in_variable when we decide percentage or no
-        CancelInvoke();
-        AdjustHealth(f_variable);
-
-        InvokeRepeating("HealthRegen", Constants.ObjectiveStats.C_CrystalHealDelay, Constants.ObjectiveStats.C_CrystalHealRate);
+#region CrystalController Methods
+    override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
+        if (color != e_color) { // crystal is not affected by spells from the owning team
+            CancelInvoke("HealthRegen");    // cancels and restarts health regen timer each time the crystal is hit
+            AdjustHealth(-damage / 2.0f);
+            InvokeRepeating("HealthRegen", Constants.ObjectiveStats.C_CrystalHealDelay, Constants.ObjectiveStats.C_CrystalHealRate);
+        }
     }
 
-    /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
-    void Start() {
-        f_health = Constants.ObjectiveStats.C_CrystalMaxHealth;     // cannot read from Constants.cs in initialization at top
-    }
-
-    private void AdjustHealth(float f_variable) {
-        f_health += f_variable;
-        if (f_health > Constants.ObjectiveStats.C_CrystalMaxHealth)
-        {
+    // Crystal can be healed as well as damaged, so this method replaces TakeDamage()
+    private void AdjustHealth(float change) {
+        f_health += change;
+        if (f_health > Constants.ObjectiveStats.C_CrystalMaxHealth) {
             f_health = Constants.ObjectiveStats.C_CrystalMaxHealth;
         }
         cdo_owner.UpdateCrystalHealth(f_health);
     }
 
-    //Is called repeatedly by InvokeRepeating to regen the health of the crystal
+    // Called via InvokeRepeating() to heal the crystal
     private void HealthRegen() {
         AdjustHealth(Constants.ObjectiveStats.C_CrystalRegenHeal);
     }
+
+#endregion
+
+#region Unity Overrides
+    void Start() {
+        f_health = Constants.ObjectiveStats.C_CrystalMaxHealth;     // cannot read from Constants.cs in initialization at top
+    }
+#endregion
 }

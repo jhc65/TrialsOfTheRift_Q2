@@ -1,107 +1,88 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*  Spell Controller - Zak Olyarnik
+ * 
+ *  Desc:   Parent class of all in-game spells
+ * 
+ */
+
 using UnityEngine;
+
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
 public abstract class SpellController : MonoBehaviour {
+#region Variables and Declarations
+    [SerializeField] protected Constants.SpellStats.SpellType e_spellType;
+    [SerializeField] protected Rigidbody rb;
+    [SerializeField] protected ParticleSystem ps_onDestroyParticles;
+    protected Constants.Global.Color e_color;
+	protected float f_damage;
+    protected float f_charge = 1;         // charging multiplier
+    protected PlayerController pc_owner;      // owner of the spell
+    protected RiftController riftController;    // reference to Rift singleton
 
-    public Constants.Global.Color e_color;
-	public float f_damage;			// currently unused, as each individual spell reads its damage value from Constants.cs in Start()
-    public float f_charged = 1;         // Charging multiplier.
-    public PlayerController pc_owner;      // Owner of the spell.
-	public string[] s_spellTargetTags; // these are the tags of the objects spells should do damage/effect against
-    [SerializeField]
-    protected ParticleSystem ps_onDestroyParticles;
+    #region Getters and Setters
+    public Constants.Global.Color Color{
+        get { return e_color; }
+    }
+    #endregion
+#endregion
 
+#region SpellController Shared Methods
+    protected abstract void Charge(float f_chargeTime);
+    protected abstract void BuffSpell();
 
-    public abstract void Charge(float f_chargeTime);
-	protected abstract void BuffSpell();
-	protected abstract void ApplyEffect(GameObject go_target, Collision collision);
+    public void Init(PlayerController owner, Constants.Global.Color color, float chargeTime) {
+        pc_owner = owner;
+        e_color = color;
+        Charge(chargeTime);
+    }
 
+    void InvokeDestroy() {
+		Destroy(gameObject);
+	}
+#endregion
 
-    protected Collision coll;  //used to turn the potato objective kinematic back on
-
-	protected virtual void Start() {
-		//Destroy(gameObject, Constants.SpellStats.C_SpellLiveTime);
+#region Unity Overrides
+    protected virtual void Start() {
+        riftController = RiftController.Instance;
 		Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 	}
 
 	protected virtual void OnCollisionEnter(Collision collision) {
-		//Debug.Log("Impact:" + coll.gameObject.tag);
-		foreach (string tag in s_spellTargetTags) {
-			if (collision.gameObject.tag == tag && collision.gameObject != pc_owner.gameObject) {
-				ApplyEffect(collision.gameObject, collision);
-                
-                //makes the potato stop moving after the spell has applied its affect
-                //it moves the spell like this to hide it from view so it doesn't affect anyone on the field
-                //I really hate this, but its the only good way for now
-                if (collision.gameObject.tag == "Potato")
-                {
-                    coll = collision;
-                    this.transform.localPosition = new Vector3(this.transform.localPosition.x, -1000.0f, this.transform.localPosition.z);
-                    Invoke("TurnKinematicOn", 0.05f);
-                }
-                else if (collision.gameObject.tag != "Wall")
-                {
-                    Destroy(gameObject);
-                }
-
-				return;
-			}
+        SpellTarget target;
+        if(target = collision.gameObject.GetComponent<SpellTarget>()) {
+            target.ApplySpellEffect(e_spellType, e_color, f_damage, transform.forward.normalized);
         }
 
-        if (collision.gameObject.tag == "Puck")
-        {
-            collision.gameObject.GetComponent<HockeyPuckController>().Speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
-
-            //we need to get the direction the player is facing, so that's why v3_direction is verbose
-            Vector3 v3_direction = transform.forward.normalized;
-            transform.rotation = Quaternion.LookRotation(transform.forward);
-            collision.gameObject.GetComponent<Rigidbody>().velocity = v3_direction * collision.gameObject.GetComponent<HockeyPuckController>().Speed;
-        }
-
-        if (collision.gameObject.tag == "Spell") {
+        if (collision.gameObject.CompareTag("Spell")) {
             Constants.Global.Color spellColor = collision.gameObject.GetComponent<SpellController>().e_color;
-            if (spellColor != e_color)
-            {
+            if (spellColor != e_color) {    // opposing spells destroy each other
                 Destroy(gameObject);
             }
-            else {
-                //ignores any collision detection between the two spells
+            else {              // ignore collisions between spells of the same color
                 Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
             }
-        }
-		else if (collision.gameObject.tag != "Portal") { // If we hit something not a player, rift, or portal (walls), just destroy the shot without an effect.
-			Destroy(gameObject);
-        }
+        } 
+        else {  // destroy spell on collision with anything else (including specific spell target objects above, once the effect has happened) (Rift and portal interactions are controlled by OnTriggerEnter, below)
+            Destroy(gameObject);
+        }        
 	}
 
-    //makes the potato objective kinematic again
-    private void TurnKinematicOn() {
-        coll.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        Destroy(gameObject);
-    }
-
-	protected virtual void OnTriggerEnter(Collider other) {	// rift reacts to spells by trigger rather than collision
-		if (other.tag == "Rift"){
-			CancelInvoke(); //If it's the rift cancel the first invoke
+	protected virtual void OnTriggerEnter(Collider other) {
+		if (other.CompareTag("Rift")) {	    // Rift reacts to spells by trigger rather than collision
+			CancelInvoke();     // cancels and restarts spell's live timer
 			BuffSpell();
-			Invoke("InvokeDestroy", 1.07f); //Call another invoke but with enough time to travel 2/3's of the other side, (1.07 is a derived time)
-		}
+			Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
+        }
 
-        if (other.tag == "ParryShield")
-        {
-            CancelInvoke();
+        if (other.CompareTag("ParryShield")) {
+            CancelInvoke();     // cancels and restarts spell's live timer
             Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 
-            //we need to get the direction the player is facing, so that's why v3_direction is verbose
+            // deflect spell in player's facing direction
             Vector3 v3_direction = other.gameObject.transform.root.forward.normalized;
             transform.Rotate(v3_direction);
-            gameObject.GetComponent<Rigidbody>().velocity = v3_direction * gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+            rb.velocity = v3_direction * rb.velocity.magnitude;
         }
     }
-
-	void InvokeDestroy() {
-		Destroy(gameObject);
-	}
+#endregion
 }

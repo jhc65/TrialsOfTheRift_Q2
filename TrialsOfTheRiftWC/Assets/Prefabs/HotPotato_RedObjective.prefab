@@ -140,11 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7af88b45a9b2e40a57a85a6f4ed7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  e_color: 0
   go_roomPool:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  e_color: 0
   hpc_activePotato: {fileID: 114511151178987120}
 --- !u!114 &114511151178987120
 MonoBehaviour:
@@ -157,9 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1917bfe7e2d3a43b4a2c1826dde84c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpo_owner: {fileID: 114251381420450200}
   e_color: 0
   e_startSide: -1
+  rb: {fileID: 54216533978373670}
+  hpo_owner: {fileID: 114251381420450200}
 --- !u!136 &136333074888935076
 CapsuleCollider:
   m_ObjectHideFlags: 1
