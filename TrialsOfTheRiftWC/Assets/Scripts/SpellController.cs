@@ -12,7 +12,7 @@ public abstract class SpellController : MonoBehaviour {
 #region Variables and Declarations
     [SerializeField] protected Constants.SpellStats.SpellType e_spellType;
     [SerializeField] protected Rigidbody rb;
-    [SerializeField] protected ParticleSystem ps_onDestroyParticles;
+    [SerializeField] protected GameObject go_onDestroyParticles;
     protected Constants.Global.Color e_color;
 	protected float f_damage;
     protected float f_charge = 1;         // charging multiplier

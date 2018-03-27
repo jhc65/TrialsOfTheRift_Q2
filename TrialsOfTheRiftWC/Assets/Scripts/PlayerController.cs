@@ -145,10 +145,10 @@ public class PlayerController : SpellTarget {
 		}
 
         if (isWisp) {
-			GetComponent<Rigidbody>().velocity = (v3_moveDir * Constants.PlayerStats.C_WispMovementSpeed) * f_canMove;
+			rb.velocity = (v3_moveDir * Constants.PlayerStats.C_WispMovementSpeed) * f_canMove;
 		}
 		else {
-			GetComponent<Rigidbody>().velocity = (v3_moveDir * Constants.PlayerStats.C_MovementSpeed) * f_canMove;
+			rb.velocity = (v3_moveDir * Constants.PlayerStats.C_MovementSpeed) * f_canMove;
 			if(v3_moveDir.magnitude > 0 && b_stepOk){
 				b_stepOk = false;
 				maestro.PlayPlayerFootstep();

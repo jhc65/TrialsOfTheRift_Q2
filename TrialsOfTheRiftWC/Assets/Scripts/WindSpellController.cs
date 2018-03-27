@@ -27,8 +27,7 @@ public class WindSpellController : SpellController {
     
 #region Unity Overrides
     void OnDestroy() {
-        ParticleSystem ps_particle = Instantiate(ps_onDestroyParticles, gameObject.transform.position, Quaternion.identity);
-        ps_particle.GetComponent<ParticleSystemController>().enabled = true;
+        Instantiate(go_onDestroyParticles, transform.position, Quaternion.identity);
     }
 #endregion
 }

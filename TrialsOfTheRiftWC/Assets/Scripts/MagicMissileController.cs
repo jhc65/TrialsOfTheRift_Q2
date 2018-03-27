@@ -58,8 +58,7 @@ public class MagicMissileController : SpellController {
     }
 
     void OnDestroy() {
-        ParticleSystem ps_particle = Instantiate(ps_onDestroyParticles, transform.position, Quaternion.identity);
-        ps_particle.GetComponent<ParticleSystemController>().enabled = true;
+        Instantiate(go_onDestroyParticles, transform.position, Quaternion.identity);
     }
 #endregion
 }
