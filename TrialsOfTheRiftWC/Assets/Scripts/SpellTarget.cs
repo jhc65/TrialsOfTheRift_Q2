@@ -43,7 +43,9 @@ public abstract class SpellTarget : MonoBehaviour {
 		if (gameObject && gameObject.activeSelf) {
             ApplySpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE, color, damage, Vector3.zero);
             yield return new WaitForSeconds(Constants.SpellStats.C_ElectricAOEDamageRate);
-            cor_AOECoroutine = StartCoroutine(ApplyAOE(color, damage));
+            if (gameObject.activeSelf) {
+                cor_AOECoroutine = StartCoroutine(ApplyAOE(color, damage));
+            }
         }
         else {  // hopefully this is not malicious
             NegateSpellEffect(Constants.SpellStats.SpellType.ELECTRICITYAOE);
