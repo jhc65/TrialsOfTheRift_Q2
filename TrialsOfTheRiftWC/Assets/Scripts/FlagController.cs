@@ -31,7 +31,7 @@ public class FlagController : MonoBehaviour {
 #region Unity Overrides
     void OnTriggerEnter(Collider other) {
         // Player trying to pick up flag (and flag not already picked up)
-        if (other.CompareTag("InteractCollider") && other.transform.root.gameObject.CompareTag("Player")) {
+        if (other.CompareTag("InteractCollider") && other.transform.parent.gameObject.CompareTag("Player")) {
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
 			other.gameObject.SetActive(false);
 		}

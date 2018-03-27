@@ -8141,12 +8141,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8ba2bf30071d9446ba41e4b1984c887, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &973174612 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114251381420450200, guid: f8ba2bf30071d9446ba41e4b1984c887,
-    type: 2}
-  m_PrefabInternal: {fileID: 973174611}
-  m_Script: {fileID: 11500000, guid: df7af88b45a9b2e40a57a85a6f4ed7c3, type: 3}
 --- !u!1 &987121192
 GameObject:
   m_ObjectHideFlags: 0
@@ -11010,12 +11004,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1218012194 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114048660257854474, guid: b793c16ffe19c2846ab86127af7de009,
-    type: 2}
-  m_PrefabInternal: {fileID: 1218012193}
-  m_Script: {fileID: 11500000, guid: 560c84fb56c148342a3fc1881701d2bd, type: 3}
 --- !u!1001 &1219048916
 Prefab:
   m_ObjectHideFlags: 0
@@ -12187,22 +12175,42 @@ Prefab:
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114604214340489284, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
     - target: {fileID: 114949084401633366, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114051256605634224, guid: 7e0373141a7de8e4fb83638891c59bde,
+    - target: {fileID: 114799351881642106, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: pauc_pause
+      value: 
+      objectReference: {fileID: 1802629838}
+    - target: {fileID: 114687766341080648, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
+    - target: {fileID: 114604214340489284, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114550989150642976, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: pauc_pause
+      value: 
+      objectReference: {fileID: 1802629838}
     - target: {fileID: 114477434120535036, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: cam_Camera
+      value: 
+      objectReference: {fileID: 1859528229}
+    - target: {fileID: 114278817969382078, guid: 7e0373141a7de8e4fb83638891c59bde,
+        type: 2}
+      propertyPath: pauc_pause
+      value: 
+      objectReference: {fileID: 1802629838}
+    - target: {fileID: 114261862067470030, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
       propertyPath: cam_Camera
       value: 
@@ -12212,56 +12220,16 @@ Prefab:
       propertyPath: cam_Camera
       value: 
       objectReference: {fileID: 1859528229}
-    - target: {fileID: 114687766341080648, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114261862067470030, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: cam_Camera
-      value: 
-      objectReference: {fileID: 1859528229}
-    - target: {fileID: 114799351881642106, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: pauc_pause
-      value: 
-      objectReference: {fileID: 1802629838}
-    - target: {fileID: 114799351881642106, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: go_deathOrbPrefab
-      value: 
-      objectReference: {fileID: 570329476}
-    - target: {fileID: 114278817969382078, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: pauc_pause
-      value: 
-      objectReference: {fileID: 1802629838}
-    - target: {fileID: 114278817969382078, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: go_deathOrbPrefab
-      value: 
-      objectReference: {fileID: 135651006}
-    - target: {fileID: 114550989150642976, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: pauc_pause
-      value: 
-      objectReference: {fileID: 1802629838}
-    - target: {fileID: 114550989150642976, guid: 7e0373141a7de8e4fb83638891c59bde,
-        type: 2}
-      propertyPath: go_deathOrbPrefab
-      value: 
-      objectReference: {fileID: 1669362047}
     - target: {fileID: 114057636586604300, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
       propertyPath: pauc_pause
       value: 
       objectReference: {fileID: 1802629838}
-    - target: {fileID: 114057636586604300, guid: 7e0373141a7de8e4fb83638891c59bde,
+    - target: {fileID: 114051256605634224, guid: 7e0373141a7de8e4fb83638891c59bde,
         type: 2}
-      propertyPath: go_deathOrbPrefab
+      propertyPath: cam_Camera
       value: 
-      objectReference: {fileID: 2065843931}
+      objectReference: {fileID: 1859528229}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e0373141a7de8e4fb83638891c59bde, type: 2}
   m_IsPrefabParent: 0
@@ -14600,12 +14568,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 434b33ba9458c2e4dbe93368126f500a, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1658763312 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114583166485856520, guid: 434b33ba9458c2e4dbe93368126f500a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1658763311}
-  m_Script: {fileID: 11500000, guid: 06456f592cf397a40b0f23a2095b233e, type: 3}
 --- !u!1 &1669362047 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1467892712869810, guid: ba51cd5f17113b846af6592fc466392c,
@@ -15365,9 +15327,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objv_redObjectiveList:
   - {fileID: 721164787}
-  - {fileID: 1658763312}
-  - {fileID: 973174612}
-  - {fileID: 1218012194}
+  - {fileID: 721164787}
+  - {fileID: 721164787}
+  - {fileID: 721164787}
   - {fileID: 97190523}
   objv_blueObjectiveList:
   - {fileID: 892140375}

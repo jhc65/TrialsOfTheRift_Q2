@@ -375,12 +375,12 @@ public class PlayerController : SpellTarget {
 				maestro.PlaySpellCharge();
             if (p_player.GetButtonTimePressed("WindSpell") != 0) {
                 f_windCharge += p_player.GetButtonTimePressed("WindSpell");
-			    anim.SetTrigger ("windChargeTrigger");
-				anim.SetFloat ("windCharge", f_windCharge);
+			    //anim.SetTrigger ("windChargeTrigger");
+				//anim.SetFloat ("windCharge", f_windCharge);
             }
             if (p_player.GetButtonUp("WindSpell")) {
 				maestro.PlayWindShoot();
-				anim.SetTrigger("windSpellTrigger");
+				//anim.SetTrigger("windSpellTrigger");
                 f_nextWind = 0;
 			    f_nextCast = 0;
                 for (int i = -30; i <= 30; i += 30) {
@@ -391,7 +391,7 @@ public class PlayerController : SpellTarget {
                     SpellController sc_firing = go_spell.GetComponent<SpellController>();
                     sc_firing.Init(this, e_color, f_windCharge);
                 }
-                anim.SetFloat("windCharge", f_windCharge);
+                //anim.SetFloat("windCharge", f_windCharge);
                 f_windCharge = 0;
 			} 
 		}
