@@ -120,236 +120,223 @@ public class DebugParametersController : MonoBehaviour {
 
     /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-    // Public Helper Methods
-    // currently unused - GC set in inspector
-    //[SerializeField] private void SetGameController(GameController game_controllerIn)
-    //{
-    //    GC = game_controllerIn;
-    //}
-
-    //// currently unused - players set in inspector
-    //[SerializeField] private void AddPlayerController(PlayerController play_controllerIn)
-    //{
-    //    l_playerControllers.Add(play_controllerIn);
-    //}
-
     // Slider change callbacks
-    [SerializeField] private void ChangePlayerSpeed(float f_playerSpeedIn) {
+    public void ChangePlayerSpeed(float f_playerSpeedIn) {
         txt_playerMoveSpeed.text = slider_playerMoveSpeed.value.ToString();
         Constants.PlayerStats.C_MovementSpeed = f_playerSpeedIn;
     }
 
-    [SerializeField] private void ChangePlayerWispSpeed(float f_playerWispSpeedIn) {
+    public void ChangePlayerWispSpeed(float f_playerWispSpeedIn) {
         txt_wispMoveSpeed.text = slider_wispMoveSpeed.value.ToString();
         Constants.PlayerStats.C_WispMovementSpeed = f_playerWispSpeedIn;
     }
 
-    [SerializeField] private void ChangeMagicMissileSpeed(float f_magicMissileSpeedIn) {
+    public void ChangeMagicMissileSpeed(float f_magicMissileSpeedIn) {
         txt_magicMissileSpeed.text = slider_magicMissileSpeed.value.ToString();
         Constants.SpellStats.C_MagicMissileSpeed = f_magicMissileSpeedIn;
     }
 
-    [SerializeField] private void ChangeMagicMissileHeal(float f__magicMissileHealIn) {
+    public void ChangeMagicMissileHeal(float f__magicMissileHealIn) {
         txt_magicMissileHeal.text = slider_magicMissileHeal.value.ToString();
         Constants.SpellStats.C_MagicMissileHeal = (int)f__magicMissileHealIn;
     }
 
-    [SerializeField] private void ChangeWindSpeed(float f_windSpeedIn) {
+    public void ChangeWindSpeed(float f_windSpeedIn) {
         txt_windSpeed.text = slider_windSpeed.value.ToString();
         Constants.SpellStats.C_WindSpeed = f_windSpeedIn;
     }
 
-    [SerializeField] private void ChangeIceSpeed(float f_iceSpeedIn) {
+    public void ChangeIceSpeed(float f_iceSpeedIn) {
         txt_iceSpeed.text = slider_iceSpeed.value.ToString();
         Constants.SpellStats.C_IceSpeed = f_iceSpeedIn;
     }
 
-    [SerializeField] private void ChangeElectricSpeed(float f_electricSpeedIn) {
+    public void ChangeElectricSpeed(float f_electricSpeedIn) {
         txt_electricSpeed.text = slider_electricSpeed.value.ToString();
         Constants.SpellStats.C_ElectricSpeed = f_electricSpeedIn;
     }
 
-    [SerializeField] private void ChangeWindCooldown(float f_windCooldownIn) {
+    public void ChangeWindCooldown(float f_windCooldownIn) {
         txt_windCooldown.text = slider_windCooldown.value.ToString();
         Constants.SpellStats.C_WindCooldown = f_windCooldownIn;
     }
 
-    [SerializeField] private void ChangeIceCooldown(float f_iceCooldownIn) {
+    public void ChangeIceCooldown(float f_iceCooldownIn) {
         txt_iceCooldown.text = slider_iceCooldown.value.ToString();
         Constants.SpellStats.C_IceCooldown = f_iceCooldownIn;
     }
 
-    [SerializeField] private void ChangeElectricCooldown(float f_electricCooldownIn) {
+    public void ChangeElectricCooldown(float f_electricCooldownIn) {
         txt_electricCooldown.text = slider_electricCooldown.value.ToString();
         Constants.SpellStats.C_ElectricCooldown = f_electricCooldownIn;
     }
 
-    [SerializeField] private void ChangeProjectileSize(float f_projSizeIn) {
+    public void ChangeProjectileSize(float f_projSizeIn) {
         float roundedVal = Mathf.Round(slider_projSize.value * 100f) / 100f;
         txt_projSize.text = roundedVal.ToString();
         Constants.SpellStats.C_PlayerProjectileSize = roundedVal;
     }
 
-    [SerializeField] private void ChangeSpellLifetime(float f_projLifeIn) {
+    public void ChangeSpellLifetime(float f_projLifeIn) {
         txt_projLife.text = slider_projLife.value.ToString();
         Constants.SpellStats.C_SpellLiveTime = f_projLifeIn;
     }
 
-    [SerializeField] private void ChangeWindForce(float f_windForceIn) {
+    public void ChangeWindForce(float f_windForceIn) {
         float value = f_windForceIn * 250.0f;
         txt_windForce.text = value.ToString();
         Constants.SpellStats.C_WindForce = value;
     }
 
-    [SerializeField] private void ChangeFreezeDuration(float f_iceFreezeIn) {
+    public void ChangeFreezeDuration(float f_iceFreezeIn) {
         txt_iceFreeze.text = slider_iceFreeze.value.ToString();
         Constants.SpellStats.C_IceFreezeTime = f_iceFreezeIn;
     }
 
-    [SerializeField] private void ChangeElectricLiveTime(float f_electricLiveTimeIn) {
+    public void ChangeElectricLiveTime(float f_electricLiveTimeIn) {
         txt_electricLiveTime.text = slider_electricLiveTime.value.ToString();
         Constants.SpellStats.C_ElectricAOELiveTime = f_electricLiveTimeIn;
     }
 
-    [SerializeField] private void ChangeEnemySpawnRate(float f_enemySpawnIn) {
+    public void ChangeEnemySpawnRate(float f_enemySpawnIn) {
         txt_enemySpawn.text = slider_enemySpawn.value.ToString();
         Constants.RiftStats.C_VolatilityEnemySpawnTimer = f_enemySpawnIn;
     }
 
-    [SerializeField] private void ChangeEnemySpeed(float f_enemySpeedIn) {
+    public void ChangeEnemySpeed(float f_enemySpeedIn) {
         txt_enemySpeed.text = slider_enemySpeed.value.ToString();
         Constants.EnemyStats.C_EnemyBaseSpeed = f_enemySpeedIn;
     }
 
-    [SerializeField] private void ChangeEnemyHealth(float f_enemyHealthIn) {
+    public void ChangeEnemyHealth(float f_enemyHealthIn) {
         float value = f_enemyHealthIn * 25.0f;
         txt_enemyHealth.text = value.ToString();
         Constants.EnemyStats.C_EnemyHealth = (int)value;
     }
 
-    [SerializeField] private void ChangeEnemyDamage(float f_enemyDamageIn) {
+    public void ChangeEnemyDamage(float f_enemyDamageIn) {
         float value = f_enemyDamageIn * 5.0f;
         txt_enemyDamage.text = value.ToString();
         Constants.EnemyStats.C_EnemyDamage = (int)value;
     }
 
-    [SerializeField] private void ChangePlayerHealth(float f_playerHealthIn) {
+    public void ChangePlayerHealth(float f_playerHealthIn) {
         float value = f_playerHealthIn * 50.0f;
         txt_playerHealth.text = value.ToString();
         Constants.PlayerStats.C_MaxHealth = (int)value;
     }
 
-    [SerializeField] private void ChangeRespawnTime(float f_respawnTimeIn) {
+    public void ChangeRespawnTime(float f_respawnTimeIn) {
         txt_respawnTime.text = slider_respawnTime.value.ToString();
         Constants.PlayerStats.C_RespawnTimer = f_respawnTimeIn;
     }
 
-    [SerializeField] private void ChangeCrystalHealth(float f_crystalHealthIn) {
+    public void ChangeCrystalHealth(float f_crystalHealthIn) {
         float value = f_crystalHealthIn * 50.0f;
         txt_crystalHealth.text = value.ToString();
         Constants.ObjectiveStats.C_CrystalMaxHealth = (int)value;
     }
 
-    [SerializeField] private void ChangeCrystalHealthRegen(float f_crystalHealthIn)
+    public void ChangeCrystalHealthRegen(float f_crystalHealthIn)
     {
         float value = f_crystalHealthIn;
         txt_crystalHealthRegen.text = value.ToString();
         Constants.ObjectiveStats.C_CrystalRegenHeal = (int)value;
     }
 
-    [SerializeField] private void ChangeCrystalHealthRegenRate(float f_crystalHealthIn)
+    public void ChangeCrystalHealthRegenRate(float f_crystalHealthIn)
     {
         float value = f_crystalHealthIn;
         txt_crystalHealthRegenRate.text = value.ToString();
         Constants.ObjectiveStats.C_CrystalHealRate = (int)value;
     }
 
-    [SerializeField] private void ChangeCrystalHealthRegenDelay(float f_crystalHealthIn)
+    public void ChangeCrystalHealthRegenDelay(float f_crystalHealthIn)
     {
         float value = f_crystalHealthIn;
         txt_crystalHealthRegenDelay.text = value.ToString();
         Constants.ObjectiveStats.C_CrystalHealDelay = (int)value;
     }
 
-    [SerializeField] private void ChangeCTFMaxScore(float f_CTFScoreIn) {
+    public void ChangeCTFMaxScore(float f_CTFScoreIn) {
         txt_CTFScore.text = slider_CTFScore.value.ToString();
         Constants.ObjectiveStats.C_CTFMaxScore = (int)f_CTFScoreIn;
     }
 
-    [SerializeField] private void ChangeCompletionTimer(float f_timerIn) {
+    public void ChangeCompletionTimer(float f_timerIn) {
         float value = f_timerIn * 5.0f;
         txt_completionTimer.text = value.ToString();
         Constants.ObjectiveStats.C_PotatoCompletionTimer = (int)value;
     }
 
-    [SerializeField] private void ChangeSelfDestructTimer(float f_timerIn) {
+    public void ChangeSelfDestructTimer(float f_timerIn) {
         float value = f_timerIn * 5.0f;
         txt_selfDestructTimer.text = value.ToString();
         Constants.ObjectiveStats.C_PotatoSelfDestructTimer = (int)value;
     }
 
-    [SerializeField] private void ChangeEnemySpawnCap(float f_capIn) {
+    public void ChangeEnemySpawnCap(float f_capIn) {
         txt_enemySpawnCap.text = slider_enemySpawnCap.value.ToString();
         Constants.EnemyStats.C_EnemySpawnCapPerSide = (int)(f_capIn - 1);
     }
 
-    [SerializeField] private void ChangeHockeyMaxScore(float f_score) {
+    public void ChangeHockeyMaxScore(float f_score) {
         txt_hockeyMaxScore.text = slider_hockeyMaxScore.value.ToString();
         Constants.ObjectiveStats.C_HockeyMaxScore = (int)f_score;
     }
 
-    [SerializeField] private void ChangePuckDamage(float f_damage) {
+    public void ChangePuckDamage(float f_damage) {
         float value = f_damage * 10.0f;
         txt_puckDamage.text = value.ToString();
         Constants.ObjectiveStats.C_PuckDamage = (int)value;
     }
 
-    [SerializeField] private void ChangePuckSpeedDecayRate(float f_decay) {
+    public void ChangePuckSpeedDecayRate(float f_decay) {
         txt_puckSpeedDecayRate.text = slider_puckSpeedDecayRate.value.ToString();
         Constants.ObjectiveStats.C_PuckSpeedDecayRate = (int)f_decay;
     }
 
-    [SerializeField] private void ChangePuckSpeedDecreaseRate(float f_decrease) {
+    public void ChangePuckSpeedDecreaseRate(float f_decrease) {
         txt_puckSpeedDecreaseRate.text = slider_puckSpeedDecreaseRate.value.ToString();
         Constants.ObjectiveStats.C_PuckSpeedDecreaseAmount = (int)f_decrease;
     }
 
-    [SerializeField] private void ChangePuckBaseSpeed(float f_speed) {
+    public void ChangePuckBaseSpeed(float f_speed) {
         txt_puckBaseSpeed.text = slider_puckBaseSpeed.value.ToString();
         Constants.ObjectiveStats.C_PuckBaseSpeed = (int)f_speed;
     }
 
-    [SerializeField] private void ChangePuckHitIncreaseSpeed(float f_hit) {
+    public void ChangePuckHitIncreaseSpeed(float f_hit) {
         txt_puckHitIncreaseSpeed.text = slider_puckHitIncreaseSpeed.value.ToString();
         Constants.ObjectiveStats.C_PuckSpeedHitIncrease = (int)f_hit;
     }
 
-    [SerializeField] private void ChangeRiftBossHealth(float f_riftBossHealthIn) {
+    public void ChangeRiftBossHealth(float f_riftBossHealthIn) {
         float value = f_riftBossHealthIn * 250.0f;
         txt_riftBossHealth.text = value.ToString();
         Constants.ObjectiveStats.C_RiftBossMaxHealth = (int)value;
     }
 
-    [SerializeField] private void ChangeRuneSpawnInterval(float f_interval)
+    public void ChangeRuneSpawnInterval(float f_interval)
     {
         txt_runeSpawnInterval.text = slider_runeSpawnInterval.value.ToString();
         Constants.ObjectiveStats.C_RuneSpawnInterval = (int)f_interval;
     }
 
-    [SerializeField] private void ChangeDeathBoltCooldown(float f_cooldown)
+    public void ChangeDeathBoltCooldown(float f_cooldown)
     {
         txt_deathBoltCooldown.text = slider_deathBoltCooldown.value.ToString();
         Constants.ObjectiveStats.C_DeathBoltCooldown = (int)f_cooldown;
     }
 
-    [SerializeField] private void ChangeForceFieldCooldown(float f_cooldown)
+    public void ChangeForceFieldCooldown(float f_cooldown)
     {
         txt_forceFieldCooldown.text = slider_forceFieldCooldown.value.ToString();
         Constants.ObjectiveStats.C_ForceFieldCooldown = (int)f_cooldown;
     }
 
     // Light buttons up as they are selected
-    [SerializeField] private void LightUp(int which) {
+    public void LightUp(int which) {
         for (int i = 0; i < 4; i++) {
             ColorBlock cb = butt_buttonArray[i].colors;
             if (i == which) {
@@ -363,7 +350,7 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     // Show the proper menu on click
-    [SerializeField] private void MenuSwitch(int which) {
+    public void MenuSwitch(int which) {
         for (int i = 0; i < 4; i++) {
             if (i == which) {
                 go_menuArray[i].SetActive(true);
