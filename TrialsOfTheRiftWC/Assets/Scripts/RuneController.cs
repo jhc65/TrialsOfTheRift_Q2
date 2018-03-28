@@ -30,9 +30,4 @@ public class RuneController : MonoBehaviour {
 	void OnDisable() {
 		CancelInvoke();
 	}
-
-	public void Kill() {
-		CancelInvoke();
-		gameObject.SetActive(false);
-	}
 }
