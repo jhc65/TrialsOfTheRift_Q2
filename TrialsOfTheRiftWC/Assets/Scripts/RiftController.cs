@@ -79,7 +79,7 @@ public sealed class RiftController : MonoBehaviour {
 		maestro.PlayAnnouncementVolatilityUp();
         volatilityUp += (volatilityUp * f_volatilityMultiplier);
         f_volatility += volatilityUp;
-
+		Debug.Log("Volatility,"+f_volatility);
         if (f_volatility >= 100.0f && e_currentVolatilityLevel != Constants.RiftStats.Volatility.ONEHUNDRED) {
             e_currentVolatilityLevel = Constants.RiftStats.Volatility.ONEHUNDRED;
             Invoke("ResetVolatility", Constants.RiftStats.C_VolatilityResetTime);
@@ -202,39 +202,49 @@ public sealed class RiftController : MonoBehaviour {
     }
 
 	public void ActivateEnemy(Vector3 position) {
-		GameObject go_skelly = go_skeletons[i_nextEnemySpawnIndex];
 
-		if (position.x < 0f) {
-			go_skelly.GetComponent<SkeletonController>().Init(Constants.Global.Side.LEFT);
-		}
-		else {
-			go_skelly.GetComponent<SkeletonController>().Init(Constants.Global.Side.RIGHT);
-		}
+		if (!(go_skeletons[i_nextEnemySpawnIndex].activeSelf)) {
 
-		go_skelly.transform.position = position;
-        GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-        CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-        cfb_this.Init(cam_camera, go_skelly);
-        go_skelly.SetActive(true);
-        i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
+			GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+			CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+			cfb_this.Init(cam_camera, go_skeletons[i_nextEnemySpawnIndex]);
+
+			if (position.x < 0f) {
+				go_skeletons[i_nextEnemySpawnIndex].GetComponent<SkeletonController>().Init(Constants.Global.Side.LEFT);
+				i_leftEnemies++;
+			}
+			else {
+				go_skeletons[i_nextEnemySpawnIndex].GetComponent<SkeletonController>().Init(Constants.Global.Side.RIGHT);
+				i_rightEnemies++;
+			}
+			go_skeletons[i_nextEnemySpawnIndex].transform.position = position;
+			go_skeletons[i_nextEnemySpawnIndex].SetActive(true);
+		}
+		i_nextEnemySpawnIndex = (i_nextEnemySpawnIndex+1)%go_skeletons.Length;
 	}
 
+
 	public void ActivateNecromancer(Vector3 position) {
-		GameObject go_necro = go_necromancers[i_nextNecromancerSpawnIndex];
 
-		if (position.x < 0f) {
-			go_necro.GetComponent<NecromancerController>().Init(Constants.Global.Side.LEFT);
-		}
-		else {
-			go_necro.GetComponent<NecromancerController>().Init(Constants.Global.Side.RIGHT);
-		}
+		if (!(go_necromancers[i_nextNecromancerSpawnIndex].activeSelf)) {
 
-		go_necro.transform.position = position;
-        GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
-        CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
-        cfb_this.Init(cam_camera, go_necro);
-        go_necro.SetActive(true);
-        i_nextNecromancerSpawnIndex = (i_nextNecromancerSpawnIndex+1)%go_necromancers.Length;
+			GameObject enemyIndi = Instantiate(go_enemyIndiPrefab, position, Quaternion.identity);
+			CameraFacingBillboard cfb_this = enemyIndi.GetComponent<CameraFacingBillboard>();
+			cfb_this.Init(cam_camera, go_necromancers[i_nextNecromancerSpawnIndex]);
+
+			if (position.x < 0f) {
+				go_necromancers[i_nextNecromancerSpawnIndex].GetComponent<NecromancerController>().Init(Constants.Global.Side.LEFT);
+				i_leftNecromancers++;
+			}
+			else {
+				go_necromancers[i_nextNecromancerSpawnIndex].GetComponent<NecromancerController>().Init(Constants.Global.Side.RIGHT);
+				i_rightNecromancers++;
+			}
+
+			go_necromancers[i_nextNecromancerSpawnIndex].transform.position = position;
+			go_necromancers[i_nextNecromancerSpawnIndex].SetActive(true);
+		}
+		i_nextNecromancerSpawnIndex = (i_nextNecromancerSpawnIndex+1)%go_necromancers.Length;
 	}
 
 	public void ActivateRune(Vector3 position) {
@@ -276,30 +286,21 @@ public sealed class RiftController : MonoBehaviour {
 
         if (i_leftNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
             Vector3 pos = go_leftEnemySpawners[randLeft].transform.position;
-            pos = new Vector3(pos.x - 1.0f, pos.y, pos.z);
-
 			ActivateNecromancer(pos);
-			i_leftNecromancers++;
+			//i_leftNecromancers++;
         }
         if (i_rightNecromancers < Constants.EnemyStats.C_NecromancerSpawnCapPerSide) {
             Vector3 pos = go_rightEnemySpawners[randRight].transform.position;
-            pos = new Vector3(pos.x + 1.0f, pos.y, pos.z);
-
             ActivateNecromancer(pos);
-			i_rightNecromancers++;
+			//i_rightNecromancers++;
         }
     }
 
     // Spawns an enemy at a specified position
     public void SpawnEnemy(Vector3 position, Constants.Global.Side side) {
         // only spawn if below enemy side cap TODO: is this expected behavior?
-        if (side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
+        if ((side == Constants.Global.Side.LEFT && i_leftEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) || (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide)) {
 			ActivateEnemy(position);
-            i_leftEnemies++;
-        }
-        else if (side == Constants.Global.Side.RIGHT && i_rightEnemies < Constants.EnemyStats.C_EnemySpawnCapPerSide) {
-			ActivateEnemy(position);
-            i_rightEnemies++;
         }
     }
 
@@ -309,7 +310,6 @@ public sealed class RiftController : MonoBehaviour {
 
         // Checks to see if the spawn position is already occupied by anything with a collider
         // If it is, find a new spawn position for the enemy
-        Debug.Log(spawnPos);
         var hitColliders = Physics.OverlapSphere(spawnPos, 0.0005f);
         if (hitColliders.Length > 0) {
             CircularEnemySpawn(center, side);

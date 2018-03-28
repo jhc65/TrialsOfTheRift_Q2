@@ -139,13 +139,13 @@ public class NecromancerController : EnemyController {
 	}
 	
 	protected override void EnterStateDie() {
+		CancelInvoke();
 		base.EnterStateDie();
+		riftController.DecreaseNecromancers(e_startSide);
 		maestro.PlayNecromancerDie();
     }
 
 	protected override void UpdateDie() {
-		CancelInvoke();		 
-		riftController.DecreaseNecromancers(e_startSide);
 		base.UpdateDie();
 	}
 

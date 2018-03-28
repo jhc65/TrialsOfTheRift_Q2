@@ -26,4 +26,13 @@ public class RuneController : MonoBehaviour {
         }
     }
 #endregion
+
+	void OnDisable() {
+		CancelInvoke();
+	}
+
+	public void Kill() {
+		CancelInvoke();
+		gameObject.SetActive(false);
+	}
 }

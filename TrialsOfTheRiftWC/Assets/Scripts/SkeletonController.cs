@@ -104,12 +104,12 @@ public class SkeletonController : EnemyController {
 	}
 	
 	protected override void EnterStateDie() {
+		riftController.DecreaseEnemies(e_startSide);									  
 		base.EnterStateDie();
 		maestro.PlaySkeletonDie();
     }
 
 	protected override void UpdateDie() {
-		riftController.DecreaseEnemies(e_startSide);
 		base.UpdateDie();
 	}
 

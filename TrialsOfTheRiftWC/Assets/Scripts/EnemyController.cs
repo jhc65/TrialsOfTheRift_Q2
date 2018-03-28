@@ -22,6 +22,7 @@ public abstract class EnemyController : SpellTarget {
 	protected State[] e_statusPriorityList = new State[] {State.FROZEN,State.SLOWED};
 	protected float f_canMove = 1f;
 
+	protected bool b_activationToggle;
 	//The random destination the bot chooses when wandering
 	protected Vector3 v3_destination;
 
@@ -116,12 +117,14 @@ public abstract class EnemyController : SpellTarget {
 
     protected virtual void EnterStateDie() {
 		e_state = State.DIE;
+		b_activationToggle = false;
+		gameObject.SetActive(false);							  
     }
 
     protected virtual void UpdateDie() {
         //riftController.DecreaseEnemies(e_side);
 		//Destroy(gameObject);
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
     }
 	
 	public void TakeDamage(float damage){
@@ -189,27 +192,27 @@ public abstract class EnemyController : SpellTarget {
 	//This will reset the destination with in bounds
 	protected void CheckOutOfBounds() {
 		if (e_startSide == Constants.Global.Side.LEFT) {
-			if (v3_destination.x < -1*Constants.EnemyStats.C_MapBoundryXAxis) {
-				v3_destination.x = -1*Constants.EnemyStats.C_MapBoundryXAxis;
+			if (v3_destination.x < -1*Constants.EnemyStats.C_MapBoundryXAxis+1) {
+				v3_destination.x = -1*Constants.EnemyStats.C_MapBoundryXAxis+1;
 			}
 			else if (v3_destination.x > -1.0f) {
 				v3_destination.x = -1.0f;
 			}
 		}
 		else {
-			if (v3_destination.x > Constants.EnemyStats.C_MapBoundryXAxis) {
-				v3_destination.x = Constants.EnemyStats.C_MapBoundryXAxis;
+			if (v3_destination.x > Constants.EnemyStats.C_MapBoundryXAxis-1) {
+				v3_destination.x = Constants.EnemyStats.C_MapBoundryXAxis-1;
 			}
 			else if (v3_destination.x < 1.0f) {
 				v3_destination.x = 1.0f;
 			}
 		}
 
-		if (v3_destination.z > Constants.EnemyStats.C_MapBoundryZAxis) {
-			v3_destination.z = Constants.EnemyStats.C_MapBoundryZAxis;
+		if (v3_destination.z > Constants.EnemyStats.C_MapBoundryZAxis-1) {
+			v3_destination.z = Constants.EnemyStats.C_MapBoundryZAxis-1;
 		}
-		else if (v3_destination.z < -1*Constants.EnemyStats.C_MapBoundryZAxis) {
-			v3_destination.z = -1*Constants.EnemyStats.C_MapBoundryZAxis;
+		else if (v3_destination.z < -1*Constants.EnemyStats.C_MapBoundryZAxis+1) {
+			v3_destination.z = -1*Constants.EnemyStats.C_MapBoundryZAxis+1;
 		}
 	}
 
@@ -218,6 +221,7 @@ public abstract class EnemyController : SpellTarget {
         maestro = Maestro.Instance;
         EnterStateWander();
 		e_startSide = side;
+		b_activationToggle = true;
 	}
 
 	void Start() {
@@ -233,7 +237,13 @@ public abstract class EnemyController : SpellTarget {
 
 		EnterStateWander ();
     }
-	
+
+	void OnDisable() {
+		if (b_activationToggle) {
+			Debug.Log("OnDisable");
+			EnterStateDie();
+		}
+	}				 
 	// Update is called once per frame
 	protected virtual void Update () {
 		/*
