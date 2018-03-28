@@ -146,7 +146,9 @@ public class PlayerController : SpellTarget {
 
         if (isWisp) {
 			rb.velocity = (v3_moveDir * Constants.PlayerStats.C_WispMovementSpeed) * f_canMove;
-		}
+		} else if (b_iceboltMode) {
+            rb.velocity = Vector3.zero;
+        }
 		else {
 			rb.velocity = (v3_moveDir * Constants.PlayerStats.C_MovementSpeed) * f_canMove;
 			if(v3_moveDir.magnitude > 0 && b_stepOk){
@@ -298,9 +300,7 @@ public class PlayerController : SpellTarget {
         else
             e_side = Constants.Global.Side.LEFT;
 
-        if (!b_iceboltMode) {
-            Move();
-        }
+        Move();
 
         // pause
         if (p_player.GetButtonDown("Menu") && Time.timeScale == 1) {

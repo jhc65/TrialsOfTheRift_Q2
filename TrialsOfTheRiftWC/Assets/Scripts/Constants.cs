@@ -66,7 +66,6 @@ public static class Constants {
         public static float C_WindCooldown = 3.0f;
         public static float C_WindChargeTime = C_SpellChargeTime;
         public static float C_WindRiftDamageMultiplier = C_RiftDamageMultiplier;
-        public static float C_WindPlayerDamageMultiplier = 0.5f;
         public static float C_WindForce = 1000.0f; // 4m worth of distance - we need to do our own 
 
         // Ice Stats
@@ -77,7 +76,6 @@ public static class Constants {
         public static float C_IceCooldown = 5.0f;
         public static float C_IceChargeTime = C_SpellChargeTime;
         public static float C_IceRiftDamageMultiplier = C_RiftDamageMultiplier;
-        public static float C_IcePlayerDamageMultiplier = 0.5f;
         public static float C_IceFreezeTime = 3.0f;
         public static float C_IceWallLiveTime = 5.0f;
 
@@ -89,7 +87,6 @@ public static class Constants {
 		public static float C_ElectricCooldown = 8.0f;
         public static float C_ElectricChargeTime = C_SpellChargeTime;
         public static float C_ElectricRiftDamageMultiplier = C_RiftDamageMultiplier;
-        public static float C_ElectricPlayerDamageMultiplier = 0.5f;
         public static float C_ElectricAOESlowDownMultiplier = 0.5f;
         public static float C_ElectricAOELiveTime = 5.0f;
         public static float C_ElectricAOEDamageRate = 0.5f;

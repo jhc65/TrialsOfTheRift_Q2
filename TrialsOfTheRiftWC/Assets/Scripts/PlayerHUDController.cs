@@ -1,18 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHUDController : MonoBehaviour {
 
     [SerializeField] PlayerController playc_trackedPlayer;
-    [SerializeField] Screenshake sshk_shaker;
     [SerializeField] Image img_healthbar;
     [SerializeField] Image img_windbar;
     [SerializeField] Image img_icebar;
 	[SerializeField] Image img_electricbar;
     [SerializeField] RectTransform rt_hpBar;
-    [SerializeField] float f_shakeAmt;
 
     private Color col_origIceColor;
     private Color col_origWindColor;
@@ -62,9 +58,4 @@ public class PlayerHUDController : MonoBehaviour {
             img_windbar.rectTransform.sizeDelta = v2_origWindSize;
         }
 	}
-
-    public void ShakeUI() {
-        sshk_shaker.SetShake(f_shakeAmt, rt_hpBar);
-        sshk_shaker.StartShake();
-    }
 }

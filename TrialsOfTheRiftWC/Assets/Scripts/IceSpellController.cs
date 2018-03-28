@@ -33,6 +33,7 @@ public class IceSpellController : SpellController {
 
 #region Unity Overrides
     override protected void Start() {
+        riftController = RiftController.Instance;
         Invoke("InvokeDestroy", Constants.SpellStats.C_IceLiveTime);
         InvokeRepeating("MakeWall", 0.15f, 0.15f);
     }
