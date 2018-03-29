@@ -8222,6 +8222,10 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 2099098997}
+    - target: {fileID: 1461462993876920, guid: f981430eb51e2cb44bd79bb554e56b86, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f981430eb51e2cb44bd79bb554e56b86, type: 2}
   m_IsPrefabParent: 0
