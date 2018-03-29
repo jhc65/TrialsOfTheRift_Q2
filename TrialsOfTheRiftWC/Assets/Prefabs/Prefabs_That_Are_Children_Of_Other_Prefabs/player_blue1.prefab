@@ -3867,17 +3867,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45402daf115c384f855e549d9169242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  e_color: 1
+  e_startSide: 0
+  rb: {fileID: 0}
+  anim: {fileID: 95501530416164560}
   go_playerCapsule: {fileID: 1204098368484264}
   go_playerWisp: {fileID: 1959526875299128}
-  i_playerNumber: 2
-  e_color: 1
-  e_side: 0
-  t_flagPos: {fileID: 4382892597350090}
-  go_flagObj: {fileID: 0}
-  go_interactCollider: {fileID: 1834358145786194}
-  go_parryShield: {fileID: 1553478322380244}
-  t_spellSpawn: {fileID: 4152086257867096}
-  f_canMove: 0
   go_magicMissileShot: {fileID: 1169542914423560, guid: 00247cb350ec7a848b7c7ce622e7cb56,
     type: 2}
   go_windShot: {fileID: 1884951099791360, guid: e14bef9b01064274f8f8dea8bca54e4c,
@@ -3885,12 +3880,11 @@ MonoBehaviour:
   go_iceShot: {fileID: 1457177119730324, guid: 8290d2fdc293f02499be170cbb2eaf80, type: 2}
   go_electricShot: {fileID: 1399049070116990, guid: a6ec5ad0254870244b463e157e59b407,
     type: 2}
+  t_spellSpawn: {fileID: 4152086257867096}
+  t_flagPos: {fileID: 4382892597350090}
+  go_interactCollider: {fileID: 1834358145786194}
+  go_parryShield: {fileID: 1553478322380244}
   pauc_pause: {fileID: 0}
-  go_deathOrbPrefab: {fileID: 0}
-  isWisp: 0
-  b_iceboltMode: 0
-  f_projectileSize: 0
-  anim: {fileID: 95501530416164560}
 --- !u!114 &114081840245364588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4093,13 +4087,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playc_trackedPlayer: {fileID: 114070834417397376}
-  sshk_shaker: {fileID: 114251957186550180}
   img_healthbar: {fileID: 114044081356953962}
   img_windbar: {fileID: 114673811379051070}
   img_icebar: {fileID: 114561478412381456}
   img_electricbar: {fileID: 114945753544231932}
   rt_hpBar: {fileID: 224928347328595092}
-  f_shakeAmt: 5
 --- !u!114 &114877921469740020
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2243,6 +2243,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a80e6cca1b7d46c48b105448b065d17, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &243468065 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1101227227726666, guid: f981430eb51e2cb44bd79bb554e56b86,
+    type: 2}
+  m_PrefabInternal: {fileID: 983519270}
 --- !u!1001 &251716145
 Prefab:
   m_ObjectHideFlags: 0
@@ -4068,7 +4073,7 @@ Prefab:
         type: 2}
       propertyPath: go_riftShield1
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 535210134}
     - target: {fileID: 114143427374218614, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: go_riftShield2
@@ -4078,7 +4083,7 @@ Prefab:
         type: 2}
       propertyPath: go_riftBossRed
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 243468065}
     - target: {fileID: 114143427374218614, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
         type: 2}
       propertyPath: go_riftBossBlue
@@ -4553,6 +4558,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1530556161826358, guid: a89847ae0aa2e054fad0535c3a45d4da,
     type: 2}
   m_PrefabInternal: {fileID: 529248590}
+--- !u!1 &535210134 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1663448452159424, guid: f981430eb51e2cb44bd79bb554e56b86,
+    type: 2}
+  m_PrefabInternal: {fileID: 983519270}
 --- !u!1 &570329476 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1938367555442768, guid: ba51cd5f17113b846af6592fc466392c,
@@ -10993,7 +11003,7 @@ Prefab:
         type: 2}
       propertyPath: go_riftShield1
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 535210134}
     - target: {fileID: 114918056158561022, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: go_riftShield2
@@ -11003,7 +11013,7 @@ Prefab:
         type: 2}
       propertyPath: go_riftBossRed
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 243468065}
     - target: {fileID: 114918056158561022, guid: b793c16ffe19c2846ab86127af7de009,
         type: 2}
       propertyPath: go_riftBossBlue
