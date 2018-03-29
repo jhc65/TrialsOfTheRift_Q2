@@ -11,37 +11,37 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public sealed class Maestro : MonoBehaviour {
-    public AudioMixer am_masterMix;
+    [SerializeField] private AudioMixer am_masterMix;
 
 	[Header("Audio Sources")]
-	public AudioSource as_bgmA;			// background music audio source
-	public AudioSource as_bgmB;			// background music audio source
-	public AudioSource as_volatility;	// volatility ambience audio source
-	public AudioSource as_sfxHi;		// high priority sound effect audio source
-	public AudioSource as_sfxMe;		// medium priority sound effect audio source
-	public AudioSource as_sfxLo;		// low priority sound effect audio source
-	public AudioSource as_voi;			// voice audio source
+	[SerializeField] private AudioSource as_bgmA;			// background music audio source
+	[SerializeField] private AudioSource as_bgmB;			// background music audio source
+	[SerializeField] private AudioSource as_volatility;	// volatility ambience audio source
+	[SerializeField] private AudioSource as_sfxHi;		// high priority sound effect audio source
+	[SerializeField] private AudioSource as_sfxMe;		// medium priority sound effect audio source
+	[SerializeField] private AudioSource as_sfxLo;		// low priority sound effect audio source
+	[SerializeField] private AudioSource as_voi;			// voice audio source
 	
 	[Header("Audio Clips")]
-	public AudioClip ac_windShoot;
-	public AudioClip ac_iceShoot;
-	public AudioClip ac_electricShoot;
+	[SerializeField] private AudioClip ac_windShoot;
+	[SerializeField] private AudioClip ac_iceShoot;
+	[SerializeField] private AudioClip ac_electricShoot;
 	[SerializeField] private AudioClip[] ac_magicMissileShoot;
-	public AudioClip ac_contact_generic;
-	public AudioClip ac_spell_charge;
+	[SerializeField] private AudioClip ac_contact_generic;
+	[SerializeField] private AudioClip ac_spell_charge;
 	
-	public AudioClip ac_enemyHit;
+	[SerializeField] private AudioClip ac_enemyHit;
 	[SerializeField] private AudioClip[] ac_skeleton_die;
 	[SerializeField] private AudioClip[] ac_heavy_skeleton_die;
 	[SerializeField] private AudioClip[] ac_necromancer_die;
 	[SerializeField] private AudioClip[] ac_skeleton_spawn;
-	public AudioClip ac_necromancer_spawn;
+	[SerializeField] private AudioClip ac_necromancer_spawn;
 	[SerializeField] private AudioClip[] ac_heavy_skeleton_footstep;
 	
-	public AudioClip ac_playerSpawn;
-	public AudioClip ac_playerDie;
+	[SerializeField] private AudioClip ac_playerSpawn;
+	[SerializeField] private AudioClip ac_playerDie;
 	
-	public AudioClip ac_portal;
+	[SerializeField] private AudioClip ac_portal;
 	
 	[SerializeField] private AudioClip[] ac_bgm;
 
@@ -68,12 +68,12 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_spell_hit_player;
 	[SerializeField] private AudioClip[] ac_generic_hit_player;
 	[SerializeField] private AudioClip[] ac_board_clear;
-	public AudioClip ac_begin_ctf;
-	public AudioClip ac_begin_hockey;
-	public AudioClip ac_begin_crystal_destruction;
-	public AudioClip ac_begin_rift_boss;
-	public AudioClip ac_begin_potato;
-	public AudioClip ac_tutorial;
+	[SerializeField] private AudioClip ac_begin_ctf;
+	[SerializeField] private AudioClip ac_begin_hockey;
+	[SerializeField] private AudioClip ac_begin_crystal_destruction;
+	[SerializeField] private AudioClip ac_begin_rift_boss;
+	[SerializeField] private AudioClip ac_begin_potato;
+	[SerializeField] private AudioClip ac_tutorial;
 	
 	[Header("UI")]
 	[SerializeField] private AudioClip[] ac_page_turn;
@@ -82,8 +82,8 @@ public sealed class Maestro : MonoBehaviour {
 	[SerializeField] private AudioClip[] ac_buzz;
 	
 	[Header("Settings")]
-	public float f_announcementDelay;		// An announcement can only play after this many seconds have elapsed.
-	public float f_genericAnnouncementDelay;
+	[SerializeField] private float f_announcementDelay;		// An announcement can only play after this many seconds have elapsed.
+	[SerializeField] private float f_genericAnnouncementDelay;
 	[Range(0,1)] public float f_announcementChance;	// Announcements have a probability of playing.
 	private bool b_announcementOk = false;
 	private bool b_ctfExplained = false;

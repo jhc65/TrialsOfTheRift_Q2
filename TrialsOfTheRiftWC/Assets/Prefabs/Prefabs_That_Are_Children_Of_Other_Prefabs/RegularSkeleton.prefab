@@ -5203,9 +5203,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c8ee83c17c5de458bffbdc86d282cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_side: 0
-  f_health: 0
-  f_damage: 0
+  e_color: 0
+  e_startSide: 0
+  rb: {fileID: 0}
+  anim: {fileID: 0}
+  nma_agent: {fileID: 0}
 --- !u!114 &114929032934999658
 MonoBehaviour:
   m_ObjectHideFlags: 1

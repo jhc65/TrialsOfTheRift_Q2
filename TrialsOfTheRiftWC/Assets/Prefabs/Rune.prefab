@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4168768836821354}
   - component: {fileID: 33341718198378316}
-  - component: {fileID: 64333550880141754}
   - component: {fileID: 23557761849855940}
   - component: {fileID: 114768591872977462}
+  - component: {fileID: 65146411906599132}
   m_Layer: 0
   m_Name: Rune
   m_TagString: Untagged
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1530556161826358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17, y: 0, z: 4}
-  m_LocalScale: {x: 0.19999999, y: 0.01, z: 0.1}
+  m_LocalScale: {x: 0.19999999, y: 0.01, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,8 +82,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530556161826358}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64333550880141754
-MeshCollider:
+--- !u!65 &65146411906599132
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -92,10 +92,8 @@ MeshCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 10, y: 50, z: 10}
+  m_Center: {x: 0, y: 25, z: 0}
 --- !u!114 &114768591872977462
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -276,13 +276,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playc_trackedPlayer: {fileID: 0}
-  sshk_shaker: {fileID: 114764767717798324}
   img_healthbar: {fileID: 114626839233611450}
   img_windbar: {fileID: 114025976181460006}
   img_icebar: {fileID: 114052130366238634}
   img_electricbar: {fileID: 114103809707007862}
   rt_hpBar: {fileID: 224150516911251512}
-  f_shakeAmt: 5
 --- !u!114 &114764767717798324
 MonoBehaviour:
   m_ObjectHideFlags: 1
