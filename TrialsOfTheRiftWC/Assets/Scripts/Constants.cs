@@ -161,7 +161,7 @@ public static class Constants {
         public static float C_RuneTimer = 2.0f;
 		public static float C_SummonTimer = 8.0f;
 
-        public static int C_EnemySpawnCapPerSide = 7;
+        public static int C_EnemySpawnCapPerSide = 1;
         public static float C_EnemyBaseSpeed = 1.5f;
 		public static float C_EnemyAttackRange = 1.5f;
         public static float C_EnemyHealth = 75.0f;

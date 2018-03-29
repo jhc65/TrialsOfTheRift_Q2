@@ -22,7 +22,6 @@ public abstract class EnemyController : SpellTarget {
 	protected State[] e_statusPriorityList = new State[] {State.FROZEN,State.SLOWED};
 	protected float f_canMove = 1f;
 
-	protected bool b_activationToggle;
 	//The random destination the bot chooses when wandering
 	protected Vector3 v3_destination;
 
@@ -117,7 +116,7 @@ public abstract class EnemyController : SpellTarget {
 
     protected virtual void EnterStateDie() {
 		e_state = State.DIE;
-		b_activationToggle = false;
+		this.enabled = false;
 		gameObject.SetActive(false);							  
     }
 
@@ -217,11 +216,11 @@ public abstract class EnemyController : SpellTarget {
 	}
 
 	public virtual void Init(Constants.Global.Side side) {
+		this.enabled = true;
         riftController = RiftController.Instance;   // Init() is called before Start(), these must be set here (repeatedly...)
         maestro = Maestro.Instance;
         EnterStateWander();
 		e_startSide = side;
-		b_activationToggle = true;
 	}
 
 	void Start() {
@@ -239,7 +238,7 @@ public abstract class EnemyController : SpellTarget {
     }
 
 	void OnDisable() {
-		if (b_activationToggle) {
+		if (this.enabled) {
 			Debug.Log("OnDisable");
 			EnterStateDie();
 		}
