@@ -3,7 +3,7 @@
  *  Desc:   Controls changes to Ice Hockey Objective's Puck movement and speed
  * 
  */
-
+using System.Collections;
 using UnityEngine;
 
 public class HockeyPuckController : SpellTarget {
@@ -32,6 +32,7 @@ public class HockeyPuckController : SpellTarget {
         }
 
         //stop its movement entirely
+        rb.isKinematic = true;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
@@ -82,10 +83,7 @@ public class HockeyPuckController : SpellTarget {
         // resets speed if it goes over threshold
         if (f_speed > Constants.ObjectiveStats.C_PuckMaxSpeed) {
             f_speed = Constants.ObjectiveStats.C_PuckMaxSpeed;
-        }
-
-        // Set speed to base if it gets too low
-        if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed) {
+        } else if (f_speed < Constants.ObjectiveStats.C_PuckBaseSpeed) {
             CancelInvoke("DecreaseSpeed");
             f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
         }
@@ -95,13 +93,10 @@ public class HockeyPuckController : SpellTarget {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy")) {
-            collision.gameObject.GetComponent<EnemyController>().TakeDamage(Constants.EnemyStats.C_EnemyHealth);
-        }
-        else if (collision.gameObject.CompareTag("Player")) {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, Constants.Global.DamageType.PUCK);
-        }
-        else if (!collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Rift")) {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player")) {
+            Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+            StartCoroutine("ApplyDamage", collision.gameObject);
+        } else if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal")) {
             // Reflect puck on collision
             // https://youtube.com/watch?v=u_p50wENBY
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
@@ -111,16 +106,29 @@ public class HockeyPuckController : SpellTarget {
         }
     }
 
+    public IEnumerator ApplyDamage(GameObject go_target) {
+        if (go_target.GetComponent<PlayerController>()) {
+            go_target.GetComponent<PlayerController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage, Constants.Global.DamageType.PUCK);
+        } else if (go_target.GetComponent<EnemyController>()) {
+            go_target.GetComponent<EnemyController>().TakeDamage(Constants.ObjectiveStats.C_PuckDamage);
+        }
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine("ApplyDamage", go_target);
+    }
+
     void OnTriggerEnter(Collider other) {
         if (other.tag == "HockeyGoal") {   // player scoring with puck TODO: look at layers and tags
-            if(other.GetComponent<GoalController>().Color != e_color &&
-                ((e_startSide == Constants.Global.Side.LEFT && rb.velocity.x > 0 ||
-                  e_startSide == Constants.Global.Side.RIGHT && rb.velocity.x < 0))) { 
+            if (other.GetComponent<GoalController>().Color != e_color)
+            {
                 iho_owner.UpdatePuckScore();
                 ResetPuckPosition();
             }
-        }
-        else if (other.tag == "ParryShield") {
+        } else if (other.tag == "ParryShield") {
+            if (rb.isKinematic == true) {
+                rb.isKinematic = false;
+            }
+
             // Reset slowdown invoke
             CancelInvoke();
             InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
@@ -130,5 +138,10 @@ public class HockeyPuckController : SpellTarget {
             rb.velocity = facingDirection * f_speed;
         }
     }
-#endregion
+
+    private void OnTriggerExit(Collider other)
+    {
+        StopCoroutine("ApplyDamage");
+    }
+    #endregion
 }

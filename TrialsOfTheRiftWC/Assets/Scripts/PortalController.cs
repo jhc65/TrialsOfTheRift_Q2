@@ -20,7 +20,7 @@ public class PortalController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 
-		if (other.tag == "Player" || other.tag == "Spell" || other.tag == "Potato" || other.tag == "Puck") {
+		if (other.tag == "Player" || other.tag == "Spell" || other.tag == "Potato") {
             Debug.Log("ow");
             maestro.PlayPortal();
 			other.gameObject.transform.position = new Vector3(-1*other.transform.position.x + (int)e_side * Constants.RiftStats.C_PortalTeleportOffset,

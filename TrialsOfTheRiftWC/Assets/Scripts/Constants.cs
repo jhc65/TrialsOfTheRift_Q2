@@ -130,7 +130,7 @@ public static class Constants {
         //public static Vector3 C_RedHockeyGoalSpawn = new Vector3(-20.0f, 0.01f, 0.0f);
         //public static Vector3 C_BlueHockeyGoalSpawn = new Vector3(20.0f, 0.01f, 0.0f);
         public static int C_HockeyMaxScore = 3;
-        public static float C_PuckDamage = 240.0f;
+        public static float C_PuckDamage = 10.0f;
         public static float C_PuckSpeedDecayDelay = 3.0f;       // time after hit to wait before decreasing speed
         public static float C_PuckSpeedDecayRate = 1.0f;        // time between successive speed decreases (after first)
         public static float C_PuckSpeedDecreaseAmount = 2.0f;   // speed decrease amount at each interval
