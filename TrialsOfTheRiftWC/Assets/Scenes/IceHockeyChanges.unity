@@ -4088,6 +4088,11 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 34448824}
+    - target: {fileID: 54363629042281820, guid: 014d2cc6e090ae34a8e7bfe5ec453da7,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 014d2cc6e090ae34a8e7bfe5ec453da7, type: 2}
   m_IsPrefabParent: 0
@@ -10984,6 +10989,11 @@ Prefab:
       propertyPath: go_roomPool.Array.data[2]
       value: 
       objectReference: {fileID: 2099098997}
+    - target: {fileID: 54549416294990350, guid: b793c16ffe19c2846ab86127af7de009,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
   m_IsPrefabParent: 0

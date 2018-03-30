@@ -126,7 +126,6 @@ public class HockeyPuckController : SpellTarget {
             InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
             Vector3 facingDirection = other.gameObject.transform.forward.normalized;
-            transform.rotation = Quaternion.LookRotation(facingDirection);
             rb.velocity = facingDirection * f_speed;
         }
     }
