@@ -136,7 +136,7 @@ public static class Constants {
         public static float C_PuckSpeedDecreaseAmount = 2.0f;   // speed decrease amount at each interval
         public static float C_PuckSpeedHitIncrease = 5.0f;      // speed increase every time puck is hit
         public static float C_PuckBaseSpeed = 10.0f;
-        public static float C_PuckMaxSpeed = 25.0f;
+        public static float C_PuckMaxSpeed = 15.0f;
 
         // Rift Boss Stats
         //public static Vector3 C_RedRiftBossSpawn = new Vector3(-5.0f, 0.5f, 0f);

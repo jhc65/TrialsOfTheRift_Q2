@@ -71,6 +71,7 @@ public class DebugParametersController : MonoBehaviour {
     [SerializeField] private Slider slider_puckSpeedDecayRate;
     [SerializeField] private Slider slider_puckSpeedDecreaseRate;
     [SerializeField] private Slider slider_puckBaseSpeed;
+    [SerializeField] private Slider slider_puckMaxSpeed;
     [SerializeField] private Slider slider_puckHitIncreaseSpeed;
     [SerializeField] private Slider slider_riftBossHealth;
     [SerializeField] private Slider slider_runeSpawnInterval;
@@ -112,6 +113,7 @@ public class DebugParametersController : MonoBehaviour {
     [SerializeField] private Text txt_puckSpeedDecayRate;
     [SerializeField] private Text txt_puckSpeedDecreaseRate;
     [SerializeField] private Text txt_puckBaseSpeed;
+    [SerializeField] private Text txt_puckMaxSpeed;
     [SerializeField] private Text txt_puckHitIncreaseSpeed;
     [SerializeField] private Text txt_riftBossHealth;
     [SerializeField] private Text txt_runeSpawnInterval;
@@ -286,7 +288,7 @@ public class DebugParametersController : MonoBehaviour {
     }
 
     public void ChangePuckDamage(float f_damage) {
-        float value = f_damage * 10.0f;
+        float value = f_damage * 5.0f;
         txt_puckDamage.text = value.ToString();
         Constants.ObjectiveStats.C_PuckDamage = (int)value;
     }
@@ -304,6 +306,12 @@ public class DebugParametersController : MonoBehaviour {
     public void ChangePuckBaseSpeed(float f_speed) {
         txt_puckBaseSpeed.text = slider_puckBaseSpeed.value.ToString();
         Constants.ObjectiveStats.C_PuckBaseSpeed = (int)f_speed;
+    }
+
+    public void ChangePuckMaxSpeed(float f_speed)
+    {
+        txt_puckMaxSpeed.text = slider_puckMaxSpeed.value.ToString();
+        Constants.ObjectiveStats.C_PuckMaxSpeed = (int)f_speed;
     }
 
     public void ChangePuckHitIncreaseSpeed(float f_hit) {
@@ -522,11 +530,15 @@ public class DebugParametersController : MonoBehaviour {
 
         // Hockey Puck Damage
         txt_puckDamage.text = Constants.ObjectiveStats.C_PuckDamage.ToString();
-        slider_puckDamage.value = Constants.ObjectiveStats.C_PuckDamage / 10;
+        slider_puckDamage.value = Constants.ObjectiveStats.C_PuckDamage / 5;
 
         // Hockey Puck Base Speed
         txt_puckBaseSpeed.text = Constants.ObjectiveStats.C_PuckBaseSpeed.ToString();
         slider_puckBaseSpeed.value = Constants.ObjectiveStats.C_PuckBaseSpeed;
+
+        // Hockey Puck Max Speed
+        txt_puckMaxSpeed.text = Constants.ObjectiveStats.C_PuckMaxSpeed.ToString();
+        slider_puckMaxSpeed.value = Constants.ObjectiveStats.C_PuckMaxSpeed;
 
         // Hockey Puck Hit Increase Speed
         txt_hockeyMaxScore.text = Constants.ObjectiveStats.C_PuckSpeedHitIncrease.ToString();

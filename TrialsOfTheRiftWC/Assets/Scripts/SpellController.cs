@@ -79,7 +79,7 @@ public abstract class SpellController : MonoBehaviour {
             Invoke("InvokeDestroy", Constants.SpellStats.C_SpellLiveTime);
 
             // deflect spell in player's facing direction
-            Vector3 v3_direction = other.gameObject.transform.root.forward.normalized;
+            Vector3 v3_direction = other.gameObject.transform.forward.normalized;
             transform.Rotate(v3_direction);
             rb.velocity = v3_direction * rb.velocity.magnitude;
         }
