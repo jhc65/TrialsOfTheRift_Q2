@@ -98,7 +98,7 @@ public class HockeyPuckController : SpellTarget {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player")) {
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
             StartCoroutine("ApplyDamage", collision.gameObject);
-        } else if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Spell")) {
+        } else if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal")) {
             // Reflect puck on collision
             // https://youtube.com/watch?v=u_p50wENBY
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);

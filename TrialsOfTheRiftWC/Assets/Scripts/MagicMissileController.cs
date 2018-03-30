@@ -47,9 +47,6 @@ public class MagicMissileController : SpellController {
                 Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
             }
         }
-        else if (collision.gameObject.CompareTag("Puck")) {
-            Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-        }
         else if (i_reflect) {    // charged magic missile can reflect off of surfaces
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
             float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
