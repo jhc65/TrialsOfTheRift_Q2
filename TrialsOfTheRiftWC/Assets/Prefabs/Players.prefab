@@ -532,7 +532,6 @@ GameObject:
   - component: {fileID: 224366304039398026}
   - component: {fileID: 222528450668765926}
   - component: {fileID: 114285069327379092}
-  - component: {fileID: 114445122672939118}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -1285,7 +1284,6 @@ GameObject:
   - component: {fileID: 224886653639048252}
   - component: {fileID: 222475629248575474}
   - component: {fileID: 114611018654624916}
-  - component: {fileID: 114189476473860824}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -5211,7 +5209,6 @@ GameObject:
   - component: {fileID: 224056894035213060}
   - component: {fileID: 222896211589240516}
   - component: {fileID: 114961692489500662}
-  - component: {fileID: 114542518688782314}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -6937,7 +6934,6 @@ GameObject:
   - component: {fileID: 224732397983472250}
   - component: {fileID: 222381059414850786}
   - component: {fileID: 114502435334300102}
-  - component: {fileID: 114545500126322636}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -15351,17 +15347,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114189476473860824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1178155237276958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114244781823632774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15537,13 +15522,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playc_trackedPlayer: {fileID: 114550989150642976}
-  sshk_shaker: {fileID: 114445122672939118}
   img_healthbar: {fileID: 114739050458281950}
   img_windbar: {fileID: 114139768967957414}
   img_icebar: {fileID: 114246642286224472}
   img_electricbar: {fileID: 114082461446467248}
   rt_hpBar: {fileID: 224132649319717514}
-  f_shakeAmt: 5
 --- !u!114 &114285447085736670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15825,17 +15808,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114445122672939118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1079126159210546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114450274873252370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15959,13 +15931,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playc_trackedPlayer: {fileID: 114799351881642106}
-  sshk_shaker: {fileID: 114545500126322636}
   img_healthbar: {fileID: 114456960456882356}
   img_windbar: {fileID: 114813349847817446}
   img_icebar: {fileID: 114813199882028540}
   img_electricbar: {fileID: 114414017012744258}
   rt_hpBar: {fileID: 224652296782671978}
-  f_shakeAmt: 5
 --- !u!114 &114522186463289606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16030,28 +16000,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114542518688782314
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1659322672267394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114545500126322636
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1912444520115244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620a1300eebbd3b4b9b6aa9958ae9632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114550143353550090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16165,13 +16113,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playc_trackedPlayer: {fileID: 114278817969382078}
-  sshk_shaker: {fileID: 114189476473860824}
   img_healthbar: {fileID: 114255924793175052}
   img_windbar: {fileID: 114468611713124872}
   img_icebar: {fileID: 114433103445660644}
   img_electricbar: {fileID: 114768229697847642}
   rt_hpBar: {fileID: 224750131923761104}
-  f_shakeAmt: 5
 --- !u!114 &114643193998432026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16678,13 +16624,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playc_trackedPlayer: {fileID: 114057636586604300}
-  sshk_shaker: {fileID: 114542518688782314}
   img_healthbar: {fileID: 114966325527569594}
   img_windbar: {fileID: 114441771062421092}
   img_icebar: {fileID: 114289970027696086}
   img_electricbar: {fileID: 114968801028291828}
   rt_hpBar: {fileID: 224815954154692630}
-  f_shakeAmt: 5
 --- !u!114 &114964991510915470
 MonoBehaviour:
   m_ObjectHideFlags: 1
