@@ -10994,6 +10994,10 @@ Prefab:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 1827768655482312, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b793c16ffe19c2846ab86127af7de009, type: 2}
   m_IsPrefabParent: 0
@@ -15345,15 +15349,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objv_redObjectiveList:
-  - {fileID: 20138564}
-  - {fileID: 20138564}
-  - {fileID: 20138564}
+  - {fileID: 763480513}
+  - {fileID: 763480513}
+  - {fileID: 763480513}
   - {fileID: 763480513}
   - {fileID: 20138564}
   objv_blueObjectiveList:
-  - {fileID: 1068293295}
-  - {fileID: 1068293295}
-  - {fileID: 1068293295}
+  - {fileID: 506121611}
+  - {fileID: 506121611}
+  - {fileID: 506121611}
   - {fileID: 506121611}
   - {fileID: 1068293295}
   txt_winMsg: {fileID: 2146816463}

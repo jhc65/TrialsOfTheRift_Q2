@@ -27,6 +27,7 @@ public class HockeyPuckController : SpellTarget {
             case Constants.SpellStats.SpellType.WIND:
                 rb.AddForce(direction * Constants.SpellStats.C_WindForce);
                 f_speed += Constants.ObjectiveStats.C_PuckSpeedHitIncrease;
+                transform.Rotate(direction);
                 break;
             case Constants.SpellStats.SpellType.ICE:
                 rb.isKinematic = true;
@@ -98,12 +99,13 @@ public class HockeyPuckController : SpellTarget {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player")) {
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
             StartCoroutine("ApplyDamage", collision.gameObject);
-        } else if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal")) {
+        } else if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Spell")) {
             // Reflect puck on collision
             // https://youtube.com/watch?v=u_p50wENBY
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
             float rot = 90 - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
-            transform.eulerAngles = new Vector3(0, rot, 0);
+            transform.eulerAngles = new Vector3(90, rot, 0);
+            transform.Rotate(v);
             rb.velocity = transform.forward * f_speed;
         }
     }
@@ -126,6 +128,7 @@ public class HockeyPuckController : SpellTarget {
             InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
             Vector3 facingDirection = other.gameObject.transform.forward.normalized;
+            transform.Rotate(facingDirection);
             rb.velocity = facingDirection * f_speed;
         }
     }
