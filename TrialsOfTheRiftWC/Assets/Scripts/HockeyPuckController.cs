@@ -14,10 +14,6 @@ public class HockeyPuckController : SpellTarget {
 #region HockeyPuckController Methods
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
 
-        if (rb.isKinematic == true) {
-           rb.isKinematic = false;
-        }
-
         CancelInvoke();     // reset slowdown invoke
         InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
@@ -28,7 +24,6 @@ public class HockeyPuckController : SpellTarget {
                 transform.Rotate(direction);
                 break;
             case Constants.SpellStats.SpellType.ICE:
-                rb.isKinematic = true;
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
                 f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
@@ -48,7 +43,6 @@ public class HockeyPuckController : SpellTarget {
         }
 
         //stop its movement entirely
-        rb.isKinematic = true;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         f_speed = Constants.ObjectiveStats.C_PuckBaseSpeed;
@@ -94,10 +88,7 @@ public class HockeyPuckController : SpellTarget {
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player")) {
-            Physics.IgnoreCollision(GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-            StartCoroutine("ApplyDamage", collision.gameObject);
-        } else if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Spell")) {
+        if (!collision.gameObject.CompareTag("Rift") && !collision.gameObject.CompareTag("Portal") && !collision.gameObject.CompareTag("Spell")) {
             // Reflect puck on collision
             // https://youtube.com/watch?v=u_p50wENBY
             Vector3 v = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
@@ -109,18 +100,16 @@ public class HockeyPuckController : SpellTarget {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "HockeyGoal") {   // player scoring with puck TODO: look at layers and tags
-            if (other.GetComponent<GoalController>().Color != e_color)
-            {
+        if (other.CompareTag("HockeyGoal")) {   // player scoring with puck TODO: look at layers and tags
+            if (other.GetComponent<GoalController>().Color != e_color) {
                 iho_owner.UpdatePuckScore();
                 ResetPuckPosition();
             }
-        } else if (other.tag == "ParryShield") {
-            if (rb.isKinematic == true)
-            {
-                rb.isKinematic = false;
-            }
-
+        }
+        else if (other.CompareTag("Enemy") || other.CompareTag("Player")) {
+            StartCoroutine("ApplyDamage", other.gameObject);
+        }
+        else if (other.CompareTag("ParryShield")) {
             // Reset slowdown invoke
             CancelInvoke();
             InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
