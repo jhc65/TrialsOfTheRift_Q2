@@ -32,7 +32,7 @@ public class FlagController : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         // Player trying to pick up flag (and flag not already picked up)
 
-        if (other.CompareTag("InteractCollider") && other.transform.parent.gameObject.CompareTag("Player")) {
+        if (other.CompareTag("InteractCollider") && !transform.parent.parent.gameObject.CompareTag("Player")) {
 			other.GetComponentInParent<PlayerController>().Pickup(gameObject);
 			other.gameObject.SetActive(false);
 		}
@@ -40,7 +40,7 @@ public class FlagController : MonoBehaviour {
 		if (other.CompareTag("Goal")) {
 			if (other.GetComponent<GoalController>().Color != e_color) {        // check for correct color of flag/goal
                 ctfo_owner.UpdateFlagScore();                                   // increase score and update UI      
-				transform.root.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
+				transform.parent.parent.GetComponent<PlayerController>().DropFlag();     // make carrying player drop flag (sets player's flag reference to null and calls FlagController.DropFlag)
                 ResetFlagPosition();   // reset flag to original spawn position
             }
 		}

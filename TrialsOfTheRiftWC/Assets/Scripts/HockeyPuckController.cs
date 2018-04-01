@@ -14,14 +14,12 @@ public class HockeyPuckController : SpellTarget {
 #region HockeyPuckController Methods
     override public void ApplySpellEffect(Constants.SpellStats.SpellType spell, Constants.Global.Color color, float damage, Vector3 direction) {
 
-        if (spell != Constants.SpellStats.SpellType.MAGICMISSILE) {
-            if (rb.isKinematic == true) {
-                rb.isKinematic = false;
-            }
-
-            CancelInvoke();     // reset slowdown invoke
-            InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
+        if (rb.isKinematic == true) {
+           rb.isKinematic = false;
         }
+
+        CancelInvoke();     // reset slowdown invoke
+        InvokeRepeating("DecreaseSpeed", Constants.ObjectiveStats.C_PuckSpeedDecayDelay, Constants.ObjectiveStats.C_PuckSpeedDecayRate);
 
         switch (spell) {
             case Constants.SpellStats.SpellType.WIND:

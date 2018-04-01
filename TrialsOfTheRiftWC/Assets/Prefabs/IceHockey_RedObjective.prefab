@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23234899627351876}
   - component: {fileID: 54549416294990350}
   - component: {fileID: 114918056158561022}
-  - component: {fileID: 136288665987822076}
+  - component: {fileID: 136159496697290968}
   m_Layer: 13
   m_Name: IceHockey_RedPuck
   m_TagString: Puck
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 1346658094912398}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -5, y: 1, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4570724191784448}
   m_RootOrder: 0
@@ -256,16 +256,16 @@ MonoBehaviour:
   rb: {fileID: 54549416294990350}
   anim: {fileID: 0}
   iho_owner: {fileID: 114048660257854474}
---- !u!136 &136288665987822076
+--- !u!136 &136159496697290968
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346658094912398}
-  m_Material: {fileID: 13400000, guid: 4ec9ac988a405494e995a038abb28ef3, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.5092577
+  m_Height: 1.7574155
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: -0.00000059604656, z: 0}
